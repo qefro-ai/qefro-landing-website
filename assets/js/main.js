@@ -1,7 +1,56 @@
 (() => {
   const THEME_KEY = "theme";
+  const FALLBACK_DEMO_TOKEN = "demo-qefro-widget-token";
+  const WELCOME_MESSAGE =
+    "Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate.";
   const root = document.documentElement;
   const themeMeta = document.getElementById("theme-color-meta");
+  const API_URL = root.dataset.apiUrl || "https://api.qefro.com";
+  let widgetTimer = 0;
+
+  const removeWidget = () => {
+    document.getElementById("qefro-widget-script")?.remove();
+    document.getElementById("ai-widget-container")?.remove();
+  };
+
+  const fetchDemoToken = async () => {
+    try {
+      const res = await fetch(`${API_URL}/graphql`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
+      });
+      const json = await res.json();
+      const token = json?.data?.demoWidgetToken?.token;
+      if (typeof token === "string" && token.length > 0) return token;
+    } catch (error) {
+      console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
+    }
+    return FALLBACK_DEMO_TOKEN;
+  };
+
+  const loadDemoWidget = async (theme) => {
+    removeWidget();
+    const token = await fetchDemoToken();
+    const script = document.createElement("script");
+    script.id = "qefro-widget-script";
+    script.src = `${API_URL}/widget.js`;
+    script.async = true;
+    script.dataset.token = token;
+    script.dataset.endpoint = API_URL;
+    script.dataset.theme = theme === "dark" ? "dark" : "light";
+    script.dataset.position = "bottom-right";
+    script.dataset.primaryColor = "#6366f1";
+    script.dataset.welcomeMessage = WELCOME_MESSAGE;
+    document.body.appendChild(script);
+  };
+
+  const scheduleWidgetLoad = (theme) => {
+    clearTimeout(widgetTimer);
+    widgetTimer = window.setTimeout(() => {
+      loadDemoWidget(theme);
+    }, 500);
+  };
 
   const applyTheme = (theme) => {
     const isDark = theme === "dark";
@@ -17,6 +66,7 @@
       btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     });
     localStorage.setItem(THEME_KEY, theme);
+    scheduleWidgetLoad(theme);
   };
 
   const getTheme = () => (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
@@ -77,35 +127,4 @@
 
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
-
-  const demo = document.querySelector("[data-chat-demo]");
-  if (demo) {
-    const body = demo.querySelector("[data-chat-body]");
-    demo.querySelectorAll(".chat-suggestions button").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        demo.querySelectorAll(".chat-suggestions button").forEach((b) => b.classList.remove("is-active"));
-        btn.classList.add("is-active");
-        const q = btn.getAttribute("data-q") || "";
-        const a = btn.getAttribute("data-a") || "";
-        body.innerHTML = `
-          <div class="bubble bubble-ai">Hi! I'm connected to Qefro's knowledge base. What can I help you with?</div>
-          <div class="bubble bubble-user"></div>
-          <div class="bubble bubble-ai"></div>
-        `;
-        const user = body.querySelector(".bubble-user");
-        const ai = body.querySelectorAll(".bubble-ai")[1];
-        user.textContent = q;
-        ai.textContent = "";
-        let i = 0;
-        const tick = () => {
-          if (i <= a.length) {
-            ai.textContent = a.slice(0, i);
-            i += 2;
-            setTimeout(tick, 12);
-          }
-        };
-        tick();
-      });
-    });
-  }
 })();

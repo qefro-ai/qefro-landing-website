@@ -9,8 +9,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
+API = "https://api.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "3"
+ASSET_VERSION = "4"
 
 # Inline SVG icons (lucide-like)
 ICONS = {
@@ -169,7 +170,7 @@ def footer() -> str:
 def page(title: str, description: str, path: str, body: str, active: str | None = None, jsonld: list[str] | None = None) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
     return f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-api-url="{API}">
 <head>
 {meta_block(title, description, path)}
 {schemas}
@@ -401,18 +402,17 @@ PAGES["index.html"] = page(
         <div class="section-head reveal">
           <span class="badge badge-green">{ICONS["play"]} Live Demo</span>
           <h2>Try It Right Now</h2>
-          <p>Click a suggestion to see how the AI responds using only the knowledge base — no guessing, no hallucinations.</p>
+          <p>Open the Qefro chat bubble in the bottom-right corner. Ask about pricing, security, integrations, or how grounded answers work — powered by our live demo knowledge base.</p>
         </div>
-        <div class="chat-demo reveal" data-chat-demo>
-          <div class="chat-demo-bar"><i></i> Qefro assistant · knowledge-grounded</div>
-          <div class="chat-demo-body" data-chat-body>
-            <div class="bubble bubble-ai">Hi! I'm connected to Qefro's knowledge base. What can I help you with?</div>
+        <div class="widget-demo-hint reveal">
+          <div class="widget-demo-card">
+            <div class="widget-demo-icon">{ICONS["bot"]}</div>
+            <div>
+              <strong>Live assistant is active on this page</strong>
+              <p>Click the purple chat button below to start a real conversation. Every answer is retrieved from Qefro's demo knowledge base — no hallucinations.</p>
+            </div>
           </div>
-          <div class="chat-suggestions">
-            <button type="button" data-q="What is your refund policy?" data-a="Our refund policy covers all purchases within 30 days, no questions asked. Initiate a return from your account dashboard and receive a full refund within 5–7 business days.">What is your refund policy?</button>
-            <button type="button" data-q="How do I reset my password?" data-a="Click Forgot Password on the login page, enter your email, and you'll receive a reset link valid for 24 hours.">How do I reset my password?</button>
-            <button type="button" data-q="Do you offer enterprise pricing?" data-a="Yes. Enterprise plans include unlimited conversations, private deployment, SSO, dedicated support, and custom SLAs.">Do you offer enterprise pricing?</button>
-          </div>
+          <p class="widget-demo-suggestions">Try asking: <span>What is Qefro pricing?</span> · <span>How does integration work?</span> · <span>Is my data secure?</span></p>
         </div>
       </div>
     </section>
