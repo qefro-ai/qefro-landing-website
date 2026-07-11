@@ -1,26 +1,23 @@
 # Qefro Landing Website
 
-Premium static SaaS marketing site for [Qefro](https://qefro.com) — optimized for SEO, AEO (answer engines), and GEO (generative engines).
+Premium static SaaS marketing site for [Qefro](https://qefro.com) — SEO / AEO / GEO ready.
 
-## Live site
+## Production
 
-https://qefro-ai.github.io/qefro-landing-website/
+- Marketing site: https://qefro.com
+- Customer portal: https://app.qefro.com
+- Docker image: `ghcr.io/qefro-ai/qefro-landing-website:latest`
 
-## Pages
+## Local
 
-- `index.html` — brand-first landing
-- `features.html`, `how-it-works.html`, `use-cases.html`, `security.html`, `pricing.html`
-- `faq.html` — FAQ with `FAQPage` JSON-LD
-- `what-is-qefro.html`, `qefro-pricing.html` — answer-first AEO pages
-- `contact.html`, `404.html`
-- `llms.txt`, `robots.txt`, `sitemap.xml`
+```bash
+python3 generate.py
+docker build -t qefro-landing .
+docker run --rm -p 8088:80 qefro-landing
+```
 
 ## Regenerate HTML
 
 ```bash
 python3 generate.py
 ```
-
-## Deploy
-
-Pushes to `main` deploy via GitHub Pages (Actions workflow). Enable **Settings → Pages → Source: GitHub Actions** once.

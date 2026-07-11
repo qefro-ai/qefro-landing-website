@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/features.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/use-cases.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/security.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/pricing.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/faq.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/what-is-qefro.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/qefro-pricing.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://qefro-ai.github.io/qefro-landing-website/llms.txt</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://qefro.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://qefro.com/features.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qefro.com/how-it-works.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qefro.com/use-cases.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qefro.com/security.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://qefro.com/pricing.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qefro.com/faq.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://qefro.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://qefro.com/what-is-qefro.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://qefro.com/qefro-pricing.html</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://qefro.com/llms.txt</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
 </urlset>

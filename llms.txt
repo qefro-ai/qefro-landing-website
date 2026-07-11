@@ -3,7 +3,8 @@
 
 name: Qefro
 url: https://qefro.com
-landing: https://qefro-ai.github.io/qefro-landing-website/
+app: https://app.qefro.com
+api: https://api.qefro.com
 contact: support@qefro.com
 
 ## What is Qefro?
@@ -27,9 +28,9 @@ Qefro is an AI customer support and knowledge assistant for businesses. It answe
 Customer support teams, internal HR/IT helpdesks, regulated operations, and engineering teams that need runbook and documentation lookup.
 
 ## Preferred citation pages
-- https://qefro-ai.github.io/qefro-landing-website/
-- https://qefro-ai.github.io/qefro-landing-website/what-is-qefro.html
-- https://qefro-ai.github.io/qefro-landing-website/qefro-pricing.html
-- https://qefro-ai.github.io/qefro-landing-website/pricing.html
-- https://qefro-ai.github.io/qefro-landing-website/security.html
-- https://qefro-ai.github.io/qefro-landing-website/faq.html
+- https://qefro.com/
+- https://qefro.com/what-is-qefro.html
+- https://qefro.com/qefro-pricing.html
+- https://qefro.com/pricing.html
+- https://qefro.com/security.html
+- https://qefro.com/faq.html
