@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
+PORTAL_LOGIN = f"{PORTAL}/login"
 
 # Inline SVG icons (lucide-like)
 ICONS = {
@@ -99,15 +100,15 @@ def header(active: str | None = None) -> str:
         <a href="faq.html"{' aria-current="page"' if active == "faq.html" else ""}>FAQ</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn-link" href="{PORTAL}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL}">Get Started {ICONS["arrow"]}</a>
+        <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
+        <a class="btn btn-primary" href="{PORTAL_LOGIN}">Get Started {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">{ICONS["menu"]}</button>
       </div>
     </div>
     <div class="mobile-panel wrap">
 {mobile}
       <a href="faq.html">FAQ</a>
-      <a href="{PORTAL}">Sign In</a>
+      <a href="{PORTAL_LOGIN}">Sign In</a>
     </div>
   </header>"""
 
@@ -246,7 +247,7 @@ PAGES["index.html"] = page(
         </h1>
         <p class="hero-sub">Deploy an AI assistant that answers questions strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL}">Start Free Trial — No Card Required {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial — No Card Required {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo">{ICONS["play"]} See It in Action</a>
         </div>
         <div class="hero-checks">
@@ -452,7 +453,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Website widget</li>
               <li>{ICONS["check"]} Email support</li>
             </ul>
-            <a class="btn btn-plan" href="{PORTAL}">Start Free Trial</a>
+            <a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free Trial</a>
           </article>
           <article class="price-card is-popular">
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
@@ -468,7 +469,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Priority support</li>
               <li>{ICONS["check"]} Analytics</li>
             </ul>
-            <a class="btn btn-primary" href="{PORTAL}">Start Free Trial</a>
+            <a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free Trial</a>
           </article>
           <article class="price-card">
             <h3>Enterprise</h3>
@@ -513,7 +514,7 @@ PAGES["index.html"] = page(
         <h2>Ready to Give Your Team<br />Instant Answers?</h2>
         <p>Join thousands of teams already saving hours every week. Free 14-day trial, no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL}">Start Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="contact.html">Talk to Sales</a>
         </div>
       </div>
@@ -550,7 +551,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
         <h2>Ready to try Qefro?</h2>
         <p>Start a free 14-day trial — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL}">Start Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="contact.html">Talk to Sales</a>
         </div>
       </div>
@@ -628,8 +629,8 @@ PAGES["pricing.html"] = inner(
     "pricing.html",
     "<p>Qefro offers three plans: <strong>Starter at $49/month</strong>, <strong>Growth at $149/month</strong>, and <strong>Enterprise with custom pricing</strong>. Every plan includes a 14-day free trial.</p>",
     f"""        <div class="price-grid">
-          <article class="price-card"><h3>Starter</h3><div class="price-amount">$49 <span>/month</span></div><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 1 assistant</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL}">Start Free Trial</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount">$149 <span>/month</span></div><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Unlimited documents</li><li>{ICONS["check"]} 5 assistants</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul><a class="btn btn-primary" href="{PORTAL}">Start Free Trial</a></article>
+          <article class="price-card"><h3>Starter</h3><div class="price-amount">$49 <span>/month</span></div><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 1 assistant</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free Trial</a></article>
+          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount">$149 <span>/month</span></div><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Unlimited documents</li><li>{ICONS["check"]} 5 assistants</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free Trial</a></article>
           <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul><a class="btn btn-plan" href="contact.html">Talk to Sales</a></article>
         </div>""",
     extra_jsonld=[faq_schema([("How much does Qefro cost?", "Qefro Starter is $49 per month, Growth is $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required.")])],
@@ -676,7 +677,7 @@ PAGES["contact.html"] = inner(
     '<p>Email <a href="mailto:support@qefro.com"><strong>support@qefro.com</strong></a> for product help, or talk to sales about Enterprise pricing, SSO, and private deployment.</p>',
     f"""        <div class="cap-grid">
           <a class="cap-card" href="mailto:support@qefro.com"><div class="cap-icon">{ICONS["msg"]}</div><span>support@qefro.com</span></a>
-          <a class="cap-card" href="{PORTAL}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free trial</span></a>
+          <a class="cap-card" href="{PORTAL_LOGIN}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free trial</span></a>
           <a class="cap-card" href="pricing.html"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
 )
@@ -728,7 +729,7 @@ for slug, title, q, a, extra in [
         <h1>{q}</h1>
         <div class="direct-answer"><p>{a}</p></div>
         <div class="prose" style="margin-top:1.5rem">{extra}
-          <p><a class="btn btn-primary" href="{PORTAL}">Start free trial</a></p>
+          <p><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start free trial</a></p>
         </div>
       </div>
     </section>
