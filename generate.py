@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
+ASSET_VERSION = "2"
 
 # Inline SVG icons (lucide-like)
 ICONS = {
@@ -34,6 +35,13 @@ ICONS = {
     "menu": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
     "x": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>',
 }
+
+for _name, _svg in list(ICONS.items()):
+    ICONS[_name] = _svg.replace(
+        "<svg ",
+        '<svg class="icon" width="20" height="20" aria-hidden="true" ',
+        1,
+    )
 
 NAV = [
     ("how-it-works.html", "How it Works"),
@@ -71,7 +79,7 @@ def meta_block(title: str, description: str, path: str) -> str:
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css" />"""
+  <link rel="stylesheet" href="assets/css/styles.css?v={ASSET_VERSION}" />"""
 
 
 def header(active: str | None = None) -> str:
