@@ -6,36 +6,17 @@
   const root = document.documentElement;
   const themeMeta = document.getElementById("theme-color-meta");
   const API_URL = root.dataset.apiUrl || "https://api.qefro.com";
-  let widgetTimer = 0;
 
   const removeWidget = () => {
     document.getElementById("qefro-widget-script")?.remove();
     document.getElementById("ai-widget-container")?.remove();
   };
 
-  const fetchDemoToken = async () => {
-    try {
-      const res = await fetch(`${API_URL}/graphql`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
-      });
-      const json = await res.json();
-      const token = json?.data?.demoWidgetToken?.token;
-      if (typeof token === "string" && token.length > 0) return token;
-    } catch (error) {
-      console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
-    }
-    return FALLBACK_DEMO_TOKEN;
-  };
-
-  const loadDemoWidget = async (theme) => {
+  const mountWidget = (theme, token = FALLBACK_DEMO_TOKEN) => {
     removeWidget();
-    const token = await fetchDemoToken();
     const script = document.createElement("script");
     script.id = "qefro-widget-script";
     script.src = `${API_URL}/widget.js`;
-    script.async = true;
     script.dataset.token = token;
     script.dataset.endpoint = API_URL;
     script.dataset.theme = theme === "dark" ? "dark" : "light";
@@ -45,14 +26,24 @@
     document.body.appendChild(script);
   };
 
-  const scheduleWidgetLoad = (theme) => {
-    clearTimeout(widgetTimer);
-    widgetTimer = window.setTimeout(() => {
-      loadDemoWidget(theme);
-    }, 500);
+  const refreshWidget = async (theme) => {
+    let token = FALLBACK_DEMO_TOKEN;
+    try {
+      const res = await fetch(`${API_URL}/graphql`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
+      });
+      const json = await res.json();
+      const fetched = json?.data?.demoWidgetToken?.token;
+      if (typeof fetched === "string" && fetched.length > 0) token = fetched;
+    } catch (error) {
+      console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
+    }
+    mountWidget(theme, token);
   };
 
-  const applyTheme = (theme) => {
+  const applyTheme = (theme, reloadWidget = true) => {
     const isDark = theme === "dark";
     if (isDark) {
       root.setAttribute("data-theme", "dark");
@@ -66,7 +57,7 @@
       btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
     });
     localStorage.setItem(THEME_KEY, theme);
-    scheduleWidgetLoad(theme);
+    if (reloadWidget) refreshWidget(theme);
   };
 
   const getTheme = () => (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
@@ -77,7 +68,24 @@
     });
   });
 
-  applyTheme(getTheme());
+  const syncTheme = () => {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === "dark") {
+      applyTheme("dark", false);
+    }
+    const widgetTheme = getTheme();
+    const existing = document.getElementById("qefro-widget-script");
+    const currentWidgetTheme = existing?.dataset.theme || "light";
+    if (!existing || currentWidgetTheme !== widgetTheme) {
+      refreshWidget(widgetTheme);
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", syncTheme);
+  } else {
+    syncTheme();
+  }
 
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");

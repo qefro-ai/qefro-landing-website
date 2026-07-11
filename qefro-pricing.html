@@ -2,7 +2,7 @@
 <html lang="en" data-api-url="https://api.qefro.com">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>How much does Qefro cost?</title>
   <meta name="description" content="Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -35,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=5" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -74,6 +74,7 @@
   </script>
 </head>
 <body>
+  <div class="page-shell">
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient" aria-hidden="true">
     <div class="ambient-blob ambient-a"></div>
@@ -152,6 +153,15 @@
       </div>
     </div>
   </footer>
-  <script src="assets/js/main.js?v=4" defer></script>
+  </div>
+  <script id="qefro-widget-script"
+    src="https://api.qefro.com/widget.js"
+    data-token="demo-qefro-widget-token"
+    data-endpoint="https://api.qefro.com"
+    data-theme="light"
+    data-position="bottom-right"
+    data-primary-color="#6366f1"
+    data-welcome-message="Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."></script>
+  <script src="assets/js/main.js?v=5" defer></script>
 </body>
 </html>

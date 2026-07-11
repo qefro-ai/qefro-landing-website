@@ -171,7 +171,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   margin: 0;
   min-height: 100vh;
@@ -181,8 +181,13 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
   transition: background 0.2s ease, color 0.2s ease;
+}
+.page-shell {
+  width: 100%;
+  overflow-x: clip;
+  position: relative;
+  z-index: 1;
 }
 img { display: block; max-width: 100%; height: auto; }
 svg { display: block; flex-shrink: 0; max-width: none; }
@@ -742,6 +747,27 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin: 1rem 0 0; font-size: 0.85rem; color: var(--text-muted);
 }
 .widget-demo-suggestions span { color: var(--text-sub); font-weight: 500; }
+
+/* Keep demo widget pinned above mobile browser chrome */
+#ai-widget-container {
+  position: fixed !important;
+  z-index: 2147483000 !important;
+  pointer-events: auto;
+}
+#ai-widget-container.bottom-right {
+  right: max(12px, env(safe-area-inset-right)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+}
+#ai-widget-container.bottom-left {
+  left: max(12px, env(safe-area-inset-left)) !important;
+  bottom: max(12px, env(safe-area-inset-bottom)) !important;
+}
+@media (max-width: 640px) {
+  .ai-widget-trigger {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
 
 .reveal {
   opacity: 0; transform: translateY(24px);

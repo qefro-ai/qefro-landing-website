@@ -11,7 +11,11 @@ SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "4"
+ASSET_VERSION = "5"
+DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
+WIDGET_WELCOME = (
+    "Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."
+)
 
 # Inline SVG icons (lucide-like)
 ICONS = {
@@ -57,7 +61,7 @@ NAV = [
 def meta_block(title: str, description: str, path: str) -> str:
     url = f"{SITE}/{path}" if path else f"{SITE}/"
     return f"""  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{title}</title>
   <meta name="description" content="{description}" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -142,8 +146,24 @@ def header(active: str | None = None) -> str:
   </header>"""
 
 
+def widget_embed(theme: str = "light") -> str:
+    return f"""  <script id="qefro-widget-script"
+    src="{API}/widget.js"
+    data-token="{DEMO_WIDGET_TOKEN}"
+    data-endpoint="{API}"
+    data-theme="{theme}"
+    data-position="bottom-right"
+    data-primary-color="#6366f1"
+    data-welcome-message="{WIDGET_WELCOME}"></script>"""
+
+
+def page_scripts() -> str:
+    return f"""{widget_embed()}
+  <script src="assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
+
+
 def footer() -> str:
-    return f"""  <footer class="site-footer">
+    return """  <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
         <a class="brand" href="index.html" aria-label="Qefro home">
@@ -163,8 +183,7 @@ def footer() -> str:
         <p>Built for teams who value their knowledge.</p>
       </div>
     </div>
-  </footer>
-  <script src="assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
+  </footer>"""
 
 
 def page(title: str, description: str, path: str, body: str, active: str | None = None, jsonld: list[str] | None = None) -> str:
@@ -176,11 +195,14 @@ def page(title: str, description: str, path: str, body: str, active: str | None 
 {schemas}
 </head>
 <body>
+  <div class="page-shell">
 {header(active)}
   <main id="main">
 {body}
   </main>
 {footer()}
+  </div>
+{page_scripts()}
 </body>
 </html>
 """
