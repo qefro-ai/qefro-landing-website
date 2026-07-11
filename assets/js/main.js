@@ -1,4 +1,34 @@
 (() => {
+  const THEME_KEY = "theme";
+  const root = document.documentElement;
+  const themeMeta = document.getElementById("theme-color-meta");
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    if (isDark) {
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    if (themeMeta) {
+      themeMeta.setAttribute("content", isDark ? "#080a12" : "#f8fafc");
+    }
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    });
+    localStorage.setItem(THEME_KEY, theme);
+  };
+
+  const getTheme = () => (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      applyTheme(getTheme() === "dark" ? "light" : "dark");
+    });
+  });
+
+  applyTheme(getTheme());
+
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
 

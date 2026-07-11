@@ -7,7 +7,15 @@
   <meta name="description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
-  <meta name="theme-color" content="#080a12" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" id="theme-color-meta" />
+  <script>
+    (function () {
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    })();
+  </script>
   <link rel="canonical" href="https://qefro.com/" />
   <link rel="alternate" type="text/plain" href="https://qefro.com/llms.txt" title="LLM-readable summary" />
   <meta property="og:type" content="website" />
@@ -27,7 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=2" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=3" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,6 +88,10 @@
         <a href="faq.html">FAQ</a>
       </nav>
       <div class="nav-cta">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="icon-moon" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+          <span class="icon-sun" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+        </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
         <a class="btn btn-primary" href="https://app.qefro.com/login">Get Started <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -92,6 +104,12 @@
       <a href="pricing.html">Pricing</a>
       <a href="faq.html">FAQ</a>
       <a href="https://app.qefro.com/login">Sign In</a>
+      <div class="mobile-panel-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="icon-moon" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+          <span class="icon-sun" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
+        </button>
+      </div>
     </div>
   </header>
   <main id="main">
@@ -417,6 +435,6 @@
       </div>
     </div>
   </footer>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>

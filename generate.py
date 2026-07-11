@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "2"
+ASSET_VERSION = "3"
 
 # Inline SVG icons (lucide-like)
 ICONS = {
@@ -34,6 +34,8 @@ ICONS = {
     "chevr": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>',
     "menu": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
     "x": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>',
+    "moon": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
+    "sun": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
 }
 
 for _name, _svg in list(ICONS.items()):
@@ -59,7 +61,15 @@ def meta_block(title: str, description: str, path: str) -> str:
   <meta name="description" content="{description}" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
-  <meta name="theme-color" content="#080a12" />
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8fafc" id="theme-color-meta" />
+  <script>
+    (function () {{
+      var saved = localStorage.getItem("theme");
+      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+    }})();
+  </script>
   <link rel="canonical" href="{url}" />
   <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
   <meta property="og:type" content="website" />
@@ -108,6 +118,10 @@ def header(active: str | None = None) -> str:
         <a href="faq.html"{' aria-current="page"' if active == "faq.html" else ""}>FAQ</a>
       </nav>
       <div class="nav-cta">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="icon-moon" aria-hidden="true">{ICONS["moon"]}</span>
+          <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
+        </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
         <a class="btn btn-primary" href="{PORTAL_LOGIN}">Get Started {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">{ICONS["menu"]}</button>
@@ -117,6 +131,12 @@ def header(active: str | None = None) -> str:
 {mobile}
       <a href="faq.html">FAQ</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
+      <div class="mobile-panel-tools">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+          <span class="icon-moon" aria-hidden="true">{ICONS["moon"]}</span>
+          <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
+        </button>
+      </div>
     </div>
   </header>"""
 
@@ -143,7 +163,7 @@ def footer() -> str:
       </div>
     </div>
   </footer>
-  <script src="assets/js/main.js" defer></script>"""
+  <script src="assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
 
 
 def page(title: str, description: str, path: str, body: str, active: str | None = None, jsonld: list[str] | None = None) -> str:
