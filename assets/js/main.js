@@ -21,7 +21,7 @@
     script.dataset.endpoint = API_URL;
     script.dataset.theme = theme === "dark" ? "dark" : "light";
     script.dataset.position = "bottom-right";
-    script.dataset.primaryColor = "#6366f1";
+    script.dataset.primaryColor = "#7c3aed";
     script.dataset.welcomeMessage = WELCOME_MESSAGE;
     document.body.appendChild(script);
   };
@@ -51,7 +51,7 @@
       root.removeAttribute("data-theme");
     }
     if (themeMeta) {
-      themeMeta.setAttribute("content", isDark ? "#080a12" : "#f8fafc");
+      themeMeta.setAttribute("content", isDark ? "#080a12" : "#ffffff");
     }
     document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
       btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
@@ -132,6 +132,27 @@
   } else {
     reveals.forEach((el) => el.classList.add("is-visible"));
   }
+
+  document.querySelectorAll("[data-uc-tabs]").forEach((root) => {
+    const tabs = root.querySelectorAll("[data-uc-tab]");
+    const panels = root.querySelectorAll("[data-uc-panel]");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const id = tab.dataset.ucTab;
+        tabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        panels.forEach((panel) => {
+          const show = panel.dataset.ucPanel === id;
+          panel.classList.toggle("is-active", show);
+          if (show) panel.removeAttribute("hidden");
+          else panel.setAttribute("hidden", "");
+        });
+      });
+    });
+  });
 
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());

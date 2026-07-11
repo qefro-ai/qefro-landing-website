@@ -17,7 +17,7 @@ Qefro is an AI customer support and knowledge assistant for businesses. It answe
 - Trial: 14 days free on all plans, no credit card required
 
 ## Key capabilities
-- Zero-hallucination RAG (answers only from retrieved knowledge)
+- Source-grounded RAG with refusal-first retrieval (declines when relevant context is missing)
 - PDF, Word, Markdown, text, and website crawling
 - Public/private workspaces
 - Website widget, API, WhatsApp (Growth/Enterprise)
@@ -34,3 +34,4 @@ Customer support teams, internal HR/IT helpdesks, regulated operations, and engi
 - https://qefro.com/pricing.html
 - https://qefro.com/security.html
 - https://qefro.com/faq.html
+- https://qefro.com/benchmark.html

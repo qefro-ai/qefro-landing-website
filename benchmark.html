@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>How much does Qefro cost?</title>
-  <meta name="description" content="Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required." />
+  <title>Qefro benchmark methodology — accuracy evaluation</title>
+  <meta name="description" content="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
@@ -16,13 +16,13 @@
       if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
     })();
   </script>
-  <link rel="canonical" href="https://qefro.com/qefro-pricing.html" />
+  <link rel="canonical" href="https://qefro.com/benchmark.html" />
   <link rel="alternate" type="text/plain" href="https://qefro.com/llms.txt" title="LLM-readable summary" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
-  <meta property="og:title" content="How much does Qefro cost?" />
-  <meta property="og:description" content="Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required." />
-  <meta property="og:url" content="https://qefro.com/qefro-pricing.html" />
+  <meta property="og:title" content="Qefro benchmark methodology — accuracy evaluation" />
+  <meta property="og:description" content="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations." />
+  <meta property="og:url" content="https://qefro.com/benchmark.html" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:type" content="image/png" />
@@ -31,8 +31,8 @@
   <meta property="og:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="How much does Qefro cost?" />
-  <meta name="twitter:description" content="Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required." />
+  <meta name="twitter:title" content="Qefro benchmark methodology — accuracy evaluation" />
+  <meta name="twitter:description" content="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta name="twitter:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta name="geo.region" content="IN" />
@@ -56,24 +56,8 @@
     {
       "@type": "ListItem",
       "position": 2,
-      "name": "How much does Qefro cost?",
-      "item": "https://qefro.com/qefro-pricing.html"
-    }
-  ]
-}
-  </script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does Qefro cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required."
-      }
+      "name": "Benchmark Methodology",
+      "item": "https://qefro.com/benchmark.html"
     }
   ]
 }
@@ -130,11 +114,40 @@
   <main id="main">
     <section class="page-hero">
       <div class="wrap-5xl">
-        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>How much does Qefro cost?</span></nav>
-        <h1>How much does Qefro cost?</h1>
-        <div class="direct-answer"><p>Qefro Starter costs $49 per month, Growth costs $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required.</p></div>
-        <div class="prose" style="margin-top:1.5rem"><p>See the full comparison on the <a href="pricing.html">pricing page</a>.</p>
-          <p><a class="btn btn-primary" href="https://app.qefro.com/login">Start free trial</a></p>
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Benchmark Methodology</span></nav>
+        <h1>Benchmark Methodology</h1>
+        <p class="hero-sub" style="margin-bottom:0">How we measure Qefro&rsquo;s accuracy and refusal behavior.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Methodology</h2>
+          <p>[Placeholder — describe how queries are evaluated, scoring criteria, and what counts as a correct answer vs. an appropriate refusal.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Test Set Composition</h2>
+          <p>[Placeholder — document domains covered, question types, knowledge-base sizes, and how edge cases are represented.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Results</h2>
+          <p>[Placeholder — add benchmark accuracy [X]% across [N] test queries, breakdown by category, and refusal-rate metrics.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Limitations</h2>
+          <p>[Placeholder — note evaluation scope, known failure modes, and what these results do and do not guarantee in production.]</p>
         </div>
       </div>
     </section>

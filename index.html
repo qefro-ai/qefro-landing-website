@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Qefro — Turn business knowledge into instant answers</title>
-  <meta name="description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever." />
+  <meta name="description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. Benchmarked for accuracy — grounded strictly in your content." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
-  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#f8fafc" id="theme-color-meta" />
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
       var saved = localStorage.getItem("theme");
@@ -21,21 +21,27 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="Qefro — Turn business knowledge into instant answers" />
-  <meta property="og:description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever." />
+  <meta property="og:description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. Benchmarked for accuracy — grounded strictly in your content." />
   <meta property="og:url" content="https://qefro.com/" />
-  <meta property="og:image" content="https://qefro.com/assets/images/og-cover.svg" />
+  <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Qefro — Turn business knowledge into instant answers" />
-  <meta name="twitter:description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever." />
-  <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.svg" />
+  <meta name="twitter:description" content="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. Benchmarked for accuracy — grounded strictly in your content." />
+  <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta name="twitter:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=5" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=7" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -86,6 +92,7 @@
         <a href="use-cases.html">Use Cases</a>
         <a href="security.html">Security</a>
         <a href="pricing.html">Pricing</a>
+        <a href="features.html">Docs</a>
         <a href="faq.html">FAQ</a>
       </nav>
       <div class="nav-cta">
@@ -103,6 +110,7 @@
       <a href="use-cases.html">Use Cases</a>
       <a href="security.html">Security</a>
       <a href="pricing.html">Pricing</a>
+      <a href="features.html">Docs</a>
       <a href="faq.html">FAQ</a>
       <a href="https://app.qefro.com/login">Sign In</a>
       <div class="mobile-panel-tools">
@@ -123,7 +131,7 @@
           <span class="hero-line">Turn Your Business Knowledge</span><br />
           <span class="hero-grad">Into Instant Answers</span>
         </h1>
-        <p class="hero-sub">Deploy an AI assistant that answers questions strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever.</p>
+        <p class="hero-sub">Deploy an AI assistant that answers questions strictly from your own documents — for employees, customers, and internal teams. Grounded in your content — and it says &ldquo;I don&rsquo;t know&rdquo; instead of guessing.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login">Start Free Trial — No Card Required <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost btn-lg" href="#demo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg> See It in Action</a>
@@ -138,6 +146,7 @@
       <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
+    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
     <section class="section-proof">
       <div class="wrap-5xl">
         <p class="stats-label">Trusted by forward-thinking teams worldwide</p>
@@ -160,13 +169,15 @@
         <div class="direct-answer reveal">
           <p><strong>Qefro</strong> is an AI customer support and knowledge assistant for businesses. It retrieves relevant passages from your verified knowledge base and answers only from that context.</p>
         </div>
-        <div class="cap-grid reveal">
+        <div class="cap-panel reveal">
+        <div class="cap-grid">
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg></div><span>PDF, Word &amp; Markdown ingestion</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div><span>Website crawling &amp; indexing</span></div>
-          <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><span>Zero-hallucination RAG responses</span></div>
+          <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><span>Refusal-first, source-grounded RAG</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-8 8H7l-4 3V12a8 8 0 018-8h2a8 8 0 018 8z"/></svg></div><span>Web widget, API &amp; WhatsApp</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-3"/></svg></div><span>Analytics &amp; conversation history</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><span>Tenant-isolated &amp; SOC 2 ready</span></div>
+        </div>
         </div>
       </div>
     </section>
@@ -192,8 +203,24 @@
           <article class="step">
             <div class="step-num-wrap"><div class="step-num-inner">03</div></div>
             <h3>Get Instant Answers</h3>
-            <p>Every response is grounded strictly in your content. No hallucinations. Full audit trail and source citations.</p>
+            <p>Every response is grounded strictly in your content. When relevant context isn&rsquo;t found, it declines to answer. Full audit trail and source citations.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-qefro">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> Why Qefro</span>
+          <h2>Built Different From Generic Chatbot Wrappers</h2>
+          <p>Technical choices that matter for security-conscious teams.</p>
+        </div>
+        <div class="trust-grid reveal">
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Self-Hostable Vector Store</h3><p>Built on pgvector, not a proprietary black-box vector database. Run it in your own infrastructure with no vendor lock-in.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><h3>On-Premise &amp; Edge-Ready Architecture</h3><p>Rust-based backend engineered for low-latency, resource-efficient deployment — including on-premise and edge environments, not just cloud-only SaaS.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div><h3>Sub-200ms Response Times by Design</h3><p>Rust/axum backend architecture built for speed, not bolted on afterward.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><h3>Refusal-First Retrieval</h3><p>The assistant is designed to decline answering when it can&rsquo;t find relevant context in your knowledge base, rather than fabricating a plausible-sounding response.</p></article>
         </div>
       </div>
     </section>
@@ -205,63 +232,102 @@
           <h2>Built for How Modern Businesses Work</h2>
           <p>Same platform, purpose-fit for every team and industry.</p>
         </div>
-        <div class="uc-grid reveal">
-          <article class="uc-card" style="--uc-from:#3b82f6;--uc-to:#06b6d4">
-            <div class="uc-head"><div class="uc-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg></div><h3>Internal Teams</h3></div>
-            <ul class="uc-list">
+        <div class="uc-tabs reveal" data-uc-tabs>
+          <div class="uc-tablist" role="tablist">
+          <button type="button" class="uc-tab is-active" data-uc-tab="internal" aria-selected="true">Internal Teams</button>
+          <button type="button" class="uc-tab" data-uc-tab="support" aria-selected="false">Customer Support</button>
+          <button type="button" class="uc-tab" data-uc-tab="regulated" aria-selected="false">Regulated Industries</button>
+          <button type="button" class="uc-tab" data-uc-tab="engineering" aria-selected="false">Tech & Engineering</button>
+          </div>
+          <div class="uc-panels">
+          <div class="uc-panel is-active" data-uc-panel="internal">
+            <ul class="uc-tab-list">
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Employee onboarding</li>
-              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> HR &amp; policy queries</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> HR & policy queries</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> IT helpdesk</li>
-              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> SOP &amp; compliance lookup</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> SOP & compliance lookup</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Team wiki search</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Benefits lookup</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Compliance docs</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Knowledge sharing</li>
             </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#8b5cf6;--uc-to:#9333ea">
-            <div class="uc-head"><div class="uc-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13a8 8 0 0116 0"/><path d="M4 13v5a2 2 0 002 2h1v-7H6a2 2 0 00-2 2zM20 13v5a2 2 0 01-2 2h-1v-7h1a2 2 0 012 2z"/></svg></div><h3>Customer Support</h3></div>
-            <ul class="uc-list">
+          </div>
+          <div class="uc-panel" data-uc-panel="support" hidden>
+            <ul class="uc-tab-list">
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> E-commerce FAQs</li>
-              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Order &amp; refund policies</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Order & refund policies</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Product documentation</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Self-service support</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Shipping updates</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Returns handling</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Billing questions</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Product recommendations</li>
             </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#10b981;--uc-to:#14b8a6">
-            <div class="uc-head"><div class="uc-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><h3>Regulated Industries</h3></div>
-            <ul class="uc-list">
+          </div>
+          <div class="uc-panel" data-uc-panel="regulated" hidden>
+            <ul class="uc-tab-list">
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Hospital staff protocols</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Medical guidelines</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Operations manuals</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Compliance docs</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Policy lookup</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Audit preparation</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Safety procedures</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Regulatory updates</li>
             </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#f97316;--uc-to:#f59e0b">
-            <div class="uc-head"><div class="uc-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Tech &amp; Engineering</h3></div>
-            <ul class="uc-list">
+          </div>
+          <div class="uc-panel" data-uc-panel="engineering" hidden>
+            <ul class="uc-tab-list">
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Engineering runbooks</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Internal wikis</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> API documentation</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Incident playbooks</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Dev onboarding</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Architecture docs</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Release notes</li>
+              <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg> Troubleshooting guides</li>
             </ul>
-          </article>
+          </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section section-alt" id="demo">
-      <div class="wrap-narrow">
-        <div class="section-head reveal">
-          <span class="badge badge-green"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg> Live Demo</span>
-          <h2>Try It Right Now</h2>
-          <p>Open the Qefro chat bubble in the bottom-right corner. Ask about pricing, security, integrations, or how grounded answers work — powered by our live demo knowledge base.</p>
-        </div>
-        <div class="widget-demo-hint reveal">
-          <div class="widget-demo-card">
-            <div class="widget-demo-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div>
-            <div>
-              <strong>Live assistant is active on this page</strong>
-              <p>Click the purple chat button below to start a real conversation. Every answer is retrieved from Qefro's demo knowledge base — no hallucinations.</p>
+      <div class="wrap">
+        <div class="demo-split reveal">
+          <div class="demo-copy">
+            <span class="badge badge-green"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg> Live Demo</span>
+            <h2>Try It Right Now</h2>
+            <p>Open the Qefro chat bubble in the bottom-right corner. Ask about pricing, security, integrations, or how grounded answers work — powered by our live demo knowledge base.</p>
+            <div class="widget-demo-hint">
+              <div class="widget-demo-card">
+                <div class="widget-demo-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div>
+                <div>
+                  <strong>Live assistant is active on this page</strong>
+                  <p>Click the purple chat button to start a real conversation. Every answer is retrieved from Qefro's demo knowledge base.</p>
+                </div>
+              </div>
+              <p class="widget-demo-suggestions">Try asking: <span>What is Qefro pricing?</span> · <span>How does integration work?</span> · <span>Is my data secure?</span></p>
             </div>
           </div>
-          <p class="widget-demo-suggestions">Try asking: <span>What is Qefro pricing?</span> · <span>How does integration work?</span> · <span>Is my data secure?</span></p>
+          <div class="demo-chat" aria-hidden="true">
+            <div class="chat-mock">
+              <div class="chat-mock-head">
+                <div class="chat-mock-avatar"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div>
+                <div><strong>Qefro Assistant</strong><span>Powered by your knowledge base</span></div>
+              </div>
+              <div class="chat-mock-body">
+                <div class="chat-bubble ai">Hi! I can answer questions about Qefro using our verified documentation. What would you like to know?</div>
+                <div class="chat-bubble user">What is Qefro pricing?</div>
+                <div class="chat-bubble ai">Starter is $49/month, Growth is $149/month, and Enterprise is custom. All plans include a 14-day free trial.</div>
+              </div>
+              <div class="chat-mock-input">
+                <span>Type your question…</span>
+                <button type="button" aria-label="Send"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -282,6 +348,7 @@
       </div>
     </section>
 
+    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
     <section class="section section-alt">
       <div class="wrap">
         <div class="section-head reveal">
@@ -346,6 +413,7 @@
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Priority support</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Analytics</li>
             </ul>
+            <p class="price-desc" style="margin:0.75rem 0 0;font-size:0.75rem">Fair use limits apply to storage and processing volume — see Terms for details.</p>
             <a class="btn btn-primary" href="https://app.qefro.com/login">Start Free Trial</a>
           </article>
           <article class="price-card">
@@ -361,6 +429,7 @@
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Dedicated CSM</li>
               <li><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SLA guarantee</li>
             </ul>
+            <p class="price-desc" style="margin:0.75rem 0 0;font-size:0.75rem">Fair use limits apply to storage and processing volume — see Terms for details.</p>
             <a class="btn btn-plan" href="contact.html">Talk to Sales</a>
           </article>
         </div>
@@ -388,7 +457,7 @@
           </div>
           <div class="faq-item">
             <button type="button" aria-expanded="false"><span>How accurate are the answers?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>The AI only responds using your verified content. It never fabricates. Every answer is grounded in your knowledge base with source citations.</p></div>
+            <div class="faq-a"><p>Qefro retrieves only from your verified content and is designed to decline answering when no relevant information exists in your knowledge base, rather than guessing. We've benchmarked this behavior at [X]% accuracy across [N] test queries — <a href="benchmark.html">see our benchmark methodology</a> for details.</p></div>
           </div>
           <div class="faq-item">
             <button type="button" aria-expanded="false"><span>Is my data secure?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
@@ -442,8 +511,8 @@
     data-endpoint="https://api.qefro.com"
     data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."></script>
-  <script src="assets/js/main.js?v=5" defer></script>
+  <script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>

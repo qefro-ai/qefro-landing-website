@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -11,7 +13,9 @@ SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "5"
+ASSET_VERSION = "7"
+OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
+OG_IMAGE_ALT = "Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content."
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
 WIDGET_WELCOME = (
     "Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."
@@ -55,6 +59,7 @@ NAV = [
     ("use-cases.html", "Use Cases"),
     ("security.html", "Security"),
     ("pricing.html", "Pricing"),
+    ("features.html", "Docs"),
 ]
 
 
@@ -66,9 +71,9 @@ def meta_block(title: str, description: str, path: str) -> str:
   <meta name="description" content="{description}" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
-  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#f8fafc" id="theme-color-meta" />
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {{
       var saved = localStorage.getItem("theme");
@@ -82,12 +87,18 @@ def meta_block(title: str, description: str, path: str) -> str:
   <meta property="og:title" content="{title}" />
   <meta property="og:description" content="{description}" />
   <meta property="og:url" content="{url}" />
-  <meta property="og:image" content="{SITE}/assets/images/og-cover.svg" />
+  <meta property="og:image" content="{OG_IMAGE}" />
+  <meta property="og:image:secure_url" content="{OG_IMAGE}" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="{OG_IMAGE_ALT}" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{title}" />
   <meta name="twitter:description" content="{description}" />
-  <meta name="twitter:image" content="{SITE}/assets/images/og-cover.svg" />
+  <meta name="twitter:image" content="{OG_IMAGE}" />
+  <meta name="twitter:image:alt" content="{OG_IMAGE_ALT}" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
@@ -153,7 +164,7 @@ def widget_embed(theme: str = "light") -> str:
     data-endpoint="{API}"
     data-theme="{theme}"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="{WIDGET_WELCOME}"></script>"""
 
 
@@ -253,16 +264,78 @@ SOFTWARE_JSON = json.dumps(
     indent=2,
 )
 
+FAQ_ACCURACY_ANSWER_HTML = (
+    "Qefro retrieves only from your verified content and is designed to decline answering when "
+    "no relevant information exists in your knowledge base, rather than guessing. We've benchmarked "
+    "this behavior at [X]% accuracy across [N] test queries — "
+    '<a href="benchmark.html">see our benchmark methodology</a> for details.'
+)
+FAQ_ACCURACY_ANSWER_PLAIN = (
+    "Qefro retrieves only from your verified content and is designed to decline answering when "
+    "no relevant information exists in your knowledge base, rather than guessing. We've benchmarked "
+    "this behavior at [X]% accuracy across [N] test queries — see our benchmark methodology at "
+    f"{SITE}/benchmark.html for details."
+)
+
+PRICE_FAIR_USE_NOTE = (
+    '<p class="price-desc" style="margin:0.75rem 0 0;font-size:0.75rem">'
+    "Fair use limits apply to storage and processing volume — see Terms for details."
+    "</p>"
+)
+
 FAQ_ITEMS = [
     ("What is Qefro?", "Qefro is an AI customer support and knowledge assistant that answers questions using only your company’s verified content — documents, FAQs, policies, and websites."),
     ("How much does Qefro cost?", "Starter is $49/month, Growth is $149/month, and Enterprise is custom. All plans include a 14-day free trial with no credit card required."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Our pipeline processes and indexes everything."),
-    ("How accurate are the answers?", "The AI only responds using your verified content. It never fabricates. Every answer is grounded in your knowledge base with source citations."),
+    ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     ("Is my data secure?", "Your data is tenant-isolated, encrypted at rest and in transit, and never used to train AI models. SOC 2 compatible with private deployment available."),
     ("How long does integration take?", "Most teams are live in under 5 minutes — paste one script tag on your site. API and SDK available for deeper integrations."),
     ("Can I use this for internal teams only?", "Absolutely. Many customers use Qefro purely for internal self-service — HR, IT helpdesk, compliance, and engineering knowledge bases."),
     ("Do you offer enterprise pricing?", "Yes. Enterprise plans include unlimited conversations, private deployment, SSO, dedicated support, and custom SLAs."),
 ]
+
+USE_CASES = [
+    ("internal", "Internal Teams", "building", [
+        "Employee onboarding", "HR & policy queries", "IT helpdesk", "SOP & compliance lookup",
+        "Team wiki search", "Benefits lookup", "Compliance docs", "Knowledge sharing",
+    ]),
+    ("support", "Customer Support", "headphones", [
+        "E-commerce FAQs", "Order & refund policies", "Product documentation", "Self-service support",
+        "Shipping updates", "Returns handling", "Billing questions", "Product recommendations",
+    ]),
+    ("regulated", "Regulated Industries", "shield", [
+        "Hospital staff protocols", "Medical guidelines", "Operations manuals", "Compliance docs",
+        "Policy lookup", "Audit preparation", "Safety procedures", "Regulatory updates",
+    ]),
+    ("engineering", "Tech & Engineering", "server", [
+        "Engineering runbooks", "Internal wikis", "API documentation", "Incident playbooks",
+        "Dev onboarding", "Architecture docs", "Release notes", "Troubleshooting guides",
+    ]),
+]
+
+
+def uc_tabs_html() -> str:
+    tabs = []
+    panels = []
+    for i, (slug, label, icon, items) in enumerate(USE_CASES):
+        active = " is-active" if i == 0 else ""
+        hidden = "" if i == 0 else ' hidden'
+        tabs.append(
+            f'          <button type="button" class="uc-tab{active}" data-uc-tab="{slug}" aria-selected="{"true" if i == 0 else "false"}">{label}</button>'
+        )
+        lis = "\n".join(f'              <li>{ICONS["chevr"]} {item}</li>' for item in items)
+        panels.append(
+            f'          <div class="uc-panel{active}" data-uc-panel="{slug}"{hidden}>\n            <ul class="uc-tab-list">\n{lis}\n            </ul>\n          </div>'
+        )
+    return (
+        '        <div class="uc-tabs reveal" data-uc-tabs>\n'
+        '          <div class="uc-tablist" role="tablist">\n'
+        + "\n".join(tabs)
+        + "\n          </div>\n"
+        '          <div class="uc-panels">\n'
+        + "\n".join(panels)
+        + "\n          </div>\n        </div>"
+    )
 
 
 def faq_schema(items=FAQ_ITEMS) -> str:
@@ -271,7 +344,14 @@ def faq_schema(items=FAQ_ITEMS) -> str:
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
-                {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}}
+                {
+                    "@type": "Question",
+                    "name": q,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": FAQ_ACCURACY_ANSWER_PLAIN if q == "How accurate are the answers?" else a,
+                    },
+                }
                 for q, a in items
             ],
         },
@@ -284,7 +364,7 @@ PAGES: dict[str, str] = {}
 # ── Home ────────────────────────────────────────────────────────────
 PAGES["index.html"] = page(
     title="Qefro — Turn business knowledge into instant answers",
-    description="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever.",
+    description="Deploy an AI assistant that answers strictly from your own documents — for employees, customers, and internal teams. Benchmarked for accuracy — grounded strictly in your content.",
     path="",
     jsonld=[ORG_JSON, SOFTWARE_JSON],
     body=f"""    <section class="hero" aria-label="Hero">
@@ -296,7 +376,7 @@ PAGES["index.html"] = page(
           <span class="hero-line">Turn Your Business Knowledge</span><br />
           <span class="hero-grad">Into Instant Answers</span>
         </h1>
-        <p class="hero-sub">Deploy an AI assistant that answers questions strictly from your own documents — for employees, customers, and internal teams. No hallucinations. Ever.</p>
+        <p class="hero-sub">Deploy an AI assistant that answers questions strictly from your own documents — for employees, customers, and internal teams. Grounded in your content — and it says &ldquo;I don&rsquo;t know&rdquo; instead of guessing.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial — No Card Required {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo">{ICONS["play"]} See It in Action</a>
@@ -311,6 +391,7 @@ PAGES["index.html"] = page(
       <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
+    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
     <section class="section-proof">
       <div class="wrap-5xl">
         <p class="stats-label">Trusted by forward-thinking teams worldwide</p>
@@ -333,13 +414,15 @@ PAGES["index.html"] = page(
         <div class="direct-answer reveal">
           <p><strong>Qefro</strong> is an AI customer support and knowledge assistant for businesses. It retrieves relevant passages from your verified knowledge base and answers only from that context.</p>
         </div>
-        <div class="cap-grid reveal">
+        <div class="cap-panel reveal">
+        <div class="cap-grid">
           <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>PDF, Word &amp; Markdown ingestion</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Website crawling &amp; indexing</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Zero-hallucination RAG responses</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Refusal-first, source-grounded RAG</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["msg"]}</div><span>Web widget, API &amp; WhatsApp</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Analytics &amp; conversation history</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>Tenant-isolated &amp; SOC 2 ready</span></div>
+        </div>
         </div>
       </div>
     </section>
@@ -365,8 +448,24 @@ PAGES["index.html"] = page(
           <article class="step">
             <div class="step-num-wrap"><div class="step-num-inner">03</div></div>
             <h3>Get Instant Answers</h3>
-            <p>Every response is grounded strictly in your content. No hallucinations. Full audit trail and source citations.</p>
+            <p>Every response is grounded strictly in your content. When relevant context isn&rsquo;t found, it declines to answer. Full audit trail and source citations.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-qefro">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="badge badge-indigo">{ICONS["zap"]} Why Qefro</span>
+          <h2>Built Different From Generic Chatbot Wrappers</h2>
+          <p>Technical choices that matter for security-conscious teams.</p>
+        </div>
+        <div class="trust-grid reveal">
+          <article class="trust-card"><div class="trust-icon">{ICONS["server"]}</div><h3>Self-Hostable Vector Store</h3><p>Built on pgvector, not a proprietary black-box vector database. Run it in your own infrastructure with no vendor lock-in.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>On-Premise &amp; Edge-Ready Architecture</h3><p>Rust-based backend engineered for low-latency, resource-efficient deployment — including on-premise and edge environments, not just cloud-only SaaS.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["zap"]}</div><h3>Sub-200ms Response Times by Design</h3><p>Rust/axum backend architecture built for speed, not bolted on afterward.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["bot"]}</div><h3>Refusal-First Retrieval</h3><p>The assistant is designed to decline answering when it can&rsquo;t find relevant context in your knowledge base, rather than fabricating a plausible-sounding response.</p></article>
         </div>
       </div>
     </section>
@@ -378,63 +477,45 @@ PAGES["index.html"] = page(
           <h2>Built for How Modern Businesses Work</h2>
           <p>Same platform, purpose-fit for every team and industry.</p>
         </div>
-        <div class="uc-grid reveal">
-          <article class="uc-card" style="--uc-from:#3b82f6;--uc-to:#06b6d4">
-            <div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Internal Teams</h3></div>
-            <ul class="uc-list">
-              <li>{ICONS["chevr"]} Employee onboarding</li>
-              <li>{ICONS["chevr"]} HR &amp; policy queries</li>
-              <li>{ICONS["chevr"]} IT helpdesk</li>
-              <li>{ICONS["chevr"]} SOP &amp; compliance lookup</li>
-            </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#8b5cf6;--uc-to:#9333ea">
-            <div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div>
-            <ul class="uc-list">
-              <li>{ICONS["chevr"]} E-commerce FAQs</li>
-              <li>{ICONS["chevr"]} Order &amp; refund policies</li>
-              <li>{ICONS["chevr"]} Product documentation</li>
-              <li>{ICONS["chevr"]} Self-service support</li>
-            </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#10b981;--uc-to:#14b8a6">
-            <div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div>
-            <ul class="uc-list">
-              <li>{ICONS["chevr"]} Hospital staff protocols</li>
-              <li>{ICONS["chevr"]} Medical guidelines</li>
-              <li>{ICONS["chevr"]} Operations manuals</li>
-              <li>{ICONS["chevr"]} Compliance docs</li>
-            </ul>
-          </article>
-          <article class="uc-card" style="--uc-from:#f97316;--uc-to:#f59e0b">
-            <div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Tech &amp; Engineering</h3></div>
-            <ul class="uc-list">
-              <li>{ICONS["chevr"]} Engineering runbooks</li>
-              <li>{ICONS["chevr"]} Internal wikis</li>
-              <li>{ICONS["chevr"]} API documentation</li>
-              <li>{ICONS["chevr"]} Incident playbooks</li>
-            </ul>
-          </article>
-        </div>
+{uc_tabs_html()}
       </div>
     </section>
 
     <section class="section section-alt" id="demo">
-      <div class="wrap-narrow">
-        <div class="section-head reveal">
-          <span class="badge badge-green">{ICONS["play"]} Live Demo</span>
-          <h2>Try It Right Now</h2>
-          <p>Open the Qefro chat bubble in the bottom-right corner. Ask about pricing, security, integrations, or how grounded answers work — powered by our live demo knowledge base.</p>
-        </div>
-        <div class="widget-demo-hint reveal">
-          <div class="widget-demo-card">
-            <div class="widget-demo-icon">{ICONS["bot"]}</div>
-            <div>
-              <strong>Live assistant is active on this page</strong>
-              <p>Click the purple chat button below to start a real conversation. Every answer is retrieved from Qefro's demo knowledge base — no hallucinations.</p>
+      <div class="wrap">
+        <div class="demo-split reveal">
+          <div class="demo-copy">
+            <span class="badge badge-green">{ICONS["play"]} Live Demo</span>
+            <h2>Try It Right Now</h2>
+            <p>Open the Qefro chat bubble in the bottom-right corner. Ask about pricing, security, integrations, or how grounded answers work — powered by our live demo knowledge base.</p>
+            <div class="widget-demo-hint">
+              <div class="widget-demo-card">
+                <div class="widget-demo-icon">{ICONS["bot"]}</div>
+                <div>
+                  <strong>Live assistant is active on this page</strong>
+                  <p>Click the purple chat button to start a real conversation. Every answer is retrieved from Qefro's demo knowledge base.</p>
+                </div>
+              </div>
+              <p class="widget-demo-suggestions">Try asking: <span>What is Qefro pricing?</span> · <span>How does integration work?</span> · <span>Is my data secure?</span></p>
             </div>
           </div>
-          <p class="widget-demo-suggestions">Try asking: <span>What is Qefro pricing?</span> · <span>How does integration work?</span> · <span>Is my data secure?</span></p>
+          <div class="demo-chat" aria-hidden="true">
+            <div class="chat-mock">
+              <div class="chat-mock-head">
+                <div class="chat-mock-avatar">{ICONS["bot"]}</div>
+                <div><strong>Qefro Assistant</strong><span>Powered by your knowledge base</span></div>
+              </div>
+              <div class="chat-mock-body">
+                <div class="chat-bubble ai">Hi! I can answer questions about Qefro using our verified documentation. What would you like to know?</div>
+                <div class="chat-bubble user">What is Qefro pricing?</div>
+                <div class="chat-bubble ai">Starter is $49/month, Growth is $149/month, and Enterprise is custom. All plans include a 14-day free trial.</div>
+              </div>
+              <div class="chat-mock-input">
+                <span>Type your question…</span>
+                <button type="button" aria-label="Send">{ICONS["arrow"]}</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -455,6 +536,7 @@ PAGES["index.html"] = page(
       </div>
     </section>
 
+    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
     <section class="section section-alt">
       <div class="wrap">
         <div class="section-head reveal">
@@ -519,6 +601,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Priority support</li>
               <li>{ICONS["check"]} Analytics</li>
             </ul>
+            {PRICE_FAIR_USE_NOTE}
             <a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free Trial</a>
           </article>
           <article class="price-card">
@@ -534,6 +617,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Dedicated CSM</li>
               <li>{ICONS["check"]} SLA guarantee</li>
             </ul>
+            {PRICE_FAIR_USE_NOTE}
             <a class="btn btn-plan" href="contact.html">Talk to Sales</a>
           </article>
         </div>
@@ -613,12 +697,12 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
 PAGES["features.html"] = inner(
     "Qefro features — RAG support, widget, workspaces",
     "Features",
-    "Explore Qefro features: zero-hallucination RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp.",
+    "Explore Qefro features: source-grounded refusal-first RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp.",
     "features.html",
     "features.html",
     "<p>Qefro combines knowledge ingestion, hybrid retrieval, and source-grounded generation so every answer stays inside your approved content.</p>",
     f"""        <div class="cap-grid">
-          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Zero-hallucination RAG</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Source-grounded, refusal-first RAG</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>Document &amp; website ingestion</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["building"]}</div><span>Public &amp; private workspaces</span></div>
           <div class="cap-card"><div class="cap-icon">{ICONS["msg"]}</div><span>Brandable website widget</span></div>
@@ -680,8 +764,8 @@ PAGES["pricing.html"] = inner(
     "<p>Qefro offers three plans: <strong>Starter at $49/month</strong>, <strong>Growth at $149/month</strong>, and <strong>Enterprise with custom pricing</strong>. Every plan includes a 14-day free trial.</p>",
     f"""        <div class="price-grid">
           <article class="price-card"><h3>Starter</h3><div class="price-amount">$49 <span>/month</span></div><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 1 assistant</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free Trial</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount">$149 <span>/month</span></div><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Unlimited documents</li><li>{ICONS["check"]} 5 assistants</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free Trial</a></article>
-          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul><a class="btn btn-plan" href="contact.html">Talk to Sales</a></article>
+          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount">$149 <span>/month</span></div><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Unlimited documents</li><li>{ICONS["check"]} 5 assistants</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free Trial</a></article>
+          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="contact.html">Talk to Sales</a></article>
         </div>""",
     extra_jsonld=[faq_schema([("How much does Qefro cost?", "Qefro Starter is $49 per month, Growth is $149 per month, and Enterprise is custom pricing. All plans include a 14-day free trial with no credit card required.")])],
 )
@@ -712,6 +796,53 @@ PAGES["faq.html"] = page(
       <div class="wrap-narrow">
         <div class="faq-list reveal">
 {faq_html}
+        </div>
+      </div>
+    </section>
+""",
+)
+
+PAGES["benchmark.html"] = page(
+    title="Qefro benchmark methodology — accuracy evaluation",
+    description="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
+    path="benchmark.html",
+    jsonld=[breadcrumb_json([("Home", "index.html"), ("Benchmark Methodology", "benchmark.html")])],
+    body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs([("Home", "index.html"), ("Benchmark Methodology", "")])}
+        <h1>Benchmark Methodology</h1>
+        <p class="hero-sub" style="margin-bottom:0">How we measure Qefro&rsquo;s accuracy and refusal behavior.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Methodology</h2>
+          <p>[Placeholder — describe how queries are evaluated, scoring criteria, and what counts as a correct answer vs. an appropriate refusal.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Test Set Composition</h2>
+          <p>[Placeholder — document domains covered, question types, knowledge-base sizes, and how edge cases are represented.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Results</h2>
+          <p>[Placeholder — add benchmark accuracy [X]% across [N] test queries, breakdown by category, and refusal-rate metrics.]</p>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="wrap reveal">
+        <div class="section-head" style="text-align:left">
+          <h2>Limitations</h2>
+          <p>[Placeholder — note evaluation scope, known failure modes, and what these results do and do not guarantee in production.]</p>
         </div>
       </div>
     </section>
@@ -787,7 +918,24 @@ for slug, title, q, a, extra in [
     )
 
 
+def build_og_image() -> None:
+    svg = ROOT / "assets" / "images" / "og-cover.svg"
+    png = ROOT / "assets" / "images" / "og-cover.png"
+    converter = shutil.which("rsvg-convert")
+    if not converter:
+        if png.exists():
+            print("rsvg-convert not found; keeping existing", png.name)
+            return
+        raise SystemExit("rsvg-convert is required to build og-cover.png from og-cover.svg")
+    subprocess.run(
+        [converter, "-w", "1200", "-h", "630", str(svg), "-o", str(png)],
+        check=True,
+    )
+    print("wrote", png.relative_to(ROOT))
+
+
 def write_all() -> None:
+    build_og_image()
     for name, html in PAGES.items():
         (ROOT / name).write_text(html, encoding="utf-8")
         print("wrote", name)

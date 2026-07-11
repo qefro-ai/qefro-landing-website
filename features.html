@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Qefro features — RAG support, widget, workspaces</title>
-  <meta name="description" content="Explore Qefro features: zero-hallucination RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
+  <meta name="description" content="Explore Qefro features: source-grounded refusal-first RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="author" content="Qefro" />
-  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#f8fafc" id="theme-color-meta" />
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
       var saved = localStorage.getItem("theme");
@@ -21,21 +21,27 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="Qefro features — RAG support, widget, workspaces" />
-  <meta property="og:description" content="Explore Qefro features: zero-hallucination RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
+  <meta property="og:description" content="Explore Qefro features: source-grounded refusal-first RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
   <meta property="og:url" content="https://qefro.com/features.html" />
-  <meta property="og:image" content="https://qefro.com/assets/images/og-cover.svg" />
+  <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Qefro features — RAG support, widget, workspaces" />
-  <meta name="twitter:description" content="Explore Qefro features: zero-hallucination RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
-  <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.svg" />
+  <meta name="twitter:description" content="Explore Qefro features: source-grounded refusal-first RAG, document and website ingestion, workspaces, analytics, website widget, API, and WhatsApp." />
+  <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
+  <meta name="twitter:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=5" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=7" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -76,6 +82,7 @@
         <a href="use-cases.html">Use Cases</a>
         <a href="security.html">Security</a>
         <a href="pricing.html">Pricing</a>
+        <a href="features.html" aria-current="page">Docs</a>
         <a href="faq.html">FAQ</a>
       </nav>
       <div class="nav-cta">
@@ -93,6 +100,7 @@
       <a href="use-cases.html">Use Cases</a>
       <a href="security.html">Security</a>
       <a href="pricing.html">Pricing</a>
+      <a href="features.html" aria-current="page">Docs</a>
       <a href="faq.html">FAQ</a>
       <a href="https://app.qefro.com/login">Sign In</a>
       <div class="mobile-panel-tools">
@@ -114,7 +122,7 @@
     <section class="section">
       <div class="wrap reveal">
         <div class="cap-grid">
-          <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><span>Zero-hallucination RAG</span></div>
+          <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><span>Source-grounded, refusal-first RAG</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg></div><span>Document &amp; website ingestion</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg></div><span>Public &amp; private workspaces</span></div>
           <div class="cap-card"><div class="cap-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-8 8H7l-4 3V12a8 8 0 018-8h2a8 8 0 018 8z"/></svg></div><span>Brandable website widget</span></div>
@@ -164,8 +172,8 @@
     data-endpoint="https://api.qefro.com"
     data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."></script>
-  <script src="assets/js/main.js?v=5" defer></script>
+  <script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>
