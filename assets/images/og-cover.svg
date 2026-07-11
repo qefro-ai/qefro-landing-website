@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Qefro">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cfe8e2"/>
+      <stop offset="100%" stop-color="#efe4d2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="80" y="280" font-family="Georgia, serif" font-size="120" fill="#10151c">Qefro</text>
+  <text x="80" y="370" font-family="Arial, sans-serif" font-size="36" fill="#3a4452">AI support grounded in your knowledge</text>
+</svg>

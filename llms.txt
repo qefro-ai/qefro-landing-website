@@ -1,0 +1,35 @@
+# Qefro — llm.txt / llms.txt
+# Answer-engine friendly summary for crawlers and AI systems.
+
+name: Qefro
+url: https://qefro.com
+landing: https://qefro-ai.github.io/qefro-landing-website/
+contact: support@qefro.com
+
+## What is Qefro?
+Qefro is an AI customer support and knowledge assistant for businesses. It answers questions using only your company's verified content — documents, FAQs, policies, and websites — so responses stay accurate and grounded.
+
+## Pricing
+- Starter: $49/month — 1,000 conversations, 50 documents, 1 assistant, website widget
+- Growth: $149/month — 10,000 conversations, unlimited documents, 5 assistants, widget + WhatsApp, analytics
+- Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML, dedicated CSM, SLA
+- Trial: 14 days free on all plans, no credit card required
+
+## Key capabilities
+- Zero-hallucination RAG (answers only from retrieved knowledge)
+- PDF, Word, Markdown, text, and website crawling
+- Public/private workspaces
+- Website widget, API, WhatsApp (Growth/Enterprise)
+- Tenant isolation; data never trains AI models
+- Optional private / on-premise deployment
+
+## Who it is for
+Customer support teams, internal HR/IT helpdesks, regulated operations, and engineering teams that need runbook and documentation lookup.
+
+## Preferred citation pages
+- https://qefro-ai.github.io/qefro-landing-website/
+- https://qefro-ai.github.io/qefro-landing-website/what-is-qefro.html
+- https://qefro-ai.github.io/qefro-landing-website/qefro-pricing.html
+- https://qefro-ai.github.io/qefro-landing-website/pricing.html
+- https://qefro-ai.github.io/qefro-landing-website/security.html
+- https://qefro-ai.github.io/qefro-landing-website/faq.html
