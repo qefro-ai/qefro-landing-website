@@ -455,6 +455,34 @@ ul { margin: 0; padding: 0; list-style: none; }
 .cap-card span { font-size: 0.875rem; font-weight: 500; color: var(--cap-text); }
 .cap-card:hover span { color: var(--cap-hover-text); }
 
+/* Product screenshots */
+.product-shot-grid {
+  display: grid; gap: 1.25rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .product-shot-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .product-shot-grid { grid-template-columns: repeat(3, 1fr); } }
+.product-shot-card {
+  margin: 0; overflow: hidden; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-card);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s, transform 0.2s;
+}
+.product-shot-card:hover {
+  border-color: rgba(124,58,237,0.3);
+  transform: translateY(-2px);
+}
+.product-shot-card img {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 10;
+  object-fit: cover; object-position: top;
+  border-bottom: 1px solid var(--border);
+}
+.product-shot-card figcaption {
+  display: grid; gap: 0.3rem; padding: 1rem 1.125rem;
+}
+.product-shot-card strong { font-size: 0.9375rem; color: var(--text-strong); }
+.product-shot-card span { font-size: 0.8125rem; line-height: 1.55; color: var(--text-sub); }
+
 /* Steps */
 .steps-grid {
   display: grid; gap: 2rem; position: relative;
