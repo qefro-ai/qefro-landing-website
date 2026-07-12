@@ -12,8 +12,9 @@ ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
+WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "11"
+ASSET_VERSION = "12"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = "Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content."
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
@@ -159,7 +160,7 @@ def header(active: str | None = None) -> str:
 
 def widget_embed(theme: str = "light") -> str:
     return f"""  <script id="qefro-widget-script"
-    src="{API}/widget.js"
+    src="{WIDGET_CDN}"
     data-token="{DEMO_WIDGET_TOKEN}"
     data-endpoint="{API}"
     data-theme="{theme}"
@@ -200,7 +201,7 @@ def footer() -> str:
 def page(title: str, description: str, path: str, body: str, active: str | None = None, jsonld: list[str] | None = None) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
     return f"""<!DOCTYPE html>
-<html lang="en" data-api-url="{API}">
+<html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
 {meta_block(title, description, path)}
 {schemas}

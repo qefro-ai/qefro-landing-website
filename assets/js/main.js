@@ -6,6 +6,7 @@
   const root = document.documentElement;
   const themeMeta = document.getElementById("theme-color-meta");
   const API_URL = root.dataset.apiUrl || "https://api.qefro.com";
+  const WIDGET_CDN_URL = root.dataset.widgetCdn || "https://cdn.qefro.com/widget.js";
 
   const removeWidget = () => {
     document.getElementById("qefro-widget-script")?.remove();
@@ -29,7 +30,7 @@
     removeWidget();
     const script = document.createElement("script");
     script.id = "qefro-widget-script";
-    script.src = `${API_URL}/widget.js`;
+    script.src = WIDGET_CDN_URL;
     script.dataset.token = token;
     script.dataset.endpoint = API_URL;
     script.dataset.theme = theme === "dark" ? "dark" : "light";
