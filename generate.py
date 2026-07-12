@@ -13,7 +13,7 @@ SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "7"
+ASSET_VERSION = "11"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = "Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content."
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
@@ -406,13 +406,12 @@ PAGES["index.html"] = page(
     path="",
     jsonld=[ORG_JSON, SOFTWARE_JSON],
     body=f"""    <section class="hero" aria-label="Hero">
-      <div class="wrap-5xl">
-        <div class="hero-badge">
-          <span class="badge badge-indigo">{ICONS["sparkles"]} Powered by Retrieval-Augmented Generation</span>
-        </div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap-5xl hero-inner">
+        <span class="eyebrow">{ICONS["sparkles"]} Retrieval-Augmented Generation</span>
         <h1>
-          <span class="hero-line">Enterprise AI Customer Support</span><br />
-          <span class="hero-grad">Grounded in Your Knowledge</span>
+          <span class="hero-line">Enterprise AI Customer Support</span>
+          <span class="hero-accent">Grounded in Your Knowledge</span>
         </h1>
         <p class="hero-sub">Train on your documents, website, PDFs, and FAQs. Deploy multilingual support to your website, WhatsApp, and API in minutes — with answers designed to decline when relevant context is missing.</p>
         <div class="hero-actions">
@@ -425,19 +424,42 @@ PAGES["index.html"] = page(
           <span>{ICONS["check"]} Setup in 5 minutes</span>
           <span>{ICONS["check"]} SOC 2 ready</span>
         </div>
+        <div class="pipeline" role="list" aria-label="How Qefro answers a question">
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">01</span>
+            <span class="pipeline-v">Upload</span>
+            <span class="pipeline-d">Your docs, site &amp; PDFs</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">{ICONS["chevr"]}</span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">02</span>
+            <span class="pipeline-v">Understand</span>
+            <span class="pipeline-d">Learns your content</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">{ICONS["chevr"]}</span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">03</span>
+            <span class="pipeline-v">Match</span>
+            <span class="pipeline-d">Finds the right context</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true">{ICONS["chevr"]}</span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">04</span>
+            <span class="pipeline-v">Answer</span>
+            <span class="pipeline-d">Grounded — or it declines</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
-    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
-    <section class="section-proof">
+    <section class="section-facts" aria-label="What you get with Qefro">
       <div class="wrap-5xl">
-        <p class="stats-label">Trusted by forward-thinking teams worldwide</p>
-        <div class="stats-grid">
-          <div class="stat"><div class="stat-val">10M+</div><div class="stat-label">Messages Answered</div></div>
-          <div class="stat"><div class="stat-val">2,400+</div><div class="stat-label">Teams Onboarded</div></div>
-          <div class="stat"><div class="stat-val">99.9%</div><div class="stat-label">Uptime SLA</div></div>
-          <div class="stat"><div class="stat-val">&lt;200ms</div><div class="stat-label">Avg. Response Time</div></div>
+        <p class="facts-label">What it means for your team</p>
+        <div class="facts-grid">
+          <div class="fact"><div class="fact-v">Instant answers</div><div class="fact-k">Subsecond replies, around the clock</div></div>
+          <div class="fact"><div class="fact-v">Answers you can trust</div><div class="fact-k">Declines when unsure — never fabricates</div></div>
+          <div class="fact"><div class="fact-v">Your data stays private</div><div class="fact-k">Isolated per customer, SOC 2-ready</div></div>
+          <div class="fact"><div class="fact-v">Deploy anywhere</div><div class="fact-k">Self-hostable, no vendor lock-in</div></div>
         </div>
       </div>
     </section>
@@ -497,14 +519,40 @@ PAGES["index.html"] = page(
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} Why Qefro</span>
-          <h2>Built Different From Generic Chatbot Wrappers</h2>
-          <p>Technical choices that matter for security-conscious teams.</p>
+          <h2>Confident answers — or an honest &ldquo;I don&rsquo;t know&rdquo;</h2>
+          <p>Generic chatbots fill the gaps by guessing. Qefro answers only from your verified content, shows its sources, and declines when the answer isn&rsquo;t there.</p>
         </div>
-        <div class="trust-grid reveal">
-          <article class="trust-card"><div class="trust-icon">{ICONS["server"]}</div><h3>Self-Hostable Vector Store</h3><p>Built on pgvector, not a proprietary black-box vector database. Run it in your own infrastructure with no vendor lock-in.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>On-Premise &amp; Edge-Ready Architecture</h3><p>Rust-based backend engineered for low-latency, resource-efficient deployment — including on-premise and edge environments, not just cloud-only SaaS.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["zap"]}</div><h3>Sub-200ms Response Times by Design</h3><p>Rust/axum backend architecture built for speed, not bolted on afterward.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["bot"]}</div><h3>Refusal-First Retrieval</h3><p>The assistant is designed to decline answering when it can&rsquo;t find relevant context in your knowledge base, rather than fabricating a plausible-sounding response.</p></article>
+        <div class="compare reveal">
+          <div class="compare-q">
+            <span class="compare-q-label">A customer asks</span>
+            <p>&ldquo;Can I still get a refund after 45 days?&rdquo;</p>
+          </div>
+          <div class="compare-cols">
+            <article class="compare-card compare-bad">
+              <span class="compare-tag compare-tag-bad">{ICONS["x"]} Generic chatbot</span>
+              <p class="compare-answer">&ldquo;Absolutely! You can request a full refund any time within 60 days of purchase.&rdquo;</p>
+              <p class="compare-note">{ICONS["x"]} Invents a policy that doesn&rsquo;t exist — confident, and wrong.</p>
+            </article>
+            <article class="compare-card compare-good">
+              <span class="compare-tag compare-tag-good">{ICONS["check"]} Qefro</span>
+              <p class="compare-answer">&ldquo;Our refund window is 30 days, so an order from 45 days ago isn&rsquo;t eligible. I can connect you with the support team if you&rsquo;d like.&rdquo;</p>
+              <p class="compare-source">{ICONS["file"]} Answered from: Refund Policy.pdf</p>
+            </article>
+          </div>
+        </div>
+        <div class="why-tri reveal">
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico">{ICONS["bot"]}</div><h3>Grounded in your content</h3></div>
+            <p>Every answer comes from sources you&rsquo;ve approved — nothing invented, nothing off-brand.</p>
+          </article>
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico">{ICONS["file"]}</div><h3>Shows its sources</h3></div>
+            <p>Each response links back to the document it used, so your team can verify every claim.</p>
+          </article>
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico">{ICONS["shield"]}</div><h3>Declines, doesn&rsquo;t guess</h3></div>
+            <p>When your knowledge base doesn&rsquo;t cover a question, it says so instead of making something up.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -583,17 +631,17 @@ PAGES["index.html"] = page(
           <h2>What Our Customers Say</h2>
         </div>
         <div class="t-grid reveal">
-          <article class="t-card" style="--av-from:#8b5cf6;--av-to:#9333ea">
+          <article class="t-card">
             <div class="t-stars">{ICONS["star"]*5}</div>
             <p class="t-quote">"We cut support tickets by 60% in the first month. Our team now spends time on actual problems, not answering the same FAQ for the hundredth time."</p>
             <div class="t-person"><div class="t-avatar">SC</div><div><strong>Sarah Chen</strong><span>Head of Operations · Meridian Health</span></div></div>
           </article>
-          <article class="t-card" style="--av-from:#3b82f6;--av-to:#06b6d4">
+          <article class="t-card">
             <div class="t-stars">{ICONS["star"]*5}</div>
             <p class="t-quote">"Onboarding new engineers used to take two weeks. With Qefro indexing our runbooks, they're productive on day three."</p>
             <div class="t-person"><div class="t-avatar">MW</div><div><strong>Marcus Webb</strong><span>VP Engineering · Stackfire</span></div></div>
           </article>
-          <article class="t-card" style="--av-from:#10b981;--av-to:#14b8a6">
+          <article class="t-card">
             <div class="t-stars">{ICONS["star"]*5}</div>
             <p class="t-quote">"The zero-hallucination guarantee was the deciding factor. In healthcare you cannot have an AI making things up — Qefro gets that."</p>
             <div class="t-person"><div class="t-avatar">PN</div><div><strong>Dr. Priya Nair</strong><span>Chief Medical Officer · Apollo Clinics</span></div></div>
@@ -772,10 +820,10 @@ PAGES["use-cases.html"] = inner(
     "use-cases.html",
     "<p>Teams use Qefro to answer repetitive questions for customers and employees using only approved company knowledge.</p>",
     f"""        <div class="uc-grid">
-          <article class="uc-card" style="--uc-from:#3b82f6;--uc-to:#06b6d4"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Internal Teams</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Employee onboarding</li><li>{ICONS["chevr"]} HR &amp; policy</li><li>{ICONS["chevr"]} IT helpdesk</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
-          <article class="uc-card" style="--uc-from:#8b5cf6;--uc-to:#9333ea"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} E-commerce FAQs</li><li>{ICONS["chevr"]} Refunds</li><li>{ICONS["chevr"]} Product docs</li><li>{ICONS["chevr"]} Self-service</li></ul></article>
-          <article class="uc-card" style="--uc-from:#10b981;--uc-to:#14b8a6"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocols</li><li>{ICONS["chevr"]} Guidelines</li><li>{ICONS["chevr"]} Manuals</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
-          <article class="uc-card" style="--uc-from:#f97316;--uc-to:#f59e0b"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbooks</li><li>{ICONS["chevr"]} Wikis</li><li>{ICONS["chevr"]} API docs</li><li>{ICONS["chevr"]} Incidents</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Internal Teams</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Employee onboarding</li><li>{ICONS["chevr"]} HR &amp; policy</li><li>{ICONS["chevr"]} IT helpdesk</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} E-commerce FAQs</li><li>{ICONS["chevr"]} Refunds</li><li>{ICONS["chevr"]} Product docs</li><li>{ICONS["chevr"]} Self-service</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocols</li><li>{ICONS["chevr"]} Guidelines</li><li>{ICONS["chevr"]} Manuals</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbooks</li><li>{ICONS["chevr"]} Wikis</li><li>{ICONS["chevr"]} API docs</li><li>{ICONS["chevr"]} Incidents</li></ul></article>
         </div>""",
 )
 

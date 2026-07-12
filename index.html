@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=7" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -123,13 +123,12 @@
   </header>
   <main id="main">
     <section class="hero" aria-label="Hero">
-      <div class="wrap-5xl">
-        <div class="hero-badge">
-          <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Powered by Retrieval-Augmented Generation</span>
-        </div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap-5xl hero-inner">
+        <span class="eyebrow"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Retrieval-Augmented Generation</span>
         <h1>
-          <span class="hero-line">Enterprise AI Customer Support</span><br />
-          <span class="hero-grad">Grounded in Your Knowledge</span>
+          <span class="hero-line">Enterprise AI Customer Support</span>
+          <span class="hero-accent">Grounded in Your Knowledge</span>
         </h1>
         <p class="hero-sub">Train on your documents, website, PDFs, and FAQs. Deploy multilingual support to your website, WhatsApp, and API in minutes — with answers designed to decline when relevant context is missing.</p>
         <div class="hero-actions">
@@ -142,19 +141,42 @@
           <span><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Setup in 5 minutes</span>
           <span><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> SOC 2 ready</span>
         </div>
+        <div class="pipeline" role="list" aria-label="How Qefro answers a question">
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">01</span>
+            <span class="pipeline-v">Upload</span>
+            <span class="pipeline-d">Your docs, site &amp; PDFs</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">02</span>
+            <span class="pipeline-v">Understand</span>
+            <span class="pipeline-d">Learns your content</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">03</span>
+            <span class="pipeline-v">Match</span>
+            <span class="pipeline-d">Finds the right context</span>
+          </div>
+          <span class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
+          <div class="pipeline-node" role="listitem">
+            <span class="pipeline-k">04</span>
+            <span class="pipeline-v">Answer</span>
+            <span class="pipeline-d">Grounded — or it declines</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-glow" aria-hidden="true"></div>
     </section>
 
-    <!-- TODO: Verify these are real customer testimonials/metrics before public launch. If illustrative/placeholder, either replace with real pilot data or add a disclaimer. -->
-    <section class="section-proof">
+    <section class="section-facts" aria-label="What you get with Qefro">
       <div class="wrap-5xl">
-        <p class="stats-label">Trusted by forward-thinking teams worldwide</p>
-        <div class="stats-grid">
-          <div class="stat"><div class="stat-val">10M+</div><div class="stat-label">Messages Answered</div></div>
-          <div class="stat"><div class="stat-val">2,400+</div><div class="stat-label">Teams Onboarded</div></div>
-          <div class="stat"><div class="stat-val">99.9%</div><div class="stat-label">Uptime SLA</div></div>
-          <div class="stat"><div class="stat-val">&lt;200ms</div><div class="stat-label">Avg. Response Time</div></div>
+        <p class="facts-label">What it means for your team</p>
+        <div class="facts-grid">
+          <div class="fact"><div class="fact-v">Instant answers</div><div class="fact-k">Subsecond replies, around the clock</div></div>
+          <div class="fact"><div class="fact-v">Answers you can trust</div><div class="fact-k">Declines when unsure — never fabricates</div></div>
+          <div class="fact"><div class="fact-v">Your data stays private</div><div class="fact-k">Isolated per customer, SOC 2-ready</div></div>
+          <div class="fact"><div class="fact-v">Deploy anywhere</div><div class="fact-k">Self-hostable, no vendor lock-in</div></div>
         </div>
       </div>
     </section>
@@ -214,14 +236,40 @@
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> Why Qefro</span>
-          <h2>Built Different From Generic Chatbot Wrappers</h2>
-          <p>Technical choices that matter for security-conscious teams.</p>
+          <h2>Confident answers — or an honest &ldquo;I don&rsquo;t know&rdquo;</h2>
+          <p>Generic chatbots fill the gaps by guessing. Qefro answers only from your verified content, shows its sources, and declines when the answer isn&rsquo;t there.</p>
         </div>
-        <div class="trust-grid reveal">
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Self-Hostable Vector Store</h3><p>Built on pgvector, not a proprietary black-box vector database. Run it in your own infrastructure with no vendor lock-in.</p></article>
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><h3>On-Premise &amp; Edge-Ready Architecture</h3><p>Rust-based backend engineered for low-latency, resource-efficient deployment — including on-premise and edge environments, not just cloud-only SaaS.</p></article>
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg></div><h3>Sub-200ms Response Times by Design</h3><p>Rust/axum backend architecture built for speed, not bolted on afterward.</p></article>
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><h3>Refusal-First Retrieval</h3><p>The assistant is designed to decline answering when it can&rsquo;t find relevant context in your knowledge base, rather than fabricating a plausible-sounding response.</p></article>
+        <div class="compare reveal">
+          <div class="compare-q">
+            <span class="compare-q-label">A customer asks</span>
+            <p>&ldquo;Can I still get a refund after 45 days?&rdquo;</p>
+          </div>
+          <div class="compare-cols">
+            <article class="compare-card compare-bad">
+              <span class="compare-tag compare-tag-bad"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> Generic chatbot</span>
+              <p class="compare-answer">&ldquo;Absolutely! You can request a full refund any time within 60 days of purchase.&rdquo;</p>
+              <p class="compare-note"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> Invents a policy that doesn&rsquo;t exist — confident, and wrong.</p>
+            </article>
+            <article class="compare-card compare-good">
+              <span class="compare-tag compare-tag-good"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Qefro</span>
+              <p class="compare-answer">&ldquo;Our refund window is 30 days, so an order from 45 days ago isn&rsquo;t eligible. I can connect you with the support team if you&rsquo;d like.&rdquo;</p>
+              <p class="compare-source"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg> Answered from: Refund Policy.pdf</p>
+            </article>
+          </div>
+        </div>
+        <div class="why-tri reveal">
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><h3>Grounded in your content</h3></div>
+            <p>Every answer comes from sources you&rsquo;ve approved — nothing invented, nothing off-brand.</p>
+          </article>
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg></div><h3>Shows its sources</h3></div>
+            <p>Each response links back to the document it used, so your team can verify every claim.</p>
+          </article>
+          <article class="why-item">
+            <div class="why-item-head"><div class="why-ico"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><h3>Declines, doesn&rsquo;t guess</h3></div>
+            <p>When your knowledge base doesn&rsquo;t cover a question, it says so instead of making something up.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -357,17 +405,17 @@
           <h2>What Our Customers Say</h2>
         </div>
         <div class="t-grid reveal">
-          <article class="t-card" style="--av-from:#8b5cf6;--av-to:#9333ea">
+          <article class="t-card">
             <div class="t-stars"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg></div>
             <p class="t-quote">"We cut support tickets by 60% in the first month. Our team now spends time on actual problems, not answering the same FAQ for the hundredth time."</p>
             <div class="t-person"><div class="t-avatar">SC</div><div><strong>Sarah Chen</strong><span>Head of Operations · Meridian Health</span></div></div>
           </article>
-          <article class="t-card" style="--av-from:#3b82f6;--av-to:#06b6d4">
+          <article class="t-card">
             <div class="t-stars"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg></div>
             <p class="t-quote">"Onboarding new engineers used to take two weeks. With Qefro indexing our runbooks, they're productive on day three."</p>
             <div class="t-person"><div class="t-avatar">MW</div><div><strong>Marcus Webb</strong><span>VP Engineering · Stackfire</span></div></div>
           </article>
-          <article class="t-card" style="--av-from:#10b981;--av-to:#14b8a6">
+          <article class="t-card">
             <div class="t-stars"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M12 3l2.4 7.2H22l-6 4.4 2.3 7L12 17.8 5.7 21.6 8 14.6 2 10.2h7.6L12 3z"/></svg></div>
             <p class="t-quote">"The zero-hallucination guarantee was the deciding factor. In healthcare you cannot have an AI making things up — Qefro gets that."</p>
             <div class="t-person"><div class="t-avatar">PN</div><div><strong>Dr. Priya Nair</strong><span>Chief Medical Officer · Apollo Clinics</span></div></div>
@@ -514,6 +562,6 @@
     data-position="bottom-right"
     data-primary-color="#7c3aed"
     data-welcome-message="Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."></script>
-  <script src="assets/js/main.js?v=7" defer></script>
+  <script src="assets/js/main.js?v=11" defer></script>
 </body>
 </html>

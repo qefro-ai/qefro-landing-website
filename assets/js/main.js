@@ -12,7 +12,20 @@
     document.getElementById("ai-widget-container")?.remove();
   };
 
+  const applyWidgetTheme = (theme) => {
+    const container = document.getElementById("ai-widget-container");
+    if (!container) return false;
+    container.classList.toggle("dark", theme === "dark");
+    container.classList.toggle("light", theme !== "dark");
+    const script = document.getElementById("qefro-widget-script");
+    if (script) script.dataset.theme = theme === "dark" ? "dark" : "light";
+    return true;
+  };
+
   const mountWidget = (theme, token = FALLBACK_DEMO_TOKEN) => {
+    if (document.getElementById("ai-widget-container") && applyWidgetTheme(theme)) {
+      return;
+    }
     removeWidget();
     const script = document.createElement("script");
     script.id = "qefro-widget-script";
@@ -27,6 +40,9 @@
   };
 
   const refreshWidget = async (theme) => {
+    if (document.getElementById("ai-widget-container") && applyWidgetTheme(theme)) {
+      return;
+    }
     let token = FALLBACK_DEMO_TOKEN;
     try {
       const res = await fetch(`${API_URL}/graphql`, {
