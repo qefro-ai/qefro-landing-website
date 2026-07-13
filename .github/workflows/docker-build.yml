@@ -20,6 +20,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Generate static site
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq librsvg2-bin
+          python3 generate.py
+
       - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:

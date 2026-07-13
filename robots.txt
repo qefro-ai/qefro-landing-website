@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# App and admin are separate hosts; marketing site only.
 Sitemap: https://qefro.com/sitemap.xml

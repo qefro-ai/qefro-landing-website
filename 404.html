@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Page not found — Qefro</title>
   <meta name="description" content="The page you requested was not found on the Qefro website." />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
   <meta name="author" content="Qefro" />
+  <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
@@ -16,13 +18,12 @@
       if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
     })();
   </script>
-  <link rel="canonical" href="https://qefro.com/404.html" />
   <link rel="alternate" type="text/plain" href="https://qefro.com/llms.txt" title="LLM-readable summary" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="Page not found — Qefro" />
   <meta property="og:description" content="The page you requested was not found on the Qefro website." />
-  <meta property="og:url" content="https://qefro.com/404.html" />
+  <meta property="og:url" content="https://qefro.com/404" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:type" content="image/png" />
@@ -31,17 +32,19 @@
   <meta property="og:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@qefro" />
   <meta name="twitter:title" content="Page not found — Qefro" />
   <meta name="twitter:description" content="The page you requested was not found on the Qefro website." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta name="twitter:image:alt" content="Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content." />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/images/qefro-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=13" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=14" />
 
 </head>
 <body>
@@ -55,16 +58,16 @@
   </div>
   <header class="site-header">
     <div class="wrap nav" data-nav>
-      <a class="brand" href="index.html" aria-label="Qefro home">
-        <img src="assets/images/qefro-logo.png" alt="Qefro" width="40" height="40" />
+      <a class="brand" href="/" aria-label="Qefro home">
+        <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="how-it-works.html">How it Works</a>
-        <a href="use-cases.html">Use Cases</a>
-        <a href="security.html">Security</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="features.html">Docs</a>
-        <a href="faq.html">FAQ</a>
+        <a href="how-it-works">How it Works</a>
+        <a href="use-cases">Use Cases</a>
+        <a href="security">Security</a>
+        <a href="pricing">Pricing</a>
+        <a href="features">Docs</a>
+        <a href="/faq">FAQ</a>
       </nav>
       <div class="nav-cta">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -77,12 +80,12 @@
       </div>
     </div>
     <div class="mobile-panel wrap">
-      <a href="how-it-works.html">How it Works</a>
-      <a href="use-cases.html">Use Cases</a>
-      <a href="security.html">Security</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="features.html">Docs</a>
-      <a href="faq.html">FAQ</a>
+      <a href="how-it-works">How it Works</a>
+      <a href="use-cases">Use Cases</a>
+      <a href="security">Security</a>
+      <a href="pricing">Pricing</a>
+      <a href="features">Docs</a>
+      <a href="/faq">FAQ</a>
       <a href="https://app.qefro.com/login">Sign In</a>
       <div class="mobile-panel-tools">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -96,10 +99,10 @@
     <section class="page-hero">
       <div class="wrap-5xl">
         <h1>Page not found</h1>
-        <p class="hero-sub">That URL is not in our sitemap.</p>
+        <p class="hero-sub">That URL is not on our site. Try the links below or return home.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="index.html">Go home</a>
-          <a class="btn btn-ghost" href="faq.html">Read FAQ</a>
+          <a class="btn btn-primary" href="/">Go home</a>
+          <a class="btn btn-ghost" href="/faq">Read FAQ</a>
         </div>
       </div>
     </section>
@@ -108,16 +111,16 @@
   <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" aria-label="Qefro home">
-          <img src="assets/images/qefro-logo.png" alt="Qefro" width="40" height="40" />
+        <a class="brand" href="/" aria-label="Qefro home">
+          <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
         </a>
         <nav class="footer-links" aria-label="Footer">
-          <a href="features.html">Features</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="security.html">Security</a>
-          <a href="faq.html">FAQ</a>
-          <a href="contact.html">Contact</a>
-          <a href="llms.txt">llms.txt</a>
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/security">Security</a>
+          <a href="/faq">FAQ</a>
+          <a href="/contact">Contact</a>
+          <a href="/llms.txt">llms.txt</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -135,6 +138,6 @@
     data-position="bottom-right"
     data-primary-color="#7c3aed"
     data-welcome-message="Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."></script>
-  <script src="assets/js/main.js?v=13" defer></script>
+  <script src="/assets/js/main.js?v=14" defer></script>
 </body>
 </html>

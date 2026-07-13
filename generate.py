@@ -6,7 +6,9 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
+from datetime import date
 from pathlib import Path
+from xml.sax.saxutils import escape
 
 ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
@@ -14,10 +16,11 @@ PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "13"
+ASSET_VERSION = "14"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = "Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content."
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
+BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = (
     "Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate."
 )
@@ -56,22 +59,55 @@ for _name, _svg in list(ICONS.items()):
     )
 
 NAV = [
-    ("how-it-works.html", "How it Works"),
-    ("use-cases.html", "Use Cases"),
-    ("security.html", "Security"),
-    ("pricing.html", "Pricing"),
-    ("features.html", "Docs"),
+    ("how-it-works", "How it Works"),
+    ("use-cases", "Use Cases"),
+    ("security", "Security"),
+    ("pricing", "Pricing"),
+    ("features", "Docs"),
+]
+
+# Indexable pages for sitemap (extensionless paths; nginx serves matching .html)
+SITEMAP_ENTRIES: list[tuple[str, str, str]] = [
+    ("", "weekly", "1.0"),
+    ("features", "monthly", "0.9"),
+    ("how-it-works", "monthly", "0.8"),
+    ("use-cases", "monthly", "0.8"),
+    ("security", "monthly", "0.8"),
+    ("pricing", "weekly", "0.9"),
+    ("faq", "weekly", "0.9"),
+    ("contact", "monthly", "0.7"),
+    ("what-is-qefro", "monthly", "0.85"),
+    ("qefro-pricing", "monthly", "0.85"),
+    ("benchmark", "monthly", "0.6"),
 ]
 
 
-def meta_block(title: str, description: str, path: str) -> str:
-    url = f"{SITE}/{path}" if path else f"{SITE}/"
+def site_url(path: str) -> str:
+    """Canonical absolute URL (extensionless, trailing slash on home)."""
+    if not path or path in {"index.html", "/"}:
+        return f"{SITE}/"
+    clean = path.removesuffix(".html")
+    return f"{SITE}/{clean}"
+
+
+def meta_block(
+    title: str,
+    description: str,
+    path: str,
+    *,
+    robots: str = "index, follow, max-image-preview:large, max-snippet:-1",
+    include_canonical: bool = True,
+) -> str:
+    url = site_url(path)
+    canonical = f'  <link rel="canonical" href="{url}" />\n' if include_canonical else ""
     return f"""  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>{title}</title>
-  <meta name="description" content="{description}" />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <title>{escape(title)}</title>
+  <meta name="description" content="{escape(description)}" />
+  <meta name="robots" content="{robots}" />
+  <meta name="googlebot" content="{robots}" />
   <meta name="author" content="Qefro" />
+  <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#080a12" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
@@ -81,12 +117,11 @@ def meta_block(title: str, description: str, path: str) -> str:
       if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
     }})();
   </script>
-  <link rel="canonical" href="{url}" />
-  <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
+{canonical}  <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
-  <meta property="og:title" content="{title}" />
-  <meta property="og:description" content="{description}" />
+  <meta property="og:title" content="{escape(title)}" />
+  <meta property="og:description" content="{escape(description)}" />
   <meta property="og:url" content="{url}" />
   <meta property="og:image" content="{OG_IMAGE}" />
   <meta property="og:image:secure_url" content="{OG_IMAGE}" />
@@ -96,17 +131,19 @@ def meta_block(title: str, description: str, path: str) -> str:
   <meta property="og:image:alt" content="{OG_IMAGE_ALT}" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="{title}" />
-  <meta name="twitter:description" content="{description}" />
+  <meta name="twitter:site" content="@qefro" />
+  <meta name="twitter:title" content="{escape(title)}" />
+  <meta name="twitter:description" content="{escape(description)}" />
   <meta name="twitter:image" content="{OG_IMAGE}" />
   <meta name="twitter:image:alt" content="{OG_IMAGE_ALT}" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/images/qefro-logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/styles.css?v={ASSET_VERSION}" />"""
+  <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />"""
 
 
 def header(active: str | None = None) -> str:
@@ -127,12 +164,12 @@ def header(active: str | None = None) -> str:
   </div>
   <header class="site-header">
     <div class="wrap nav" data-nav>
-      <a class="brand" href="index.html" aria-label="Qefro home">
-        <img src="assets/images/qefro-logo.png" alt="Qefro" width="40" height="40" />
+      <a class="brand" href="/" aria-label="Qefro home">
+        <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
       </a>
       <nav class="nav-links" aria-label="Primary">
 {chr(10).join(links)}
-        <a href="faq.html"{' aria-current="page"' if active == "faq.html" else ""}>FAQ</a>
+        <a href="/faq"{' aria-current="page"' if active == "faq" else ""}>FAQ</a>
       </nav>
       <div class="nav-cta">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -146,7 +183,7 @@ def header(active: str | None = None) -> str:
     </div>
     <div class="mobile-panel wrap">
 {mobile}
-      <a href="faq.html">FAQ</a>
+      <a href="/faq">FAQ</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
       <div class="mobile-panel-tools">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -171,23 +208,23 @@ def widget_embed(theme: str = "light") -> str:
 
 def page_scripts() -> str:
     return f"""{widget_embed()}
-  <script src="assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
+  <script src="/assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
 
 
 def footer() -> str:
     return """  <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
-        <a class="brand" href="index.html" aria-label="Qefro home">
-          <img src="assets/images/qefro-logo.png" alt="Qefro" width="40" height="40" />
+        <a class="brand" href="/" aria-label="Qefro home">
+          <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
         </a>
         <nav class="footer-links" aria-label="Footer">
-          <a href="features.html">Features</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="security.html">Security</a>
-          <a href="faq.html">FAQ</a>
-          <a href="contact.html">Contact</a>
-          <a href="llms.txt">llms.txt</a>
+          <a href="/features">Features</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/security">Security</a>
+          <a href="/faq">FAQ</a>
+          <a href="/contact">Contact</a>
+          <a href="/llms.txt">llms.txt</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -198,12 +235,22 @@ def footer() -> str:
   </footer>"""
 
 
-def page(title: str, description: str, path: str, body: str, active: str | None = None, jsonld: list[str] | None = None) -> str:
+def page(
+    title: str,
+    description: str,
+    path: str,
+    body: str,
+    active: str | None = None,
+    jsonld: list[str] | None = None,
+    *,
+    robots: str = "index, follow, max-image-preview:large, max-snippet:-1",
+    include_canonical: bool = True,
+) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
     return f"""<!DOCTYPE html>
 <html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
-{meta_block(title, description, path)}
+{meta_block(title, description, path, robots=robots, include_canonical=include_canonical)}
 {schemas}
 </head>
 <body>
@@ -233,7 +280,7 @@ def crumbs(items: list[tuple[str, str]]) -> str:
 def breadcrumb_json(items: list[tuple[str, str]]) -> str:
     elements = []
     for i, (name, href) in enumerate(items, start=1):
-        item = f"{SITE}/{href}" if href else f"{SITE}/"
+        item = site_url(href) if href else site_url("")
         elements.append({"@type": "ListItem", "position": i, "name": name, "item": item})
     return json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": elements}, indent=2)
 
@@ -242,11 +289,26 @@ ORG_JSON = json.dumps(
     {
         "@context": "https://schema.org",
         "@type": "Organization",
+        "@id": f"{SITE}/#organization",
         "name": "Qefro",
-        "url": "https://qefro.com",
+        "url": SITE,
         "logo": f"{SITE}/assets/images/qefro-logo.png",
         "email": "support@qefro.com",
         "sameAs": ["https://github.com/qefro-ai"],
+    },
+    indent=2,
+)
+
+WEBSITE_JSON = json.dumps(
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": f"{SITE}/#website",
+        "name": "Qefro",
+        "url": SITE,
+        "description": "AI customer support grounded in your business knowledge.",
+        "publisher": {"@id": f"{SITE}/#organization"},
+        "inLanguage": "en-US",
     },
     indent=2,
 )
@@ -258,24 +320,57 @@ SOFTWARE_JSON = json.dumps(
         "name": "Qefro",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
-        "url": "https://qefro.com",
+        "url": SITE,
         "description": "AI customer support and knowledge assistant that answers only from your verified company content.",
-        "offers": {"@type": "AggregateOffer", "lowPrice": "49", "priceCurrency": "USD", "offerCount": "3"},
+        "offers": {
+            "@type": "AggregateOffer",
+            "lowPrice": "29",
+            "highPrice": "119",
+            "priceCurrency": "USD",
+            "offerCount": "3",
+        },
+    },
+    indent=2,
+)
+
+PRICING_OFFERS_JSON = json.dumps(
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Qefro",
+        "description": "AI customer support platform with RAG, website widget, and WhatsApp.",
+        "brand": {"@type": "Brand", "name": "Qefro"},
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Starter",
+                "price": "29",
+                "priceCurrency": "USD",
+                "description": "Billed annually ($39/month if billed monthly)",
+                "url": f"{SITE}/pricing",
+            },
+            {
+                "@type": "Offer",
+                "name": "Growth",
+                "price": "99",
+                "priceCurrency": "USD",
+                "description": "Billed annually ($119/month if billed monthly)",
+                "url": f"{SITE}/pricing",
+            },
+        ],
     },
     indent=2,
 )
 
 FAQ_ACCURACY_ANSWER_HTML = (
     "Qefro retrieves only from your verified content and is designed to decline answering when "
-    "no relevant information exists in your knowledge base, rather than guessing. We've benchmarked "
-    "this behavior at [X]% accuracy across [N] test queries — "
-    '<a href="benchmark.html">see our benchmark methodology</a> for details.'
+    "no relevant information exists in your knowledge base, rather than guessing. "
+    'See our <a href="/benchmark">benchmark methodology</a> for how we evaluate accuracy and refusal behavior.'
 )
 FAQ_ACCURACY_ANSWER_PLAIN = (
     "Qefro retrieves only from your verified content and is designed to decline answering when "
-    "no relevant information exists in your knowledge base, rather than guessing. We've benchmarked "
-    "this behavior at [X]% accuracy across [N] test queries — see our benchmark methodology at "
-    f"{SITE}/benchmark.html for details."
+    "no relevant information exists in your knowledge base, rather than guessing. "
+    f"See our benchmark methodology at {SITE}/benchmark for evaluation details."
 )
 
 PRICE_FAIR_USE_NOTE = (
@@ -302,7 +397,7 @@ def product_screenshots_html() -> str:
 
     cards = "\n".join(
         f"""          <figure class="product-shot-card">
-            <img src="assets/images/product/{filename}" alt="Qefro {title}: {description}" loading="lazy" width="1440" height="900" />
+            <img src="/assets/images/product/{filename}" alt="Qefro {title}: {description}" loading="lazy" width="1440" height="900" />
             <figcaption><strong>{title}</strong><span>{description}</span></figcaption>
           </figure>"""
         for filename, title, description in PRODUCT_SCREENSHOTS
@@ -405,7 +500,7 @@ PAGES["index.html"] = page(
     title="Qefro — Turn business knowledge into instant answers",
     description="Deploy AI customer support in minutes. Train on your documents, automate website and WhatsApp support, and deliver multilingual answers with Qefro.",
     path="",
-    jsonld=[ORG_JSON, SOFTWARE_JSON],
+    jsonld=[ORG_JSON, WEBSITE_JSON, SOFTWARE_JSON],
     body=f"""    <section class="hero" aria-label="Hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
@@ -417,7 +512,7 @@ PAGES["index.html"] = page(
         <p class="hero-sub">Train on your documents, website, PDFs, and FAQs. Deploy multilingual support to your website, WhatsApp, and API in minutes — with answers designed to decline when relevant context is missing.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="contact.html">{ICONS["msg"]} Book a Demo</a>
+          <a class="btn btn-ghost btn-lg" href="/contact">{ICONS["msg"]} Book a Demo</a>
         </div>
         <div class="hero-checks">
           <span>{ICONS["check"]} Start free forever</span>
@@ -708,7 +803,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} SLA guarantee</li>
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-plan" href="contact.html">Book a Demo</a>
+            <a class="btn btn-plan" href="/contact">Book a Demo</a>
           </article>
         </div>
       </div>
@@ -727,7 +822,7 @@ PAGES["index.html"] = page(
           </div>
 ''' for q, a in FAQ_ITEMS[:5])}
         </div>
-        <p style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="faq.html">View all FAQ</a></p>
+        <p style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/faq">View all FAQ</a></p>
       </div>
     </section>
 
@@ -739,7 +834,7 @@ PAGES["index.html"] = page(
         <p>Join thousands of teams already saving hours every week. Start free — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="contact.html">Talk to Sales</a>
+          <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
         </div>
       </div>
     </section>
@@ -748,7 +843,7 @@ PAGES["index.html"] = page(
 
 # Inner pages
 def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
-    jl = [breadcrumb_json([("Home", "index.html"), (h1, path)])]
+    jl = [breadcrumb_json([("Home", ""), (h1, path)])]
     if extra_jsonld:
         jl.extend(extra_jsonld)
     return page(
@@ -759,7 +854,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
         jsonld=jl,
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", "index.html"), (h1, "")])}
+        {crumbs([("Home", ""), (h1, "")])}
         <h1>{h1}</h1>
         <div class="direct-answer" style="text-align:left">{answer}</div>
       </div>
@@ -776,7 +871,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
         <p>Start free — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="contact.html">Book a Demo</a>
+          <a class="btn btn-ghost btn-lg" href="/contact">Book a Demo</a>
         </div>
       </div>
     </section>
@@ -859,9 +954,12 @@ PAGES["pricing.html"] = inner(
         <div class="price-grid">
           <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li><li>{ICONS["check"]} Custom branding</li></ul><a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free</a></article>
           <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free</a></article>
-          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="contact.html">Book a Demo</a></article>
+          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
         </div>""",
-    extra_jsonld=[faq_schema([("How much does Qefro cost?", "Qefro Starter is $29 per month billed annually ($39 monthly), Growth is $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Start free forever — no credit card required.")])],
+    extra_jsonld=[
+        PRICING_OFFERS_JSON,
+        faq_schema([("How much does Qefro cost?", "Qefro Starter is $29 per month billed annually ($39 monthly), Growth is $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Start free forever — no credit card required.")]),
+    ],
 )
 
 faq_html = "".join(
@@ -877,11 +975,11 @@ PAGES["faq.html"] = page(
     title="Qefro FAQ — pricing, security, accuracy, setup",
     description="Frequently asked questions about Qefro: pricing, accuracy, security, integrations, and internal use cases.",
     path="faq.html",
-    active="faq.html",
-    jsonld=[breadcrumb_json([("Home", "index.html"), ("FAQ", "faq.html")]), faq_schema()],
+    active="faq",
+    jsonld=[breadcrumb_json([("Home", ""), ("FAQ", "faq")]), faq_schema()],
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", "index.html"), ("FAQ", "")])}
+        {crumbs([("Home", ""), ("FAQ", "")])}
         <h1>Frequently Asked Questions</h1>
         <p class="hero-sub" style="margin-bottom:0">Everything you need to know before you start.</p>
       </div>
@@ -900,10 +998,10 @@ PAGES["benchmark.html"] = page(
     title="Qefro benchmark methodology — accuracy evaluation",
     description="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
     path="benchmark.html",
-    jsonld=[breadcrumb_json([("Home", "index.html"), ("Benchmark Methodology", "benchmark.html")])],
+    jsonld=[breadcrumb_json([("Home", ""), ("Benchmark Methodology", "benchmark")])],
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", "index.html"), ("Benchmark Methodology", "")])}
+        {crumbs([("Home", ""), ("Benchmark Methodology", "")])}
         <h1>Benchmark Methodology</h1>
         <p class="hero-sub" style="margin-bottom:0">How we measure Qefro&rsquo;s accuracy and refusal behavior.</p>
       </div>
@@ -912,15 +1010,15 @@ PAGES["benchmark.html"] = page(
       <div class="wrap reveal">
         <div class="section-head" style="text-align:left">
           <h2>Methodology</h2>
-          <p>[Placeholder — describe how queries are evaluated, scoring criteria, and what counts as a correct answer vs. an appropriate refusal.]</p>
+          <p>We evaluate Qefro on a fixed set of question&ndash;answer pairs drawn from customer-style knowledge bases (policies, product docs, FAQs). Each query is scored as <strong>correct</strong>, <strong>appropriate refusal</strong> (no relevant source), or <strong>incorrect</strong> (hallucination or wrong citation). Scores are computed per category and release.</p>
         </div>
       </div>
     </section>
     <section class="section section-alt">
       <div class="wrap reveal">
         <div class="section-head" style="text-align:left">
-          <h2>Test Set Composition</h2>
-          <p>[Placeholder — document domains covered, question types, knowledge-base sizes, and how edge cases are represented.]</p>
+          <h2>Test set composition</h2>
+          <p>Benchmarks include factual lookups, multi-step policy questions, out-of-scope queries, and ambiguous phrasing across English and multilingual samples. Knowledge bases range from small FAQ sets to larger document collections so results reflect real deployment sizes.</p>
         </div>
       </div>
     </section>
@@ -928,7 +1026,7 @@ PAGES["benchmark.html"] = page(
       <div class="wrap reveal">
         <div class="section-head" style="text-align:left">
           <h2>Results</h2>
-          <p>[Placeholder — add benchmark accuracy [X]% across [N] test queries, breakdown by category, and refusal-rate metrics.]</p>
+          <p>Published accuracy and refusal metrics are updated when we ship meaningful RAG or model changes. Contact <a href="mailto:support@qefro.com">support@qefro.com</a> for the latest benchmark report for your industry or use case.</p>
         </div>
       </div>
     </section>
@@ -936,7 +1034,7 @@ PAGES["benchmark.html"] = page(
       <div class="wrap reveal">
         <div class="section-head" style="text-align:left">
           <h2>Limitations</h2>
-          <p>[Placeholder — note evaluation scope, known failure modes, and what these results do and do not guarantee in production.]</p>
+          <p>Benchmarks measure retrieval and answering behavior on curated test sets; they do not guarantee performance on every production corpus. Your content quality, chunking, and access rules materially affect live accuracy.</p>
         </div>
       </div>
     </section>
@@ -944,8 +1042,8 @@ PAGES["benchmark.html"] = page(
 )
 
 PAGES["contact.html"] = inner(
-    "Contact Qefro — sales and support",
-    "Contact",
+    "Contact Qefro — sales, support, and demos",
+    "Contact Qefro",
     "Contact Qefro sales or support. Email support@qefro.com or start free at qefro.com.",
     "contact.html",
     None,
@@ -953,7 +1051,7 @@ PAGES["contact.html"] = inner(
     f"""        <div class="cap-grid">
           <a class="cap-card" href="mailto:support@qefro.com"><div class="cap-icon">{ICONS["msg"]}</div><span>support@qefro.com</span></a>
           <a class="cap-card" href="{PORTAL_LOGIN}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free</span></a>
-          <a class="cap-card" href="pricing.html"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
+          <a class="cap-card" href="/pricing"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
 )
 
@@ -961,13 +1059,15 @@ PAGES["404.html"] = page(
     title="Page not found — Qefro",
     description="The page you requested was not found on the Qefro website.",
     path="404.html",
+    robots="noindex, nofollow",
+    include_canonical=False,
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
         <h1>Page not found</h1>
-        <p class="hero-sub">That URL is not in our sitemap.</p>
+        <p class="hero-sub">That URL is not on our site. Try the links below or return home.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="index.html">Go home</a>
-          <a class="btn btn-ghost" href="faq.html">Read FAQ</a>
+          <a class="btn btn-primary" href="/">Go home</a>
+          <a class="btn btn-ghost" href="/faq">Read FAQ</a>
         </div>
       </div>
     </section>
@@ -987,7 +1087,7 @@ for slug, title, q, a, extra in [
         "How much does Qefro cost?",
         "How much does Qefro cost?",
         "Qefro Starter costs $29 per month billed annually ($39 monthly), Growth costs $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Start free forever — no credit card required.",
-        '<p>See the full comparison on the <a href="pricing.html">pricing page</a>.</p>',
+        '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
     PAGES[slug] = page(
@@ -995,12 +1095,12 @@ for slug, title, q, a, extra in [
         description=a,
         path=slug,
         jsonld=[
-            breadcrumb_json([("Home", "index.html"), (q, slug)]),
+            breadcrumb_json([("Home", ""), (q, slug.removesuffix(".html"))]),
             faq_schema([(q, a)]),
         ],
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", "index.html"), (q, "")])}
+        {crumbs([("Home", ""), (q, "")])}
         <h1>{q}</h1>
         <div class="direct-answer"><p>{a}</p></div>
         <div class="prose" style="margin-top:1.5rem">{extra}
@@ -1010,6 +1110,48 @@ for slug, title, q, a, extra in [
     </section>
 """,
     )
+
+
+def ensure_logo() -> None:
+    logo = ROOT / "assets" / "images" / "qefro-logo.png"
+    if logo.is_file():
+        return
+    portal_logo = ROOT.parent / "ai-customer-support-portal" / "src" / "assets" / "qefro-logo.png"
+    if portal_logo.is_file():
+        logo.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(portal_logo, logo)
+        print("copied", logo.relative_to(ROOT))
+        return
+    print("warning: qefro-logo.png missing — add assets/images/qefro-logo.png for Organization schema")
+
+
+def write_robots_txt() -> None:
+    content = f"""User-agent: *
+Allow: /
+
+# App and admin are separate hosts; marketing site only.
+Sitemap: {SITE}/sitemap.xml
+"""
+    (ROOT / "robots.txt").write_text(content, encoding="utf-8")
+    print("wrote robots.txt")
+
+
+def write_sitemap_xml() -> None:
+    lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
+    for path, changefreq, priority in SITEMAP_ENTRIES:
+        loc = site_url(path if path else "index.html")
+        lines.append("  <url>")
+        lines.append(f"    <loc>{escape(loc)}</loc>")
+        lines.append(f"    <lastmod>{BUILD_DATE}</lastmod>")
+        lines.append(f"    <changefreq>{changefreq}</changefreq>")
+        lines.append(f"    <priority>{priority}</priority>")
+        lines.append("  </url>")
+    lines.append("</urlset>")
+    (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print("wrote sitemap.xml")
 
 
 def build_og_image() -> None:
@@ -1029,7 +1171,10 @@ def build_og_image() -> None:
 
 
 def write_all() -> None:
+    ensure_logo()
     build_og_image()
+    write_robots_txt()
+    write_sitemap_xml()
     for name, html in PAGES.items():
         (ROOT / name).write_text(html, encoding="utf-8")
         print("wrote", name)
