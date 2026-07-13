@@ -11,10 +11,11 @@ contact: support@qefro.com
 Qefro is an AI customer support and knowledge assistant for businesses. It answers questions using only your company's verified content — documents, FAQs, policies, and websites — so responses stay accurate and grounded.
 
 ## Pricing
-- Starter: $49/month — 1,000 conversations, 50 documents, 1 assistant, website widget
-- Growth: $149/month — 10,000 conversations, unlimited documents, 5 assistants, widget + WhatsApp, analytics
+- Free: $0 — 100 conversations, 5 documents (start free forever, no credit card)
+- Starter: $29/month billed annually ($348/year) or $39/month monthly (₹3,299/mo · ₹29,437/year)
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly (₹9,999/mo · ₹99,822/year)
 - Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML, dedicated CSM, SLA
-- Trial: 14 days free on all plans, no credit card required
+- Annual billing saves ~26% vs monthly
 
 ## Key capabilities
 - Source-grounded RAG with refusal-first retrieval (declines when relevant context is missing)

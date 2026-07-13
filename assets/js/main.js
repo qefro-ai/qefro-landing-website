@@ -173,4 +173,35 @@
 
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
+
+  // Pricing: monthly / yearly toggle (default yearly)
+  const billingToggle = document.querySelector(".billing-toggle");
+  if (billingToggle) {
+    const setPeriod = (period) => {
+      billingToggle.querySelectorAll("[data-billing]").forEach((btn) => {
+        btn.classList.toggle("is-active", btn.dataset.billing === period);
+      });
+      document.querySelectorAll(".price-amount[data-price-annual]").forEach((el) => {
+        const annual = el.dataset.priceAnnual;
+        const monthly = el.dataset.priceMonthly;
+        const price = period === "annual" ? annual : monthly;
+        const span = el.querySelector("span");
+        el.childNodes.forEach((node) => {
+          if (node.nodeType === Node.TEXT_NODE) node.textContent = `${price} `;
+        });
+        if (!span) el.insertAdjacentHTML("beforeend", "<span>/month</span>");
+        const billed = el.parentElement?.querySelector(".price-billed");
+        if (billed) {
+          billed.textContent =
+            period === "annual"
+              ? `billed annually · or ${monthly}/mo monthly`
+              : `billed monthly · or ${annual}/mo annually`;
+        }
+      });
+    };
+    billingToggle.querySelectorAll("[data-billing]").forEach((btn) => {
+      btn.addEventListener("click", () => setPeriod(btn.dataset.billing));
+    });
+    setPeriod("annual");
+  }
 })();
