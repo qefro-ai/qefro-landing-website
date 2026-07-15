@@ -204,6 +204,20 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .skip-link:focus { left: 1rem; top: 1rem; }
 
+:focus-visible {
+  outline: 2px solid var(--indigo-600);
+  outline-offset: 3px;
+}
+
+.btn:focus-visible,
+.btn-link:focus-visible,
+.theme-toggle:focus-visible,
+.nav-toggle:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--indigo-600);
+  outline-offset: 3px;
+}
+
 .ambient {
   position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
 }
@@ -247,7 +261,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 .brand img {
   width: 2.5rem; height: 2.5rem; object-fit: contain;
 }
-[data-theme="dark"] .brand img { filter: invert(1); }
+.brand img.logo-dark { display: none; }
+[data-theme="dark"] .brand img.logo-light { display: none; }
+[data-theme="dark"] .brand img.logo-dark { display: block; }
 .nav-links { display: flex; align-items: center; gap: 0.25rem; }
 .nav-links a {
   padding: 0.5rem 0.875rem; border-radius: 0.5rem;
@@ -1074,6 +1090,57 @@ ul { margin: 0; padding: 0; list-style: none; }
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+}
+.contact-grid {
+  display: grid;
+  gap: 1rem;
+}
+.contact-form label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.contact-form .input,
+.contact-form textarea.input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+.contact-alt {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
 
 .mobile-panel {
   display: none; border-top: 1px solid var(--header-border);

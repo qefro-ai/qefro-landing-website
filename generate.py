@@ -16,7 +16,8 @@ PORTAL = "https://app.qefro.com"
 API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
-ASSET_VERSION = "15"
+PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
+ASSET_VERSION = "18"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = "Qefro — Turn business knowledge into instant answers. RAG assistant grounded in your content."
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
@@ -63,7 +64,7 @@ NAV = [
     ("use-cases", "Use Cases"),
     ("security", "Security"),
     ("pricing", "Pricing"),
-    ("features", "Docs"),
+    ("features", "Features"),
 ]
 
 # Indexable pages for sitemap (extensionless paths; nginx serves matching .html)
@@ -166,7 +167,8 @@ def header(active: str | None = None) -> str:
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI customer support platform logo" width="40" height="40" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" />
       </a>
       <nav class="nav-links" aria-label="Primary">
 {chr(10).join(links)}
@@ -178,13 +180,14 @@ def header(active: str | None = None) -> str:
           <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL_LOGIN}">Get Started {ICONS["arrow"]}</a>
+        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">{ICONS["menu"]}</button>
       </div>
     </div>
     <div class="mobile-panel wrap">
 {mobile}
       <a href="/faq">FAQ</a>
+      <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="justify-content:center;margin-top:0.5rem">Start Free</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
       <div class="mobile-panel-tools">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -213,11 +216,12 @@ def page_scripts() -> str:
 
 
 def footer() -> str:
-    return """  <footer class="site-footer">
+    return f"""  <footer class="site-footer">
     <div class="wrap">
       <div class="footer-top">
         <a class="brand" href="/" aria-label="Qefro home">
-          <img src="/assets/images/qefro-logo.png" alt="Qefro AI customer support platform logo" width="40" height="40" />
+          <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI customer support platform logo" width="40" height="40" />
+          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" />
         </a>
         <nav class="footer-links" aria-label="Footer">
           <a href="/features">Features</a>
@@ -428,7 +432,7 @@ def product_screenshots_html() -> str:
 
 FAQ_ITEMS = [
     ("What is Qefro?", "Qefro is an AI customer support and knowledge assistant that answers questions using only your company’s verified content — documents, FAQs, policies, and websites."),
-    ("How much does Qefro cost?", "Starter is $29/month billed annually ($39 monthly), Growth is $99/month billed annually ($119 monthly), and Enterprise is custom. Start free forever — no credit card required."),
+    ("How much does Qefro cost?", "Starter is $29/month billed annually ($39 monthly), Growth is $99/month billed annually ($119 monthly), and Enterprise is custom. Free plan available (100 conversations/month) — no credit card required."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Our pipeline processes and indexes everything."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     ("Is my data secure?", "Your data is tenant-isolated, encrypted at rest and in transit, and never used to train AI models. SOC 2 compatible with private deployment available."),
@@ -515,16 +519,16 @@ PAGES["index.html"] = page(
       <div class="wrap-5xl hero-inner">
         <span class="eyebrow">{ICONS["sparkles"]} Retrieval-Augmented Generation</span>
         <h1>
-          <span class="hero-line">Enterprise AI Customer Support</span>
+          <span class="hero-line">Qefro for Enterprise Support</span>
           <span class="hero-accent">Grounded in Your Knowledge</span>
         </h1>
         <p class="hero-sub">Train on your documents, website, PDFs, and FAQs. Deploy multilingual support to your website, WhatsApp, and API in minutes — with answers designed to decline when relevant context is missing.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/contact">{ICONS["msg"]} Book a Demo</a>
         </div>
         <div class="hero-checks">
-          <span>{ICONS["check"]} Start free forever</span>
+          <span>{ICONS["check"]} Free tier available</span>
           <span>{ICONS["check"]} No credit card required</span>
           <span>{ICONS["check"]} Setup in 5 minutes</span>
           <span>{ICONS["check"]} SOC 2 ready</span>
@@ -700,7 +704,7 @@ PAGES["index.html"] = page(
               <div class="chat-mock-body">
                 <div class="chat-bubble ai">Hi! I can answer questions about Qefro using our verified documentation. What would you like to know?</div>
                 <div class="chat-bubble user">What is Qefro pricing?</div>
-                <div class="chat-bubble ai">Starter is $29/month billed annually ($39 monthly), Growth is $99/month billed annually ($119 monthly), and Enterprise is custom. Start free forever — no credit card required.</div>
+                <div class="chat-bubble ai">Starter is $29/month billed annually ($39 monthly), Growth is $99/month billed annually ($119 monthly), and Enterprise is custom. Free plan available (100 conversations/month) — no credit card required.</div>
               </div>
               <div class="chat-mock-input">
                 <span>Type your question…</span>
@@ -760,16 +764,29 @@ PAGES["index.html"] = page(
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} Pricing</span>
           <h2>Plans That Scale With Your Support Team</h2>
-          <p>Start free forever. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo.</p>
+          <p>Free tier available. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo.</p>
         </div>
         <div class="direct-answer reveal">
-          <p>Qefro pricing starts at <strong>$29/month billed annually</strong> for Starter ($39 monthly), <strong>$99/month billed annually</strong> for Growth ($119 monthly), and custom Enterprise plans with private deployment and SSO.</p>
+          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, 5 documents), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly">Monthly</button>
           <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid reveal">
+          <article class="price-card">
+            <h3>Free</h3>
+            <div class="price-amount">$0</div>
+            <p class="price-desc">Try Qefro with no credit card</p>
+            <ul class="price-feats">
+              <li>{ICONS["check"]} 100 conversations/month</li>
+              <li>{ICONS["check"]} 5 documents</li>
+              <li>{ICONS["check"]} 2 team members</li>
+              <li>{ICONS["check"]} Website widget</li>
+              <li>{ICONS["check"]} Community support</li>
+            </ul>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a>
+          </article>
           <article class="price-card">
             <h3>Starter</h3>
             <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p>
@@ -781,7 +798,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Email support</li>
               <li>{ICONS["check"]} Custom branding</li>
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a>
           </article>
           <article class="price-card is-popular">
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
@@ -797,7 +814,7 @@ PAGES["index.html"] = page(
               <li>{ICONS["check"]} Analytics</li>
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free</a>
+            <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a>
           </article>
           <article class="price-card">
             <h3>Enterprise</h3>
@@ -840,9 +857,9 @@ PAGES["index.html"] = page(
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get Started Today</span>
         <h2>Ready to Give Your Team<br />Instant Answers?</h2>
-        <p>Join thousands of teams already saving hours every week. Start free — no credit card required.</p>
+        <p>See how Qefro fits your support workflow. Start on the free tier — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
         </div>
       </div>
@@ -879,7 +896,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
         <h2>Ready to try Qefro?</h2>
         <p>Start free — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_LOGIN}">Start Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/contact">Book a Demo</a>
         </div>
       </div>
@@ -952,22 +969,23 @@ PAGES["security.html"] = inner(
 PAGES["pricing.html"] = inner(
     "Qefro pricing — Starter from $29/mo, Growth from $99/mo, Enterprise",
     "Pricing",
-    "Qefro pricing: Starter from $29/month billed annually ($39 monthly), Growth from $99/month billed annually ($119 monthly). Start free forever — no credit card required.",
+    "Qefro pricing: Starter from $29/month billed annually ($39 monthly), Growth from $99/month billed annually ($119 monthly). Free plan available (100 conversations/month) — no credit card required.",
     "pricing.html",
     "pricing.html",
-    "<p>Qefro offers three plans: <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and <strong>Enterprise with custom pricing</strong>. Start free forever — no credit card required.</p>",
+    "<p>Qefro offers a <strong>Free plan</strong> (100 conversations/month, 5 documents), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and <strong>Enterprise with custom pricing</strong>.</p>",
     f"""        <div class="billing-toggle" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly">Monthly</button>
           <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid">
-          <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li><li>{ICONS["check"]} Custom branding</li></ul><a class="btn btn-plan" href="{PORTAL_LOGIN}">Start Free</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_LOGIN}">Start Free</a></article>
+          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Try Qefro with no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} 5 documents</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
+          <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li><li>{ICONS["check"]} Custom branding</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
+          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
           <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
         </div>""",
     extra_jsonld=[
         PRICING_OFFERS_JSON,
-        faq_schema([("How much does Qefro cost?", "Qefro Starter is $29 per month billed annually ($39 monthly), Growth is $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Start free forever — no credit card required.")]),
+        faq_schema([("How much does Qefro cost?", "Qefro Free plan includes 100 conversations per month. Starter is $29 per month billed annually ($39 monthly), Growth is $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. No credit card required to start.")]),
     ],
 )
 
@@ -1053,13 +1071,31 @@ PAGES["benchmark.html"] = page(
 PAGES["contact.html"] = inner(
     "Contact Qefro — sales, support, and demos",
     "Contact Qefro",
-    "Contact Qefro sales or support. Email support@qefro.com or start free at qefro.com.",
+    "Book a Qefro demo or email support. Tell us about your team and we will get back within one business day.",
     "contact.html",
     None,
-    '<p>Email <a href="mailto:support@qefro.com"><strong>support@qefro.com</strong></a> for product help, or talk to sales about Enterprise pricing, SSO, and private deployment.</p>',
-    f"""        <div class="cap-grid">
+    '<p>Book a demo below, or email <a href="mailto:support@qefro.com"><strong>support@qefro.com</strong></a> for product help and Enterprise questions.</p>',
+    f"""        <form class="contact-form glass-card" method="post" action="mailto:support@qefro.com?subject=Qefro%20demo%20request" enctype="text/plain">
+          <div class="contact-grid">
+            <label>Name
+              <input class="input" name="name" type="text" required autocomplete="name" placeholder="Your name" />
+            </label>
+            <label>Work email
+              <input class="input" name="email" type="email" required autocomplete="email" placeholder="you@company.com" />
+            </label>
+            <label>Company
+              <input class="input" name="company" type="text" required autocomplete="organization" placeholder="Company name" />
+            </label>
+            <label>Use case
+              <textarea class="input" name="use_case" rows="4" required placeholder="What should Qefro answer for your customers?"></textarea>
+            </label>
+          </div>
+          <button class="btn btn-primary" type="submit">Request a demo</button>
+          <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">start free</a></p>
+        </form>
+        <div class="cap-grid" style="margin-top:2rem">
           <a class="cap-card" href="mailto:support@qefro.com"><div class="cap-icon">{ICONS["msg"]}</div><span>support@qefro.com</span></a>
-          <a class="cap-card" href="{PORTAL_LOGIN}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free</span></a>
+          <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free</span></a>
           <a class="cap-card" href="/pricing"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
 )
@@ -1095,7 +1131,7 @@ for slug, title, q, a, extra in [
         "qefro-pricing.html",
         "How much does Qefro cost?",
         "How much does Qefro cost?",
-        "Qefro Starter costs $29 per month billed annually ($39 monthly), Growth costs $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Start free forever — no credit card required.",
+        "Qefro Starter costs $29 per month billed annually ($39 monthly), Growth costs $99 per month billed annually ($119 monthly), and Enterprise is custom pricing. Free plan available (100 conversations/month) — no credit card required.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
