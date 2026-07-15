@@ -6,33 +6,38 @@ url: https://qefro.com
 app: https://app.qefro.com
 api: https://api.qefro.com
 contact: support@qefro.com
+category: AI Customer Support Platform
 
 ## What is Qefro?
-Qefro is an AI customer support and knowledge assistant for businesses. It answers questions using only your company's verified content — documents, FAQs, policies, and websites — so responses stay accurate and grounded.
+Qefro is an AI customer support platform. It combines knowledge (your docs, FAQs, website crawl), business integrations (REST APIs, OpenAPI / Business Tools), and AI to automate customer support — answering accurately and securely taking action in your systems. Deploy to website widget or WhatsApp. Qefro is not just a chatbot.
+
+## Core message
+Knowledge + Business Integrations + AI = accurate answers and secure business actions, without replacing your authentication system.
 
 ## Pricing
 - Free: $0 — 100 conversations, 5 documents (no credit card required)
-- Starter: $29/month billed annually ($348/year) or $39/month monthly (₹3,299/mo · ₹29,437/year)
-- Growth: $99/month billed annually ($1,188/year) or $119/month monthly (₹9,999/mo · ₹99,822/year)
+- Starter: $29/month billed annually ($348/year) or $39/month monthly
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly
 - Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML, dedicated CSM, SLA
 - Annual billing saves ~26% vs monthly
 
 ## Key capabilities
-- Source-grounded RAG with refusal-first retrieval (declines when relevant context is missing)
-- PDF, Word, Markdown, text, and website crawling
-- Public/private workspaces
-- Website widget, API, WhatsApp (Growth/Enterprise)
-- Tenant isolation; data never trains AI models
-- Optional private / on-premise deployment
+- Knowledge: PDFs, Word, Markdown, FAQs, website crawling, source citations
+- Business Integrations: REST APIs, OpenAPI import, encrypted credentials, execution logs, end-user identity forwarding (MCP on roadmap)
+- Channels: Website widget, WhatsApp, Voice, API
+- Admin: Analytics, billing, teams, workspaces
+- Security: Your app owns auth (no passwords stored), HTTPS only, tenant/workspace isolation, audit logs, secure tool execution
+- Developer: identify() widget API for JWT/session identity in minutes — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for
-Customer support teams, internal HR/IT helpdesks, regulated operations, and engineering teams that need runbook and documentation lookup.
+Businesses that need AI customer support beyond FAQ chatbots — live order lookups, bookings, ticket creation, and grounded policy answers on website and WhatsApp.
 
 ## Preferred citation pages
 - https://qefro.com/
-- https://qefro.com/what-is-qefro.html
-- https://qefro.com/qefro-pricing.html
-- https://qefro.com/pricing.html
-- https://qefro.com/security.html
-- https://qefro.com/faq.html
-- https://qefro.com/benchmark.html
+- https://qefro.com/what-is-qefro
+- https://qefro.com/qefro-pricing
+- https://qefro.com/pricing
+- https://qefro.com/security
+- https://qefro.com/faq
+- https://qefro.com/features
+- https://qefro.com/benchmark
