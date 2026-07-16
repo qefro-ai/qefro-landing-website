@@ -68,7 +68,32 @@
   --ambient-c: rgba(59, 130, 246, 0.04);
   --ambient-grid-opacity: 0.03;
   --ambient-grid-color: rgba(0, 0, 0, 0.08);
-  --hero-glow: rgba(124, 58, 237, 0.06);
+  --hero-glow: rgba(124, 58, 237, 0.08);
+  --hero-bg: #ffffff;
+  --hero-fg: #111827;
+  --hero-sub: #6b7280;
+  --hero-accent: #7c3aed;
+  --hero-border: #e5e7eb;
+  --hero-grid-line: rgba(15, 23, 42, 0.06);
+  --hero-eyebrow-bg: rgba(124, 58, 237, 0.08);
+  --hero-eyebrow-border: rgba(124, 58, 237, 0.22);
+  --hero-eyebrow-fg: #6d28d9;
+  --hero-ghost-bg: #ffffff;
+  --hero-ghost-border: #e5e7eb;
+  --hero-ghost-fg: #374151;
+  --hero-ghost-hover-bg: #f9fafb;
+  --hero-ghost-hover-border: #d1d5db;
+  --hero-check: #6b7280;
+  --hero-check-icon: #059669;
+  --hero-pipeline-border: #e5e7eb;
+  --hero-pipeline-bg: #f9fafb;
+  --hero-pipeline-k: #7c3aed;
+  --hero-pipeline-v: #111827;
+  --hero-pipeline-d: #6b7280;
+  --hero-pipeline-arrow: #9ca3af;
+  --hero-pipeline-accent-border: rgba(124, 58, 237, 0.4);
+  --hero-pipeline-accent-bg: linear-gradient(160deg, rgba(124, 58, 237, 0.12), #ffffff);
+  --hero-pipeline-pulse: rgba(124, 58, 237, 0.18);
   --cta-glow: rgba(124, 58, 237, 0.06);
   --step-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
   --uc-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
@@ -163,6 +188,31 @@
   --ambient-grid-opacity: 0.025;
   --ambient-grid-color: rgba(255, 255, 255, 0.5);
   --hero-glow: rgba(79, 70, 229, 0.15);
+  --hero-bg: #07080f;
+  --hero-fg: #f4f5fb;
+  --hero-sub: #a9adc4;
+  --hero-accent: #a78bfa;
+  --hero-border: rgba(255, 255, 255, 0.08);
+  --hero-grid-line: rgba(255, 255, 255, 0.04);
+  --hero-eyebrow-bg: rgba(139, 92, 246, 0.1);
+  --hero-eyebrow-border: rgba(139, 92, 246, 0.35);
+  --hero-eyebrow-fg: #c4b5fd;
+  --hero-ghost-bg: rgba(255, 255, 255, 0.06);
+  --hero-ghost-border: rgba(255, 255, 255, 0.14);
+  --hero-ghost-fg: #f4f5fb;
+  --hero-ghost-hover-bg: rgba(255, 255, 255, 0.12);
+  --hero-ghost-hover-border: rgba(255, 255, 255, 0.24);
+  --hero-check: #8a8fa8;
+  --hero-check-icon: #34d399;
+  --hero-pipeline-border: rgba(255, 255, 255, 0.09);
+  --hero-pipeline-bg: rgba(255, 255, 255, 0.025);
+  --hero-pipeline-k: #8b5cf6;
+  --hero-pipeline-v: #f4f5fb;
+  --hero-pipeline-d: #8a8fa8;
+  --hero-pipeline-arrow: #4b4f68;
+  --hero-pipeline-accent-border: rgba(124, 58, 237, 0.45);
+  --hero-pipeline-accent-bg: linear-gradient(160deg, rgba(124, 58, 237, 0.18), rgba(255, 255, 255, 0.03));
+  --hero-pipeline-pulse: rgba(124, 58, 237, 0.22);
   --cta-glow: rgba(79, 70, 229, 0.12);
   --step-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
   --uc-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -341,21 +391,23 @@ a:focus-visible {
 [data-theme="dark"] .badge-green { background: rgba(16,185,129,0.1); color: #6ee7b7; }
 [data-theme="dark"] .badge-yellow { background: rgba(234,179,8,0.1); color: #fde047; }
 
-/* Hero — always-dark, infra-grade band */
+/* Hero — theme-adaptive (light default, dark via [data-theme="dark"]) */
 .hero {
   position: relative;
   padding: clamp(5.5rem, 11vw, 8.5rem) var(--pad) clamp(3.5rem, 6vw, 5rem);
-  background: #07080f;
-  color: #f4f5fb;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%, var(--hero-glow), transparent 70%),
+    var(--hero-bg);
+  color: var(--hero-fg);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--hero-border);
 }
-/* Precise engineering grid, faded at the edges — replaces the blurred blobs */
+/* Precise engineering grid, faded at the edges */
 .hero-grid {
   position: absolute; inset: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(var(--hero-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-line) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 28%, #000 45%, transparent 100%);
           mask-image: radial-gradient(ellipse 85% 70% at 50% 28%, #000 45%, transparent 100%);
@@ -364,8 +416,8 @@ a:focus-visible {
 .eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.4rem 0.9rem; margin-bottom: 1.75rem; border-radius: 999px;
-  border: 1px solid rgba(139, 92, 246, 0.35); background: rgba(139, 92, 246, 0.1);
-  color: #c4b5fd; font-size: 0.72rem; font-weight: 600;
+  border: 1px solid var(--hero-eyebrow-border); background: var(--hero-eyebrow-bg);
+  color: var(--hero-eyebrow-fg); font-size: 0.72rem; font-weight: 600;
   letter-spacing: 0.14em; text-transform: uppercase;
 }
 .eyebrow svg { width: 0.85rem; height: 0.85rem; }
@@ -377,11 +429,11 @@ a:focus-visible {
   line-height: 1.05;
   letter-spacing: -0.035em;
 }
-.hero h1 .hero-line { display: block; color: #f4f5fb; }
-.hero h1 .hero-accent { display: block; color: #a78bfa; }
+.hero h1 .hero-line { display: block; color: var(--hero-fg); }
+.hero h1 .hero-accent { display: block; color: var(--hero-accent); }
 .hero-sub {
   margin: 0 auto 2.5rem; max-width: 40rem;
-  font-size: clamp(1.05rem, 2vw, 1.2rem); color: #a9adc4; line-height: 1.7;
+  font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--hero-sub); line-height: 1.7;
 }
 .hero-actions {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;
@@ -390,23 +442,22 @@ a:focus-visible {
 @media (min-width: 640px) {
   .hero-actions .btn { width: auto; max-width: none; }
 }
-/* Ghost button reads correctly on the dark hero */
 .hero .btn-ghost {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.14);
-  color: #f4f5fb;
+  background: var(--hero-ghost-bg);
+  border-color: var(--hero-ghost-border);
+  color: var(--hero-ghost-fg);
   box-shadow: none;
 }
 .hero .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.24);
+  background: var(--hero-ghost-hover-bg);
+  border-color: var(--hero-ghost-hover-border);
 }
 .hero-checks {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem;
-  font-size: 0.875rem; color: #8a8fa8;
+  font-size: 0.875rem; color: var(--hero-check);
 }
 .hero-checks span { display: inline-flex; align-items: center; gap: 0.4rem; }
-.hero-checks svg { width: 1rem; height: 1rem; color: #34d399; flex-shrink: 0; }
+.hero-checks svg { width: 1rem; height: 1rem; color: var(--hero-check-icon); flex-shrink: 0; }
 
 /* Hero pipeline motif: ingest → embed → retrieve → answer */
 .pipeline {
@@ -418,32 +469,32 @@ a:focus-visible {
   flex: 1 1 0; min-width: 0;
   display: flex; flex-direction: column; gap: 0.15rem;
   padding: 0.85rem 0.95rem; border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--hero-pipeline-border);
+  background: var(--hero-pipeline-bg);
   text-align: left;
 }
 .pipeline-k {
   font-family: var(--font-mono);
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; color: #8b5cf6;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; color: var(--hero-pipeline-k);
 }
 .pipeline-v {
-  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: #f4f5fb;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--hero-pipeline-v);
 }
-.pipeline-d { font-size: 0.72rem; color: #8a8fa8; line-height: 1.35; }
+.pipeline-d { font-size: 0.72rem; color: var(--hero-pipeline-d); line-height: 1.35; }
 .pipeline-arrow {
-  display: grid; place-items: center; flex: 0 0 auto; color: #4b4f68;
+  display: grid; place-items: center; flex: 0 0 auto; color: var(--hero-pipeline-arrow);
 }
 .pipeline-arrow svg { width: 1rem; height: 1rem; }
 .pipeline-flow { max-width: 64rem; }
 .pipeline-node-accent {
-  border-color: rgba(124, 58, 237, 0.45);
-  background: linear-gradient(160deg, rgba(124, 58, 237, 0.18), rgba(255, 255, 255, 0.03));
-  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.12);
+  border-color: var(--hero-pipeline-accent-border);
+  background: var(--hero-pipeline-accent-bg);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--hero-accent) 20%, transparent);
   animation: pipeline-pulse 3.2s ease-in-out infinite;
 }
 @keyframes pipeline-pulse {
-  0%, 100% { box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.12); }
-  50% { box-shadow: 0 0 24px rgba(124, 58, 237, 0.22); }
+  0%, 100% { box-shadow: 0 0 0 1px color-mix(in srgb, var(--hero-accent) 18%, transparent); }
+  50% { box-shadow: 0 0 24px var(--hero-pipeline-pulse); }
 }
 @media (max-width: 900px) {
   .pipeline-flow { flex-wrap: wrap; max-width: 36rem; }
