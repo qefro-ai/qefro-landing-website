@@ -902,32 +902,6 @@ widget.identify({{
       </div>
     </section>
 
-    <section class="section section-alt">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-yellow">{ICONS["star"]} Testimonials</span>
-          <h2>What our customers say</h2>
-        </div>
-        <div class="t-grid reveal">
-          <article class="t-card">
-            <div class="t-stars">{ICONS["star"]*5}</div>
-            <p class="t-quote">"We cut support tickets by 60% in the first month. Our team now spends time on actual problems, not answering the same FAQ for the hundredth time."</p>
-            <div class="t-person"><div class="t-avatar">SC</div><div><strong>Sarah Chen</strong><span>Head of Operations · Meridian Health</span></div></div>
-          </article>
-          <article class="t-card">
-            <div class="t-stars">{ICONS["star"]*5}</div>
-            <p class="t-quote">"Onboarding new engineers used to take two weeks. With Qefro indexing our runbooks, they're productive on day three."</p>
-            <div class="t-person"><div class="t-avatar">MW</div><div><strong>Marcus Webb</strong><span>VP Engineering · Stackfire</span></div></div>
-          </article>
-          <article class="t-card">
-            <div class="t-stars">{ICONS["star"]*5}</div>
-            <p class="t-quote">"The grounded answers and API actions were the deciding factor. We needed support that could look up an order without inventing policy."</p>
-            <div class="t-person"><div class="t-avatar">PN</div><div><strong>Dr. Priya Nair</strong><span>Chief Medical Officer · Apollo Clinics</span></div></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="pricing">
       <div class="wrap">
         <div class="section-head reveal">
