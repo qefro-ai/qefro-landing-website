@@ -22,11 +22,11 @@ Knowledge + Business Integrations + AI = accurate answers and secure business ac
 - Annual billing saves ~26% vs monthly
 
 ## Key capabilities
-- Knowledge: PDFs, Word, Markdown, FAQs, website crawling, source citations
-- Business Integrations: REST APIs, OpenAPI import, encrypted credentials, execution logs, end-user identity forwarding (MCP on roadmap)
-- Channels: Website widget, WhatsApp, Voice, API
-- Admin: Analytics, billing, teams, workspaces
-- Security: Your app owns auth (no passwords stored), HTTPS only, tenant/workspace isolation, tool execution logs, secure tool execution; platform admin audit trail and SSO on roadmap
+- Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source
+- Business Integrations: REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs, conversation variables (MCP on roadmap)
+- Channels: Website widget (short-lived JWT auth), public chat pages, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents
+- Admin: Public/private workspaces, Owner/Admin/Member RBAC, analytics, inbox, email OTP verification, Razorpay prepaid billing, document reindex
+- Security: Your app owns auth (no passwords stored), widget JWT auth, PII scrubbing, 8KB message limits, HTTPS only, tenant/workspace isolation, tool execution logs; SSO and platform admin audit trail on Enterprise roadmap
 - Developer: identify() widget API for JWT/session identity in minutes — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for

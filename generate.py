@@ -469,6 +469,31 @@ FAQ_ITEMS = [
     ("How long does integration take?", "Most teams are live in under 5 minutes — paste one script tag on your site. Identify authenticated users with a few lines of JavaScript. API and SDK available for deeper integrations."),
     ("Can I use this for internal teams only?", "Absolutely. Many customers use Qefro purely for internal self-service — HR, IT helpdesk, compliance, and engineering knowledge bases."),
     ("Do you offer enterprise pricing?", "Yes. Enterprise plans include unlimited conversations, private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline."),
+    (
+        "Does Qefro support multiple languages?",
+        "Yes. Qefro indexes and answers in the languages present in your knowledge base — including English, Arabic, Tamil, Hindi, and more. "
+        "Upload multilingual PDFs and docs; OCR extracts text from scanned pages and images so nothing is left out of search.",
+    ),
+    (
+        "How does widget authentication work?",
+        "The embed script loads with a short-lived widget JWT issued by your backend or our portal. "
+        "For signed-in users, call identify() with a user id and optional JWT so Business Tools can act on their behalf — "
+        "Qefro never stores end-user passwords.",
+    ),
+    (
+        "Can customers talk to a human agent?",
+        "Yes. When the AI cannot answer or the customer asks for a person, conversations can be handed off to your team from the portal inbox. "
+        "Full message history and tool execution logs stay attached for context.",
+    ),
+    (
+        "What channels can I deploy on?",
+        "Website widget (with optional voice — speech-to-text and text-to-speech), public chat pages, WhatsApp on Growth+, and direct API/WebSocket access for custom UIs.",
+    ),
+    (
+        "How are workspaces and team roles handled?",
+        "Each tenant can organize knowledge into public or private workspaces. "
+        "Owner, Admin, and Member roles control who can upload documents, configure Business Tools, manage billing, and invite teammates.",
+    ),
 ]
 
 USE_CASES = [
@@ -1021,8 +1046,174 @@ PAGES["index.html"] = page(
     body=home_body(),
 )
 
-# Inner pages
-def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
+# Inner pages — detailed content for menu-linked pages
+def features_page_content() -> str:
+    return f"""        <div class="outcome-grid">
+          <article class="outcome-card"><h3>Knowledge &amp; RAG</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
+          <article class="outcome-card"><h3>Business Tools</h3><ul><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li><li>Conversation variables</li></ul></article>
+          <article class="outcome-card"><h3>Channels</h3><ul><li>Website widget (JWT auth)</li><li>Public chat pages</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
+          <article class="outcome-card"><h3>Administration</h3><ul><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Analytics &amp; inbox</li><li>Email OTP verification</li><li>Razorpay prepaid billing</li><li>Document reindex</li></ul></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-indigo">{ICONS["file"]} Knowledge</span>
+          <h2>Grounded answers from your content — in any language</h2>
+          <p>Upload documents or crawl your site. Qefro chunks, embeds, and indexes automatically. Answers cite sources and refuse when nothing relevant is found — no confident guessing.</p>
+        </div>
+        <div class="cap-grid reveal">
+          <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>PDF &amp; DOCX ingestion</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Multilingual RAG</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>OCR for images &amp; scans</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Hybrid retrieval</span></div>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-purple">{ICONS["server"]} Integrations</span>
+          <h2>Business Tools — live data and safe actions</h2>
+          <p>Connect order lookup, booking, ticketing, or any REST API. Import OpenAPI specs in one click. Credentials are encrypted; outbound calls use HTTPS with SSRF protections.</p>
+        </div>
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Customer</span> Where is my order #4821?</p>
+            <div class="scenario-flow"><span>AI calls Order API with user JWT</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Live tracking returned</span></div>
+          </article>
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Customer</span> Open a support ticket</p>
+            <div class="scenario-flow"><span>AI calls Helpdesk API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Ticket created with context</span></div>
+          </article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-blue">{ICONS["msg"]} Channels</span>
+          <h2>Deploy where your customers already are</h2>
+          <p>One script tag for the widget. Optional voice input and read-aloud responses. WhatsApp on Growth plans. Public chat URLs for link-in-bio or help centers.</p>
+        </div>
+        <div class="dev-split reveal">
+          <div class="dev-copy">
+            <h3>Authenticated users in minutes</h3>
+            <p>Your app owns login. Forward identity with <code>identify()</code> so Business Tools act on behalf of signed-in customers — passwords never touch Qefro.</p>
+          </div>
+          <pre class="code-panel" tabindex="0"><code>widget.identify({{
+  id: user.id,
+  email: user.email,
+  auth: {{ mode: "jwt", token: userJwt }}
+}});</code></pre>
+        </div>"""
+
+
+def how_it_works_page_content() -> str:
+    return f"""        <div class="steps-grid">
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Upload knowledge</h3><p>Add PDFs, Word docs, Markdown, or crawl your website. OCR handles scanned pages. Content is chunked, embedded, and indexed into public or private workspaces — no vector DB setup.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect Business Tools</h3><p>Import OpenAPI or configure REST endpoints. Store encrypted credentials or forward end-user JWTs via identify(). Toggle which tools are callable from public chat.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Configure your assistant</h3><p>Set name, persona, and welcome message. Choose channels: website widget, public chat page, or WhatsApp. Enable voice if your customers prefer speaking.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Deploy &amp; monitor</h3><p>Paste one script tag or connect WhatsApp. Monitor conversations in the inbox, review analytics, hand off to agents when needed, and reindex documents as policies change.</p></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>What we handle for you</h2>
+          <p>No RAG pipeline to build, no LLM hosting, no embedding model management. Qefro runs retrieval, tool calling, PII scrubbing, and rate limits — you focus on knowledge and APIs.</p>
+        </div>
+        <div class="facts-grid reveal">
+          <div class="fact"><div class="fact-v">&lt; 5 min</div><div class="fact-k">Typical widget deploy</div></div>
+          <div class="fact"><div class="fact-v">WebSocket</div><div class="fact-k">Streaming responses</div></div>
+          <div class="fact"><div class="fact-v">DeepSeek</div><div class="fact-k">Tool-calling AI backend</div></div>
+          <div class="fact"><div class="fact-v">8 KB</div><div class="fact-k">Message size guardrails</div></div>
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Developer integration</h2>
+          <p>Register via email OTP — no password storage. Portal sessions refresh automatically. For production widgets, issue short-lived JWTs from your backend or use portal-issued tokens for testing.</p>
+          <ul>
+            <li>REST API for documents, tools, conversations, and billing</li>
+            <li>WebSocket chat with streaming tokens and tool-call events</li>
+            <li>Widget SDK with identify(), lazy voice, and theme customization</li>
+          </ul>
+        </div>"""
+
+
+def use_cases_page_content() -> str:
+    return f"""        <div class="uc-grid">
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Internal Teams</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Employee onboarding from HR docs</li><li>{ICONS["chevr"]} IT helpdesk with runbook RAG</li><li>{ICONS["chevr"]} Policy &amp; compliance lookup</li><li>{ICONS["chevr"]} Private workspaces per department</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Order &amp; shipment lookups via API</li><li>{ICONS["chevr"]} Refund policy with citations</li><li>{ICONS["chevr"]} Ticket creation in your helpdesk</li><li>{ICONS["chevr"]} Handoff to agents from inbox</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocol &amp; guideline search</li><li>{ICONS["chevr"]} PII scrubbing in conversations</li><li>{ICONS["chevr"]} Tenant-isolated knowledge</li><li>{ICONS["chevr"]} Audit-ready execution logs</li></ul></article>
+          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbook &amp; incident playbooks</li><li>{ICONS["chevr"]} API docs + OpenAPI tools</li><li>{ICONS["chevr"]} Multilingual wiki search</li><li>{ICONS["chevr"]} Slack-style self-service portal</li></ul></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-indigo">{ICONS["zap"]} Real scenarios</span>
+          <h2>Knowledge plus live actions</h2>
+          <p>Every use case combines grounded document answers with optional Business Tool calls — so support does not stop at FAQs.</p>
+        </div>
+        <div class="scenario-grid reveal">
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Employee</span> What is our parental leave policy?</p>
+            <div class="scenario-flow"><span>Retrieves HR handbook</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Cited answer in employee&rsquo;s language</span></div>
+          </article>
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Customer</span> Cancel my subscription</p>
+            <div class="scenario-flow"><span>AI calls Billing API with identify()</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Cancellation confirmed</span></div>
+          </article>
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Engineer</span> How do I roll back deploy?</p>
+            <div class="scenario-flow"><span>Retrieves runbook</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Step-by-step with doc link</span></div>
+          </article>
+          <article class="scenario-card">
+            <p class="scenario-ask"><span>Customer</span> I need a human</p>
+            <div class="scenario-flow"><span>Handoff triggered</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Agent sees full thread in inbox</span></div>
+          </article>
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Multilingual from day one</h2>
+          <p>Teams serving Arabic, Tamil, Hindi, or mixed-language audiences upload docs in each language. Qefro retrieves and responds in the language of the question — tested on production corpora with OCR for scanned PDFs.</p>
+        </div>"""
+
+
+def security_page_content() -> str:
+    return f"""        <div class="trust-grid">
+          <article class="trust-card"><div class="trust-icon">{ICONS["lock"]}</div><h3>Your auth stays yours</h3><p>Qefro is not an identity provider. Forward JWTs or session ids via identify() — end-user passwords are never stored or processed by Qefro.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>Widget JWT auth</h3><p>Embeds load with short-lived widget tokens. Messages are bounded (8 KB), PII is scrubbed before model calls, and tenants cannot access each other&rsquo;s data.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["building"]}</div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. Public and private workspaces control which knowledge and tools each assistant can use.</p></article>
+          <article class="trust-card"><div class="trust-icon">{ICONS["file"]}</div><h3>Encrypted secrets &amp; logs</h3><p>Business Tool credentials encrypted at rest. HTTPS-only outbound calls with SSRF protections and DNS-pinned webhooks. Full conversation and tool execution history.</p></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>Launch-hardened platform controls</h2>
+          <p>Built for production customer support — not demo chatbots.</p>
+        </div>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; tools</li></ul></article>
+          <article class="outcome-card"><h3>Data handling</h3><ul><li>PII scrubbing on outbound LLM calls</li><li>Never used to train AI models</li><li>Encrypted at rest &amp; in transit</li><li>Document deletion &amp; reindex</li></ul></article>
+          <article class="outcome-card"><h3>Tool execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-tool allow-from-public-chat toggle</li><li>Execution logs for accountability</li></ul></article>
+          <article class="outcome-card"><h3>Enterprise roadmap</h3><ul><li>SSO / SAML (roadmap)</li><li>Platform admin audit trail (roadmap)</li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Compliance &amp; deployment</h2>
+          <p>Enterprise customers can run Qefro in a private environment with dedicated support and custom SLAs. Contact sales for the current compliance roadmap and data processing terms.</p>
+        </div>"""
+
+
+def pricing_page_content() -> str:
+    return f"""        <div class="billing-toggle" role="group" aria-label="Billing period">
+          <button type="button" data-billing="monthly">Monthly</button>
+          <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
+        </div>
+        <div class="price-grid">
+          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} 5 documents</li><li>{ICONS["check"]} 1 Business Tool</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
+          <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 5 Business Tools</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
+          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp + voice</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Analytics &amp; agent handoff</li><li>{ICONS["check"]} Priority support</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
+          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>Included on every plan</h2>
+          <p>Core platform capabilities — not nickel-and-dimed add-ons.</p>
+        </div>
+        <div class="cap-grid reveal">
+          <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Multilingual RAG &amp; OCR</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["lock"]}</div><span>Widget JWT &amp; identify()</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>PII scrubbing &amp; tenant isolation</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>Source citations</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Business Tools &amp; OpenAPI</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs</span></div>
+        </div>
+        <div class="prose reveal" style="margin-top:2rem">
+          <p>Billing is prepaid via Razorpay in the portal. Upgrade or top up anytime; owners manage subscriptions and invoices from the billing page.</p>
+        </div>"""
+
+
+def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, extra_sections=""):
     jl = [breadcrumb_json([("Home", ""), (h1, path)])]
     if extra_jsonld:
         jl.extend(extra_jsonld)
@@ -1044,6 +1235,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
 {content}
       </div>
     </section>
+{extra_sections}
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
@@ -1062,79 +1254,51 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None):
 PAGES["features.html"] = inner(
     "Qefro features — AI customer support platform",
     "Features",
-    "Qefro AI customer support platform: knowledge (PDFs, crawler, FAQs), business integrations (REST, OpenAPI), channels (widget, WhatsApp, voice), and admin (analytics, teams, billing).",
+    "Qefro AI customer support: multilingual RAG with OCR, Business Tools (REST/OpenAPI), widget JWT auth, WhatsApp, voice, workspaces, RBAC, and agent handoff.",
     "features.html",
     "features.html",
-    "<p>Qefro combines <strong>knowledge</strong>, <strong>business integrations</strong>, and <strong>AI</strong> so support can answer accurately and take secure actions — not just reply to FAQs.</p>",
-    f"""        <div class="outcome-grid">
-          <article class="outcome-card"><h3>Knowledge</h3><ul><li>Upload PDFs</li><li>Website crawler</li><li>Markdown &amp; FAQs</li><li>Source citations</li></ul></article>
-          <article class="outcome-card"><h3>Business Integrations</h3><ul><li>REST APIs</li><li>OpenAPI import</li><li>Business Tools</li><li>Execution logs</li></ul></article>
-          <article class="outcome-card"><h3>Channels</h3><ul><li>Website widget</li><li>WhatsApp</li><li>Voice</li><li>API access</li></ul></article>
-          <article class="outcome-card"><h3>Administration</h3><ul><li>Analytics</li><li>Billing</li><li>Teams &amp; roles</li><li>Workspaces</li></ul></article>
-        </div>""",
+    "<p>Qefro combines <strong>grounded knowledge</strong>, <strong>secure business integrations</strong>, and <strong>multi-channel deployment</strong> — so support answers accurately, acts on live data, and hands off to humans when needed.</p>",
+    features_page_content(),
 )
 
 PAGES["how-it-works.html"] = inner(
     "How Qefro works — knowledge, integrations, deploy",
     "How it Works",
-    "How Qefro works: upload knowledge, connect your business APIs, deploy to website or WhatsApp — no RAG infrastructure or LLM hosting required.",
+    "How Qefro works: upload multilingual knowledge, connect Business Tools, deploy widget or WhatsApp, and monitor conversations — no RAG infrastructure required.",
     "how-it-works.html",
     "how-it-works.html",
-    "<p>No infrastructure. No RAG setup. No vector database. No LLM hosting. Upload knowledge, connect APIs, deploy.</p>",
-    f"""        <div class="steps-grid">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Upload knowledge</h3><p>Documents, policies, PDFs, or crawl your site. Indexed automatically for grounded answers.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect APIs</h3><p>Import OpenAPI or add REST Business Tools with encrypted secrets and end-user identity forwarding.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Deploy</h3><p>Embed the website widget or connect WhatsApp. Identify signed-in users with a few lines of JavaScript.</p></article>
-        </div>""",
+    "<p>Four steps from documents to production AI support. We handle vectors, models, PII scrubbing, and tool execution — you bring knowledge and APIs.</p>",
+    how_it_works_page_content(),
 )
 
 PAGES["use-cases.html"] = inner(
     "Qefro use cases — AI customer support, HR, IT, engineering",
     "Use Cases",
-    "See how teams use Qefro for AI customer support, employee onboarding, IT helpdesk, compliance lookup, and engineering runbooks.",
+    "Teams use Qefro for customer support with live API actions, internal HR/IT helpdesks, regulated compliance lookup, and engineering runbooks — multilingual RAG included.",
     "use-cases.html",
     "use-cases.html",
-    "<p>Teams use Qefro to answer from approved knowledge and — when connected — retrieve live business data or complete defined support actions through their APIs.</p>",
-    f"""        <div class="uc-grid">
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Internal Teams</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Employee onboarding</li><li>{ICONS["chevr"]} HR &amp; policy</li><li>{ICONS["chevr"]} IT helpdesk</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Order &amp; tracking lookups</li><li>{ICONS["chevr"]} Refunds &amp; FAQs</li><li>{ICONS["chevr"]} Ticket creation</li><li>{ICONS["chevr"]} Self-service</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocols</li><li>{ICONS["chevr"]} Guidelines</li><li>{ICONS["chevr"]} Manuals</li><li>{ICONS["chevr"]} Compliance</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbooks</li><li>{ICONS["chevr"]} Wikis</li><li>{ICONS["chevr"]} API docs</li><li>{ICONS["chevr"]} Incidents</li></ul></article>
-        </div>""",
+    "<p>Same platform for customer-facing support and internal self-service — grounded answers from docs plus optional Business Tool actions through your existing APIs.</p>",
+    use_cases_page_content(),
 )
 
 PAGES["security.html"] = inner(
     "Qefro security — enterprise-grade AI customer support",
     "Security",
-    "Enterprise-grade security for AI customer support: your app keeps authentication, Qefro never stores passwords, encrypted secrets, HTTPS only, tool execution logs, tenant and workspace isolation.",
+    "Enterprise-grade security: widget JWT auth, PII scrubbing, encrypted secrets, tenant/workspace isolation, RBAC, SSRF-protected webhooks, and execution logs.",
     "security.html",
     "security.html",
-    "<p>Customer authentication stays with your application. Qefro never stores passwords. Secrets are encrypted, traffic is HTTPS-only, and execution is tenant- and workspace-isolated.</p>",
-    f"""        <div class="trust-grid">
-          <article class="trust-card"><div class="trust-icon">{ICONS["lock"]}</div><h3>Your auth stays yours</h3><p>Forward JWTs or session ids via identify() — passwords never touch Qefro.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>Encrypted secrets</h3><p>API credentials encrypted at rest. HTTPS-only outbound Business Tool calls.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["building"]}</div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at database and vector store level.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["file"]}</div><h3>Secure execution &amp; logs</h3><p>Conversation history, Business Tool execution logs, SSRF protections, and schema validation. Platform admin audit trail and SSO are on the Enterprise roadmap.</p></article>
-        </div>""",
+    "<p>Authentication stays in your app. Qefro never stores passwords. Secrets are encrypted, messages are bounded and scrubbed, and every tool call is logged.</p>",
+    security_page_content(),
 )
 
 PAGES["pricing.html"] = inner(
     "Qefro pricing — Starter from $29/mo, Growth from $99/mo, Enterprise",
     "Pricing",
-    "Qefro pricing: Starter from $29/month billed annually ($39 monthly), Growth from $99/month billed annually ($119 monthly). Free plan forever (100 conversations/month, 5 documents, 1 Business Tool) — no credit card required.",
+    "Qefro pricing: Free forever (100 conversations, multilingual RAG, widget + voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited Business Tools.",
     "pricing.html",
     "pricing.html",
-    "<p>Qefro offers a <strong>Free plan</strong> (100 conversations/month, 5 documents, 1 Business Tool), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and <strong>Enterprise with custom pricing</strong>.</p>",
-    f"""        <div class="billing-toggle" role="group" aria-label="Billing period">
-          <button type="button" data-billing="monthly">Monthly</button>
-          <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
-        </div>
-        <div class="price-grid">
-          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} 5 documents</li><li>{ICONS["check"]} 1 Business Tool</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
-          <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 5 Business Tools</li><li>{ICONS["check"]} Website widget</li><li>{ICONS["check"]} Email support</li><li>{ICONS["check"]} Custom branding</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Priority support</li><li>{ICONS["check"]} Analytics</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
-        </div>""",
+    "<p>Start free with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited Business Tools on Growth. Enterprise adds private deployment and custom SLAs.</p>",
+    pricing_page_content(),
     extra_jsonld=[
         PRICING_OFFERS_JSON,
         faq_schema([("How much does Qefro cost?", "Qefro is freemium: Free plan includes 100 conversations/month, 5 documents, and 1 Business Tool. Starter is $29/month billed annually ($39 monthly) with 5 Business Tools. Growth is $99/month billed annually ($119 monthly) with unlimited Business Tools. Enterprise is custom. No credit card required to start Free.")]),

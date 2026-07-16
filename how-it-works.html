@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>How Qefro works — knowledge, integrations, deploy</title>
-  <meta name="description" content="How Qefro works: upload knowledge, connect your business APIs, deploy to website or WhatsApp — no RAG infrastructure or LLM hosting required." />
+  <meta name="description" content="How Qefro works: upload multilingual knowledge, connect Business Tools, deploy widget or WhatsApp, and monitor conversations — no RAG infrastructure required." />
   <meta name="keywords" content="AI Customer Support, AI Support Platform, Business AI, AI Widget, AI Customer Service, WhatsApp AI, RAG Platform, AI Support Software" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -24,7 +24,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="How Qefro works — knowledge, integrations, deploy" />
-  <meta property="og:description" content="How Qefro works: upload knowledge, connect your business APIs, deploy to website or WhatsApp — no RAG infrastructure or LLM hosting required." />
+  <meta property="og:description" content="How Qefro works: upload multilingual knowledge, connect Business Tools, deploy widget or WhatsApp, and monitor conversations — no RAG infrastructure required." />
   <meta property="og:url" content="https://qefro.com/how-it-works" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
@@ -36,7 +36,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@qefro" />
   <meta name="twitter:title" content="How Qefro works — knowledge, integrations, deploy" />
-  <meta name="twitter:description" content="How Qefro works: upload knowledge, connect your business APIs, deploy to website or WhatsApp — no RAG infrastructure or LLM hosting required." />
+  <meta name="twitter:description" content="How Qefro works: upload multilingual knowledge, connect Business Tools, deploy widget or WhatsApp, and monitor conversations — no RAG infrastructure required." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta name="twitter:image:alt" content="Qefro — AI Customer Support Platform. Knowledge, business integrations, and AI for accurate answers and secure actions." />
   <meta name="geo.region" content="IN" />
@@ -125,18 +125,39 @@
       <div class="wrap-5xl">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><span>Home</span><span>How it Works</span></nav>
         <h1>How it Works</h1>
-        <div class="direct-answer" style="text-align:left"><p>No infrastructure. No RAG setup. No vector database. No LLM hosting. Upload knowledge, connect APIs, deploy.</p></div>
+        <div class="direct-answer" style="text-align:left"><p>Four steps from documents to production AI support. We handle vectors, models, PII scrubbing, and tool execution — you bring knowledge and APIs.</p></div>
       </div>
     </section>
     <section class="section">
       <div class="wrap reveal">
         <div class="steps-grid">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Upload knowledge</h3><p>Documents, policies, PDFs, or crawl your site. Indexed automatically for grounded answers.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect APIs</h3><p>Import OpenAPI or add REST Business Tools with encrypted secrets and end-user identity forwarding.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Deploy</h3><p>Embed the website widget or connect WhatsApp. Identify signed-in users with a few lines of JavaScript.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Upload knowledge</h3><p>Add PDFs, Word docs, Markdown, or crawl your website. OCR handles scanned pages. Content is chunked, embedded, and indexed into public or private workspaces — no vector DB setup.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect Business Tools</h3><p>Import OpenAPI or configure REST endpoints. Store encrypted credentials or forward end-user JWTs via identify(). Toggle which tools are callable from public chat.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Configure your assistant</h3><p>Set name, persona, and welcome message. Choose channels: website widget, public chat page, or WhatsApp. Enable voice if your customers prefer speaking.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Deploy &amp; monitor</h3><p>Paste one script tag or connect WhatsApp. Monitor conversations in the inbox, review analytics, hand off to agents when needed, and reindex documents as policies change.</p></article>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>What we handle for you</h2>
+          <p>No RAG pipeline to build, no LLM hosting, no embedding model management. Qefro runs retrieval, tool calling, PII scrubbing, and rate limits — you focus on knowledge and APIs.</p>
+        </div>
+        <div class="facts-grid reveal">
+          <div class="fact"><div class="fact-v">&lt; 5 min</div><div class="fact-k">Typical widget deploy</div></div>
+          <div class="fact"><div class="fact-v">WebSocket</div><div class="fact-k">Streaming responses</div></div>
+          <div class="fact"><div class="fact-v">DeepSeek</div><div class="fact-k">Tool-calling AI backend</div></div>
+          <div class="fact"><div class="fact-v">8 KB</div><div class="fact-k">Message size guardrails</div></div>
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Developer integration</h2>
+          <p>Register via email OTP — no password storage. Portal sessions refresh automatically. For production widgets, issue short-lived JWTs from your backend or use portal-issued tokens for testing.</p>
+          <ul>
+            <li>REST API for documents, tools, conversations, and billing</li>
+            <li>WebSocket chat with streaming tokens and tool-call events</li>
+            <li>Widget SDK with identify(), lazy voice, and theme customization</li>
+          </ul>
         </div>
       </div>
     </section>
+
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
