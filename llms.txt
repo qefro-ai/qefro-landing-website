@@ -18,7 +18,7 @@ Knowledge + Business Integrations + AI = accurate answers and secure business ac
 - Free: $0 — 100 conversations, 5 documents (no credit card required)
 - Starter: $29/month billed annually ($348/year) or $39/month monthly
 - Growth: $99/month billed annually ($1,188/year) or $119/month monthly
-- Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML, dedicated CSM, SLA
+- Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
 - Annual billing saves ~26% vs monthly
 
 ## Key capabilities
@@ -26,7 +26,7 @@ Knowledge + Business Integrations + AI = accurate answers and secure business ac
 - Business Integrations: REST APIs, OpenAPI import, encrypted credentials, execution logs, end-user identity forwarding (MCP on roadmap)
 - Channels: Website widget, WhatsApp, Voice, API
 - Admin: Analytics, billing, teams, workspaces
-- Security: Your app owns auth (no passwords stored), HTTPS only, tenant/workspace isolation, audit logs, secure tool execution
+- Security: Your app owns auth (no passwords stored), HTTPS only, tenant/workspace isolation, tool execution logs, secure tool execution; platform admin audit trail and SSO on roadmap
 - Developer: identify() widget API for JWT/session identity in minutes — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for
