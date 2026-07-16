@@ -450,7 +450,7 @@ FAQ_ITEMS = [
         "securely calls your existing business APIs (Business Tools / OpenAPI), and deploys "
         "to website and WhatsApp — without replacing your authentication system.",
     ),
-    ("How much does Qefro cost?", "Qefro is freemium — start Free forever (100 conversations/month, 5 documents, 1 Business Tool). Starter is $29/month billed annually ($39 monthly, 5 Business Tools). Growth is $99/month billed annually ($119 monthly, unlimited Business Tools). Enterprise is custom. No credit card required."),
+    ("How much does Qefro cost?", "Qefro is freemium — start Free forever (100 conversations/month, 2 documents, 1 Business Tool). Starter is $29/month billed annually ($39 monthly, 5 Business Tools). Growth is $99/month billed annually ($119 monthly, unlimited Business Tools). Enterprise is custom. No credit card required."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Our pipeline processes and indexes everything."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
@@ -935,7 +935,7 @@ widget.identify({{
           <p>Freemium — Free forever. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo.</p>
         </div>
         <div class="direct-answer reveal">
-          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, 5 documents, 1 Business Tool), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
+          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, 2 documents, 1 Business Tool), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly">Monthly</button>
@@ -948,7 +948,7 @@ widget.identify({{
             <p class="price-desc">Forever free — no credit card</p>
             <ul class="price-feats">
               <li>{ICONS["check"]} 100 conversations/month</li>
-              <li>{ICONS["check"]} 5 documents</li>
+              <li>{ICONS["check"]} 2 documents</li>
               <li>{ICONS["check"]} 1 Business Tool</li>
               <li>{ICONS["check"]} 2 team members</li>
               <li>{ICONS["check"]} Website widget</li>
@@ -1191,7 +1191,7 @@ def pricing_page_content() -> str:
           <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid">
-          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} 5 documents</li><li>{ICONS["check"]} 1 Business Tool</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
+          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} 2 documents</li><li>{ICONS["check"]} 1 Business Tool</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
           <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For small teams getting started</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} 50 documents</li><li>{ICONS["check"]} 5 Business Tools</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
           <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams that need more power</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} 500 documents</li><li>{ICONS["check"]} Widget + WhatsApp + voice</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Analytics &amp; agent handoff</li><li>{ICONS["check"]} Priority support</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
           <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited Business Tools</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
@@ -1301,7 +1301,7 @@ PAGES["pricing.html"] = inner(
     pricing_page_content(),
     extra_jsonld=[
         PRICING_OFFERS_JSON,
-        faq_schema([("How much does Qefro cost?", "Qefro is freemium: Free plan includes 100 conversations/month, 5 documents, and 1 Business Tool. Starter is $29/month billed annually ($39 monthly) with 5 Business Tools. Growth is $99/month billed annually ($119 monthly) with unlimited Business Tools. Enterprise is custom. No credit card required to start Free.")]),
+        faq_schema([("How much does Qefro cost?", "Qefro is freemium: Free plan includes 100 conversations/month, 2 documents, and 1 Business Tool. Starter is $29/month billed annually ($39 monthly) with 5 Business Tools. Growth is $99/month billed annually ($119 monthly) with unlimited Business Tools. Enterprise is custom. No credit card required to start Free.")]),
     ],
 )
 
@@ -1447,7 +1447,7 @@ for slug, title, q, a, extra in [
         "qefro-pricing.html",
         "How much does Qefro cost?",
         "How much does Qefro cost?",
-        "Qefro is freemium. Free forever: 100 conversations/month, 5 documents, 1 Business Tool. Starter from $29/month billed annually (5 Business Tools). Growth from $99/month billed annually (unlimited Business Tools). Enterprise is custom. No credit card required.",
+        "Qefro is freemium. Free forever: 100 conversations/month, 2 documents, 1 Business Tool. Starter from $29/month billed annually (5 Business Tools). Growth from $99/month billed annually (unlimited Business Tools). Enterprise is custom. No credit card required.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:

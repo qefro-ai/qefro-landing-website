@@ -15,7 +15,7 @@ Qefro is an AI customer support platform. It combines knowledge (your docs, FAQs
 Knowledge + Business Integrations + AI = accurate answers and secure business actions, without replacing your authentication system.
 
 ## Pricing
-- Free: $0 — 100 conversations, 5 documents (no credit card required)
+- Free: $0 — 100 conversations, 2 documents (no credit card required)
 - Starter: $29/month billed annually ($348/year) or $39/month monthly
 - Growth: $99/month billed annually ($1,188/year) or $119/month monthly
 - Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
