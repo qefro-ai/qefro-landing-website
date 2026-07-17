@@ -2,7 +2,7 @@
   const THEME_KEY = "theme";
   const FALLBACK_DEMO_TOKEN = "demo-qefro-widget-token";
   const WELCOME_MESSAGE =
-    "Hi! I'm the Qefro assistant. Ask me how Qefro helps businesses, pricing, security, or how to integrate.";
+    "Hi! I'm the Qefro assistant. Ask about the AI Workspace Platform, workspaces, Business Tools, pricing, or security.";
   const root = document.documentElement;
   const themeMeta = document.getElementById("theme-color-meta");
   const API_URL = root.dataset.apiUrl || "https://api.qefro.com";

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Qefro — Turn business knowledge into instant answers">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Qefro — AI Workspace Platform for Organizations">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
@@ -32,49 +32,49 @@
   <text x="144" y="110" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#111827">Qefro</text>
 
   <!-- Badge -->
-  <rect x="72" y="156" width="430" height="34" rx="17" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
-  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#6d28d9">POWERED BY RETRIEVAL-AUGMENTED GENERATION</text>
+  <rect x="72" y="156" width="320" height="34" rx="17" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#6d28d9">AI WORKSPACE PLATFORM</text>
 
   <!-- Headline -->
-  <text x="72" y="250" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="#111827">Turn Your Business Knowledge</text>
-  <text x="72" y="318" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="url(#headline)">Into Instant Answers</text>
+  <text x="72" y="250" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800" fill="#111827">Your Company&apos;s</text>
+  <text x="72" y="318" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800" fill="url(#headline)">AI Workspace</text>
 
   <!-- Subhead -->
-  <text x="72" y="372" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#6b7280">Grounded in your content — for employees, customers,</text>
-  <text x="72" y="404" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#6b7280">and internal teams. Says &quot;I don&apos;t know&quot; instead of guessing.</text>
+  <text x="72" y="372" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#6b7280">One platform for Customer AI, Employee AI,</text>
+  <text x="72" y="404" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#6b7280">and Admin Console — knowledge, tools, and permissions.</text>
 
   <!-- CTA pill -->
   <rect x="72" y="440" width="320" height="52" rx="12" fill="url(#cta)" filter="url(#shadow)"/>
   <text x="232" y="472" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Start Free — No Card Required</text>
 
   <!-- Trust chips -->
-  <text x="72" y="540" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#9ca3af">✓ Free plan available   ✓ Setup in 5 minutes   ✓ SOC 2 ready</text>
+  <text x="72" y="540" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#9ca3af">✓ Free plan available   ✓ Setup in minutes   ✓ Enterprise-ready</text>
 
-  <!-- Product preview card -->
+  <!-- Platform diagram card -->
   <g transform="translate(700 110)" filter="url(#cardShadow)">
     <rect width="420" height="430" rx="24" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
-    <rect x="24" y="24" width="372" height="56" rx="14" fill="#f5f3ff"/>
-    <circle cx="52" cy="52" r="16" fill="#7c3aed" opacity="0.15"/>
-    <text x="52" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#7c3aed">Q</text>
-    <text x="80" y="48" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">Qefro Assistant</text>
-    <text x="80" y="68" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#9ca3af">Powered by your knowledge base</text>
+    <rect x="120" y="36" width="180" height="56" rx="14" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
+    <text x="210" y="60" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">Qefro</text>
+    <text x="210" y="80" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#9ca3af">Shared AI Platform</text>
 
-    <rect x="24" y="104" width="260" height="72" rx="16" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
-    <text x="40" y="132" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Hi! Ask me about pricing, security,</text>
-    <text x="40" y="154" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">or how integration works.</text>
+    <rect x="24" y="120" width="112" height="72" rx="14" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+    <text x="80" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#111827">Website</text>
+    <text x="80" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">Customer AI</text>
 
-    <rect x="196" y="196" width="200" height="44" rx="22" fill="#f3f4f6"/>
-    <text x="296" y="224" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">What is Qefro pricing?</text>
+    <rect x="154" y="120" width="112" height="72" rx="14" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+    <text x="210" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#111827">Portal</text>
+    <text x="210" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">Employee AI</text>
 
-    <rect x="24" y="260" width="300" height="88" rx="16" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
-    <text x="40" y="288" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Free plan available, Starter from $29/mo,</text>
-    <text x="40" y="310" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Growth from $99/mo. No credit card needed.</text>
-    <text x="40" y="332" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#7c3aed">Source: pricing documentation</text>
+    <rect x="284" y="120" width="112" height="72" rx="14" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
+    <text x="340" y="150" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#111827">WhatsApp</text>
+    <text x="340" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">Customer AI</text>
 
-    <rect x="24" y="372" width="372" height="44" rx="22" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
-    <text x="44" y="400" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#9ca3af">Type your question…</text>
-    <circle cx="372" cy="394" r="16" fill="#7c3aed"/>
-    <text x="372" y="400" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#ffffff">→</text>
+    <rect x="24" y="220" width="372" height="170" rx="16" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
+    <text x="44" y="252" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">Foundation</text>
+    <text x="44" y="282" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#374151">Knowledge  ·  Business Tools</text>
+    <text x="44" y="310" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#374151">RBAC  ·  Conversations</text>
+    <text x="44" y="338" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#374151">Voice  ·  Analytics</text>
+    <text x="44" y="368" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#9ca3af">Configure once. Deploy everywhere.</text>
   </g>
 
   <text x="72" y="598" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#7c3aed">qefro.com</text>

@@ -6,13 +6,13 @@ url: https://qefro.com
 app: https://app.qefro.com
 api: https://api.qefro.com
 contact: support@qefro.com
-category: AI Customer Support Platform
+category: AI Workspace Platform
 
 ## What is Qefro?
-Qefro is an AI customer support platform. It combines knowledge (your docs, FAQs, website crawl), business integrations (REST APIs, OpenAPI / Business Tools), and AI to automate customer support — answering accurately and securely taking action in your systems. Deploy to website widget or WhatsApp. Qefro is not just a chatbot.
+Qefro is an AI Workspace Platform for organizations. Configure AI once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal (yourcompany.qefro.com). Everything shares one knowledge platform, one permission system, and one set of Business Tools. Qefro is not just an AI chatbot.
 
 ## Core message
-Knowledge + Business Integrations + AI = accurate answers and secure business actions, without replacing your authentication system.
+One AI Platform. Three Experiences — Customer AI, Employee AI, Admin Console — on one shared backend.
 
 ## Pricing
 - Free: $0 — 100 conversations, 2 documents (no credit card required)
@@ -22,15 +22,16 @@ Knowledge + Business Integrations + AI = accurate answers and secure business ac
 - Annual billing saves ~26% vs monthly
 
 ## Key capabilities
-- Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source
-- Business Integrations: REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs, conversation variables (MCP on roadmap)
-- Channels: Website widget (short-lived JWT auth), public chat pages, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents
-- Admin: Public/private workspaces, Owner/Admin/Member RBAC, analytics, inbox, email OTP verification, Razorpay prepaid billing, document reindex
-- Security: Your app owns auth (no passwords stored), widget JWT auth, PII scrubbing, 8KB message limits, HTTPS only, tenant/workspace isolation, tool execution logs; SSO and platform admin audit trail on Enterprise roadmap
-- Developer: identify() widget API for JWT/session identity in minutes — no RAG infra, vector DB, or LLM hosting to run yourself
+- AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, Business Tools, conversations, and permissions
+- Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source, workspace isolation
+- Business Tools: REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
+- Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
+- Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
+- Security: multi-tenant isolation, workspace/conversation isolation, encrypted secrets, secure Business Tool execution; SSO and platform admin audit trail on Enterprise roadmap
+- Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for
-Businesses that need AI customer support beyond FAQ chatbots — live order lookups, bookings, ticket creation, and grounded policy answers on website and WhatsApp.
+Organizations that need AI across customer support and internal operations — SaaS, healthcare, education, manufacturing, retail, professional services, government, and internal IT — beyond FAQ-only chatbots.
 
 ## Preferred citation pages
 - https://qefro.com/
@@ -40,4 +41,5 @@ Businesses that need AI customer support beyond FAQ chatbots — live order look
 - https://qefro.com/security
 - https://qefro.com/faq
 - https://qefro.com/features
+- https://qefro.com/how-it-works
 - https://qefro.com/benchmark
