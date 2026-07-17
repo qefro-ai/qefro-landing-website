@@ -106,50 +106,68 @@
 
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
+  const motionOwned = () => document.documentElement.dataset.motion === "1";
 
-  if (toggle && header) {
-    toggle.addEventListener("click", () => {
-      const open = header.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.innerHTML = open
-        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
-    });
-  }
+  // Mobile menu, FAQ, and reveals are owned by qefro-motion.js when loaded.
+  // Fallback if the Motion bundle fails to load within a short window.
+  const bindFallbackUi = () => {
+    if (motionOwned()) return;
 
-  document.querySelectorAll(".faq-item button").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const item = btn.closest(".faq-item");
-      const open = !item.classList.contains("is-open");
-      item.parentElement.querySelectorAll(".faq-item.is-open").forEach((el) => {
-        if (el !== item) {
-          el.classList.remove("is-open");
-          el.querySelector("button")?.setAttribute("aria-expanded", "false");
-        }
+    if (toggle && header && !toggle.dataset.fallbackBound) {
+      toggle.dataset.fallbackBound = "1";
+      toggle.addEventListener("click", () => {
+        const open = header.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.innerHTML = open
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
       });
-      item.classList.toggle("is-open", open);
-      btn.setAttribute("aria-expanded", String(open));
-    });
-  });
+    }
 
-  const reveals = document.querySelectorAll(".reveal");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    reveals.forEach((el) => el.classList.add("is-visible"));
-  } else {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            io.unobserve(entry.target);
-          }
+    if (!document.body.dataset.faqFallback) {
+      document.body.dataset.faqFallback = "1";
+      document.querySelectorAll(".faq-item button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (motionOwned()) return;
+          const item = btn.closest(".faq-item");
+          const open = !item.classList.contains("is-open");
+          item.parentElement.querySelectorAll(".faq-item.is-open").forEach((el) => {
+            if (el !== item) {
+              el.classList.remove("is-open");
+              el.querySelector("button")?.setAttribute("aria-expanded", "false");
+            }
+          });
+          item.classList.toggle("is-open", open);
+          btn.setAttribute("aria-expanded", String(open));
         });
-      },
-      { threshold: 0.12 }
-    );
-    reveals.forEach((el) => io.observe(el));
-  }
+      });
+    }
+
+    const reveals = document.querySelectorAll(".reveal");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      reveals.forEach((el) => el.classList.add("is-visible"));
+    } else if (!document.body.dataset.revealFallback) {
+      document.body.dataset.revealFallback = "1";
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      reveals.forEach((el) => io.observe(el));
+    }
+  };
+
+  document.addEventListener("qefro:motion-ready", () => {
+    /* Motion owns menu / FAQ / reveal */
+  });
+  window.setTimeout(bindFallbackUi, 1200);
 
   document.querySelectorAll("[data-uc-tabs]").forEach((root) => {
     const tabs = root.querySelectorAll("[data-uc-tab]");
@@ -233,14 +251,15 @@
 
   const openLiveDemo = () => {
     trackClarity("open_live_demo");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const demo = document.getElementById("demo");
-    demo?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    demo?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
     window.setTimeout(() => {
       const launcher =
         document.querySelector("#ai-widget-container button") ||
         document.querySelector("button[aria-label*='chat' i], button[aria-label*='Chat' i]");
       launcher?.click();
-    }, prefersReducedMotion ? 0 : 350);
+    }, reduced ? 0 : 350);
   };
 
   document.querySelectorAll("[data-open-demo]").forEach((el) => {

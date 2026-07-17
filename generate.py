@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "30"
+ASSET_VERSION = "31"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -223,7 +223,8 @@ def widget_embed(theme: str = "light") -> str:
 
 def page_scripts() -> str:
     return f"""{widget_embed()}
-  <script src="/assets/js/main.js?v={ASSET_VERSION}" defer></script>"""
+  <script src="/assets/js/main.js?v={ASSET_VERSION}" defer></script>
+  <script type="module" src="/assets/js/qefro-motion.js?v={ASSET_VERSION}"></script>"""
 
 
 def footer() -> str:
@@ -705,27 +706,27 @@ def home_faq_preview(n: int = 8) -> str:
 
 
 def home_body() -> str:
-    return f"""    <section class="hero" aria-label="Hero">
+    return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
-        <span class="eyebrow">{ICONS["sparkles"]} AI Workspace Platform</span>
-        <h1>
+        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Workspace Platform</span>
+        <h1 data-motion="hero-title">
           <span class="hero-line">AI That Knows Your Business</span>
           <span class="hero-accent">and Gets Work Done</span>
         </h1>
-        <p class="hero-sub">Deploy AI across customer support and internal teams. Answer questions, search company knowledge, and securely perform business actions from one centralized AI platform.</p>
-        <div class="hero-actions">
+        <p class="hero-sub" data-motion="hero-sub">Deploy AI across customer support and internal teams. Answer questions, search company knowledge, and securely perform business actions from one centralized AI platform.</p>
+        <div class="hero-actions" data-motion="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
-        <div class="hero-checks">
+        <div class="hero-checks" data-motion="hero-checks">
           <span>{ICONS["check"]} Configure once · deploy everywhere</span>
           <span>{ICONS["check"]} Free forever · no credit card</span>
           <span>{ICONS["check"]} Customers &amp; employees</span>
           <span>{ICONS["check"]} Your auth stays yours</span>
         </div>
-        <p class="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
-        <p class="hero-scroll-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo {ICONS["arrow"]}</a></p>
+        <p class="hero-diff" data-motion="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
+        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo {ICONS["arrow"]}</a></p>
       </div>
     </section>
 
@@ -764,12 +765,12 @@ def home_body() -> str:
             </p>
           </div>
           <button type="button" class="demo-chat" data-open-demo data-clarity-event="cta_chat_mock" aria-label="Open live chat demo">
-            <div class="chat-mock">
+            <div class="chat-mock" data-motion="hero-float">
               <div class="chat-mock-head">
                 <div class="chat-mock-avatar">{ICONS["bot"]}</div>
                 <div><strong>Qefro Assistant</strong><span>AI Workspace Platform</span></div>
               </div>
-              <div class="chat-mock-body">
+              <div class="chat-mock-body" data-demo-script>
                 <div class="chat-bubble ai">Hi! I can explain how Qefro deploys AI for customers and employees from one platform.</div>
                 <div class="chat-bubble user">What makes Qefro different?</div>
                 <div class="chat-bubble ai">Most AI platforms answer questions. Qefro also performs business actions using your knowledge, APIs, and permissions — configure once, deploy everywhere.</div>
@@ -791,11 +792,16 @@ def home_body() -> str:
           <h2 id="platform-heading">Configure knowledge once. Deploy it everywhere.</h2>
           <p>Set up workspaces, knowledge, business actions, and permissions in the Admin Console — then deploy Customer AI and Employee AI across every channel. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
-        <div class="arch-diagram arch-diagram-flow reveal" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI">
+        <div class="arch-diagram arch-diagram-flow reveal" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI" data-motion="architecture">
           <div class="arch-hub">
             <span class="arch-hub-label">Admin Console</span>
             <span class="arch-hub-sub">Configure Once</span>
           </div>
+          <svg class="arch-lines" data-motion="arch-lines" viewBox="0 0 320 48" fill="none" aria-hidden="true">
+            <path d="M160 4 V28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M160 28 H72 V44" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M160 28 H248 V44" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           <p class="arch-flow-label">Knowledge · Actions · Permissions · Branding</p>
           <div class="arch-channels">
             <div class="arch-channel">

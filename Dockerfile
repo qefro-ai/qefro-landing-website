@@ -1,8 +1,16 @@
+FROM node:22-alpine AS motion
+WORKDIR /site
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY src ./src
+RUN npm run build:motion
+
 FROM python:3.12-alpine AS generator
 RUN apk add --no-cache librsvg
 WORKDIR /site
 COPY generate.py ./
 COPY assets ./assets
+COPY --from=motion /site/assets/js/qefro-motion.js ./assets/js/qefro-motion.js
 COPY llms.txt ./
 RUN python3 generate.py
 
