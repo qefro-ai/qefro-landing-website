@@ -772,10 +772,19 @@ a:focus-visible {
 .uc-card h3 { margin: 0; font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; }
 .uc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
 .uc-list li {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-size: 0.875rem; color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
 }
-.uc-list li svg { width: 0.875rem; height: 0.875rem; color: var(--uc-chevron); flex-shrink: 0; }
+.uc-list li svg {
+  width: 0.875rem;
+  height: 0.875rem;
+  color: var(--uc-chevron);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
 .uc-card:hover .uc-list li { color: var(--uc-hover-text); }
 
 /* Use case tabs (Stitch) */
@@ -1015,18 +1024,30 @@ a:focus-visible {
 .price-fair-use a { text-decoration: underline; text-underline-offset: 2px; }
 .price-feats { display: grid; gap: 0.65rem; margin: 0 0 1.75rem; flex: 1; }
 .price-feats li {
-  display: flex; align-items: flex-start; gap: 0.65rem;
-  font-size: 0.875rem; color: var(--feat-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--feat-text);
 }
-.price-feats svg { width: 1rem; height: 1rem; color: var(--emerald); margin-top: 0.15rem; flex-shrink: 0; }
+.price-feats svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--emerald);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+.price-feat-body {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.45;
+}
 .price-meta {
   display: block;
   margin-top: 0.15rem;
-  margin-left: 1.65rem;
   font-size: 0.75rem;
   color: var(--text-muted);
 }
-.price-feats li { flex-wrap: wrap; }
 .price-card .btn { width: 100%; }
 .price-card:not(.is-popular) .btn-plan {
   background: var(--btn-plan-bg); border: 1px solid var(--btn-plan-border); color: var(--btn-plan-color);

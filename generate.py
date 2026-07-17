@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "29"
+ASSET_VERSION = "30"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -437,6 +437,87 @@ PRICE_FAIR_USE_NOTE = (
     'Contact <a href="/contact">Sales</a> for storage and processing volume details on Growth and Enterprise.'
     "</p>"
 )
+
+
+def price_feat(text: str, meta: str | None = None) -> str:
+    """Feature row with check icon; keep text in a body so the icon never orphans on wrap."""
+    body = text if meta is None else f'{text} <span class="price-meta">{meta}</span>'
+    return f'<li>{ICONS["check"]}<span class="price-feat-body">{body}</span></li>'
+
+
+def price_cards_html(*, interactive: bool = False) -> str:
+    """Shared Free / Starter / Growth / Enterprise cards for homepage + /pricing."""
+    cta = ' data-price-cta' if interactive else ""
+    clarity = (
+        lambda event: f' data-clarity-event="{event}"' if interactive else ""
+    )
+    return f"""          <article class="price-card{cta}">
+            <h3>Free</h3>
+            <p class="price-best">Best for evaluating the platform</p>
+            <div class="price-amount">$0</div>
+            <p class="price-desc">Forever free — no credit card</p>
+            <ul class="price-feats">
+              {price_feat("100 conversations/month")}
+              {price_feat("Knowledge for getting started", "2 documents")}
+              {price_feat("Connect 1 business system")}
+              {price_feat("2 team members")}
+              {price_feat("Website widget + voice")}
+              {price_feat("Multilingual RAG")}
+              {price_feat("Community support")}
+            </ul>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>Start Free</a>
+          </article>
+          <article class="price-card{cta}">
+            <h3>Starter</h3>
+            <p class="price-best">Best for startups</p>
+            <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div>
+            <p class="price-billed">billed annually · or $39/mo monthly</p>
+            <p class="price-desc">For one team going live</p>
+            <ul class="price-feats">
+              {price_feat("1,000 conversations/month")}
+              {price_feat("Knowledge for one team", "50 documents")}
+              {price_feat("Connect up to 5 business systems")}
+              {price_feat("Website widget + voice")}
+              {price_feat("Custom branding")}
+              {price_feat("Email support")}
+            </ul>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
+          </article>
+          <article class="price-card is-popular{cta}">
+            <div class="price-pop">{ICONS["star"]} Most Popular</div>
+            <h3>Growth</h3>
+            <p class="price-best">Best for growing companies</p>
+            <div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div>
+            <p class="price-billed">billed annually · or $119/mo monthly</p>
+            <p class="price-desc">For teams deploying across channels</p>
+            <ul class="price-feats">
+              {price_feat("10,000 conversations/month")}
+              {price_feat("Knowledge across teams", "500 documents")}
+              {price_feat("Widget + WhatsApp + voice")}
+              {price_feat("Unlimited business system connections")}
+              {price_feat("Analytics &amp; agent handoff")}
+              {price_feat("Priority support")}
+            </ul>
+            {PRICE_FAIR_USE_NOTE}
+            <a class="btn btn-primary" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
+          </article>
+          <article class="price-card{cta}">
+            <h3>Enterprise</h3>
+            <p class="price-best">Best for regulated organizations</p>
+            <div class="price-amount">Custom</div>
+            <p class="price-desc">For advanced security and scale</p>
+            <ul class="price-feats">
+              {price_feat("Unlimited conversations")}
+              {price_feat("Unlimited knowledge")}
+              {price_feat("Private deployment")}
+              {price_feat("SSO &amp; SAML (roadmap)")}
+              {price_feat("Dedicated CSM")}
+              {price_feat("Unlimited business system connections")}
+              {price_feat("SLA guarantee")}
+            </ul>
+            {PRICE_FAIR_USE_NOTE}
+            <a class="btn btn-plan" href="/contact"{clarity("cta_talk_to_sales")}>Talk to Sales</a>
+          </article>"""
 
 PRODUCT_SCREENSHOTS = [
     ("inbox.webp", "Inbox", "Review conversations and hand off customer support when needed."),
@@ -912,70 +993,7 @@ def home_body() -> str:
           <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid reveal">
-          <article class="price-card" data-price-cta>
-            <h3>Free</h3>
-            <p class="price-best">Best for evaluating the platform</p>
-            <div class="price-amount">$0</div>
-            <p class="price-desc">Forever free — no credit card</p>
-            <ul class="price-feats">
-              <li>{ICONS["check"]} 100 conversations/month</li>
-              <li>{ICONS["check"]} Knowledge for getting started <span class="price-meta">2 documents</span></li>
-              <li>{ICONS["check"]} Connect 1 business system</li>
-              <li>{ICONS["check"]} 2 team members</li>
-              <li>{ICONS["check"]} Website widget</li>
-              <li>{ICONS["check"]} Community support</li>
-            </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free</a>
-          </article>
-          <article class="price-card" data-price-cta>
-            <h3>Starter</h3>
-            <p class="price-best">Best for startups</p>
-            <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p>
-            <p class="price-desc">For one team going live</p>
-            <ul class="price-feats">
-              <li>{ICONS["check"]} 1,000 conversations/month</li>
-              <li>{ICONS["check"]} Knowledge for one team <span class="price-meta">50 documents</span></li>
-              <li>{ICONS["check"]} Connect up to 5 business systems</li>
-              <li>{ICONS["check"]} Website widget</li>
-              <li>{ICONS["check"]} Email support</li>
-              <li>{ICONS["check"]} Custom branding</li>
-            </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}" data-clarity-event="cta_get_started">Get Started</a>
-          </article>
-          <article class="price-card is-popular" data-price-cta>
-            <div class="price-pop">{ICONS["star"]} Most Popular</div>
-            <h3>Growth</h3>
-            <p class="price-best">Best for growing companies</p>
-            <div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p>
-            <p class="price-desc">For teams deploying across channels</p>
-            <ul class="price-feats">
-              <li>{ICONS["check"]} 10,000 conversations/month</li>
-              <li>{ICONS["check"]} Knowledge across teams <span class="price-meta">500 documents</span></li>
-              <li>{ICONS["check"]} Widget + WhatsApp</li>
-              <li>{ICONS["check"]} Unlimited business system connections</li>
-              <li>{ICONS["check"]} Priority support</li>
-              <li>{ICONS["check"]} Analytics</li>
-            </ul>
-            {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-primary" href="{PORTAL_SIGNUP}" data-clarity-event="cta_get_started">Get Started</a>
-          </article>
-          <article class="price-card" data-price-cta>
-            <h3>Enterprise</h3>
-            <p class="price-best">Best for regulated organizations</p>
-            <div class="price-amount">Custom</div>
-            <p class="price-desc">For organizations with advanced needs</p>
-            <ul class="price-feats">
-              <li>{ICONS["check"]} Unlimited conversations</li>
-              <li>{ICONS["check"]} Unlimited knowledge</li>
-              <li>{ICONS["check"]} Private deployment</li>
-              <li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li>
-              <li>{ICONS["check"]} Dedicated CSM</li>
-              <li>{ICONS["check"]} Unlimited business system connections</li>
-              <li>{ICONS["check"]} SLA guarantee</li>
-            </ul>
-            {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-plan" href="/contact" data-clarity-event="cta_talk_to_sales">Talk to Sales</a>
-          </article>
+{price_cards_html(interactive=True)}
         </div>
       </div>
     </section>
@@ -1204,10 +1222,7 @@ def pricing_page_content() -> str:
           <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid">
-          <article class="price-card"><h3>Free</h3><p class="price-best">Best for evaluating the platform</p><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} Knowledge for getting started <span class="price-meta">2 documents</span></li><li>{ICONS["check"]} Connect 1 business system</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
-          <article class="price-card"><h3>Starter</h3><p class="price-best">Best for startups</p><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For one team going live</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} Knowledge for one team <span class="price-meta">50 documents</span></li><li>{ICONS["check"]} Connect up to 5 business systems</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><p class="price-best">Best for growing companies</p><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams deploying across channels</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Knowledge across teams <span class="price-meta">500 documents</span></li><li>{ICONS["check"]} Widget + WhatsApp + voice</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Analytics &amp; agent handoff</li><li>{ICONS["check"]} Priority support</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card"><h3>Enterprise</h3><p class="price-best">Best for regulated organizations</p><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
+{price_cards_html(interactive=False)}
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <h2>Included on every plan</h2>
