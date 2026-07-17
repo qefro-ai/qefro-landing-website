@@ -272,7 +272,7 @@ def page(
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xmaswr5i7h");
-  </script>""" if not path else ""
+  </script>"""
     return f"""<!DOCTYPE html>
 <html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
@@ -348,6 +348,7 @@ SOFTWARE_JSON = json.dumps(
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "url": SITE,
+        "image": OG_IMAGE,
         "description": (
             "AI Workspace Platform for organizations: configure once in the Admin Console, "
             "then deploy Customer AI on website and WhatsApp and Employee AI via a branded "
@@ -367,15 +368,22 @@ SOFTWARE_JSON = json.dumps(
     indent=2,
 )
 
+# Use SoftwareApplication — not Product — so Google does not evaluate /pricing as a Merchant listing
+# (shipping/return fields are for physical goods). SaaS belongs in software-app rich results.
 PRICING_OFFERS_JSON = json.dumps(
     {
         "@context": "https://schema.org",
-        "@type": "Product",
+        "@type": "SoftwareApplication",
         "name": "Qefro",
-        "description": "AI Workspace Platform with knowledge retrieval, business actions, website widget, Internal Portal, and WhatsApp.",
-        "brand": {"@type": "Brand", "name": "Qefro"},
-        "category": "BusinessApplication",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
         "url": f"{SITE}/pricing",
+        "image": OG_IMAGE,
+        "description": (
+            "AI Workspace Platform with knowledge retrieval, business actions, "
+            "website widget, Internal Portal, and WhatsApp."
+        ),
+        "brand": {"@type": "Brand", "name": "Qefro"},
         "offers": [
             {
                 "@type": "Offer",
