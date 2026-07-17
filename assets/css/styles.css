@@ -504,11 +504,19 @@ a:focus-visible {
 .hero h1 .hero-line { display: block; color: var(--hero-fg); }
 .hero h1 .hero-accent { display: block; color: var(--hero-accent); }
 .hero-sub {
-  margin: 0 auto 1.25rem; max-width: 42rem;
+  margin: 0 auto 1.5rem; max-width: 42rem;
   font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--hero-sub); line-height: 1.7;
 }
+.hero h1,
+.hero-sub,
+.hero-diff,
+.hero-checks,
+.section-head h2,
+.section-head p {
+  cursor: default;
+}
 .hero-diff {
-  margin: 0 auto 2.25rem; max-width: 40rem;
+  margin: 1.75rem auto 0; max-width: 40rem;
   padding: 0.9rem 1.15rem;
   border-radius: 0.85rem;
   border: 1px solid var(--hero-pipeline-accent-border);
@@ -518,6 +526,20 @@ a:focus-visible {
   color: var(--hero-pipeline-v);
   text-align: left;
 }
+.hero-scroll-cue {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+}
+.hero-scroll-cue a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--hero-check);
+  font-weight: 600;
+  text-decoration: none;
+}
+.hero-scroll-cue a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.hero-scroll-cue svg { width: 1rem; height: 1rem; }
 .hero-actions {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;
 }
@@ -930,8 +952,10 @@ a:focus-visible {
   padding: 1.75rem; border-radius: 1rem;
   border: 1px solid var(--price-card-border); background: var(--price-card-bg);
   box-shadow: var(--card-shadow);
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, transform 0.2s ease;
 }
+.price-card[data-price-cta] { cursor: pointer; }
+.price-card[data-price-cta]:hover { border-color: var(--price-card-hover-border); transform: translateY(-2px); }
 .price-card:hover { border-color: var(--price-card-hover-border); }
 .price-card.is-popular {
   transform: scale(1.02);
@@ -960,9 +984,19 @@ a:focus-visible {
 }
 .billing-toggle button {
   border: 0; background: transparent; color: var(--text-muted); cursor: pointer;
-  padding: 0.5rem 1.1rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;
+  min-height: 2.5rem; padding: 0.55rem 1.25rem; border-radius: 999px;
+  font-size: 0.875rem; font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
-.billing-toggle button.is-active { background: var(--color-accent); color: #fff; }
+.billing-toggle button:hover { color: var(--text-strong); }
+.billing-toggle button.is-active {
+  background: var(--color-accent); color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.billing-toggle button:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
 .billing-toggle button span {
   margin-left: 0.4rem; font-size: 0.625rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
 }
@@ -1161,12 +1195,45 @@ a:focus-visible {
 .demo-copy > p {
   margin: 0 0 1.5rem; color: var(--text-sub); line-height: 1.7;
 }
+button.demo-chat {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+button.demo-chat:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
+  border-radius: 1.25rem;
+}
+button.demo-chat:hover .chat-mock {
+  border-color: var(--hero-pipeline-accent-border);
+}
+.demo-chip {
+  display: inline;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-sub);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.demo-chip:hover { color: var(--color-accent); }
 .chat-mock {
   background: var(--chat-bg);
   border: 1px solid var(--border);
   border-radius: 1.25rem;
   box-shadow: var(--chat-shadow);
   overflow: hidden;
+  transition: border-color 0.2s ease;
 }
 .chat-mock-head {
   display: flex; align-items: center; gap: 0.75rem;
@@ -1206,12 +1273,12 @@ a:focus-visible {
   border: 1px solid var(--border); border-radius: 999px;
   background: var(--chat-chip-bg); color: var(--chat-bar-text); font-size: 0.8125rem;
 }
-.chat-mock-input button {
+.chat-mock-input .chat-mock-send {
   width: 2rem; height: 2rem; border-radius: 999px;
   display: grid; place-items: center;
-  background: var(--indigo); color: #fff;
+  background: var(--indigo); color: #fff; flex-shrink: 0;
 }
-.chat-mock-input button svg { width: 0.875rem; height: 0.875rem; }
+.chat-mock-input .chat-mock-send svg { width: 0.875rem; height: 0.875rem; }
 .widget-demo-card {
   display: flex; align-items: flex-start; gap: 1rem; text-align: left;
   padding: 1.25rem 1.5rem; border-radius: 1rem;

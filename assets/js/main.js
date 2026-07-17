@@ -208,13 +208,36 @@
     setPeriod("annual");
   }
 
+  const trackClarity = (name) => {
+    if (!name) return;
+    try {
+      if (typeof window.clarity === "function") window.clarity("event", name);
+    } catch (_) {
+      /* ignore analytics failures */
+    }
+  };
+
+  document.querySelectorAll("[data-clarity-event]").forEach((el) => {
+    el.addEventListener("click", () => trackClarity(el.dataset.clarityEvent));
+  });
+
+  document.querySelectorAll("[data-price-cta]").forEach((card) => {
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button")) return;
+      const cta = card.querySelector("a.btn");
+      if (!cta) return;
+      trackClarity(cta.dataset.clarityEvent || "cta_price_card");
+      cta.click();
+    });
+  });
+
   const openLiveDemo = () => {
+    trackClarity("open_live_demo");
     const demo = document.getElementById("demo");
     demo?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
     window.setTimeout(() => {
       const launcher =
         document.querySelector("#ai-widget-container button") ||
-        document.querySelector("[class*='widget'] button") ||
         document.querySelector("button[aria-label*='chat' i], button[aria-label*='Chat' i]");
       launcher?.click();
     }, prefersReducedMotion ? 0 : 350);

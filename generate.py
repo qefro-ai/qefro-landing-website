@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "28"
+ASSET_VERSION = "29"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -356,10 +356,12 @@ SOFTWARE_JSON = json.dumps(
         "keywords": META_KEYWORDS,
         "offers": {
             "@type": "AggregateOffer",
-            "lowPrice": "29",
+            "lowPrice": "0",
             "highPrice": "119",
             "priceCurrency": "USD",
-            "offerCount": "3",
+            "offerCount": "4",
+            "availability": "https://schema.org/InStock",
+            "url": f"{SITE}/pricing",
         },
     },
     indent=2,
@@ -372,7 +374,19 @@ PRICING_OFFERS_JSON = json.dumps(
         "name": "Qefro",
         "description": "AI Workspace Platform with knowledge retrieval, business actions, website widget, Internal Portal, and WhatsApp.",
         "brand": {"@type": "Brand", "name": "Qefro"},
+        "category": "BusinessApplication",
+        "url": f"{SITE}/pricing",
         "offers": [
+            {
+                "@type": "Offer",
+                "name": "Free",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "Forever free plan — no credit card required",
+                "url": f"{SITE}/pricing",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2027-12-31",
+            },
             {
                 "@type": "Offer",
                 "name": "Starter",
@@ -380,6 +394,8 @@ PRICING_OFFERS_JSON = json.dumps(
                 "priceCurrency": "USD",
                 "description": "Billed annually ($39/month if billed monthly)",
                 "url": f"{SITE}/pricing",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2027-12-31",
             },
             {
                 "@type": "Offer",
@@ -388,6 +404,8 @@ PRICING_OFFERS_JSON = json.dumps(
                 "priceCurrency": "USD",
                 "description": "Billed annually ($119/month if billed monthly)",
                 "url": f"{SITE}/pricing",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2027-12-31",
             },
         ],
     },
@@ -607,10 +625,9 @@ def home_body() -> str:
           <span class="hero-accent">and Gets Work Done</span>
         </h1>
         <p class="hero-sub">Deploy AI across customer support and internal teams. Answer questions, search company knowledge, and securely perform business actions from one centralized AI platform.</p>
-        <p class="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <div class="hero-checks">
           <span>{ICONS["check"]} Configure once · deploy everywhere</span>
@@ -618,6 +635,8 @@ def home_body() -> str:
           <span>{ICONS["check"]} Customers &amp; employees</span>
           <span>{ICONS["check"]} Your auth stays yours</span>
         </div>
+        <p class="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
+        <p class="hero-scroll-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo {ICONS["arrow"]}</a></p>
       </div>
     </section>
 
@@ -648,14 +667,14 @@ def home_body() -> str:
                   <p>Answers come from Qefro&rsquo;s demo knowledge base.</p>
                 </div>
               </div>
-              <p class="widget-demo-suggestions">Try: <span>What is Qefro?</span> · <span>What are AI Workspaces?</span> · <span>Is my data secure?</span></p>
+              <p class="widget-demo-suggestions">Try: <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What is Qefro?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What are AI Workspaces?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">Is my data secure?</button></p>
             </div>
             <p class="integrations-note" style="margin-top:1.25rem">
-              <a class="btn btn-primary" href="#demo" data-open-demo>Open live chat</a>
-              <a class="btn btn-ghost" href="{PORTAL_SIGNUP}" style="margin-left:0.5rem">Start Free</a>
+              <a class="btn btn-primary" href="#demo" data-open-demo data-clarity-event="cta_open_live_chat">Open live chat</a>
+              <a class="btn btn-ghost" href="{PORTAL_SIGNUP}" style="margin-left:0.5rem" data-clarity-event="cta_start_free">Start Free</a>
             </p>
           </div>
-          <div class="demo-chat" aria-hidden="true">
+          <button type="button" class="demo-chat" data-open-demo data-clarity-event="cta_chat_mock" aria-label="Open live chat demo">
             <div class="chat-mock">
               <div class="chat-mock-head">
                 <div class="chat-mock-avatar">{ICONS["bot"]}</div>
@@ -668,10 +687,10 @@ def home_body() -> str:
               </div>
               <div class="chat-mock-input">
                 <span>Type your question…</span>
-                <button type="button" tabindex="-1" aria-hidden="true">{ICONS["arrow"]}</button>
+                <span class="chat-mock-send" aria-hidden="true">{ICONS["arrow"]}</span>
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </section>
@@ -885,7 +904,7 @@ def home_body() -> str:
           <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid reveal">
-          <article class="price-card">
+          <article class="price-card" data-price-cta>
             <h3>Free</h3>
             <p class="price-best">Best for evaluating the platform</p>
             <div class="price-amount">$0</div>
@@ -898,9 +917,9 @@ def home_body() -> str:
               <li>{ICONS["check"]} Website widget</li>
               <li>{ICONS["check"]} Community support</li>
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free</a>
           </article>
-          <article class="price-card">
+          <article class="price-card" data-price-cta>
             <h3>Starter</h3>
             <p class="price-best">Best for startups</p>
             <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p>
@@ -913,9 +932,9 @@ def home_body() -> str:
               <li>{ICONS["check"]} Email support</li>
               <li>{ICONS["check"]} Custom branding</li>
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}" data-clarity-event="cta_get_started">Get Started</a>
           </article>
-          <article class="price-card is-popular">
+          <article class="price-card is-popular" data-price-cta>
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
             <h3>Growth</h3>
             <p class="price-best">Best for growing companies</p>
@@ -930,9 +949,9 @@ def home_body() -> str:
               <li>{ICONS["check"]} Analytics</li>
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a>
+            <a class="btn btn-primary" href="{PORTAL_SIGNUP}" data-clarity-event="cta_get_started">Get Started</a>
           </article>
-          <article class="price-card">
+          <article class="price-card" data-price-cta>
             <h3>Enterprise</h3>
             <p class="price-best">Best for regulated organizations</p>
             <div class="price-amount">Custom</div>
@@ -947,7 +966,7 @@ def home_body() -> str:
               <li>{ICONS["check"]} SLA guarantee</li>
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-plan" href="/contact">Talk to Sales</a>
+            <a class="btn btn-plan" href="/contact" data-clarity-event="cta_talk_to_sales">Talk to Sales</a>
           </article>
         </div>
       </div>
@@ -973,8 +992,8 @@ def home_body() -> str:
         <h2 id="cta-heading">Deploy your company&rsquo;s AI workspace.</h2>
         <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="/benchmark">Benchmark methodology</a> · <a href="/security">Security</a></p>
       </div>
