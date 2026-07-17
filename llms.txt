@@ -27,7 +27,7 @@ Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console �
 - Business Actions (powered by Business Tools): REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
 - Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
 - Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
-- Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SSO and platform admin audit trail on Enterprise roadmap
+- Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SOC 2 compliance is on the roadmap (contact Sales for timeline); SSO and platform admin audit trail on Enterprise roadmap
 - Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for

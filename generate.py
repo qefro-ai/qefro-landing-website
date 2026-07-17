@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "26"
+ASSET_VERSION = "27"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -240,6 +240,7 @@ def footer() -> str:
           <a href="/use-cases">Solutions</a>
           <a href="/pricing">Pricing</a>
           <a href="/security">Security</a>
+          <a href="/benchmark">Benchmark</a>
           <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>
           <a href="/llms.txt">llms.txt</a>
@@ -405,8 +406,9 @@ FAQ_ACCURACY_ANSWER_PLAIN = (
 )
 
 PRICE_FAIR_USE_NOTE = (
-    '<p class="price-desc" style="margin:0.75rem 0 0;font-size:0.75rem">'
-    "Fair use limits apply to storage and processing volume — see Terms for details."
+    '<p class="price-desc price-fair-use">'
+    "Conversation and document allowances are listed above. "
+    'Contact <a href="/contact">Sales</a> for storage and processing volume details on Growth and Enterprise.'
     "</p>"
 )
 
@@ -460,17 +462,23 @@ FAQ_ITEMS = [
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
         "Is my data secure?",
-        "Your data is tenant-isolated and workspace-isolated, encrypted at rest and in transit, "
-        "and never used to train AI models. API secrets are encrypted; end-user passwords are "
-        "never stored. End-user identity forwarding, zero-trust style authorization for actions, "
-        "and audit logs are built in. Private deployment available for Enterprise. "
-        "We are building toward SOC 2; contact sales for the current compliance roadmap.",
+        "Qefro provides tenant isolation and workspace isolation, encryption at rest and in transit, "
+        "end-user identity forwarding, zero-trust style authorization for business actions, "
+        "audit and execution logs, and encrypted storage for API secrets. End-user passwords are never stored, "
+        "and your data is never used to train AI models. Private deployment is available for Enterprise. "
+        "SOC 2 compliance is on our roadmap. Contact Sales for our current timeline.",
     ),
     (
         "Can Qefro take action in my systems?",
         "Yes. Connect REST APIs or import OpenAPI specs as Business Tools so AI can perform "
         "defined business actions — retrieve live data, create tickets, look up orders — using "
         "encrypted credentials or end-user identity you forward via the widget identify() API.",
+    ),
+    (
+        "How long does setup take?",
+        "Typical setup takes {{REAL_SETUP_TIME}} depending on your documentation and integrations. "
+        "Most teams embed the website widget in under 5 minutes; connecting business systems and "
+        "rolling out the Internal Portal depends on your APIs and knowledge prep.",
     ),
     ("How long does integration take?", "Most teams embed the website widget in under 5 minutes. Identify authenticated users with a few lines of JavaScript. WhatsApp, Internal Portal, and API access are available for deeper rollouts."),
     (
@@ -480,9 +488,11 @@ FAQ_ITEMS = [
     ),
     ("Do you offer enterprise pricing?", "Yes. Enterprise plans include unlimited conversations, private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline."),
     (
-        "Does Qefro support multiple languages?",
-        "Yes. Qefro indexes and answers in the languages present in your knowledge base — including English, Arabic, Tamil, Hindi, and more. "
-        "Upload multilingual PDFs and docs; OCR extracts text from scanned pages and images so nothing is left out of search.",
+        "What languages does Qefro support?",
+        "Qefro supports multilingual document indexing and multilingual retrieval from the languages present "
+        "in your knowledge base — including English, Arabic, Tamil, Hindi, and more. "
+        "Upload non-English PDFs and docs, crawl multilingual websites, and answer multilingual customer questions. "
+        "OCR extracts text from scanned pages and images so those sources can be indexed too.",
     ),
     (
         "How does widget authentication work?",
@@ -576,7 +586,7 @@ def faq_schema(items=FAQ_ITEMS) -> str:
 PAGES: dict[str, str] = {}
 
 # ── Home ────────────────────────────────────────────────────────────
-def home_faq_preview(n: int = 6) -> str:
+def home_faq_preview(n: int = 8) -> str:
     return "".join(
         f"""          <div class="faq-item">
             <button type="button" aria-expanded="false"><span>{q}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
@@ -600,7 +610,7 @@ def home_body() -> str:
         <p class="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Book Demo</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
         <div class="hero-checks">
           <span>{ICONS["check"]} Configure once · deploy everywhere</span>
@@ -608,12 +618,77 @@ def home_body() -> str:
           <span>{ICONS["check"]} Customers &amp; employees</span>
           <span>{ICONS["check"]} Your auth stays yours</span>
         </div>
-        <div class="arch-diagram arch-diagram-flow" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI">
+      </div>
+    </section>
+
+    <section class="section-facts trust-strip" id="trust" aria-label="Trust highlights">
+      <div class="wrap-5xl">
+        <p class="facts-label">Why teams choose Qefro</p>
+        <div class="logo-cloud" role="list">
+          <span class="logo-placeholder" role="listitem">{ICONS["headphones"]} Built for modern support teams</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["shield"]} Secure multi-tenant architecture</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["server"]} Self-host or cloud</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["lock"]} Privacy-first AI</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="demo" aria-labelledby="demo-heading">
+      <div class="wrap">
+        <div class="demo-split reveal">
+          <div class="demo-copy">
+            <span class="badge badge-green">{ICONS["play"]} Live demo</span>
+            <h2 id="demo-heading">Try Customer AI on this page</h2>
+            <p>Open the chat bubble in the corner. Ask about the platform, workspaces, business actions, <a href="/pricing">pricing</a>, or <a href="/security">security</a>.</p>
+            <div class="widget-demo-hint">
+              <div class="widget-demo-card">
+                <div class="widget-demo-icon">{ICONS["bot"]}</div>
+                <div>
+                  <strong>Live assistant is active on this page</strong>
+                  <p>Answers come from Qefro&rsquo;s demo knowledge base.</p>
+                </div>
+              </div>
+              <p class="widget-demo-suggestions">Try: <span>What is Qefro?</span> · <span>What are AI Workspaces?</span> · <span>Is my data secure?</span></p>
+            </div>
+            <p class="integrations-note" style="margin-top:1.25rem">
+              <a class="btn btn-primary" href="#demo" data-open-demo>Open live chat</a>
+              <a class="btn btn-ghost" href="{PORTAL_SIGNUP}" style="margin-left:0.5rem">Start Free</a>
+            </p>
+          </div>
+          <div class="demo-chat" aria-hidden="true">
+            <div class="chat-mock">
+              <div class="chat-mock-head">
+                <div class="chat-mock-avatar">{ICONS["bot"]}</div>
+                <div><strong>Qefro Assistant</strong><span>AI Workspace Platform</span></div>
+              </div>
+              <div class="chat-mock-body">
+                <div class="chat-bubble ai">Hi! I can explain how Qefro deploys AI for customers and employees from one platform.</div>
+                <div class="chat-bubble user">What makes Qefro different?</div>
+                <div class="chat-bubble ai">Most AI platforms answer questions. Qefro also performs business actions using your knowledge, APIs, and permissions — configure once, deploy everywhere.</div>
+              </div>
+              <div class="chat-mock-input">
+                <span>Type your question…</span>
+                <button type="button" tabindex="-1" aria-hidden="true">{ICONS["arrow"]}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform" aria-labelledby="platform-heading">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="badge badge-indigo">{ICONS["zap"]} Platform overview</span>
+          <h2 id="platform-heading">Configure knowledge once. Deploy it everywhere.</h2>
+          <p>Set up workspaces, knowledge, business actions, and permissions in the Admin Console — then deploy Customer AI and Employee AI across every channel. <a href="/how-it-works">See how the platform works</a>.</p>
+        </div>
+        <div class="arch-diagram arch-diagram-flow reveal" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI">
           <div class="arch-hub">
             <span class="arch-hub-label">Admin Console</span>
             <span class="arch-hub-sub">Configure Once</span>
           </div>
-          <p class="arch-flow-label" aria-hidden="true">Configure knowledge, actions, permissions &amp; branding</p>
+          <p class="arch-flow-label">Knowledge · Actions · Permissions · Branding</p>
           <div class="arch-channels">
             <div class="arch-channel">
               <span class="arch-channel-icon">{ICONS["headphones"]}</span>
@@ -627,83 +702,44 @@ def home_body() -> str:
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section-facts" id="built-for" aria-label="Built for teams">
-      <div class="wrap-5xl">
-        <p class="facts-label">Built for</p>
-        <div class="logo-cloud">
-          <span class="logo-placeholder">{ICONS["check"]} Customer Support</span>
-          <span class="logo-placeholder">{ICONS["check"]} HR</span>
-          <span class="logo-placeholder">{ICONS["check"]} IT</span>
-          <span class="logo-placeholder">{ICONS["check"]} Sales</span>
-          <span class="logo-placeholder">{ICONS["check"]} Finance</span>
-          <span class="logo-placeholder">{ICONS["check"]} Engineering</span>
+        <div class="workspace-pills reveal" aria-label="Example AI Workspaces">
+          <span class="workspace-pill">Customer Support</span>
+          <span class="workspace-pill">HR</span>
+          <span class="workspace-pill">IT</span>
+          <span class="workspace-pill">Sales</span>
+          <span class="workspace-pill">Finance</span>
+          <span class="workspace-pill">Engineering</span>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="workspaces">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-blue">{ICONS["building"]} AI Workspaces</span>
-          <h2>The mental model of Qefro</h2>
-          <p>AI Workspaces are how organizations structure AI. Each workspace has its own knowledge, instructions, business actions, conversations, and permissions — so HR never sees support tickets, and customers never see internal docs.</p>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1rem">Each AI Workspace has its own isolated knowledge, instructions, actions, and permissions.</p>
+        <div class="exp-grid reveal" style="margin-top:2.5rem">
+          <article class="exp-card">
+            <div class="exp-icon">{ICONS["headphones"]}</div>
+            <h3>Customer AI</h3>
+            <p>Website widget and WhatsApp with knowledge answers, business actions, lead capture, and human handoff.</p>
+          </article>
+          <article class="exp-card exp-card-featured">
+            <div class="exp-icon">{ICONS["building"]}</div>
+            <h3>Employee AI</h3>
+            <p>Branded Internal Portal with workspace selector, conversations, documents, and source citations.</p>
+          </article>
+          <article class="exp-card">
+            <div class="exp-icon">{ICONS["server"]}</div>
+            <h3>Admin Console</h3>
+            <p>One place to configure knowledge, actions, teams, branding, channels, analytics, and inbox.</p>
+          </article>
         </div>
-        <div class="workspace-grid reveal">
-          <article class="workspace-card"><h3>Customer Support</h3><p>Policies, order lookups, tickets, and handoff.</p></article>
-          <article class="workspace-card"><h3>HR</h3><p>Handbooks, benefits, leave, and onboarding.</p></article>
-          <article class="workspace-card"><h3>IT Helpdesk</h3><p>Runbooks, access requests, and SOPs.</p></article>
-          <article class="workspace-card"><h3>Sales Assistant</h3><p>Product knowledge, CRM queries, and playbooks.</p></article>
-          <article class="workspace-card"><h3>Finance</h3><p>Policies, approvals, and internal procedures.</p></article>
-          <article class="workspace-card"><h3>Engineering</h3><p>Docs, APIs, incidents, and architecture notes.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="configure-once">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} Platform story</span>
-          <h2>Configure once. Deploy everywhere.</h2>
-          <p>Set up your organization&rsquo;s AI in the Admin Console — then deploy the same knowledge, actions, and permissions across every channel.</p>
-        </div>
-        <div class="deploy-flow reveal">
-          <div class="deploy-col">
-            <h3>Configure once</h3>
-            <ul>
-              <li>{ICONS["check"]} Knowledge</li>
-              <li>{ICONS["check"]} Business actions</li>
-              <li>{ICONS["check"]} Permissions</li>
-              <li>{ICONS["check"]} Branding</li>
-              <li>{ICONS["check"]} Workspaces</li>
-            </ul>
-          </div>
-          <div class="deploy-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <div class="deploy-col deploy-col-accent">
-            <h3>Deploy everywhere</h3>
-            <ul>
-              <li>{ICONS["check"]} Website widget</li>
-              <li>{ICONS["check"]} WhatsApp</li>
-              <li>{ICONS["check"]} Internal Portal</li>
-              <li>{ICONS["check"]} Voice</li>
-              <li>{ICONS["check"]} Future channels</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-mock-grid reveal" style="margin-top:3rem">
+        <div class="product-mock-grid reveal" style="margin-top:2.5rem">
           <figure class="product-mock">
             <figcaption><strong>Admin Console</strong><span>Configure workspaces, knowledge, actions &amp; permissions</span></figcaption>
-            <div class="mock-ui mock-console" aria-hidden="true">
-              <div class="mock-sidebar">
+            <div class="mock-ui mock-console" role="img" aria-label="Illustration of the Admin Console with workspaces, knowledge, and actions">
+              <div class="mock-sidebar" aria-hidden="true">
                 <span class="is-active">Workspaces</span>
                 <span>Knowledge</span>
                 <span>Actions</span>
                 <span>Members</span>
                 <span>Analytics</span>
               </div>
-              <div class="mock-main">
+              <div class="mock-main" aria-hidden="true">
                 <div class="mock-toolbar"><strong>Customer Support</strong><em>Public workspace</em></div>
                 <div class="mock-rows">
                   <div><b>Knowledge</b><span>124 docs indexed</span></div>
@@ -715,15 +751,15 @@ def home_body() -> str:
             </div>
           </figure>
           <figure class="product-mock">
-            <figcaption><strong>Internal Portal</strong><span>ChatGPT-like employee AI with workspaces &amp; sources</span></figcaption>
-            <div class="mock-ui mock-portal" aria-hidden="true">
-              <div class="mock-sidebar">
+            <figcaption><strong>Internal Portal</strong><span>Employee AI with workspaces and sources</span></figcaption>
+            <div class="mock-ui mock-portal" role="img" aria-label="Illustration of the Internal Portal chat with workspace selector and sources">
+              <div class="mock-sidebar" aria-hidden="true">
                 <span class="is-active">HR</span>
                 <span>IT Helpdesk</span>
                 <span>Finance</span>
                 <span>Engineering</span>
               </div>
-              <div class="mock-main">
+              <div class="mock-main" aria-hidden="true">
                 <div class="mock-chat">
                   <div class="mock-bubble user">What is our parental leave policy?</div>
                   <div class="mock-bubble ai">Employees are eligible for 16 weeks of parental leave…</div>
@@ -737,214 +773,79 @@ def home_body() -> str:
     </section>
 
 {product_screenshots_html()}
-    <section class="section" id="experiences">
+    <section class="section section-alt" id="features" aria-labelledby="features-heading">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["sparkles"]} Three Experiences</span>
-          <h2>Customer AI. Employee AI. Admin Console.</h2>
-          <p>Three surfaces. One organizational AI system.</p>
+          <span class="badge badge-purple">{ICONS["sparkles"]} Features</span>
+          <h2 id="features-heading">Knowledge, business actions, and channels</h2>
+          <p>Grounded answers from your content, secure actions via your APIs, and deployment where your people already work. <a href="/features">Explore all features</a>.</p>
         </div>
-        <div class="exp-grid reveal">
-          <article class="exp-card">
-            <div class="exp-icon">{ICONS["headphones"]}</div>
-            <h3>Customer AI</h3>
-            <p>Meet customers on your website and WhatsApp with AI that knows your business and can take defined actions.</p>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card">
+            <h3>Business Actions</h3>
             <ul>
-              <li>Website widget &amp; live chat</li>
-              <li>Voice in the widget</li>
-              <li>FAQ &amp; knowledge answers</li>
-              <li>Business actions via your APIs</li>
-              <li>Lead capture &amp; human handoff</li>
-              <li>Multilingual responses</li>
+              <li>Powered by Business Tools</li>
+              <li>REST &amp; OpenAPI import</li>
+              <li>Encrypted credentials</li>
+              <li>Identity forwarding</li>
+              <li>Execution logs</li>
             </ul>
           </article>
-          <article class="exp-card exp-card-featured">
-            <div class="exp-icon">{ICONS["building"]}</div>
-            <h3>Employee AI</h3>
-            <p>Give every team a ChatGPT-style workspace connected to company knowledge, APIs, and permissions.</p>
+          <article class="outcome-card">
+            <h3>Knowledge Platform</h3>
             <ul>
-              <li>Branded Internal Portal</li>
-              <li>Company knowledge search</li>
-              <li>HR, IT, Finance, Sales, Engineering</li>
-              <li>Workspace-specific AI</li>
-              <li>Role-based access</li>
-              <li>Voice &amp; document search</li>
+              <li>PDF, DOCX, Markdown, TXT</li>
+              <li>Website crawling &amp; OCR</li>
+              <li>Multilingual retrieval</li>
+              <li>Source citations</li>
+              <li>Workspace-isolated bases</li>
             </ul>
           </article>
-          <article class="exp-card">
-            <div class="exp-icon">{ICONS["server"]}</div>
-            <h3>Admin Console</h3>
-            <p>Configure everything in one place — then deploy the same AI across every experience.</p>
+          <article class="outcome-card">
+            <h3>Channels</h3>
             <ul>
-              <li>Knowledge &amp; business actions</li>
-              <li>Teams, members &amp; permissions</li>
-              <li>Workspaces &amp; branding</li>
-              <li>Widget &amp; WhatsApp setup</li>
-              <li>Analytics &amp; inbox</li>
-              <li>Workspace management</li>
+              <li>Website widget &amp; voice</li>
+              <li>Internal Portal</li>
+              <li>WhatsApp (Growth+)</li>
+              <li>Human handoff</li>
+              <li>Lead capture</li>
+            </ul>
+          </article>
+          <article class="outcome-card">
+            <h3>Security controls</h3>
+            <ul>
+              <li>Tenant isolation</li>
+              <li>Encryption at rest &amp; in transit</li>
+              <li>Identity forwarding</li>
+              <li>Audit &amp; execution logs</li>
+              <li>Encrypted secret storage</li>
             </ul>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="business-actions">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["zap"]} Business Actions</span>
-          <h2>AI that gets work done — not just answers questions</h2>
-          <p>Powered by Business Tools. Import OpenAPI specs or configure REST endpoints so AI can take defined actions with encrypted credentials, schema validation, and execution logs.</p>
-        </div>
-        <div class="scenario-grid reveal">
+        <div class="scenario-grid reveal" style="margin-top:2.5rem">
           <article class="scenario-card">
             <p class="scenario-ask"><span>Customer</span> Where is my order?</p>
             <div class="scenario-flow"><span>AI calls your Order API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Live tracking returned</span></div>
           </article>
           <article class="scenario-card">
-            <p class="scenario-ask"><span>Customer</span> Book an appointment</p>
-            <div class="scenario-flow"><span>AI calls your Booking API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Appointment confirmed</span></div>
-          </article>
-          <article class="scenario-card">
             <p class="scenario-ask"><span>Employee</span> Approve my leave request</p>
             <div class="scenario-flow"><span>AI calls your HR API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Request submitted</span></div>
           </article>
-          <article class="scenario-card">
-            <p class="scenario-ask"><span>Ops</span> Check inventory for SKU-19</p>
-            <div class="scenario-flow"><span>AI calls your ERP/API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Stock levels returned</span></div>
-          </article>
         </div>
-        <div class="cap-panel reveal" style="margin-top:2.5rem">
-          <div class="cap-grid">
-            <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>REST APIs</span></div>
-            <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>OpenAPI import</span></div>
-            <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>Secure execution</span></div>
-            <div class="cap-card"><div class="cap-icon">{ICONS["lock"]}</div><span>Encrypted secrets</span></div>
-            <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs</span></div>
-            <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Identity forwarding</span></div>
-          </div>
-          <p class="integrations-note">Connect your systems so AI can track orders, create tickets, query CRM, or call ERP — via your APIs. MCP connectors coming soon.</p>
-        </div>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1.75rem"><a href="/security">Read the security overview</a> · <a href="/use-cases">Explore solutions</a></p>
       </div>
     </section>
 
-    <section class="section" id="knowledge">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["file"]} Knowledge Platform</span>
-          <h2>One knowledge layer for the whole organization</h2>
-          <p>Upload documents or crawl your website. Qefro indexes content automatically and answers with source citations. Every workspace has its own isolated knowledge base.</p>
-        </div>
-        <div class="outcome-grid reveal">
-          <article class="outcome-card">
-            <h3>Ingest</h3>
-            <ul>
-              <li>PDF, DOCX, Markdown, TXT</li>
-              <li>Website crawling</li>
-              <li>OCR for scans &amp; images</li>
-              <li>Automatic indexing</li>
-            </ul>
-          </article>
-          <article class="outcome-card">
-            <h3>Retrieve</h3>
-            <ul>
-              <li>Hybrid RAG search</li>
-              <li>Source citations</li>
-              <li>Refusal when unsure</li>
-              <li>Multilingual content</li>
-            </ul>
-          </article>
-          <article class="outcome-card">
-            <h3>Govern</h3>
-            <ul>
-              <li>Workspace-isolated knowledge</li>
-              <li>Public &amp; private scopes</li>
-              <li>Team permissions</li>
-              <li>Document reindex</li>
-            </ul>
-          </article>
-          <article class="outcome-card">
-            <h3>Improve</h3>
-            <ul>
-              <li>Conversation analytics</li>
-              <li>Knowledge gap signals</li>
-              <li>Inbox review</li>
-              <li>Human handoff context</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="security">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-green">{ICONS["shield"]} Security</span>
-          <h2>Enterprise-ready by design</h2>
-          <p>Multi-tenant architecture with workspace isolation, team-based RBAC, encrypted secrets, and conversation isolation — so one organization never sees another&rsquo;s data.</p>
-        </div>
-        <div class="trust-grid reveal">
-          <article class="trust-card"><div class="trust-icon">{ICONS["building"]}</div><h3>Multi-tenant isolation</h3><p>Tenant boundaries at the database and vector store. No cross-organization data leakage.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["bot"]}</div><h3>End-user identity forwarding</h3><p>Forward signed-in identity via <code>identify()</code> so actions run as the real user — passwords never touch Qefro.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["lock"]}</div><h3>Zero-trust style authorization</h3><p>Business actions authorize with the end-user&rsquo;s identity by default — not a shared organization secret.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["file"]}</div><h3>Audit &amp; execution logs</h3><p>Conversation history and Business Tool runs stay attached for accountability and review.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>Team-based RBAC</h3><p>Owner, Admin, and Member roles control documents, actions, billing, and invites.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["server"]}</div><h3>Secure action execution</h3><p>Encrypted secrets, SSRF protections, schema validation, and workspace isolation.</p></article>
-        </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.75rem"><a href="/security">Read the security overview</a> · SSO / SAML on the Enterprise roadmap</p>
-      </div>
-    </section>
-
-    <section class="section" id="integrations">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-blue">{ICONS["globe"]} Channels</span>
-          <h2>Deploy where your people already work</h2>
-          <p>Same AI. Same knowledge. Same business actions. Different surfaces for customers and employees.</p>
-        </div>
-        <div class="channel-grid reveal">
-          <article class="channel-card">
-            <div class="channel-icon">{ICONS["globe"]}</div>
-            <h3>Website Widget</h3>
-            <p>Embed in minutes. Answer questions, run business actions, capture leads, and transfer to humans when needed.</p>
-          </article>
-          <article class="channel-card">
-            <div class="channel-icon">{ICONS["building"]}</div>
-            <h3>Internal Portal</h3>
-            <p>Employees get <code>yourcompany.qefro.com</code> — a branded AI workspace with workspace selector, conversations, documents, and source citations.</p>
-          </article>
-          <article class="channel-card">
-            <div class="channel-icon">{ICONS["msg"]}</div>
-            <h3>WhatsApp</h3>
-            <p>Native WhatsApp conversations powered by the same AI, knowledge, and business actions. Available on Growth and Enterprise.</p>
-          </article>
-        </div>
-        <div class="dev-split reveal" style="margin-top:3rem">
-          <div class="dev-copy">
-            <span class="badge badge-blue">{ICONS["bot"]} Authenticated users</span>
-            <h2>Your auth stays yours</h2>
-            <p>Qefro is not an identity provider. Forward signed-in identity with <code>identify()</code> so business actions run on behalf of real users — passwords never touch Qefro.</p>
-          </div>
-          <pre class="code-panel" tabindex="0"><code>widget.identify({{
-  id: user.id,
-  email: user.email,
-  auth: {{
-    mode: "jwt",
-    token: userJwt
-  }}
-}});</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="why-qefro">
+    <section class="section" id="why-qefro" aria-labelledby="compare-heading">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["chart"]} Comparison</span>
-          <h2>Traditional AI chatbot vs Qefro</h2>
+          <h2 id="compare-heading">Traditional AI chatbot vs Qefro</h2>
           <p>Answering questions is table stakes. Organizations need actions, employee access, and workspace permissions.</p>
         </div>
         <div class="table-wrap reveal">
           <table class="compare-table">
+            <caption class="compare-caption">Capabilities represent typical off-the-shelf AI chatbot platforms. See our <a href="/benchmark">benchmark methodology</a> for how we evaluate retrieval accuracy, grounding, and refusal behaviour.</caption>
             <thead>
               <tr>
                 <th scope="col">Capability</th>
@@ -969,74 +870,24 @@ def home_body() -> str:
       </div>
     </section>
 
-    <section class="section" id="use-cases">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <span class="badge badge-blue">{ICONS["building"]} Solutions</span>
-          <h2>Built for how modern organizations work</h2>
-          <p>Customer support, internal IT, regulated teams, and engineering — same platform, purpose-fit workspaces.</p>
-        </div>
-{uc_tabs_html()}
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.75rem">Also a fit for SaaS, healthcare, education, manufacturing, retail, professional services, and government teams. <a href="/use-cases">Explore solutions</a></p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="demo">
-      <div class="wrap">
-        <div class="demo-split reveal">
-          <div class="demo-copy">
-            <span class="badge badge-green">{ICONS["play"]} Live demo</span>
-            <h2>Try Customer AI on this page</h2>
-            <p>Open the chat bubble in the corner. Ask about the platform, workspaces, business actions, pricing, or security.</p>
-            <div class="widget-demo-hint">
-              <div class="widget-demo-card">
-                <div class="widget-demo-icon">{ICONS["bot"]}</div>
-                <div>
-                  <strong>Live assistant is active on this page</strong>
-                  <p>Answers come from Qefro&rsquo;s demo knowledge base.</p>
-                </div>
-              </div>
-              <p class="widget-demo-suggestions">Try: <span>What is Qefro?</span> · <span>What are AI Workspaces?</span> · <span>Is my data secure?</span></p>
-            </div>
-          </div>
-          <div class="demo-chat" aria-hidden="true">
-            <div class="chat-mock">
-              <div class="chat-mock-head">
-                <div class="chat-mock-avatar">{ICONS["bot"]}</div>
-                <div><strong>Qefro Assistant</strong><span>AI Workspace Platform</span></div>
-              </div>
-              <div class="chat-mock-body">
-                <div class="chat-bubble ai">Hi! I can explain how Qefro deploys AI for customers and employees from one platform.</div>
-                <div class="chat-bubble user">What makes Qefro different?</div>
-                <div class="chat-bubble ai">Most AI platforms answer questions. Qefro also performs business actions using your knowledge, APIs, and permissions — configure once, deploy everywhere.</div>
-              </div>
-              <div class="chat-mock-input">
-                <span>Type your question…</span>
-                <button type="button" aria-label="Send">{ICONS["arrow"]}</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pricing">
+    <section class="section section-alt" id="pricing" aria-labelledby="pricing-heading">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} Pricing</span>
-          <h2>Plans that scale with your organization</h2>
-          <p>Freemium — Free forever. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo.</p>
+          <h2 id="pricing-heading">Plans that scale with your organization</h2>
+          <p>Freemium — Free forever. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
         </div>
         <div class="direct-answer reveal">
           <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, knowledge for getting started, connect 1 business system), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
-          <button type="button" data-billing="monthly">Monthly</button>
-          <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
+          <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
+          <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid reveal">
           <article class="price-card">
             <h3>Free</h3>
+            <p class="price-best">Best for evaluating the platform</p>
             <div class="price-amount">$0</div>
             <p class="price-desc">Forever free — no credit card</p>
             <ul class="price-feats">
@@ -1051,6 +902,7 @@ def home_body() -> str:
           </article>
           <article class="price-card">
             <h3>Starter</h3>
+            <p class="price-best">Best for startups</p>
             <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p>
             <p class="price-desc">For one team going live</p>
             <ul class="price-feats">
@@ -1066,6 +918,7 @@ def home_body() -> str:
           <article class="price-card is-popular">
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
             <h3>Growth</h3>
+            <p class="price-best">Best for growing companies</p>
             <div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p>
             <p class="price-desc">For teams deploying across channels</p>
             <ul class="price-feats">
@@ -1081,6 +934,7 @@ def home_body() -> str:
           </article>
           <article class="price-card">
             <h3>Enterprise</h3>
+            <p class="price-best">Best for regulated organizations</p>
             <div class="price-amount">Custom</div>
             <p class="price-desc">For organizations with advanced needs</p>
             <ul class="price-feats">
@@ -1099,10 +953,10 @@ def home_body() -> str:
       </div>
     </section>
 
-    <section class="section section-alt" id="faq">
+    <section class="section" id="faq" aria-labelledby="faq-heading">
       <div class="wrap-narrow">
         <div class="section-head reveal">
-          <h2>Frequently asked questions</h2>
+          <h2 id="faq-heading">Frequently asked questions</h2>
           <p>Everything you need to know before you start.</p>
         </div>
         <div class="faq-list reveal">
@@ -1112,17 +966,17 @@ def home_body() -> str:
       </div>
     </section>
 
-    <section class="cta-final">
+    <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
-        <h2>Deploy your company&rsquo;s AI workspace.</h2>
+        <h2 id="cta-heading">Deploy your company&rsquo;s AI workspace.</h2>
         <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Book Demo</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
-        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise</p>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="/benchmark">Benchmark methodology</a> · <a href="/security">Security</a></p>
       </div>
     </section>
 """
@@ -1324,10 +1178,10 @@ def pricing_page_content() -> str:
           <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
         </div>
         <div class="price-grid">
-          <article class="price-card"><h3>Free</h3><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} Knowledge for getting started <span class="price-meta">2 documents</span></li><li>{ICONS["check"]} Connect 1 business system</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
-          <article class="price-card"><h3>Starter</h3><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For one team going live</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} Knowledge for one team <span class="price-meta">50 documents</span></li><li>{ICONS["check"]} Connect up to 5 business systems</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams deploying across channels</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Knowledge across teams <span class="price-meta">500 documents</span></li><li>{ICONS["check"]} Widget + WhatsApp + voice</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Analytics &amp; agent handoff</li><li>{ICONS["check"]} Priority support</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
-          <article class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
+          <article class="price-card"><h3>Free</h3><p class="price-best">Best for evaluating the platform</p><div class="price-amount">$0</div><p class="price-desc">Forever free — no credit card</p><ul class="price-feats"><li>{ICONS["check"]} 100 conversations/month</li><li>{ICONS["check"]} Knowledge for getting started <span class="price-meta">2 documents</span></li><li>{ICONS["check"]} Connect 1 business system</li><li>{ICONS["check"]} 2 team members</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Multilingual RAG</li><li>{ICONS["check"]} Community support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Start Free</a></article>
+          <article class="price-card"><h3>Starter</h3><p class="price-best">Best for startups</p><div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div><p class="price-billed">billed annually · or $39/mo monthly</p><p class="price-desc">For one team going live</p><ul class="price-feats"><li>{ICONS["check"]} 1,000 conversations/month</li><li>{ICONS["check"]} Knowledge for one team <span class="price-meta">50 documents</span></li><li>{ICONS["check"]} Connect up to 5 business systems</li><li>{ICONS["check"]} Website widget + voice</li><li>{ICONS["check"]} Custom branding</li><li>{ICONS["check"]} Email support</li></ul><a class="btn btn-plan" href="{PORTAL_SIGNUP}">Get Started</a></article>
+          <article class="price-card is-popular"><div class="price-pop">{ICONS["star"]} Most Popular</div><h3>Growth</h3><p class="price-best">Best for growing companies</p><div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div><p class="price-billed">billed annually · or $119/mo monthly</p><p class="price-desc">For teams deploying across channels</p><ul class="price-feats"><li>{ICONS["check"]} 10,000 conversations/month</li><li>{ICONS["check"]} Knowledge across teams <span class="price-meta">500 documents</span></li><li>{ICONS["check"]} Widget + WhatsApp + voice</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Analytics &amp; agent handoff</li><li>{ICONS["check"]} Priority support</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started</a></article>
+          <article class="price-card"><h3>Enterprise</h3><p class="price-best">Best for regulated organizations</p><div class="price-amount">Custom</div><p class="price-desc">For advanced security and scale</p><ul class="price-feats"><li>{ICONS["check"]} Unlimited usage options</li><li>{ICONS["check"]} Unlimited business system connections</li><li>{ICONS["check"]} Private deployment</li><li>{ICONS["check"]} SSO &amp; SAML (roadmap)</li><li>{ICONS["check"]} Dedicated CSM</li><li>{ICONS["check"]} SLA guarantee</li></ul>{PRICE_FAIR_USE_NOTE}<a class="btn btn-plan" href="/contact">Book a Demo</a></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <h2>Included on every plan</h2>
@@ -1420,7 +1274,7 @@ PAGES["security.html"] = inner(
     "Enterprise security for organizational AI: end-user identity forwarding, zero-trust style authorization, audit logs, multi-tenant isolation, workspace RBAC, and encrypted secrets.",
     "security.html",
     "security",
-    "<p>Authentication stays in your app. Qefro never stores passwords. End-user identity forwarding, zero-trust style authorization for business actions, encrypted secrets, and audit logs are built in.</p>",
+    "<p>Authentication stays in your app. Qefro never stores passwords. Lead with the controls that matter: tenant isolation, encryption, identity forwarding, audit logs, and secure secret storage. SOC 2 compliance is on our roadmap — contact Sales for the current timeline.</p>",
     security_page_content(),
 )
 

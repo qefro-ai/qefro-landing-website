@@ -967,6 +967,18 @@ a:focus-visible {
   margin-left: 0.4rem; font-size: 0.625rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
 }
 .price-desc { margin: 0 0 1.5rem; font-size: 0.875rem; color: var(--text-muted); }
+.price-best {
+  margin: -0.35rem 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--hero-pipeline-k, var(--text-sub));
+}
+.price-fair-use {
+  margin: 0.75rem 0 1rem !important;
+  font-size: 0.75rem !important;
+}
+.price-fair-use a { text-decoration: underline; text-underline-offset: 2px; }
 .price-feats { display: grid; gap: 0.65rem; margin: 0 0 1.75rem; flex: 1; }
 .price-feats li {
   display: flex; align-items: flex-start; gap: 0.65rem;
@@ -2115,6 +2127,46 @@ a:focus-visible {
   color: #67e8f9;
 }
 .compare-table tbody tr:last-child td { border-bottom: 0; }
+.compare-caption {
+  caption-side: bottom;
+  padding-top: 1rem;
+  text-align: left;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.compare-caption a {
+  color: var(--text-sub);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.workspace-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 1.75rem;
+}
+.workspace-pill {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--text-sub);
+}
+.trust-strip .logo-placeholder {
+  max-width: 16rem;
+}
+#features,
+#why-qefro,
+#pricing,
+#faq,
+.cta-final {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
 .compare-table td:first-child {
   color: var(--text-strong);
   font-weight: 500;

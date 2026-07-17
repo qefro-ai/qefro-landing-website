@@ -180,7 +180,9 @@
   if (billingToggle) {
     const setPeriod = (period) => {
       billingToggle.querySelectorAll("[data-billing]").forEach((btn) => {
-        btn.classList.toggle("is-active", btn.dataset.billing === period);
+        const active = btn.dataset.billing === period;
+        btn.classList.toggle("is-active", active);
+        btn.setAttribute("aria-pressed", String(active));
       });
       document.querySelectorAll(".price-amount[data-price-annual]").forEach((el) => {
         const annual = el.dataset.priceAnnual;
@@ -205,4 +207,23 @@
     });
     setPeriod("annual");
   }
+
+  const openLiveDemo = () => {
+    const demo = document.getElementById("demo");
+    demo?.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    window.setTimeout(() => {
+      const launcher =
+        document.querySelector("#ai-widget-container button") ||
+        document.querySelector("[class*='widget'] button") ||
+        document.querySelector("button[aria-label*='chat' i], button[aria-label*='Chat' i]");
+      launcher?.click();
+    }, prefersReducedMotion ? 0 : 350);
+  };
+
+  document.querySelectorAll("[data-open-demo]").forEach((el) => {
+    el.addEventListener("click", (event) => {
+      event.preventDefault();
+      openLiveDemo();
+    });
+  });
 })();
