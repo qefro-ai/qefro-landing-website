@@ -1453,8 +1453,9 @@ a:focus-visible {
   margin: 1.5rem 0 0; text-align: center;
   font-size: 0.875rem; color: var(--text-sub);
 }
-.integrations-note a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
-[data-theme="dark"] .integrations-note a { color: #67e8f9; }
+.integrations-note a:not(.btn) { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+[data-theme="dark"] .integrations-note a:not(.btn) { color: #67e8f9; }
+.integrations-note .btn { text-decoration: none; }
 
 /* Developer identify() split */
 .dev-split {
