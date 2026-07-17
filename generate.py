@@ -985,9 +985,8 @@ def home_body() -> str:
 PAGES["index.html"] = page(
     title="Qefro — AI That Knows Your Business and Gets Work Done",
     description=(
-        "Deploy AI across customer support and internal teams. Answer questions, "
-        "search company knowledge, and securely perform business actions from one "
-        "centralized AI platform. Website widget, Internal Portal, WhatsApp. Start free."
+        "Qefro deploys AI across support and internal teams — "
+        "grounded answers plus secure business actions. Start free."
     ),
     path="",
     jsonld=[ORG_JSON, WEBSITE_JSON, SOFTWARE_JSON],
