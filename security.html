@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Qefro security — enterprise AI Workspace Platform</title>
-  <meta name="description" content="Enterprise security for organizational AI: multi-tenant isolation, workspace RBAC, encrypted secrets, conversation isolation, SSRF-protected Business Tools, and execution logs." />
+  <meta name="description" content="Enterprise security for organizational AI: end-user identity forwarding, zero-trust style authorization, audit logs, multi-tenant isolation, workspace RBAC, and encrypted secrets." />
   <meta name="keywords" content="AI Workspace, Enterprise AI Platform, AI Customer Support Platform, Internal AI Assistant, Customer Support AI, Business AI, AI Knowledge Platform, AI Employee Assistant, AI Powered Helpdesk, AI Business Automation, Organizational AI, WhatsApp AI" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -24,30 +24,30 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="Qefro security — enterprise AI Workspace Platform" />
-  <meta property="og:description" content="Enterprise security for organizational AI: multi-tenant isolation, workspace RBAC, encrypted secrets, conversation isolation, SSRF-protected Business Tools, and execution logs." />
+  <meta property="og:description" content="Enterprise security for organizational AI: end-user identity forwarding, zero-trust style authorization, audit logs, multi-tenant isolation, workspace RBAC, and encrypted secrets." />
   <meta property="og:url" content="https://qefro.com/security" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Qefro — AI Workspace Platform for organizations. Customer AI, Employee AI, and Admin Console on one shared knowledge and Business Tools platform." />
+  <meta property="og:image:alt" content="Qefro — AI that knows your business and gets work done. Configure once in the Admin Console, deploy Customer AI and Employee AI everywhere." />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@qefro" />
   <meta name="twitter:title" content="Qefro security — enterprise AI Workspace Platform" />
-  <meta name="twitter:description" content="Enterprise security for organizational AI: multi-tenant isolation, workspace RBAC, encrypted secrets, conversation isolation, SSRF-protected Business Tools, and execution logs." />
+  <meta name="twitter:description" content="Enterprise security for organizational AI: end-user identity forwarding, zero-trust style authorization, audit logs, multi-tenant isolation, workspace RBAC, and encrypted secrets." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
-  <meta name="twitter:image:alt" content="Qefro — AI Workspace Platform for organizations. Customer AI, Employee AI, and Admin Console on one shared knowledge and Business Tools platform." />
+  <meta name="twitter:image:alt" content="Qefro — AI that knows your business and gets work done. Configure once in the Admin Console, deploy Customer AI and Employee AI everywhere." />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
-  <link rel="icon" href="/assets/images/favicon.svg?v=21" type="image/svg+xml" />
-  <link rel="icon" href="/assets/images/favicon-32.png?v=21" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=21" sizes="180x180" />
+  <link rel="icon" href="/assets/images/favicon.svg?v=26" type="image/svg+xml" />
+  <link rel="icon" href="/assets/images/favicon-32.png?v=26" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v=26" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=21" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=26" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -82,8 +82,8 @@
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img class="logo-light" src="/assets/images/qefro-logo.png?v=21" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
-        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=21" alt="" width="40" height="40" aria-hidden="true" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v=26" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=26" alt="" width="40" height="40" aria-hidden="true" />
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="how-it-works">Platform</a>
@@ -125,25 +125,27 @@
       <div class="wrap-5xl">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><span>Home</span><span>Security</span></nav>
         <h1>Security</h1>
-        <div class="direct-answer" style="text-align:left"><p>Authentication stays in your app. Qefro never stores passwords. Secrets are encrypted, messages are bounded and scrubbed, and every tool call is logged.</p></div>
+        <div class="direct-answer" style="text-align:left"><p>Authentication stays in your app. Qefro never stores passwords. End-user identity forwarding, zero-trust style authorization for business actions, encrypted secrets, and audit logs are built in.</p></div>
       </div>
     </section>
     <section class="section">
       <div class="wrap reveal">
         <div class="trust-grid">
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><h3>Your auth stays yours</h3><p>Qefro is not an identity provider. Forward JWTs or session ids via identify() — end-user passwords are never stored or processed by Qefro.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div><h3>End-user identity forwarding</h3><p>Forward signed-in identity via <code>identify()</code> so business actions run as the real user — passwords never touch Qefro.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div><h3>Zero-trust style authorization</h3><p>Business actions authorize with the end-user&rsquo;s identity by default — not a shared organization secret.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg></div><h3>Audit &amp; execution logs</h3><p>Conversation history and Business Tool runs stay attached for accountability and review.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg></div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. AI Workspaces control which knowledge and actions each experience can use.</p></article>
           <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7l8-4z"/></svg></div><h3>Widget JWT auth</h3><p>Embeds load with short-lived widget tokens. Messages are bounded (8 KB), PII is scrubbed before model calls, and tenants cannot access each other&rsquo;s data.</p></article>
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg></div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. AI Workspaces control which knowledge and tools each experience can use.</p></article>
-          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8l-5-5z"/><path d="M14 3v5h5"/></svg></div><h3>Encrypted secrets &amp; logs</h3><p>Business Tool credentials encrypted at rest. HTTPS-only outbound calls with SSRF protections and DNS-pinned webhooks. Full conversation and tool execution history.</p></article>
+          <article class="trust-card"><div class="trust-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg></div><h3>Encrypted secrets &amp; secure actions</h3><p>Business Tool credentials encrypted at rest. HTTPS-only outbound calls with SSRF protections and DNS-pinned webhooks.</p></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <h2>Enterprise platform controls</h2>
           <p>Built for organizational AI — not demo chat experiences.</p>
         </div>
         <div class="outcome-grid reveal">
-          <article class="outcome-card"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; tools</li></ul></article>
+          <article class="outcome-card"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; actions</li></ul></article>
           <article class="outcome-card"><h3>Data handling</h3><ul><li>PII scrubbing on outbound LLM calls</li><li>Never used to train AI models</li><li>Encrypted at rest &amp; in transit</li><li>Conversation isolation</li></ul></article>
-          <article class="outcome-card"><h3>Tool execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-tool allow-from-public-chat toggle</li><li>Execution logs for accountability</li></ul></article>
+          <article class="outcome-card"><h3>Action execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-action allow-from-public-chat toggle</li><li>Execution logs for accountability</li></ul></article>
           <article class="outcome-card"><h3>Enterprise roadmap</h3><ul><li>SSO / SAML (roadmap)</li><li>Platform admin audit trail (roadmap)</li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
         </div>
         <div class="prose reveal" style="margin-top:2.5rem">
@@ -170,8 +172,8 @@
     <div class="wrap">
       <div class="footer-top">
         <a class="brand" href="/" aria-label="Qefro home">
-          <img class="logo-light" src="/assets/images/qefro-logo.png?v=21" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
-          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=21" alt="" width="40" height="40" aria-hidden="true" />
+          <img class="logo-light" src="/assets/images/qefro-logo.png?v=26" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
+          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=26" alt="" width="40" height="40" aria-hidden="true" />
         </a>
         <nav class="footer-links" aria-label="Footer">
           <a href="/how-it-works">Platform</a>
@@ -186,7 +188,7 @@
       </div>
       <div class="footer-bottom">
         <p>© <span data-year></span> qefro AI. All rights reserved.</p>
-        <p>AI Workspace Platform for customers, employees, and operations.</p>
+        <p>Configure once. Deploy AI for customers and employees everywhere.</p>
       </div>
     </div>
   </footer>
@@ -198,7 +200,7 @@
     data-theme="light"
     data-position="bottom-right"
     data-primary-color="#7c3aed"
-    data-welcome-message="Hi! I'm the Qefro assistant. Ask how Qefro deploys AI for customers and employees, or about workspaces, Business Tools, pricing, and security."></script>
-  <script src="/assets/js/main.js?v=21" defer></script>
+    data-welcome-message="Hi! I'm the Qefro assistant. Ask how Qefro deploys AI for customers and employees, or about workspaces, business actions, pricing, and security."></script>
+  <script src="/assets/js/main.js?v=26" defer></script>
 </body>
 </html>

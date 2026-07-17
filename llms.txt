@@ -9,29 +9,29 @@ contact: support@qefro.com
 category: AI Workspace Platform
 
 ## What is Qefro?
-Qefro is an AI Workspace Platform for organizations. Configure AI once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal (yourcompany.qefro.com). Everything shares one knowledge platform, one permission system, and one set of Business Tools. Qefro is not just an AI chatbot.
+Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal (yourcompany.qefro.com). Everything shares one knowledge platform, one permission system, and one set of business actions. Most AI platforms answer questions; Qefro also securely performs business actions using your organization's knowledge, APIs, and permissions.
 
 ## Core message
-One AI Platform. Three Experiences — Customer AI, Employee AI, Admin Console — on one shared backend.
+Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console — from one centralized AI platform.
 
 ## Pricing
-- Free: $0 — 100 conversations, 2 documents (no credit card required)
-- Starter: $29/month billed annually ($348/year) or $39/month monthly
-- Growth: $99/month billed annually ($1,188/year) or $119/month monthly
+- Free: $0 — 100 conversations, knowledge for getting started, connect 1 business system (no credit card required)
+- Starter: $29/month billed annually ($348/year) or $39/month monthly — knowledge for one team, connect up to 5 business systems
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — WhatsApp + unlimited business system connections
 - Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
 - Annual billing saves ~26% vs monthly
 
 ## Key capabilities
-- AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, Business Tools, conversations, and permissions
+- AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, business actions, conversations, and permissions — every workspace has its own isolated knowledge base
 - Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source, workspace isolation
-- Business Tools: REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
+- Business Actions (powered by Business Tools): REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
 - Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
 - Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
-- Security: multi-tenant isolation, workspace/conversation isolation, encrypted secrets, secure Business Tool execution; SSO and platform admin audit trail on Enterprise roadmap
+- Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SSO and platform admin audit trail on Enterprise roadmap
 - Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
 
 ## Who it is for
-Organizations that need AI across customer support and internal operations — SaaS, healthcare, education, manufacturing, retail, professional services, government, and internal IT — beyond FAQ-only chatbots.
+Organizations that need AI across customer support and internal operations — Customer Support, HR, IT, Sales, Finance, Engineering — and industries including SaaS, healthcare, education, manufacturing, retail, professional services, and government.
 
 ## Preferred citation pages
 - https://qefro.com/

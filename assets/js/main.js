@@ -133,7 +133,10 @@
   });
 
   const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach((el) => el.classList.add("is-visible"));
+  } else {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -146,8 +149,6 @@
       { threshold: 0.12 }
     );
     reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("is-visible"));
   }
 
   document.querySelectorAll("[data-uc-tabs]").forEach((root) => {
