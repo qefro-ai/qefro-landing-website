@@ -35,7 +35,7 @@ jobs:
       - name: Assemble Pages artifact
         run: |
           mkdir -p _site
-          cp *.html robots.txt sitemap.xml llms.txt _site/
+          cp *.html robots.txt sitemap.xml llms.txt BingSiteAuth.xml _site/
           cp -R assets _site/assets
           cp public/_redirects public/_headers _site/
 

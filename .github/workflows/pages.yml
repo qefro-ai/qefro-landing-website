@@ -31,7 +31,7 @@ jobs:
       - name: Assemble site
         run: |
           mkdir _site
-          cp *.html robots.txt sitemap.xml llms.txt README.md _site/
+          cp *.html robots.txt sitemap.xml llms.txt BingSiteAuth.xml README.md _site/
           cp -R assets _site/assets
       - name: Setup Pages
         uses: actions/configure-pages@v5
