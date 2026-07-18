@@ -17,7 +17,8 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "36"
+DOCS = "https://docs.qefro.com"
+ASSET_VERSION = "37"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -199,6 +200,7 @@ def header(active: str | None = None) -> str:
       <nav class="nav-links" aria-label="Primary">
 {chr(10).join(links)}
         <a href="/faq"{' aria-current="page"' if active == "faq" else ""}>FAQ</a>
+        <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       </nav>
       <div class="nav-cta">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -213,6 +215,7 @@ def header(active: str | None = None) -> str:
     <div class="mobile-panel wrap">
 {mobile}
       <a href="/faq">FAQ</a>
+      <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="justify-content:center;margin-top:0.5rem">Start Free</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
       <div class="mobile-panel-tools">
@@ -259,6 +262,7 @@ def footer() -> str:
           <a href="/what-is-qefro">What is Qefro</a>
           <a href="/benchmark">Benchmark</a>
           <a href="/faq">FAQ</a>
+          <a href="{DOCS}">Docs</a>
           <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
@@ -1167,7 +1171,7 @@ def home_body() -> str:
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
-        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="/benchmark">Benchmark methodology</a> · <a href="/security">Security</a></p>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/benchmark">Benchmark methodology</a> · <a href="/security">Security</a></p>
       </div>
     </section>
 """
