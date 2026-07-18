@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "31"
+ASSET_VERSION = "32"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -150,9 +150,12 @@ def meta_block(
   <meta name="twitter:image:alt" content="{OG_IMAGE_ALT}" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
-  <link rel="icon" href="/assets/images/favicon.svg?v={ASSET_VERSION}" type="image/svg+xml" />
-  <link rel="icon" href="/assets/images/favicon-32.png?v={ASSET_VERSION}" type="image/png" sizes="32x32" />
-  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png?v={ASSET_VERSION}" sizes="180x180" />
+  <!-- Favicons: stable URLs, square, ≥48px PNG for Google Search eligibility
+       https://developers.google.com/search/docs/appearance/favicon-in-search#guidelines -->
+  <link rel="icon" href="/assets/images/favicon-192.png" type="image/png" sizes="192x192" />
+  <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="64x64" />
+  <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
