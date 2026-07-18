@@ -1136,9 +1136,15 @@ html[data-motion="1"] .faq-chevron { transition: none; }
   font-family: var(--font-display); color: var(--text-strong); letter-spacing: -0.02em;
   margin: 2rem 0 0.75rem; font-size: 1.5rem;
 }
+.prose h3 {
+  font-family: var(--font-display); color: var(--text-strong); letter-spacing: -0.02em;
+  margin: 1.5rem 0 0.5rem; font-size: 1.15rem;
+}
 .prose p { margin: 0 0 1rem; }
 .prose ul { margin: 0.5rem 0 1rem; padding-left: 1.1rem; list-style: disc; }
 .prose li { margin: 0.35rem 0; }
+.prose a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; }
+.prose a:hover { color: var(--color-foreground); }
 
 /* Final CTA */
 .cta-final {

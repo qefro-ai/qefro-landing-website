@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "35"
+ASSET_VERSION = "36"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -91,6 +91,8 @@ SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("what-is-qefro", []),
     ("qefro-pricing", []),
     ("benchmark", []),
+    ("privacy", []),
+    ("terms", []),
 ]
 
 
@@ -258,6 +260,8 @@ def footer() -> str:
           <a href="/benchmark">Benchmark</a>
           <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
           <a href="/llms.txt">llms.txt</a>
           <a href="/sitemap.xml">Sitemap</a>
         </nav>
@@ -1392,6 +1396,252 @@ def pricing_page_content() -> str:
         </div>"""
 
 
+def privacy_page_content() -> str:
+    return f"""        <div class="prose">
+          <p><strong>Last updated:</strong> {BUILD_DATE}</p>
+          <p>
+            This Privacy Policy explains how Qefro (&ldquo;Qefro,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;) collects, uses, and shares
+            information when you visit <a href="{SITE}">qefro.com</a>, use the Admin Console at
+            <a href="{PORTAL_LOGIN}">app.qefro.com</a>, the Internal Portal, the website widget, WhatsApp experiences,
+            or related APIs at <strong>api.qefro.com</strong>.
+          </p>
+
+          <h2>1. Who we are</h2>
+          <p>
+            Qefro provides an AI Workspace Platform for organizations — Customer AI, Employee AI, knowledge retrieval,
+            and Business Actions. Contact: <a href="mailto:support@qefro.com">support@qefro.com</a>.
+          </p>
+
+          <h2>2. Information we collect</h2>
+          <h3>Account and organization data</h3>
+          <ul>
+            <li>Name, work email, organization name, and authentication-related data needed to create and secure accounts</li>
+            <li>Role and membership information (Owner, Admin, Member), team and workspace assignments</li>
+            <li>Billing and subscription records processed via our payment provider (Razorpay), including invoices and payment status</li>
+          </ul>
+          <h3>Customer content (organization-controlled)</h3>
+          <ul>
+            <li>Documents and crawled content you upload to workspaces</li>
+            <li>Assistant instructions, Business Tool configurations, and encrypted credentials you store for integrations</li>
+            <li>Conversation transcripts, citations, feedback, leads captured by the widget, and tool execution logs</li>
+          </ul>
+          <h3>End-user identity you forward</h3>
+          <p>
+            If you call the widget <code>identify()</code> API, your application may send end-user identifiers
+            (such as id, email, name) and authentication material (JWT or session token) so Business Actions can run
+            in that user&rsquo;s context. Qefro does not replace your identity provider; you remain responsible for
+            how you obtain and forward that identity.
+          </p>
+          <h3>Technical and usage data</h3>
+          <ul>
+            <li>IP address, device/browser metadata, approximate location derived from IP, and request logs</li>
+            <li>Product analytics needed to operate quotas, rate limits, reliability, and abuse prevention</li>
+            <li>Cookies or local storage for theme preference, session continuity, and (where enabled) marketing analytics such as Microsoft Clarity on the marketing site</li>
+          </ul>
+
+          <h2>3. How we use information</h2>
+          <ul>
+            <li>Provide, secure, and improve the Qefro platform</li>
+            <li>Authenticate users, enforce RBAC, isolate tenants and workspaces, and prevent abuse</li>
+            <li>Process payments, send transactional email (verification, invites, invoices, security notices)</li>
+            <li>Generate AI answers and Business Actions using your organization&rsquo;s configured knowledge and tools</li>
+            <li>Respond to support requests and legal obligations</li>
+          </ul>
+          <p>
+            <strong>We do not use your organization&rsquo;s customer content to train foundation AI models.</strong>
+            Outbound model calls may include PII scrubbing controls as described on our
+            <a href="/security">Security</a> page.
+          </p>
+
+          <h2>4. Sharing</h2>
+          <p>We share information only as needed to operate the service, including:</p>
+          <ul>
+            <li><strong>Infrastructure and subprocessors</strong> that host compute, storage, email, and related services under contract</li>
+            <li><strong>Payment processors</strong> (Razorpay) for checkout and billing</li>
+            <li><strong>Model / inference providers</strong> required to generate answers, subject to our security controls</li>
+            <li><strong>Your own systems</strong> when Business Tools or webhooks call APIs you configure</li>
+            <li><strong>Legal</strong> disclosure when required by law or to protect rights and safety</li>
+          </ul>
+          <p>We do not sell personal information.</p>
+
+          <h2>5. Retention</h2>
+          <p>
+            We retain account, billing, conversation, and log data for as long as needed to provide the service,
+            meet legal/accounting requirements, resolve disputes, and enforce agreements. Organizations may delete
+            documents, members, and certain configurations from the Admin Console; contact
+            <a href="mailto:support@qefro.com">support@qefro.com</a> for account closure requests.
+          </p>
+
+          <h2>6. Security</h2>
+          <p>
+            We use multi-tenant isolation, workspace isolation, encryption in transit, encrypted secrets for Business Tools,
+            SSRF protections for outbound tool calls, and access controls described on
+            <a href="/security">qefro.com/security</a>. No method of transmission or storage is 100% secure.
+          </p>
+
+          <h2>7. International transfers</h2>
+          <p>
+            Qefro is operated globally. Your information may be processed in countries other than where you are located.
+            Enterprise customers seeking private deployment or specific data-processing terms should contact Sales.
+          </p>
+
+          <h2>8. Your choices and rights</h2>
+          <p>
+            Depending on your location, you may have rights to access, correct, delete, or export personal data,
+            or to object to certain processing. Organization Owners/Admins control most workspace content.
+            Email <a href="mailto:support@qefro.com">support@qefro.com</a> to exercise privacy requests.
+            You can also stop using the service and request account deletion.
+          </p>
+
+          <h2>9. Children</h2>
+          <p>Qefro is designed for business use and is not directed to children under 16.</p>
+
+          <h2>10. Changes</h2>
+          <p>
+            We may update this policy. Material changes will be reflected by updating the &ldquo;Last updated&rdquo; date
+            on this page and, when appropriate, notifying account Owners by email or in-product notice.
+          </p>
+
+          <h2>11. Contact</h2>
+          <p>
+            Privacy questions: <a href="mailto:support@qefro.com">support@qefro.com</a> ·
+            <a href="/contact">Contact form</a> · Related: <a href="/terms">Terms of Service</a>,
+            <a href="/security">Security</a>.
+          </p>
+        </div>"""
+
+
+def terms_page_content() -> str:
+    return f"""        <div class="prose">
+          <p><strong>Last updated:</strong> {BUILD_DATE}</p>
+          <p>
+            These Terms of Service (&ldquo;Terms&rdquo;) govern access to and use of Qefro&rsquo;s websites, Admin Console,
+            Internal Portal, website widget, WhatsApp integrations, APIs, and related services (the &ldquo;Service&rdquo;).
+            By creating an account or using the Service, you agree to these Terms.
+          </p>
+
+          <h2>1. The Service</h2>
+          <p>
+            Qefro is an AI Workspace Platform. You configure organizations, workspaces, knowledge, Business Tools,
+            and channels to deploy Customer AI and Employee AI. Features and plan limits are described on
+            <a href="/pricing">Pricing</a> and in the Admin Console and may change over time.
+          </p>
+
+          <h2>2. Accounts and organizations</h2>
+          <ul>
+            <li>You must provide accurate registration information and keep credentials secure.</li>
+            <li>Organization Owners are responsible for members, billing, and configuration under their tenant.</li>
+            <li>You must be authorized to bind your company to these Terms when signing up for a business account.</li>
+          </ul>
+
+          <h2>3. Customer content and responsibilities</h2>
+          <p>
+            You retain ownership of content you upload or connect (&ldquo;Customer Content&rdquo;), including documents,
+            instructions, conversation data generated for your organization, and integration credentials you provide.
+            You grant Qefro a limited license to host, process, transmit, and display Customer Content solely to provide
+            and secure the Service.
+          </p>
+          <p>You are responsible for:</p>
+          <ul>
+            <li>Having rights to the Customer Content you submit</li>
+            <li>Configuring workspaces, RBAC, and Business Tools safely (including least-privilege API scopes)</li>
+            <li>Compliance with laws applicable to your use (including privacy notices to your end users)</li>
+            <li>Outputs you act on — AI answers and actions can be incorrect; review critical decisions</li>
+          </ul>
+
+          <h2>4. Acceptable use</h2>
+          <p>You may not:</p>
+          <ul>
+            <li>Probe, abuse, or disrupt the Service, or bypass rate limits, quotas, or security controls</li>
+            <li>Use the Service for unlawful, harmful, or infringing activity</li>
+            <li>Resell the Service except as expressly permitted in writing</li>
+            <li>Attempt to extract model weights or reverse engineer the Service except where prohibited by law cannot be waived</li>
+            <li>Upload malware or content that creates undue risk to Qefro or other customers</li>
+          </ul>
+
+          <h2>5. AI and Business Actions</h2>
+          <p>
+            The Service may retrieve from your knowledge, call models, and invoke Business Tools you configure.
+            Business Actions call <em>your</em> systems of record; Qefro is not your CRM/ERP. You must validate
+            tool configurations, identity forwarding (<code>identify()</code>), and outbound webhook targets.
+          </p>
+
+          <h2>6. Plans, billing, and taxes</h2>
+          <p>
+            Paid plans are billed via Razorpay as shown in the Admin Console. Fees are generally prepaid and
+            non-refundable except where required by law or expressly stated otherwise. You authorize recurring charges
+            for subscriptions you enable. Taxes may apply. Failure to pay may result in suspension.
+          </p>
+
+          <h2>7. Third-party services</h2>
+          <p>
+            The Service may interoperate with third parties (payment, messaging, model providers, your APIs).
+            Their terms and privacy policies apply to those services. Qefro is not responsible for third-party outages
+            or changes outside our reasonable control.
+          </p>
+
+          <h2>8. Confidentiality and security</h2>
+          <p>
+            Each party will protect the other&rsquo;s confidential information with reasonable care.
+            Our security practices are summarized at <a href="/security">qefro.com/security</a>.
+            You must protect widget tokens, API credentials, and Admin Console access.
+          </p>
+
+          <h2>9. Privacy</h2>
+          <p>
+            Personal data is handled as described in our <a href="/privacy">Privacy Policy</a>.
+            Enterprise DPAs are available on request via Sales / <a href="mailto:support@qefro.com">support@qefro.com</a>.
+          </p>
+
+          <h2>10. Intellectual property</h2>
+          <p>
+            Qefro and its licensors own the Service, branding, and underlying software. These Terms do not transfer
+            ownership of Qefro IP. Feedback you provide may be used to improve the Service without obligation to you.
+          </p>
+
+          <h2>11. Disclaimers</h2>
+          <p>
+            THE SERVICE IS PROVIDED &ldquo;AS IS&rdquo; AND &ldquo;AS AVAILABLE.&rdquo; TO THE MAXIMUM EXTENT PERMITTED BY LAW,
+            QEFRO DISCLAIMS WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+            WE DO NOT WARRANT THAT AI OUTPUTS WILL BE ACCURATE, COMPLETE, OR ERROR-FREE.
+          </p>
+
+          <h2>12. Limitation of liability</h2>
+          <p>
+            TO THE MAXIMUM EXTENT PERMITTED BY LAW, QEFRO WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL,
+            CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR LOST PROFITS, REVENUE, OR DATA. QEFRO&rsquo;S AGGREGATE LIABILITY
+            ARISING OUT OF THESE TERMS WILL NOT EXCEED THE AMOUNTS PAID BY YOU TO QEFRO FOR THE SERVICE IN THE
+            TWELVE (12) MONTHS BEFORE THE CLAIM (OR USD $100 IF YOU ARE ON A FREE PLAN).
+          </p>
+
+          <h2>13. Indemnity</h2>
+          <p>
+            You will defend and indemnify Qefro against claims arising from your Customer Content, your end users,
+            your Business Tool configurations, or your unlawful use of the Service.
+          </p>
+
+          <h2>14. Suspension and termination</h2>
+          <p>
+            You may stop using the Service at any time. We may suspend or terminate access for breach, non-payment,
+            risk to the platform, or legal requirements. Upon termination, your right to use the Service ends;
+            provisions that should survive (including IP, disclaimers, limitations, and indemnity) will survive.
+          </p>
+
+          <h2>15. Changes</h2>
+          <p>
+            We may update these Terms. Continued use after the updated &ldquo;Last updated&rdquo; date constitutes acceptance,
+            except where applicable law requires additional consent.
+          </p>
+
+          <h2>16. Contact</h2>
+          <p>
+            Questions: <a href="mailto:support@qefro.com">support@qefro.com</a> ·
+            <a href="/contact">Contact</a> · <a href="/privacy">Privacy Policy</a> ·
+            <a href="/security">Security</a>.
+          </p>
+        </div>"""
+
+
 def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, extra_sections=""):
     jl = [
         webpage_json(title, desc, path),
@@ -1615,6 +1865,66 @@ PAGES["contact.html"] = inner(
             "Book a Qefro demo or email support. Tell us about your team and we will get back within one business day.",
         )
     ],
+)
+
+PAGES["privacy.html"] = page(
+    title="Privacy Policy | Qefro",
+    description="How Qefro collects, uses, and protects personal data across the Admin Console, Internal Portal, website widget, WhatsApp, and APIs.",
+    path="privacy.html",
+    active=None,
+    jsonld=[
+        webpage_json(
+            "Privacy Policy | Qefro",
+            "How Qefro collects, uses, and protects personal data across the Admin Console, Internal Portal, website widget, WhatsApp, and APIs.",
+            "privacy.html",
+        ),
+        breadcrumb_json([("Home", "/"), ("Privacy Policy", "privacy")]),
+    ],
+    body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs([("Home", "/"), ("Privacy Policy", "")])}
+        <h1>Privacy Policy</h1>
+        <div class="direct-answer" style="text-align:left">
+          <p>How Qefro handles personal data for the marketing site, Admin Console, Internal Portal, website widget, WhatsApp, and APIs.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+{privacy_page_content()}
+      </div>
+    </section>
+""",
+)
+
+PAGES["terms.html"] = page(
+    title="Terms of Service | Qefro",
+    description="Terms governing use of the Qefro AI Workspace Platform, including accounts, billing, acceptable use, and liability.",
+    path="terms.html",
+    active=None,
+    jsonld=[
+        webpage_json(
+            "Terms of Service | Qefro",
+            "Terms governing use of the Qefro AI Workspace Platform, including accounts, billing, acceptable use, and liability.",
+            "terms.html",
+        ),
+        breadcrumb_json([("Home", "/"), ("Terms of Service", "terms")]),
+    ],
+    body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs([("Home", "/"), ("Terms of Service", "")])}
+        <h1>Terms of Service</h1>
+        <div class="direct-answer" style="text-align:left">
+          <p>The agreement between you and Qefro for using the AI Workspace Platform and related websites.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+{terms_page_content()}
+      </div>
+    </section>
+""",
 )
 
 PAGES["404.html"] = page(
