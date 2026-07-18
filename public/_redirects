@@ -1,0 +1,5 @@
+# Cloudflare Pages — prefer extensionless URLs (matches container nginx)
+# Pages already serves /privacy from privacy.html; this 301s the .html form.
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+/*.html /:splat 301
