@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "32"
+ASSET_VERSION = "33"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -277,11 +277,21 @@ def page(
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xmaswr5i7h");
   </script>"""
+    gtag = """  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BD3M2H7X1E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BD3M2H7X1E');
+  </script>"""
     return f"""<!DOCTYPE html>
 <html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
 {meta_block(title, description, path, robots=robots, include_canonical=include_canonical)}
 {schemas}
+{gtag}
 {clarity}
 </head>
 <body>
