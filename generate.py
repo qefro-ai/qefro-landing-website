@@ -17,7 +17,7 @@ API = "https://api.qefro.com"
 WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
-ASSET_VERSION = "33"
+ASSET_VERSION = "35"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI that knows your business and gets work done. Configure once in "
@@ -77,19 +77,20 @@ NAV = [
     ("pricing", "Pricing"),
 ]
 
-# Indexable pages for sitemap (extensionless paths; nginx serves matching .html)
-SITEMAP_ENTRIES: list[tuple[str, str, str]] = [
-    ("", "weekly", "1.0"),
-    ("features", "monthly", "0.9"),
-    ("how-it-works", "monthly", "0.8"),
-    ("use-cases", "monthly", "0.8"),
-    ("security", "monthly", "0.8"),
-    ("pricing", "weekly", "0.9"),
-    ("faq", "weekly", "0.9"),
-    ("contact", "monthly", "0.7"),
-    ("what-is-qefro", "monthly", "0.85"),
-    ("qefro-pricing", "monthly", "0.85"),
-    ("benchmark", "monthly", "0.6"),
+# Canonical indexable URLs for sitemap (extensionless; nginx 301s .html → these).
+# Images listed here are included via the image sitemap extension.
+SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
+    ("", [(f"{SITE}/assets/images/og-cover.png", "Qefro AI Workspace Platform")]),
+    ("features", []),
+    ("how-it-works", []),
+    ("use-cases", []),
+    ("security", []),
+    ("pricing", []),
+    ("faq", []),
+    ("contact", []),
+    ("what-is-qefro", []),
+    ("qefro-pricing", []),
+    ("benchmark", []),
 ]
 
 
@@ -106,10 +107,13 @@ def meta_block(
     description: str,
     path: str,
     *,
-    robots: str = "index, follow, max-image-preview:large, max-snippet:-1",
+    robots: str = (
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    ),
     include_canonical: bool = True,
 ) -> str:
     url = site_url(path)
+    # Absolute HTTPS canonicals only — Google prefers absolute URLs for rel=canonical
     canonical = f'  <link rel="canonical" href="{url}" />\n' if include_canonical else ""
     return f"""  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -130,6 +134,7 @@ def meta_block(
     }})();
   </script>
 {canonical}  <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="{escape(title)}" />
@@ -158,17 +163,22 @@ def meta_block(
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.clarity.ms" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/css/styles.css?v={ASSET_VERSION}" as="style" />
   <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />"""
 
 
 def header(active: str | None = None) -> str:
+    # Root-relative hrefs so Google resolves the same canonical path from every page
+    # https://developers.google.com/search/docs/crawling-indexing/links-crawlable
     links = []
     for href, label in NAV:
         cur = ' aria-current="page"' if active == href else ""
-        links.append(f'        <a href="{href}"{cur}>{label}</a>')
+        links.append(f'        <a href="/{href}"{cur}>{label}</a>')
     mobile = "\n".join(
-        f'      <a href="{href}"{" aria-current=\"page\"" if active == href else ""}>{label}</a>'
+        f'      <a href="/{href}"{" aria-current=\"page\"" if active == href else ""}>{label}</a>'
         for href, label in NAV
     )
     return f"""  <a class="skip-link" href="#main">Skip to content</a>
@@ -181,8 +191,8 @@ def header(active: str | None = None) -> str:
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
-        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" fetchpriority="high" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
       </a>
       <nav class="nav-links" aria-label="Primary">
 {chr(10).join(links)}
@@ -235,8 +245,8 @@ def footer() -> str:
     <div class="wrap">
       <div class="footer-top">
         <a class="brand" href="/" aria-label="Qefro home">
-          <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI Workspace Platform logo" width="40" height="40" />
-          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" />
+          <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" />
+          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
         </a>
         <nav class="footer-links" aria-label="Footer">
           <a href="/how-it-works">Platform</a>
@@ -244,10 +254,12 @@ def footer() -> str:
           <a href="/use-cases">Solutions</a>
           <a href="/pricing">Pricing</a>
           <a href="/security">Security</a>
+          <a href="/what-is-qefro">What is Qefro</a>
           <a href="/benchmark">Benchmark</a>
           <a href="/faq">FAQ</a>
           <a href="/contact">Contact</a>
           <a href="/llms.txt">llms.txt</a>
+          <a href="/sitemap.xml">Sitemap</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -266,7 +278,9 @@ def page(
     active: str | None = None,
     jsonld: list[str] | None = None,
     *,
-    robots: str = "index, follow, max-image-preview:large, max-snippet:-1",
+    robots: str = (
+        "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    ),
     include_canonical: bool = True,
 ) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
@@ -321,9 +335,38 @@ def crumbs(items: list[tuple[str, str]]) -> str:
 def breadcrumb_json(items: list[tuple[str, str]]) -> str:
     elements = []
     for i, (name, href) in enumerate(items, start=1):
-        item = site_url(href) if href else site_url("")
+        if href in {"", "/"}:
+            item = f"{SITE}/"
+        else:
+            item = site_url(href.removeprefix("/"))
         elements.append({"@type": "ListItem", "position": i, "name": name, "item": item})
     return json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": elements}, indent=2)
+
+
+def webpage_json(title: str, description: str, path: str) -> str:
+    """WebPage + dateModified so Google can understand freshness signals."""
+    url = site_url(path)
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": f"{url}#webpage",
+            "url": url,
+            "name": title,
+            "description": description,
+            "isPartOf": {"@id": f"{SITE}/#website"},
+            "about": {"@id": f"{SITE}/#organization"},
+            "dateModified": BUILD_DATE,
+            "inLanguage": "en-US",
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": OG_IMAGE,
+                "width": 1200,
+                "height": 630,
+            },
+        },
+        indent=2,
+    )
 
 
 ORG_JSON = json.dumps(
@@ -332,52 +375,106 @@ ORG_JSON = json.dumps(
         "@type": "Organization",
         "@id": f"{SITE}/#organization",
         "name": "Qefro",
+        "alternateName": ["Qefro AI", "qefro"],
         "url": SITE,
-        "logo": f"{SITE}/assets/images/qefro-logo.png",
+        "logo": {
+            "@type": "ImageObject",
+            "url": f"{SITE}/assets/images/qefro-logo.png",
+            "width": 512,
+            "height": 512,
+            "contentUrl": f"{SITE}/assets/images/qefro-logo.png",
+        },
+        "image": OG_IMAGE,
+        "description": (
+            "AI Workspace Platform for organizations — configure once in the Admin Console, "
+            "deploy Customer AI and Employee AI everywhere."
+        ),
         "email": "support@qefro.com",
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "support@qefro.com",
+                "url": f"{SITE}/contact",
+                "availableLanguage": ["English"],
+            },
+            {
+                "@type": "ContactPoint",
+                "contactType": "sales",
+                "email": "support@qefro.com",
+                "url": f"{SITE}/contact",
+                "availableLanguage": ["English"],
+            },
+        ],
         "sameAs": ["https://github.com/qefro-ai"],
+        "foundingDate": "2024",
+        "knowsAbout": [
+            "AI Workspace Platform",
+            "Customer support AI",
+            "Internal AI assistants",
+            "Retrieval-augmented generation",
+            "Business process automation",
+        ],
     },
     indent=2,
 )
 
+# Site name preference for Google Search results
+# https://developers.google.com/search/docs/appearance/site-names
 WEBSITE_JSON = json.dumps(
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": f"{SITE}/#website",
         "name": "Qefro",
-        "url": SITE,
+        "alternateName": ["Qefro AI", "qefro.com"],
+        "url": f"{SITE}/",
         "description": "AI Workspace Platform for organizations — configure once in the Admin Console, deploy Customer AI and Employee AI everywhere.",
         "publisher": {"@id": f"{SITE}/#organization"},
         "inLanguage": "en-US",
+        "copyrightHolder": {"@id": f"{SITE}/#organization"},
     },
     indent=2,
 )
 
+# SoftwareApplication: required name + offers.price. Do NOT invent AggregateRating —
+# Google requires real ratings/reviews for software-app rich results.
+# https://developers.google.com/search/docs/appearance/structured-data/software-app
 SOFTWARE_JSON = json.dumps(
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": ["SoftwareApplication", "WebApplication"],
         "name": "Qefro",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
+        "operatingSystem": "Web browser",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "url": SITE,
         "image": OG_IMAGE,
+        "screenshot": OG_IMAGE,
         "description": (
             "AI Workspace Platform for organizations: configure once in the Admin Console, "
             "then deploy Customer AI on website and WhatsApp and Employee AI via a branded "
             "Internal Portal — with knowledge, business actions, and permissions."
         ),
         "keywords": META_KEYWORDS,
+        "author": {"@id": f"{SITE}/#organization"},
+        "publisher": {"@id": f"{SITE}/#organization"},
         "offers": {
-            "@type": "AggregateOffer",
-            "lowPrice": "0",
-            "highPrice": "119",
+            "@type": "Offer",
+            "price": 0,
             "priceCurrency": "USD",
-            "offerCount": "4",
             "availability": "https://schema.org/InStock",
             "url": f"{SITE}/pricing",
+            "description": "Free forever plan available — no credit card required",
         },
+        "featureList": [
+            "AI Workspaces",
+            "Knowledge platform with multilingual RAG",
+            "Business actions via REST and OpenAPI",
+            "Customer AI website widget and WhatsApp",
+            "Employee AI Internal Portal",
+            "Tenant isolation and encrypted secrets",
+        ],
     },
     indent=2,
 )
@@ -387,10 +484,10 @@ SOFTWARE_JSON = json.dumps(
 PRICING_OFFERS_JSON = json.dumps(
     {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
+        "@type": ["SoftwareApplication", "WebApplication"],
         "name": "Qefro",
         "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
+        "operatingSystem": "Web browser",
         "url": f"{SITE}/pricing",
         "image": OG_IMAGE,
         "description": (
@@ -402,7 +499,7 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Free",
-                "price": "0",
+                "price": 0,
                 "priceCurrency": "USD",
                 "description": "Forever free plan — no credit card required",
                 "url": f"{SITE}/pricing",
@@ -412,7 +509,7 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Starter",
-                "price": "29",
+                "price": 29,
                 "priceCurrency": "USD",
                 "description": "Billed annually ($39/month if billed monthly)",
                 "url": f"{SITE}/pricing",
@@ -422,7 +519,7 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Growth",
-                "price": "99",
+                "price": 99,
                 "priceCurrency": "USD",
                 "description": "Billed annually ($119/month if billed monthly)",
                 "url": f"{SITE}/pricing",
@@ -551,7 +648,7 @@ def product_screenshots_html() -> str:
 
     cards = "\n".join(
         f"""          <figure class="product-shot-card">
-            <img src="/assets/images/product/{filename}" alt="Qefro {title}: {description}" loading="lazy" width="1440" height="900" />
+            <img src="/assets/images/product/{filename}" alt="Qefro {title}: {description}" loading="lazy" decoding="async" width="1440" height="900" />
             <figcaption><strong>{title}</strong><span>{description}</span></figcaption>
           </figure>"""
         for filename, title, description in PRODUCT_SCREENSHOTS
@@ -684,6 +781,10 @@ def uc_tabs_html() -> str:
 
 
 def faq_schema(items=FAQ_ITEMS) -> str:
+    # Keep FAQPage only on /faq (single instance). FAQ rich results are limited to
+    # health/government sites and are being deprecated in 2026 — markup still helps
+    # other systems understand Q&A content.
+    # https://developers.google.com/search/docs/appearance/structured-data/faqpage
     return json.dumps(
         {
             "@context": "https://schema.org",
@@ -699,6 +800,28 @@ def faq_schema(items=FAQ_ITEMS) -> str:
                 }
                 for q, a in items
             ],
+        },
+        indent=2,
+    )
+
+
+def contact_page_json(title: str, description: str) -> str:
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "@id": f"{SITE}/contact#webpage",
+            "url": f"{SITE}/contact",
+            "name": title,
+            "description": description,
+            "isPartOf": {"@id": f"{SITE}/#website"},
+            "about": {"@id": f"{SITE}/#organization"},
+            "mainEntity": {
+                "@type": "Organization",
+                "@id": f"{SITE}/#organization",
+            },
+            "dateModified": BUILD_DATE,
+            "inLanguage": "en-US",
         },
         indent=2,
     )
@@ -1053,7 +1176,16 @@ PAGES["index.html"] = page(
         "grounded answers plus secure business actions. Start free."
     ),
     path="",
-    jsonld=[ORG_JSON, WEBSITE_JSON, SOFTWARE_JSON],
+    jsonld=[
+        ORG_JSON,
+        WEBSITE_JSON,
+        SOFTWARE_JSON,
+        webpage_json(
+            "Qefro — AI That Knows Your Business and Gets Work Done",
+            "Qefro deploys AI across support and internal teams — grounded answers plus secure business actions. Start free.",
+            "",
+        ),
+    ],
     body=home_body(),
 )
 
@@ -1261,7 +1393,10 @@ def pricing_page_content() -> str:
 
 
 def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, extra_sections=""):
-    jl = [breadcrumb_json([("Home", ""), (h1, path)])]
+    jl = [
+        webpage_json(title, desc, path),
+        breadcrumb_json([("Home", "/"), (h1, path)]),
+    ]
     if extra_jsonld:
         jl.extend(extra_jsonld)
     return page(
@@ -1272,7 +1407,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
         jsonld=jl,
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", ""), (h1, "")])}
+        {crumbs([("Home", "/"), (h1, "")])}
         <h1>{h1}</h1>
         <div class="direct-answer" style="text-align:left">{answer}</div>
       </div>
@@ -1299,7 +1434,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
 
 
 PAGES["features.html"] = inner(
-    "Qefro features — AI Workspace Platform",
+    "Features | Qefro AI Workspace Platform",
     "Features",
     "Qefro AI Workspace Platform: AI Workspaces, knowledge RAG, business actions (REST/OpenAPI), Customer AI widget, Internal Portal, WhatsApp, voice, RBAC, and agent handoff.",
     "features.html",
@@ -1309,7 +1444,7 @@ PAGES["features.html"] = inner(
 )
 
 PAGES["how-it-works.html"] = inner(
-    "Qefro platform — configure once, deploy everywhere",
+    "Platform | Qefro — configure once, deploy everywhere",
     "Platform",
     "How the Qefro platform works: configure AI Workspaces, knowledge, and business actions once in the Admin Console, then deploy Customer AI and Employee AI everywhere.",
     "how-it-works.html",
@@ -1319,7 +1454,7 @@ PAGES["how-it-works.html"] = inner(
 )
 
 PAGES["use-cases.html"] = inner(
-    "Qefro solutions — Customer AI, Employee AI, HR, IT, engineering",
+    "Solutions | Qefro for Customer AI, Employee AI, HR, and IT",
     "Solutions",
     "Teams use Qefro for Customer AI with live API actions, Employee AI portals for HR/IT, regulated compliance lookup, and engineering runbooks — multilingual RAG included.",
     "use-cases.html",
@@ -1329,7 +1464,7 @@ PAGES["use-cases.html"] = inner(
 )
 
 PAGES["security.html"] = inner(
-    "Qefro security — enterprise AI Workspace Platform",
+    "Security | Qefro enterprise AI Workspace Platform",
     "Security",
     "Enterprise security for organizational AI: end-user identity forwarding, zero-trust style authorization, audit logs, multi-tenant isolation, workspace RBAC, and encrypted secrets.",
     "security.html",
@@ -1339,17 +1474,15 @@ PAGES["security.html"] = inner(
 )
 
 PAGES["pricing.html"] = inner(
-    "Qefro pricing — Starter from $29/mo, Growth from $99/mo, Enterprise",
+    "Pricing | Qefro — Free, Starter from $29/mo, Growth from $99/mo",
     "Pricing",
     "Qefro pricing: Free forever (100 conversations, multilingual RAG, widget + voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited business system connections.",
     "pricing.html",
     "pricing",
     "<p>Start free with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
     pricing_page_content(),
-    extra_jsonld=[
-        PRICING_OFFERS_JSON,
-        faq_schema([("How much does Qefro cost?", "Qefro is freemium: Free plan includes 100 conversations/month, knowledge for getting started, and connect 1 business system. Starter is $29/month billed annually ($39 monthly) with up to 5 business systems. Growth is $99/month billed annually ($119 monthly) with unlimited business system connections. Enterprise is custom. No credit card required to start Free.")]),
-    ],
+    # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
+    extra_jsonld=[PRICING_OFFERS_JSON],
 )
 
 faq_html = "".join(
@@ -1362,14 +1495,22 @@ faq_html = "".join(
 )
 
 PAGES["faq.html"] = page(
-    title="Qefro FAQ — AI Workspace Platform, pricing, security, integrations",
+    title="FAQ | Qefro AI Workspace Platform",
     description="FAQ about the Qefro AI Workspace Platform: pricing, accuracy, security, business actions, Internal Portal, workspaces, and setup.",
     path="faq.html",
     active="faq",
-    jsonld=[breadcrumb_json([("Home", ""), ("FAQ", "faq")]), faq_schema()],
+    jsonld=[
+        webpage_json(
+            "FAQ | Qefro AI Workspace Platform",
+            "FAQ about the Qefro AI Workspace Platform: pricing, accuracy, security, business actions, Internal Portal, workspaces, and setup.",
+            "faq",
+        ),
+        breadcrumb_json([("Home", "/"), ("FAQ", "faq")]),
+        faq_schema(),
+    ],
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", ""), ("FAQ", "")])}
+        {crumbs([("Home", "/"), ("FAQ", "")])}
         <h1>Frequently Asked Questions</h1>
         <p class="hero-sub" style="margin-bottom:0">Everything you need to know before you start.</p>
       </div>
@@ -1385,13 +1526,20 @@ PAGES["faq.html"] = page(
 )
 
 PAGES["benchmark.html"] = page(
-    title="Qefro benchmark methodology — accuracy evaluation",
+    title="Benchmark methodology | Qefro",
     description="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
     path="benchmark.html",
-    jsonld=[breadcrumb_json([("Home", ""), ("Benchmark Methodology", "benchmark")])],
+    jsonld=[
+        webpage_json(
+            "Benchmark methodology | Qefro",
+            "How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
+            "benchmark",
+        ),
+        breadcrumb_json([("Home", "/"), ("Benchmark Methodology", "benchmark")]),
+    ],
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", ""), ("Benchmark Methodology", "")])}
+        {crumbs([("Home", "/"), ("Benchmark Methodology", "")])}
         <h1>Benchmark Methodology</h1>
         <p class="hero-sub" style="margin-bottom:0">How we measure Qefro&rsquo;s accuracy and refusal behavior.</p>
       </div>
@@ -1432,7 +1580,7 @@ PAGES["benchmark.html"] = page(
 )
 
 PAGES["contact.html"] = inner(
-    "Contact Qefro — sales, support, and demos",
+    "Contact | Qefro sales, support, and demos",
     "Contact Qefro",
     "Book a Qefro demo or email support. Tell us about your team and we will get back within one business day.",
     "contact.html",
@@ -1461,6 +1609,12 @@ PAGES["contact.html"] = inner(
           <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free</span></a>
           <a class="cap-card" href="/pricing"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
+    extra_jsonld=[
+        contact_page_json(
+            "Contact | Qefro sales, support, and demos",
+            "Book a Qefro demo or email support. Tell us about your team and we will get back within one business day.",
+        )
+    ],
 )
 
 PAGES["404.html"] = page(
@@ -1485,14 +1639,14 @@ PAGES["404.html"] = page(
 for slug, title, q, a, extra in [
     (
         "what-is-qefro.html",
-        "What is Qefro? — AI Workspace Platform for Organizations",
+        "What is Qefro? | AI Workspace Platform for Organizations",
         "What is Qefro?",
         "Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal — sharing one knowledge platform, permission system, and set of business actions.",
         "<p>Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions. Configure once in the Admin Console, then deploy Customer AI and Employee AI everywhere — with workspace-level isolation.</p>",
     ),
     (
         "qefro-pricing.html",
-        "How much does Qefro cost?",
+        "How much does Qefro cost? | Pricing overview",
         "How much does Qefro cost?",
         "Qefro is freemium. Free forever: 100 conversations/month, knowledge for getting started, connect 1 business system. Starter from $29/month billed annually (connect up to 5 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom. No credit card required.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
@@ -1502,13 +1656,14 @@ for slug, title, q, a, extra in [
         title=title,
         description=a,
         path=slug,
+        # No FAQPage on AEO pages — Google guidelines: mark up each FAQ only once (on /faq).
         jsonld=[
-            breadcrumb_json([("Home", ""), (q, slug.removesuffix(".html"))]),
-            faq_schema([(q, a)]),
+            webpage_json(title, a, slug),
+            breadcrumb_json([("Home", "/"), (q, slug.removesuffix(".html"))]),
         ],
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
-        {crumbs([("Home", ""), (q, "")])}
+        {crumbs([("Home", "/"), (q, "")])}
         <h1>{q}</h1>
         <div class="direct-answer"><p>{a}</p></div>
         <div class="prose" style="margin-top:1.5rem">{extra}
@@ -1534,10 +1689,22 @@ def ensure_logo() -> None:
 
 
 def write_robots_txt() -> None:
-    content = f"""User-agent: *
+    # https://developers.google.com/search/docs/crawling-indexing/robots/intro
+    # Allow full crawl of HTML + CSS/JS/images so Google can render pages correctly.
+    # Do not use robots.txt to hide pages — use noindex (see 404.html) instead.
+    content = f"""# Qefro marketing site — https://qefro.com
+# App hosts (app.qefro.com, api.qefro.com) are separate and not governed here.
+
+User-agent: *
 Allow: /
 
-# App and admin are separate hosts; marketing site only.
+# Explicitly allow rendering resources (Google recommends not blocking these).
+Allow: /assets/
+
+# Custom 404 is not for indexing (also noindex in HTML + true HTTP 404 from nginx).
+Disallow: /404
+Disallow: /404.html
+
 Sitemap: {SITE}/sitemap.xml
 """
     (ROOT / "robots.txt").write_text(content, encoding="utf-8")
@@ -1545,17 +1712,38 @@ Sitemap: {SITE}/sitemap.xml
 
 
 def write_sitemap_xml() -> None:
+    # Canonical HTTPS URLs only. lastmod helps freshness; Google largely ignores
+    # changefreq/priority so we omit them.
+    # Image extension: https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps
+    entries = list(SITEMAP_ENTRIES)
+    # Attach product screenshots to the homepage when the full set is present
+    image_dir = ROOT / "assets" / "images" / "product"
+    if all((image_dir / filename).is_file() for filename, _, _ in PRODUCT_SCREENSHOTS):
+        home_path, home_images = entries[0]
+        product_images = [
+            (
+                f"{SITE}/assets/images/product/{filename}",
+                f"Qefro {title}: {description}",
+            )
+            for filename, title, description in PRODUCT_SCREENSHOTS
+        ]
+        entries[0] = (home_path, list(home_images) + product_images)
+
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+        '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     ]
-    for path, changefreq, priority in SITEMAP_ENTRIES:
+    for path, images in entries:
         loc = site_url(path if path else "index.html")
         lines.append("  <url>")
         lines.append(f"    <loc>{escape(loc)}</loc>")
         lines.append(f"    <lastmod>{BUILD_DATE}</lastmod>")
-        lines.append(f"    <changefreq>{changefreq}</changefreq>")
-        lines.append(f"    <priority>{priority}</priority>")
+        for img_loc, img_title in images:
+            lines.append("    <image:image>")
+            lines.append(f"      <image:loc>{escape(img_loc)}</image:loc>")
+            lines.append(f"      <image:title>{escape(img_title)}</image:title>")
+            lines.append("    </image:image>")
         lines.append("  </url>")
     lines.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(lines) + "\n", encoding="utf-8")

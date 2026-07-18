@@ -1,5 +1,14 @@
+# Qefro marketing site — https://qefro.com
+# App hosts (app.qefro.com, api.qefro.com) are separate and not governed here.
+
 User-agent: *
 Allow: /
 
-# App and admin are separate hosts; marketing site only.
+# Explicitly allow rendering resources (Google recommends not blocking these).
+Allow: /assets/
+
+# Custom 404 is not for indexing (also noindex in HTML + true HTTP 404 from nginx).
+Disallow: /404
+Disallow: /404.html
+
 Sitemap: https://qefro.com/sitemap.xml
