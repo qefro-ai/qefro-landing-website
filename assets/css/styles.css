@@ -2393,39 +2393,27 @@ html[data-motion="1"] .price-grid.reveal.is-visible > * {
 /* ── Depth / hover polish (lightweight, CSS-only) ─────────────────── */
 .hero-grid { z-index: -1; }
 
-/* Perspective containers */
-.perspective-grid,
-.exp-grid,
-.outcome-grid,
-.scenario-grid,
-.product-mock-grid {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-/* Hover lift for cards and product mocks — no JS, no rAF */
+/* Simplified card hover effects - no 3D, smooth performance */
 .exp-card,
 .outcome-card,
 .scenario-card,
 .product-mock {
   position: relative;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .exp-card:hover,
 .outcome-card:hover,
 .scenario-card:hover,
 .product-mock:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 }
 
 /* Chat mock: static with a calm hover lift */
 .chat-mock {
-  transform-style: preserve-3d;
-  transition: transform 0.3s ease, border-color 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 button.demo-chat:hover .chat-mock {
-  transform: translateY(-6px);
+  transform: translateY(-4px);
 }
 
 /* Reduced motion: disable transforms */
@@ -2438,60 +2426,4 @@ button.demo-chat:hover .chat-mock {
     transform: none !important;
     transition: none !important;
   }
-}
-
-
-/* ── Advanced 3D Effects ─────────────────────────────────────────────── */
-
-/* Floating Cards */
-[data-floating-card] {
-  will-change: transform;
-  transform-style: preserve-3d;
-  transition: box-shadow 0.3s ease;
-}
-
-[data-floating-card]:hover {
-  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
-}
-
-/* Depth Layers */
-[data-depth-layer] {
-  will-change: transform;
-  transform-style: preserve-3d;
-}
-
-/* 3D Text Effects */
-[data-text-3d] {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-[data-text-3d] span {
-  perspective: 600px;
-  transform-style: preserve-3d;
-  transition: opacity 0.2s ease;
-}
-
-/* Perspective containers for immersive sections */
-.section-3d {
-  perspective: 1200px;
-  transform-style: preserve-3d;
-}
-
-/* Enhanced hero with 3D parallax */
-.hero {
-  perspective: 1000px;
-  transform-style: preserve-3d;
-}
-
-.hero-content {
-  perspective: 800px;
-  transform-style: preserve-3d;
-  position: relative;
-  z-index: 10;
-}
-
-/* Floating accent elements */
-.float-3d {
-  transform: translateY(0);
 }

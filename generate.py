@@ -1195,7 +1195,7 @@ PAGES["index.html"] = page(
         ),
     ],
     body=home_body(),
-    extra_scripts=f'\n  <script src="/assets/js/floating-cards-3d.js?v=38" defer></script>',
+    extra_scripts='',
 )
 
 # Inner pages — detailed content for menu-linked pages
