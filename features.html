@@ -69,7 +69,7 @@
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-18",
+  "dateModified": "2026-07-19",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -172,17 +172,20 @@
     <section class="page-hero">
       <div class="wrap-5xl">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Features</span></nav>
-        <h1>Features</h1>
-        <div class="direct-answer" style="text-align:left"><p>Qefro combines <strong>AI Workspaces</strong>, a <strong>knowledge platform</strong>, <strong>business actions</strong>, and <strong>three AI experiences</strong> — Customer AI, Employee AI, and Admin Console — so organizations can answer questions, take secure actions, and govern access from one platform.</p></div>
+        <div class="page-hero-inner">
+        <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Features</span>
+          <h1>Features</h1>
+          <div class="direct-answer" style="text-align:left"><p>Qefro combines <strong>AI Workspaces</strong>, a <strong>knowledge platform</strong>, <strong>business actions</strong>, and <strong>three AI experiences</strong> — Customer AI, Employee AI, and Admin Console — so organizations can answer questions, take secure actions, and govern access from one platform.</p></div>
+        </div>
       </div>
     </section>
     <section class="section">
       <div class="wrap reveal">
-        <div class="outcome-grid">
-          <article class="outcome-card"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
-          <article class="outcome-card"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
-          <article class="outcome-card"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li></ul></article>
-          <article class="outcome-card"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-blue"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg> AI Workspaces</span>
@@ -214,11 +217,11 @@
           <p>Powered by Business Tools. Import OpenAPI or configure REST endpoints for order lookup, booking, ticketing, CRM queries, or ERP reads. Credentials are encrypted; outbound calls use HTTPS with SSRF protections.</p>
         </div>
         <div class="scenario-grid reveal">
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Customer</span> Where is my order #4821?</p>
             <div class="scenario-flow"><span>AI calls Order API with user JWT</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Live tracking returned</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Employee</span> Create an IT ticket</p>
             <div class="scenario-flow"><span>AI calls Helpdesk API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Ticket created with context</span></div>
           </article>
@@ -245,12 +248,14 @@
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <h2>Ready to deploy your company&rsquo;s AI workspace?</h2>
-        <p>Start free — no credit card required.</p>
+        <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Get started today</span>
+        <h2>Deploy your company&rsquo;s AI workspace.</h2>
+        <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login?mode=signup">Start Free <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Book Demo</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="https://docs.qefro.com">Documentation</a> · <a href="/security">Security overview</a></p>
       </div>
     </section>
 

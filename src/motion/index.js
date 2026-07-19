@@ -2,6 +2,7 @@ import { initArchitecture } from "./architecture.js";
 import { initButtons } from "./buttons.js";
 import { initCompare } from "./compare.js";
 import { initDemo } from "./demo.js";
+import { initDepth } from "./depth.js";
 import { initFaq } from "./faq.js";
 import { initHero } from "./hero.js";
 import { initMicro } from "./micro.js";
@@ -31,6 +32,7 @@ function boot() {
   initButtons();
   initMicro();
   initStats();
+  initDepth();
 
   document.dispatchEvent(new CustomEvent("qefro:motion-ready"));
 }

@@ -69,7 +69,7 @@
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-18",
+  "dateModified": "2026-07-19",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -223,17 +223,23 @@
     <section class="page-hero">
       <div class="wrap-5xl">
         <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span>Pricing</span></nav>
-        <h1>Pricing</h1>
-        <div class="direct-answer" style="text-align:left"><p>Start free with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p></div>
+        <div class="page-hero-inner">
+        <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> Pricing</span>
+          <h1>Pricing</h1>
+          <div class="direct-answer" style="text-align:left"><p>Start free with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p></div>
+        </div>
       </div>
     </section>
     <section class="section">
       <div class="wrap reveal">
-        <div class="billing-toggle" role="group" aria-label="Billing period">
-          <button type="button" data-billing="monthly">Monthly</button>
-          <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
+        <div class="direct-answer reveal">
+          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, multilingual RAG, widget + voice), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, WhatsApp + unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
         </div>
-        <div class="price-grid">
+        <div class="billing-toggle reveal" role="group" aria-label="Billing period">
+          <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
+          <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
+        </div>
+        <div class="price-grid reveal">
           <article class="price-card">
             <h3>Free</h3>
             <p class="price-best">Best for evaluating the platform</p>
@@ -323,12 +329,14 @@
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <h2>Ready to deploy your company&rsquo;s AI workspace?</h2>
-        <p>Start free — no credit card required.</p>
+        <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Get started today</span>
+        <h2>Deploy your company&rsquo;s AI workspace.</h2>
+        <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login?mode=signup">Start Free <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Book Demo</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="https://docs.qefro.com">Documentation</a> · <a href="/security">Security overview</a></p>
       </div>
     </section>
 

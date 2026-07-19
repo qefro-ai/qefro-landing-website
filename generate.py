@@ -239,10 +239,10 @@ def widget_embed(theme: str = "light") -> str:
     data-welcome-message="{WIDGET_WELCOME}"></script>"""
 
 
-def page_scripts() -> str:
+def page_scripts(extra: str = "") -> str:
     return f"""{widget_embed()}
   <script src="/assets/js/main.js?v={ASSET_VERSION}" defer></script>
-  <script type="module" src="/assets/js/qefro-motion.js?v={ASSET_VERSION}"></script>"""
+  <script type="module" src="/assets/js/qefro-motion.js?v={ASSET_VERSION}"></script>{extra}"""
 
 
 def footer() -> str:
@@ -290,6 +290,7 @@ def page(
         "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     ),
     include_canonical: bool = True,
+    extra_scripts: str = "",
 ) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
     clarity = """  <script type="text/javascript">
@@ -324,7 +325,7 @@ def page(
   </main>
 {footer()}
   </div>
-{page_scripts()}
+{page_scripts(extra_scripts)}
 </body>
 </html>
 """
@@ -702,11 +703,10 @@ FAQ_ITEMS = [
     ),
     (
         "How long does setup take?",
-        "Typical setup takes {{REAL_SETUP_TIME}} depending on your documentation and integrations. "
-        "Most teams embed the website widget in under 5 minutes; connecting business systems and "
-        "rolling out the Internal Portal depends on your APIs and knowledge prep.",
+        "Most teams embed the website widget in under 5 minutes. Connecting business systems and "
+        "rolling out the Internal Portal depends on your APIs and knowledge prep — "
+        "typically a day or less for straightforward integrations.",
     ),
-    ("How long does integration take?", "Most teams embed the website widget in under 5 minutes. Identify authenticated users with a few lines of JavaScript. WhatsApp, Internal Portal, and API access are available for deeper rollouts."),
     (
         "Can I use this for employees as well as customers?",
         "Yes. Customer AI runs on your website and WhatsApp. Employee AI runs in a branded Internal Portal "
@@ -852,6 +852,7 @@ def home_faq_preview(n: int = 8) -> str:
 def home_body() -> str:
     return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-3d-canvas" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
         <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Workspace Platform</span>
         <h1 data-motion="hero-title">
@@ -909,7 +910,7 @@ def home_body() -> str:
             </p>
           </div>
           <button type="button" class="demo-chat" data-open-demo data-clarity-event="cta_chat_mock" aria-label="Open live chat demo">
-            <div class="chat-mock" data-motion="hero-float">
+            <div class="chat-mock tilt-3d" data-motion="hero-float">
               <div class="chat-mock-head">
                 <div class="chat-mock-avatar">{ICONS["bot"]}</div>
                 <div><strong>Qefro Assistant</strong><span>AI Workspace Platform</span></div>
@@ -970,24 +971,24 @@ def home_body() -> str:
         </div>
         <p class="integrations-note reveal" style="text-align:center;margin-top:1rem">Each AI Workspace has its own isolated knowledge, instructions, actions, and permissions.</p>
         <div class="exp-grid reveal" style="margin-top:2.5rem">
-          <article class="exp-card">
+          <article class="exp-card tilt-3d">
             <div class="exp-icon">{ICONS["headphones"]}</div>
             <h3>Customer AI</h3>
             <p>Website widget and WhatsApp with knowledge answers, business actions, lead capture, and human handoff.</p>
           </article>
-          <article class="exp-card exp-card-featured">
+          <article class="exp-card exp-card-featured tilt-3d">
             <div class="exp-icon">{ICONS["building"]}</div>
             <h3>Employee AI</h3>
             <p>Branded Internal Portal with workspace selector, conversations, documents, and source citations.</p>
           </article>
-          <article class="exp-card">
+          <article class="exp-card tilt-3d">
             <div class="exp-icon">{ICONS["server"]}</div>
             <h3>Admin Console</h3>
             <p>One place to configure knowledge, actions, teams, branding, channels, analytics, and inbox.</p>
           </article>
         </div>
         <div class="product-mock-grid reveal" style="margin-top:2.5rem">
-          <figure class="product-mock">
+          <figure class="product-mock tilt-3d">
             <figcaption><strong>Admin Console</strong><span>Configure workspaces, knowledge, actions &amp; permissions</span></figcaption>
             <div class="mock-ui mock-console" role="img" aria-label="Illustration of the Admin Console with workspaces, knowledge, and actions">
               <div class="mock-sidebar" aria-hidden="true">
@@ -1008,7 +1009,7 @@ def home_body() -> str:
               </div>
             </div>
           </figure>
-          <figure class="product-mock">
+          <figure class="product-mock tilt-3d">
             <figcaption><strong>Internal Portal</strong><span>Employee AI with workspaces and sources</span></figcaption>
             <div class="mock-ui mock-portal" role="img" aria-label="Illustration of the Internal Portal chat with workspace selector and sources">
               <div class="mock-sidebar" aria-hidden="true">
@@ -1039,7 +1040,7 @@ def home_body() -> str:
           <p>Grounded answers from your content, secure actions via your APIs, and deployment where your people already work. <a href="/features">Explore all features</a>.</p>
         </div>
         <div class="outcome-grid reveal">
-          <article class="outcome-card">
+          <article class="outcome-card tilt-3d">
             <h3>Business Actions</h3>
             <ul>
               <li>Powered by Business Tools</li>
@@ -1049,7 +1050,7 @@ def home_body() -> str:
               <li>Execution logs</li>
             </ul>
           </article>
-          <article class="outcome-card">
+          <article class="outcome-card tilt-3d">
             <h3>Knowledge Platform</h3>
             <ul>
               <li>PDF, DOCX, Markdown, TXT</li>
@@ -1059,7 +1060,7 @@ def home_body() -> str:
               <li>Workspace-isolated bases</li>
             </ul>
           </article>
-          <article class="outcome-card">
+          <article class="outcome-card tilt-3d">
             <h3>Channels</h3>
             <ul>
               <li>Website widget &amp; voice</li>
@@ -1069,7 +1070,7 @@ def home_body() -> str:
               <li>Lead capture</li>
             </ul>
           </article>
-          <article class="outcome-card">
+          <article class="outcome-card tilt-3d">
             <h3>Security controls</h3>
             <ul>
               <li>Tenant isolation</li>
@@ -1081,11 +1082,11 @@ def home_body() -> str:
           </article>
         </div>
         <div class="scenario-grid reveal" style="margin-top:2.5rem">
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Customer</span> Where is my order?</p>
             <div class="scenario-flow"><span>AI calls your Order API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Live tracking returned</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Employee</span> Approve my leave request</p>
             <div class="scenario-flow"><span>AI calls your HR API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Request submitted</span></div>
           </article>
@@ -1195,15 +1196,16 @@ PAGES["index.html"] = page(
         ),
     ],
     body=home_body(),
+    extra_scripts=f'\n  <script src="/assets/js/hero-3d.js?v={ASSET_VERSION}" defer></script>\n  <script src="/assets/js/floating-cards-3d.js?v=38" defer></script>\n  <script src="/assets/js/depth-parallax.js?v=38" defer></script>\n  <script src="/assets/js/text-3d-effects.js?v=38" defer></script>',
 )
 
 # Inner pages — detailed content for menu-linked pages
 def features_page_content() -> str:
-    return f"""        <div class="outcome-grid">
-          <article class="outcome-card"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
-          <article class="outcome-card"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
-          <article class="outcome-card"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li></ul></article>
-          <article class="outcome-card"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
+    return f"""        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-blue">{ICONS["building"]} AI Workspaces</span>
@@ -1235,11 +1237,11 @@ def features_page_content() -> str:
           <p>Powered by Business Tools. Import OpenAPI or configure REST endpoints for order lookup, booking, ticketing, CRM queries, or ERP reads. Credentials are encrypted; outbound calls use HTTPS with SSRF protections.</p>
         </div>
         <div class="scenario-grid reveal">
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Customer</span> Where is my order #4821?</p>
             <div class="scenario-flow"><span>AI calls Order API with user JWT</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Live tracking returned</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Employee</span> Create an IT ticket</p>
             <div class="scenario-flow"><span>AI calls Helpdesk API</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Ticket created with context</span></div>
           </article>
@@ -1263,11 +1265,11 @@ def features_page_content() -> str:
 
 
 def how_it_works_page_content() -> str:
-    return f"""        <div class="steps-grid">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Configure once</h3><p>In the Admin Console, create AI Workspaces, upload knowledge, set instructions, define business actions, invite teams, and set Owner / Admin / Member permissions.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect business systems</h3><p>Import OpenAPI or configure REST endpoints as Business Tools. Store encrypted credentials or forward end-user JWTs via identify(). Scope actions per workspace.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Deploy everywhere</h3><p>Launch Customer AI on website and WhatsApp, and Employee AI on a branded Internal Portal — same knowledge, actions, and permissions underneath.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Monitor &amp; improve</h3><p>Review conversations, analytics, and action logs. Hand off to humans when needed. Reindex documents as policies change.</p></article>
+    return f"""        <div class="steps-grid reveal">
+          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Configure once</h3><p>In the Admin Console, create AI Workspaces, upload knowledge, set instructions, define business actions, invite teams, and set Owner / Admin / Member permissions.</p></article>
+          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect business systems</h3><p>Import OpenAPI or configure REST endpoints as Business Tools. Store encrypted credentials or forward end-user JWTs via identify(). Scope actions per workspace.</p></article>
+          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Deploy everywhere</h3><p>Launch Customer AI on website and WhatsApp, and Employee AI on a branded Internal Portal — same knowledge, actions, and permissions underneath.</p></article>
+          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Monitor &amp; improve</h3><p>Review conversations, analytics, and action logs. Hand off to humans when needed. Reindex documents as policies change.</p></article>
         </div>
         <div class="deploy-flow reveal" style="margin-top:3rem">
           <div class="deploy-col">
@@ -1315,11 +1317,11 @@ def how_it_works_page_content() -> str:
 
 
 def use_cases_page_content() -> str:
-    return f"""        <div class="uc-grid">
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Employee AI</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Branded Internal Portal</li><li>{ICONS["chevr"]} HR, IT, Finance, Sales workspaces</li><li>{ICONS["chevr"]} Policy &amp; compliance lookup</li><li>{ICONS["chevr"]} Role-based knowledge access</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Order &amp; shipment lookups via your APIs</li><li>{ICONS["chevr"]} Refund policy with citations</li><li>{ICONS["chevr"]} Ticket creation in your helpdesk</li><li>{ICONS["chevr"]} Handoff to agents from inbox</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocol &amp; guideline search</li><li>{ICONS["chevr"]} PII scrubbing in conversations</li><li>{ICONS["chevr"]} Tenant-isolated knowledge</li><li>{ICONS["chevr"]} Audit-ready execution logs</li></ul></article>
-          <article class="uc-card"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering &amp; Ops</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbook &amp; incident playbooks</li><li>{ICONS["chevr"]} API docs + OpenAPI actions</li><li>{ICONS["chevr"]} Multilingual wiki search</li><li>{ICONS["chevr"]} Internal self-service portal</li></ul></article>
+    return f"""        <div class="uc-grid reveal">
+          <article class="uc-card tilt-3d"><div class="uc-head"><div class="uc-icon">{ICONS["building"]}</div><h3>Employee AI</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Branded Internal Portal</li><li>{ICONS["chevr"]} HR, IT, Finance, Sales workspaces</li><li>{ICONS["chevr"]} Policy &amp; compliance lookup</li><li>{ICONS["chevr"]} Role-based knowledge access</li></ul></article>
+          <article class="uc-card tilt-3d"><div class="uc-head"><div class="uc-icon">{ICONS["headphones"]}</div><h3>Customer Support</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Order &amp; shipment lookups via your APIs</li><li>{ICONS["chevr"]} Refund policy with citations</li><li>{ICONS["chevr"]} Ticket creation in your helpdesk</li><li>{ICONS["chevr"]} Handoff to agents from inbox</li></ul></article>
+          <article class="uc-card tilt-3d"><div class="uc-head"><div class="uc-icon">{ICONS["shield"]}</div><h3>Regulated Industries</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Protocol &amp; guideline search</li><li>{ICONS["chevr"]} PII scrubbing in conversations</li><li>{ICONS["chevr"]} Tenant-isolated knowledge</li><li>{ICONS["chevr"]} Audit-ready execution logs</li></ul></article>
+          <article class="uc-card tilt-3d"><div class="uc-head"><div class="uc-icon">{ICONS["server"]}</div><h3>Engineering &amp; Ops</h3></div><ul class="uc-list"><li>{ICONS["chevr"]} Runbook &amp; incident playbooks</li><li>{ICONS["chevr"]} API docs + OpenAPI actions</li><li>{ICONS["chevr"]} Multilingual wiki search</li><li>{ICONS["chevr"]} Internal self-service portal</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-indigo">{ICONS["zap"]} Real scenarios</span>
@@ -1327,19 +1329,19 @@ def use_cases_page_content() -> str:
           <p>Every solution combines grounded document answers with optional business actions through your existing systems — powered by Business Tools.</p>
         </div>
         <div class="scenario-grid reveal">
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Employee</span> What is our parental leave policy?</p>
             <div class="scenario-flow"><span>Retrieves HR handbook</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Cited answer in employee&rsquo;s language</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Customer</span> Cancel my subscription</p>
             <div class="scenario-flow"><span>AI calls Billing API with identify()</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Cancellation confirmed</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Engineer</span> How do I roll back deploy?</p>
             <div class="scenario-flow"><span>Retrieves runbook</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Step-by-step with doc link</span></div>
           </article>
-          <article class="scenario-card">
+          <article class="scenario-card tilt-3d">
             <p class="scenario-ask"><span>Customer</span> I need a human</p>
             <div class="scenario-flow"><span>Handoff triggered</span><span class="scenario-arrow" aria-hidden="true">↓</span><span>Agent sees full thread in inbox</span></div>
           </article>
@@ -1351,23 +1353,23 @@ def use_cases_page_content() -> str:
 
 
 def security_page_content() -> str:
-    return f"""        <div class="trust-grid">
-          <article class="trust-card"><div class="trust-icon">{ICONS["bot"]}</div><h3>End-user identity forwarding</h3><p>Forward signed-in identity via <code>identify()</code> so business actions run as the real user — passwords never touch Qefro.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["lock"]}</div><h3>Zero-trust style authorization</h3><p>Business actions authorize with the end-user&rsquo;s identity by default — not a shared organization secret.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["file"]}</div><h3>Audit &amp; execution logs</h3><p>Conversation history and Business Tool runs stay attached for accountability and review.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["building"]}</div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. AI Workspaces control which knowledge and actions each experience can use.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["shield"]}</div><h3>Widget JWT auth</h3><p>Embeds load with short-lived widget tokens. Messages are bounded (8 KB), PII is scrubbed before model calls, and tenants cannot access each other&rsquo;s data.</p></article>
-          <article class="trust-card"><div class="trust-icon">{ICONS["server"]}</div><h3>Encrypted secrets &amp; secure actions</h3><p>Business Tool credentials encrypted at rest. HTTPS-only outbound calls with SSRF protections and DNS-pinned webhooks.</p></article>
+    return f"""        <div class="trust-grid reveal">
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["bot"]}</div><h3>End-user identity forwarding</h3><p>Forward signed-in identity via <code>identify()</code> so business actions run as the real user — passwords never touch Qefro.</p></article>
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["lock"]}</div><h3>Zero-trust style authorization</h3><p>Business actions authorize with the end-user&rsquo;s identity by default — not a shared organization secret.</p></article>
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["file"]}</div><h3>Audit &amp; execution logs</h3><p>Conversation history and Business Tool runs stay attached for accountability and review.</p></article>
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["building"]}</div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. AI Workspaces control which knowledge and actions each experience can use.</p></article>
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["shield"]}</div><h3>Widget JWT auth</h3><p>Embeds load with short-lived widget tokens. Messages are bounded (8 KB), PII is scrubbed before model calls, and tenants cannot access each other&rsquo;s data.</p></article>
+          <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["server"]}</div><h3>Encrypted secrets &amp; secure actions</h3><p>Business Tool credentials encrypted at rest. HTTPS-only outbound calls with SSRF protections and DNS-pinned webhooks.</p></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <h2>Enterprise platform controls</h2>
           <p>Built for organizational AI — not demo chat experiences.</p>
         </div>
         <div class="outcome-grid reveal">
-          <article class="outcome-card"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; actions</li></ul></article>
-          <article class="outcome-card"><h3>Data handling</h3><ul><li>PII scrubbing on outbound LLM calls</li><li>Never used to train AI models</li><li>Encrypted at rest &amp; in transit</li><li>Conversation isolation</li></ul></article>
-          <article class="outcome-card"><h3>Action execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-action allow-from-public-chat toggle</li><li>Execution logs for accountability</li></ul></article>
-          <article class="outcome-card"><h3>Enterprise roadmap</h3><ul><li>SSO / SAML (roadmap)</li><li>Platform admin audit trail (roadmap)</li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; actions</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Data handling</h3><ul><li>PII scrubbing on outbound LLM calls</li><li>Never used to train AI models</li><li>Encrypted at rest &amp; in transit</li><li>Conversation isolation</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Action execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-action allow-from-public-chat toggle</li><li>Execution logs for accountability</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Enterprise roadmap</h3><ul><li>SSO / SAML (roadmap)</li><li>Platform admin audit trail (roadmap)</li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
         </div>
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Compliance &amp; deployment</h2>
@@ -1376,11 +1378,14 @@ def security_page_content() -> str:
 
 
 def pricing_page_content() -> str:
-    return f"""        <div class="billing-toggle" role="group" aria-label="Billing period">
-          <button type="button" data-billing="monthly">Monthly</button>
-          <button type="button" data-billing="annual" class="is-active">Yearly <span>Save 26%</span></button>
+    return f"""        <div class="direct-answer reveal">
+          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, multilingual RAG, widget + voice), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, WhatsApp + unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
         </div>
-        <div class="price-grid">
+        <div class="billing-toggle reveal" role="group" aria-label="Billing period">
+          <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
+          <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
+        </div>
+        <div class="price-grid reveal">
 {price_cards_html(interactive=False)}
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
@@ -1646,13 +1651,14 @@ def terms_page_content() -> str:
         </div>"""
 
 
-def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, extra_sections=""):
+def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, extra_sections="", badge=""):
     jl = [
         webpage_json(title, desc, path),
         breadcrumb_json([("Home", "/"), (h1, path)]),
     ]
     if extra_jsonld:
         jl.extend(extra_jsonld)
+    badge_html = f'\n        <span class="badge badge-indigo">{badge}</span>' if badge else ""
     return page(
         title=title,
         description=desc,
@@ -1662,8 +1668,10 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
         {crumbs([("Home", "/"), (h1, "")])}
-        <h1>{h1}</h1>
-        <div class="direct-answer" style="text-align:left">{answer}</div>
+        <div class="page-hero-inner">{badge_html}
+          <h1>{h1}</h1>
+          <div class="direct-answer" style="text-align:left">{answer}</div>
+        </div>
       </div>
     </section>
     <section class="section">
@@ -1675,12 +1683,14 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <h2>Ready to deploy your company&rsquo;s AI workspace?</h2>
-        <p>Start free — no credit card required.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
+        <h2>Deploy your company&rsquo;s AI workspace.</h2>
+        <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Book Demo</a>
+          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/security">Security overview</a></p>
       </div>
     </section>
 """,
@@ -1695,6 +1705,7 @@ PAGES["features.html"] = inner(
     "features",
     "<p>Qefro combines <strong>AI Workspaces</strong>, a <strong>knowledge platform</strong>, <strong>business actions</strong>, and <strong>three AI experiences</strong> — Customer AI, Employee AI, and Admin Console — so organizations can answer questions, take secure actions, and govern access from one platform.</p>",
     features_page_content(),
+    badge=f'{ICONS["sparkles"]} Features',
 )
 
 PAGES["how-it-works.html"] = inner(
@@ -1705,6 +1716,7 @@ PAGES["how-it-works.html"] = inner(
     "how-it-works",
     "<p><strong>Configure once. Deploy everywhere.</strong> Four steps from Admin Console setup to production organizational AI. We handle vectors, models, PII scrubbing, and action execution — you bring knowledge, APIs, and permissions.</p>",
     how_it_works_page_content(),
+    badge=f'{ICONS["zap"]} Platform overview',
 )
 
 PAGES["use-cases.html"] = inner(
@@ -1715,6 +1727,7 @@ PAGES["use-cases.html"] = inner(
     "use-cases",
     "<p>Same AI Workspace Platform for customer-facing experiences and internal operations — grounded answers from docs plus optional business actions through your existing APIs.</p>",
     use_cases_page_content(),
+    badge=f'{ICONS["building"]} Solutions',
 )
 
 PAGES["security.html"] = inner(
@@ -1725,6 +1738,7 @@ PAGES["security.html"] = inner(
     "security",
     "<p>Authentication stays in your app. Qefro never stores passwords. Lead with the controls that matter: tenant isolation, encryption, identity forwarding, audit logs, and secure secret storage. SOC 2 compliance is on our roadmap — contact Sales for the current timeline.</p>",
     security_page_content(),
+    badge=f'{ICONS["shield"]} Security',
 )
 
 PAGES["pricing.html"] = inner(
@@ -1737,6 +1751,7 @@ PAGES["pricing.html"] = inner(
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
+    badge=f'{ICONS["zap"]} Pricing',
 )
 
 faq_html = "".join(
@@ -1869,6 +1884,7 @@ PAGES["contact.html"] = inner(
             "Book a Qefro demo or email support. Tell us about your team and we will get back within one business day.",
         )
     ],
+    badge=f'{ICONS["msg"]} Contact',
 )
 
 PAGES["privacy.html"] = page(
