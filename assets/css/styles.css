@@ -2196,14 +2196,6 @@ button.demo-chat:hover .chat-mock {
 .trust-strip .logo-placeholder {
   max-width: 16rem;
 }
-#features,
-#why-qefro,
-#pricing,
-#faq,
-.cta-final {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 800px;
-}
 .compare-table td:first-child {
   color: var(--text-strong);
   font-weight: 500;
