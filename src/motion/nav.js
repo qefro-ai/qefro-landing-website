@@ -1,5 +1,3 @@
-import { prefersReducedMotion } from "./reduced-motion.js";
-
 export function initNav() {
   const header = document.querySelector(".site-header");
   if (!header) return;
@@ -21,9 +19,4 @@ export function initNav() {
     },
     { passive: true }
   );
-
-  // Prefer reduced motion still gets the scrolled state — just no animation on CSS side
-  if (prefersReducedMotion()) {
-    header.style.transition = "none";
-  }
 }

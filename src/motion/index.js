@@ -11,14 +11,9 @@ import { initNav } from "./nav.js";
 import { initPricingInteractions } from "./pricing.js";
 import { initReveal } from "./reveal.js";
 import { initStats } from "./stats.js";
-import { prefersReducedMotion } from "./reduced-motion.js";
 
 function boot() {
   document.documentElement.classList.add("js");
-  document.documentElement.dataset.motion = "1";
-  if (prefersReducedMotion()) {
-    document.documentElement.dataset.reducedMotion = "1";
-  }
 
   initNav();
   initMobileMenu();

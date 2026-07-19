@@ -251,15 +251,14 @@
 
   const openLiveDemo = () => {
     trackClarity("open_live_demo");
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const demo = document.getElementById("demo");
-    demo?.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+    demo?.scrollIntoView({ behavior: "auto", block: "start" });
     window.setTimeout(() => {
       const launcher =
         document.querySelector("#ai-widget-container button") ||
         document.querySelector("button[aria-label*='chat' i], button[aria-label*='Chat' i]");
       launcher?.click();
-    }, reduced ? 0 : 350);
+    }, 0);
   };
 
   document.querySelectorAll("[data-open-demo]").forEach((el) => {

@@ -1,6 +1,3 @@
-import { animate, stagger } from "motion";
-import { motionOpts, prefersReducedMotion } from "./reduced-motion.js";
-
 export function initMobileMenu() {
   const header = document.querySelector(".site-header");
   const toggle = document.querySelector(".nav-toggle");
@@ -14,36 +11,17 @@ export function initMobileMenu() {
 
   let open = false;
 
-  const setOpen = async (next) => {
+  const setOpen = (next) => {
     open = next;
     toggle.setAttribute("aria-expanded", String(open));
     toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     toggle.innerHTML = open ? iconOpen : iconClosed;
 
-    const links = [...panel.querySelectorAll("a, button")];
-
     if (open) {
       header.classList.add("is-open");
-      if (prefersReducedMotion()) return;
-      animate(panel, { opacity: [0, 1], y: [-8, 0] }, motionOpts({ duration: 0.28 }));
-      links.forEach((l) => {
-        l.style.opacity = "0";
-        l.style.transform = "translateX(-10px)";
-      });
-      animate(
-        links,
-        { opacity: 1, x: 0 },
-        motionOpts({ duration: 0.28, delay: stagger(0.04), ease: "easeOut" })
-      );
-      return;
+    } else {
+      header.classList.remove("is-open");
     }
-
-    if (!prefersReducedMotion()) {
-      await animate(panel, { opacity: 0, y: -6 }, motionOpts({ duration: 0.2 }));
-    }
-    header.classList.remove("is-open");
-    panel.style.opacity = "";
-    panel.style.transform = "";
   };
 
   toggle.addEventListener("click", () => {
