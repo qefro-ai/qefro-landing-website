@@ -143,31 +143,17 @@
       });
     }
 
-    const reveals = document.querySelectorAll(".reveal");
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-      reveals.forEach((el) => el.classList.add("is-visible"));
-    } else if (!document.body.dataset.revealFallback) {
-      document.body.dataset.revealFallback = "1";
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("is-visible");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.12 }
-      );
-      reveals.forEach((el) => io.observe(el));
-    }
+    document.querySelectorAll(".reveal").forEach((el) => {
+      el.classList.add("is-visible");
+      el.style.opacity = "1";
+      el.style.transform = "none";
+    });
   };
 
   document.addEventListener("qefro:motion-ready", () => {
     /* Motion owns menu / FAQ / reveal */
   });
-  window.setTimeout(bindFallbackUi, 1200);
+  bindFallbackUi();
 
   document.querySelectorAll("[data-uc-tabs]").forEach((root) => {
     const tabs = root.querySelectorAll("[data-uc-tab]");
