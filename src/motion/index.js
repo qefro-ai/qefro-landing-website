@@ -14,6 +14,7 @@ import { initStats } from "./stats.js";
 
 function boot() {
   document.documentElement.classList.add("js");
+  document.documentElement.dataset.motion = "1";
 
   initNav();
   initMobileMenu();
