@@ -852,7 +852,6 @@ def home_faq_preview(n: int = 8) -> str:
 def home_body() -> str:
     return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="hero-3d-canvas" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
         <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Workspace Platform</span>
         <h1 data-motion="hero-title">
@@ -1196,7 +1195,7 @@ PAGES["index.html"] = page(
         ),
     ],
     body=home_body(),
-    extra_scripts=f'\n  <script src="/assets/js/hero-3d.js?v={ASSET_VERSION}" defer></script>\n  <script src="/assets/js/floating-cards-3d.js?v=38" defer></script>\n  <script src="/assets/js/depth-parallax.js?v=38" defer></script>\n  <script src="/assets/js/text-3d-effects.js?v=38" defer></script>',
+    extra_scripts=f'\n  <script src="/assets/js/floating-cards-3d.js?v=38" defer></script>',
 )
 
 # Inner pages — detailed content for menu-linked pages
