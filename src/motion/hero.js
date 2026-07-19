@@ -1,11 +1,8 @@
-import { animate } from "motion";
-import { motionOpts, prefersReducedMotion } from "./reduced-motion.js";
-
 export function initHero() {
   const hero = document.querySelector(".hero");
   if (!hero) return;
 
-  const reduced = prefersReducedMotion();
+  // Static: show hero content immediately, no intro animation.
   const parts = [
     hero.querySelector("[data-motion='hero-badge']"),
     hero.querySelector("[data-motion='hero-title']"),
@@ -17,24 +14,7 @@ export function initHero() {
   ].filter(Boolean);
 
   parts.forEach((el) => {
-    el.style.opacity = reduced ? "1" : "0";
-    if (!reduced) el.style.transform = "translateY(16px)";
+    el.style.opacity = "1";
+    el.style.transform = "none";
   });
-
-  const run = () => {
-    parts.forEach((el, i) => {
-      animate(
-        el,
-        { opacity: 1, y: 0 },
-        motionOpts({ duration: 0.35, delay: reduced ? 0 : i * 0.07, ease: "easeOut" })
-      );
-    });
-  };
-
-  if (reduced) {
-    run();
-  } else {
-    // Hero is above the fold — single, cheap intro pass (no infinite loops)
-    requestAnimationFrame(run);
-  }
 }
