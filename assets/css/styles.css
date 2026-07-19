@@ -1805,6 +1805,8 @@ html[data-motion="1"] .price-grid.reveal.is-visible > * {
 }
 .arch-diagram-flow {
   max-width: 36rem;
+  margin: 0 auto;
+  text-align: center;
   gap: 0.85rem;
 }
 .arch-diagram-flow .arch-hub {
@@ -2388,20 +2390,7 @@ html[data-motion="1"] .price-grid.reveal.is-visible > * {
   .hero { padding-top: clamp(4.5rem, 10vw, 6rem); }
 }
 
-/* ── 3D depth effects ─────────────────────────────────────────────── */
-.hero-3d-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.9;
-}
-.hero-3d-canvas canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-/* Keep the CSS grid as a fallback layer behind the WebGL canvas */
+/* ── Depth / hover polish (lightweight, CSS-only) ─────────────────── */
 .hero-grid { z-index: -1; }
 
 /* Perspective containers */
@@ -2414,109 +2403,41 @@ html[data-motion="1"] .price-grid.reveal.is-visible > * {
   transform-style: preserve-3d;
 }
 
-/* 3D tilt targets */
-.tilt-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+/* Hover lift for cards and product mocks — no JS, no rAF */
+.exp-card,
+.outcome-card,
+.scenario-card,
+.product-mock {
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   will-change: transform;
 }
-.tilt-3d > * {
-  transform-style: preserve-3d;
-}
-
-/* Hover lift for browsers without JS tilt tracking */
-.tilt-3d:hover {
-  transform: translateY(-4px) translateZ(12px);
-}
-
-/* Floating chat mock */
-.chat-mock {
-  transform-style: preserve-3d;
-  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease;
-}
-.chat-mock.is-floating {
-  animation: chat-float-3d 5s ease-in-out infinite;
-}
-@keyframes chat-float-3d {
-  0%, 100% { transform: translateY(0) rotateX(0deg) rotateY(0deg); }
-  25% { transform: translateY(-5px) rotateX(1deg) rotateY(-1deg); }
-  50% { transform: translateY(-2px) rotateX(-0.5deg) rotateY(1deg); }
-  75% { transform: translateY(-6px) rotateX(0.5deg) rotateY(-0.5deg); }
-}
-button.demo-chat:hover .chat-mock {
-  transform: translateY(-6px) translateZ(18px) rotateX(2deg);
-}
-
-/* Inner pseudo-lift for product mocks and cards */
-.product-mock .mock-ui,
-.exp-card,
-.outcome-card,
-.scenario-card {
-  transform-style: preserve-3d;
-}
-.product-mock:hover .mock-ui,
 .exp-card:hover,
 .outcome-card:hover,
-.scenario-card:hover {
-  transform: translateY(-4px) translateZ(10px);
+.scenario-card:hover,
+.product-mock:hover {
+  transform: translateY(-4px);
 }
 
-/* Subtle shine/reflection layer on tilt-enabled surfaces */
-.tilt-3d::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  opacity: 0;
-  transform: translateZ(1px);
-  transition: opacity 0.35s ease;
-  pointer-events: none;
+/* Chat mock: static with a calm hover lift */
+.chat-mock {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, border-color 0.2s ease;
 }
-.tilt-3d:hover::before {
-  opacity: 1;
-}
-[data-theme="dark"] .tilt-3d::before {
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 30%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0) 70%
-  );
+button.demo-chat:hover .chat-mock {
+  transform: translateY(-6px);
 }
 
-/* Ensure tilted elements stay inside their stacking context */
-.product-mock,
-.exp-card,
-.outcome-card,
-.scenario-card {
-  position: relative;
-}
-
-/* Reduced motion: disable 3D transforms */
+/* Reduced motion: disable transforms */
 @media (prefers-reduced-motion: reduce) {
-  .hero-3d-canvas { display: none; }
-  .tilt-3d,
-  .chat-mock,
-  .product-mock .mock-ui,
   .exp-card,
   .outcome-card,
-  .scenario-card {
+  .scenario-card,
+  .product-mock,
+  .chat-mock {
     transform: none !important;
     transition: none !important;
-    animation: none !important;
   }
-  .tilt-3d::before { display: none; }
-}
-
-/* Hide 3D canvas on small screens where it competes with text */
-@media (max-width: 640px) {
-  .hero-3d-canvas { opacity: 0.45; }
 }
 
 
@@ -2572,111 +2493,5 @@ button.demo-chat:hover .chat-mock {
 
 /* Floating accent elements */
 .float-3d {
-  animation: float-3d 6s ease-in-out infinite;
-  transform-style: preserve-3d;
-}
-
-@keyframes float-3d {
-  0%, 100% {
-    transform: translateZ(0) translateY(0px);
-  }
-  50% {
-    transform: translateZ(40px) translateY(-20px);
-  }
-}
-
-/* Staggered floating for multiple elements */
-.float-3d:nth-child(1) { animation-delay: 0s; }
-.float-3d:nth-child(2) { animation-delay: 0.2s; }
-.float-3d:nth-child(3) { animation-delay: 0.4s; }
-.float-3d:nth-child(4) { animation-delay: 0.6s; }
-.float-3d:nth-child(5) { animation-delay: 0.8s; }
-
-/* 3D card tilt effect */
-.card-tilt {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.card-tilt:hover {
-  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
-}
-
-/* Glowing elements in 3D space */
-.glow-3d {
-  position: relative;
-  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3));
-  transition: filter 0.3s ease;
-}
-
-.glow-3d:hover {
-  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.5));
-}
-
-[data-theme="dark"] .glow-3d {
-  filter: drop-shadow(0 0 20px rgba(167, 139, 250, 0.25));
-}
-
-[data-theme="dark"] .glow-3d:hover {
-  filter: drop-shadow(0 0 30px rgba(167, 139, 250, 0.4));
-}
-
-/* 3D layout improvements */
-.layout-3d {
-  perspective: 1500px;
-  transform-style: preserve-3d;
-}
-
-.layout-3d > * {
-  transform-style: preserve-3d;
-}
-
-/* Responsive 3D scaling */
-@media (max-width: 768px) {
-  [data-floating-card] {
-    perspective: 400px;
-  }
-  
-  [data-text-3d] {
-    perspective: 600px;
-  }
-  
-  .hero {
-    perspective: 600px;
-  }
-  
-  .float-3d {
-    animation: float-3d-mobile 6s ease-in-out infinite;
-  }
-  
-  @keyframes float-3d-mobile {
-    0%, 100% {
-      transform: translateZ(0) translateY(0px);
-    }
-    50% {
-      transform: translateZ(20px) translateY(-10px);
-    }
-  }
-}
-
-/* Accessibility: respect prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  [data-floating-card],
-  [data-depth-layer],
-  [data-text-3d],
-  .float-3d,
-  .card-tilt {
-    animation: none !important;
-    will-change: auto;
-    transform: none !important;
-  }
-}
-
-/* Performance optimizations */
-@supports (backdrop-filter: blur(1px)) {
-  [data-floating-card],
-  [data-depth-layer] {
-    will-change: transform;
-    contain: layout style paint;
-  }
+  transform: translateY(0);
 }

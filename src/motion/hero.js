@@ -1,4 +1,4 @@
-import { animate, inView } from "motion";
+import { animate } from "motion";
 import { motionOpts, prefersReducedMotion } from "./reduced-motion.js";
 
 export function initHero() {
@@ -34,48 +34,7 @@ export function initHero() {
   if (reduced) {
     run();
   } else {
-    // Hero is above the fold — animate on load
+    // Hero is above the fold — single, cheap intro pass (no infinite loops)
     requestAnimationFrame(run);
-  }
-
-  // Product mock / dashboard float (homepage may use product-mock later; hero has no mock —
-  // float the first product mock in platform if present, or demo chat mock as visual anchor)
-  const floatTarget =
-    document.querySelector("[data-motion='hero-float']") ||
-    document.querySelector(".demo-chat .chat-mock");
-
-  if (floatTarget && !reduced) {
-    const startFloat = () => {
-      animate(
-        floatTarget,
-        { y: [0, -4, 0] },
-        { duration: 4, repeat: Infinity, ease: "easeInOut" }
-      );
-    };
-    inView(
-      floatTarget,
-      () => {
-        startFloat();
-        return () => {};
-      },
-      { amount: 0.2 }
-    );
-  }
-
-  // Slow ambient gradient shift on hero glow / ambient blobs
-  if (!reduced) {
-    const blobs = document.querySelectorAll(".ambient-blob");
-    blobs.forEach((blob, i) => {
-      animate(
-        blob,
-        { opacity: [0.45, 0.7, 0.45], scale: [1, 1.06, 1] },
-        {
-          duration: 12 + i * 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 1.5,
-        }
-      );
-    });
   }
 }
