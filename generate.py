@@ -602,7 +602,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
               {price_feat("1,000 conversations/month")}
               {price_feat("Knowledge for one team", "50 documents")}
               {price_feat("Connect up to 5 business systems")}
-              {price_feat("Website widget + voice")}
+              {price_feat("Widget + WhatsApp + voice")}
               {price_feat("Custom branding")}
               {price_feat("Email support")}
             </ul>
@@ -741,7 +741,7 @@ FAQ_ITEMS = [
     (
         "What channels can I deploy on?",
         "Configure once, deploy everywhere: website widget (with optional voice), public chat pages, "
-        "branded Internal Portal for employees, WhatsApp on Growth+, and direct API/WebSocket access for custom UIs.",
+        "branded Internal Portal for employees, WhatsApp on Starter+, and direct API/WebSocket access for custom UIs.",
     ),
     (
         "How are workspaces and team roles handled?",
@@ -1118,7 +1118,7 @@ def home_body() -> str:
             <ul>
               <li>Website widget &amp; voice</li>
               <li>Internal Portal</li>
-              <li>WhatsApp (Growth+)</li>
+              <li>WhatsApp (Starter+)</li>
               <li>Human handoff</li>
               <li>Lead capture</li>
             </ul>
@@ -1258,7 +1258,7 @@ def features_page_content() -> str:
           <article class="outcome-card tilt-3d"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Backend SDK for auth &amp; workflows</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>Execution logs &amp; schema validation</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Starter+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-blue">{ICONS["building"]} AI Workspaces</span>
@@ -1802,7 +1802,7 @@ PAGES["pricing.html"] = inner(
     "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited business system connections.",
     "pricing.html",
     "pricing",
-    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
+    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale to unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
