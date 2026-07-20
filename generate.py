@@ -208,7 +208,7 @@ def header(active: str | None = None) -> str:
           <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
+        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start 14-Day Free Trial {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">{ICONS["menu"]}</button>
       </div>
     </div>
@@ -216,7 +216,7 @@ def header(active: str | None = None) -> str:
 {mobile}
       <a href="/faq">FAQ</a>
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
-      <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="justify-content:center;margin-top:0.5rem">Start Free</a>
+      <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="justify-content:center;margin-top:0.5rem">Start 14-Day Free Trial</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
       <div class="mobile-panel-tools">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -479,7 +479,7 @@ SOFTWARE_JSON = json.dumps(
             "priceCurrency": "USD",
             "availability": "https://schema.org/InStock",
             "url": f"{SITE}/pricing",
-            "description": "Free forever plan available — no credit card required",
+            "description": "14-day free trial available — no credit card required",
         },
         "featureList": [
             "AI Workspaces",
@@ -513,10 +513,10 @@ PRICING_OFFERS_JSON = json.dumps(
         "offers": [
             {
                 "@type": "Offer",
-                "name": "Free",
+                "name": "Trial (14 Days)",
                 "price": 0,
                 "priceCurrency": "USD",
-                "description": "Forever free plan — no credit card required",
+                "description": "Full access for 14 days. No credit card required.",
                 "url": f"{SITE}/pricing",
                 "availability": "https://schema.org/InStock",
                 "priceValidUntil": "2027-12-31",
@@ -572,26 +572,25 @@ def price_feat(text: str, meta: str | None = None) -> str:
 
 
 def price_cards_html(*, interactive: bool = False) -> str:
-    """Shared Free / Starter / Growth / Enterprise cards for homepage + /pricing."""
+    """Shared Trial / Starter / Growth / Enterprise cards for homepage + /pricing."""
     cta = ' data-price-cta' if interactive else ""
     clarity = (
         lambda event: f' data-clarity-event="{event}"' if interactive else ""
     )
     return f"""          <article class="price-card{cta}">
-            <h3>Free</h3>
+            <h3>Trial (14 Days)</h3>
             <p class="price-best">Best for evaluating the platform</p>
             <div class="price-amount">$0</div>
-            <p class="price-desc">Forever free — no credit card</p>
+            <p class="price-desc">14-day free trial — no credit card</p>
             <ul class="price-feats">
-              {price_feat("100 conversations/month")}
-              {price_feat("Knowledge for getting started", "2 documents")}
-              {price_feat("Connect 1 business system")}
-              {price_feat("2 team members")}
-              {price_feat("Website widget + voice")}
-              {price_feat("Multilingual RAG")}
-              {price_feat("Community support")}
+              {price_feat("Full premium access for 14 days")}
+              {price_feat("AI support, WhatsApp, voice &amp; widget")}
+              {price_feat("Knowledge base, crawler &amp; uploads")}
+              {price_feat("Team management &amp; analytics")}
+              {price_feat("Custom domains &amp; automation")}
+              {price_feat("No credit card required")}
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>Start Free</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>Start 14-Day Free Trial</a>
           </article>
           <article class="price-card{cta}">
             <h3>Starter</h3>
@@ -691,7 +690,7 @@ FAQ_ITEMS = [
         "Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, "
         "permission system, and set of business actions.",
     ),
-    ("How much does Qefro cost?", "Qefro is freemium — start Free forever (100 conversations/month, knowledge for getting started, connect 1 business system). Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom. No credit card required."),
+    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
@@ -868,13 +867,13 @@ def home_body() -> str:
         </h1>
         <p class="hero-sub" data-motion="hero-sub">Build AI assistants that answer questions and take secure business actions.</p>
         <div class="hero-actions" data-motion="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start 14-Day Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <div class="hero-checks" data-motion="hero-checks">
           <span>{ICONS["check"]} Customer AI · Employee AI · Admin Console</span>
           <span>{ICONS["check"]} REST/OpenAPI or Backend SDK</span>
-          <span>{ICONS["check"]} Free forever · no credit card</span>
+          <span>{ICONS["check"]} Full access for 14 days · no credit card</span>
           <span>{ICONS["check"]} Web · WhatsApp · internal teams</span>
         </div>
         <p class="hero-diff" data-motion="hero-diff">Answer, act, and scale across web, WhatsApp, and internal teams — from one platform.</p>
@@ -913,7 +912,7 @@ def home_body() -> str:
             </div>
             <p class="integrations-note" style="margin-top:1.25rem">
               <a class="btn btn-primary" href="#demo" data-open-demo data-clarity-event="cta_open_live_chat">Open live chat</a>
-              <a class="btn btn-ghost" href="{PORTAL_SIGNUP}" style="margin-left:0.5rem" data-clarity-event="cta_start_free">Start Free</a>
+              <a class="btn btn-ghost" href="{PORTAL_SIGNUP}" style="margin-left:0.5rem" data-clarity-event="cta_start_free">Start 14-Day Free Trial</a>
             </p>
           </div>
           <button type="button" class="demo-chat" data-open-demo data-clarity-event="cta_chat_mock" aria-label="Open live chat demo">
@@ -1188,10 +1187,10 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} Pricing</span>
           <h2 id="pricing-heading">Plans that scale with your organization</h2>
-          <p>Freemium — Free forever. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
+          <p>14-day free trial with full access. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
         </div>
         <div class="direct-answer reveal">
-          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, knowledge for getting started, connect 1 business system), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -1221,9 +1220,9 @@ def home_body() -> str:
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
         <h2 id="cta-heading">Build AI assistants that answer and act.</h2>
-        <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
+        <p>Start a 14-day free trial for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start 14-Day Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/benchmark">Benchmark methodology</a> · <a href="/security">Security</a></p>
@@ -1435,7 +1434,7 @@ def security_page_content() -> str:
 
 def pricing_page_content() -> str:
     return f"""        <div class="direct-answer reveal">
-          <p>Qefro has a <strong>Free plan</strong> (100 conversations/month, multilingual RAG, widget + voice), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, WhatsApp + unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, WhatsApp + unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -1741,9 +1740,9 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
         <h2>Deploy your company&rsquo;s AI workspace.</h2>
-        <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
+        <p>Start a 14-day free trial for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start 14-Day Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/security">Security overview</a></p>
@@ -1798,12 +1797,12 @@ PAGES["security.html"] = inner(
 )
 
 PAGES["pricing.html"] = inner(
-    "Pricing | Qefro — Free, Starter from $29/mo, Growth from $99/mo",
+    "Pricing | Qefro — Trial, Starter from $29/mo, Growth from $99/mo",
     "Pricing",
-    "Qefro pricing: Free forever (100 conversations, multilingual RAG, widget + voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited business system connections.",
+    "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited business system connections.",
     "pricing.html",
     "pricing",
-    "<p>Start free with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
+    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, and voice. Scale to WhatsApp and unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
@@ -1927,11 +1926,11 @@ PAGES["contact.html"] = inner(
             </label>
           </div>
           <button class="btn btn-primary" type="submit">Request a demo</button>
-          <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">start free</a></p>
+          <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">start 14-day free trial</a></p>
         </form>
         <div class="cap-grid" style="margin-top:2rem">
           <a class="cap-card" href="mailto:support@qefro.com"><div class="cap-icon">{ICONS["msg"]}</div><span>support@qefro.com</span></a>
-          <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start free</span></a>
+          <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start 14-day free trial</span></a>
           <a class="cap-card" href="/pricing"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
     extra_jsonld=[
@@ -2034,7 +2033,7 @@ for slug, title, q, a, extra in [
         "qefro-pricing.html",
         "How much does Qefro cost? | Pricing overview",
         "How much does Qefro cost?",
-        "Qefro is freemium. Free forever: 100 conversations/month, knowledge for getting started, connect 1 business system. Starter from $29/month billed annually (connect up to 5 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom. No credit card required.",
+        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
@@ -2053,7 +2052,7 @@ for slug, title, q, a, extra in [
         <h1>{q}</h1>
         <div class="direct-answer"><p>{a}</p></div>
         <div class="prose" style="margin-top:1.5rem">{extra}
-          <p><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start free</a></p>
+          <p><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start 14-day free trial</a></p>
         </div>
       </div>
     </section>
