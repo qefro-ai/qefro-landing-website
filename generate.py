@@ -18,17 +18,17 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "38"
+ASSET_VERSION = "39"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
-    "Qefro — AI that knows your business and gets work done. Configure once in "
-    "the Admin Console, deploy Customer AI and Employee AI everywhere."
+    "Qefro is the AI platform that connects conversations to your business — "
+    "Customer AI, Employee AI, and Admin Console."
 )
 DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = (
-    "Hi! I'm the Qefro assistant. Ask how Qefro deploys AI for customers and "
-    "employees, or about workspaces, business actions, pricing, and security."
+    "Hi! I'm the Qefro assistant. Ask how Qefro connects conversations to your "
+    "business — Customer AI, Employee AI, business actions, pricing, and security."
 )
 META_KEYWORDS = (
     "AI Workspace, Enterprise AI Platform, AI Customer Support Platform, "
@@ -395,8 +395,9 @@ ORG_JSON = json.dumps(
         },
         "image": OG_IMAGE,
         "description": (
-            "AI Workspace Platform for organizations — configure once in the Admin Console, "
-            "deploy Customer AI and Employee AI everywhere."
+            "Qefro is the AI platform that connects conversations to your business. "
+            "Build AI assistants that answer questions and take secure business actions "
+            "across Customer AI, Employee AI, and the Admin Console."
         ),
         "email": "support@qefro.com",
         "contactPoint": [
@@ -438,7 +439,10 @@ WEBSITE_JSON = json.dumps(
         "name": "Qefro",
         "alternateName": ["Qefro AI", "qefro.com"],
         "url": f"{SITE}/",
-        "description": "AI Workspace Platform for organizations — configure once in the Admin Console, deploy Customer AI and Employee AI everywhere.",
+        "description": (
+            "Qefro is the AI platform that connects conversations to your business. "
+            "Build AI assistants that answer questions and take secure business actions."
+        ),
         "publisher": {"@id": f"{SITE}/#organization"},
         "inLanguage": "en-US",
         "copyrightHolder": {"@id": f"{SITE}/#organization"},
@@ -461,9 +465,10 @@ SOFTWARE_JSON = json.dumps(
         "image": OG_IMAGE,
         "screenshot": OG_IMAGE,
         "description": (
-            "AI Workspace Platform for organizations: configure once in the Admin Console, "
-            "then deploy Customer AI on website and WhatsApp and Employee AI via a branded "
-            "Internal Portal — with knowledge, business actions, and permissions."
+            "Qefro is the AI platform that connects conversations to your business. "
+            "Build AI assistants that answer questions and take secure business actions "
+            "across Customer AI, Employee AI, and the Admin Console — via REST/OpenAPI "
+            "or the Backend SDK."
         ),
         "keywords": META_KEYWORDS,
         "author": {"@id": f"{SITE}/#organization"},
@@ -479,9 +484,10 @@ SOFTWARE_JSON = json.dumps(
         "featureList": [
             "AI Workspaces",
             "Knowledge platform with multilingual RAG",
-            "Business actions via REST and OpenAPI",
+            "Business actions via REST/OpenAPI or Backend SDK",
             "Customer AI website widget and WhatsApp",
             "Employee AI Internal Portal",
+            "Admin Console",
             "Tenant isolation and encrypted secrets",
         ],
     },
@@ -680,9 +686,10 @@ def product_screenshots_html() -> str:
 FAQ_ITEMS = [
     (
         "What is Qefro?",
-        "Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, "
-        "deploy Customer AI on your website and WhatsApp, and give employees a branded Internal Portal — "
-        "sharing one knowledge platform, one permission system, and one set of business actions.",
+        "Qefro is the AI platform that connects conversations to your business. "
+        "Build AI assistants that answer questions and take secure business actions across "
+        "Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, "
+        "permission system, and set of business actions.",
     ),
     ("How much does Qefro cost?", "Qefro is freemium — start Free forever (100 conversations/month, knowledge for getting started, connect 1 business system). Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom. No credit card required."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
@@ -697,9 +704,10 @@ FAQ_ITEMS = [
     ),
     (
         "Can Qefro take action in my systems?",
-        "Yes. Connect REST APIs or import OpenAPI specs as Business Tools so AI can perform "
-        "defined business actions — retrieve live data, create tickets, look up orders — using "
-        "encrypted credentials or end-user identity you forward via the widget identify() API.",
+        "Yes. Two integration paths: connect existing APIs with REST/OpenAPI as Business Tools, "
+        "or use the Backend SDK for authentication and workflows. AI can retrieve live data, "
+        "create tickets, look up orders, and more — with encrypted credentials or end-user "
+        "identity you forward via identify().",
     ),
     (
         "How long does setup take?",
@@ -853,23 +861,23 @@ def home_body() -> str:
     return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
-        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Workspace Platform</span>
+        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} Qefro</span>
         <h1 data-motion="hero-title">
-          <span class="hero-line">AI That Knows Your Business</span>
-          <span class="hero-accent">and Gets Work Done</span>
+          <span class="hero-line">The AI platform that connects</span>
+          <span class="hero-accent">conversations to your business</span>
         </h1>
-        <p class="hero-sub" data-motion="hero-sub">Deploy AI across customer support and internal teams. Answer questions, search company knowledge, and securely perform business actions from one centralized AI platform.</p>
+        <p class="hero-sub" data-motion="hero-sub">Build AI assistants that answer questions and take secure business actions.</p>
         <div class="hero-actions" data-motion="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <div class="hero-checks" data-motion="hero-checks">
-          <span>{ICONS["check"]} Configure once · deploy everywhere</span>
+          <span>{ICONS["check"]} Customer AI · Employee AI · Admin Console</span>
+          <span>{ICONS["check"]} REST/OpenAPI or Backend SDK</span>
           <span>{ICONS["check"]} Free forever · no credit card</span>
-          <span>{ICONS["check"]} Customers &amp; employees</span>
-          <span>{ICONS["check"]} Your auth stays yours</span>
+          <span>{ICONS["check"]} Web · WhatsApp · internal teams</span>
         </div>
-        <p class="hero-diff" data-motion="hero-diff">Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions.</p>
+        <p class="hero-diff" data-motion="hero-diff">Answer, act, and scale across web, WhatsApp, and internal teams — from one platform.</p>
         <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo {ICONS["arrow"]}</a></p>
       </div>
     </section>
@@ -915,9 +923,9 @@ def home_body() -> str:
                 <div><strong>Qefro Assistant</strong><span>AI Workspace Platform</span></div>
               </div>
               <div class="chat-mock-body" data-demo-script>
-                <div class="chat-bubble ai">Hi! I can explain how Qefro deploys AI for customers and employees from one platform.</div>
+                <div class="chat-bubble ai">Hi! I connect conversations to your business — answers plus secure actions.</div>
                 <div class="chat-bubble user">What makes Qefro different?</div>
-                <div class="chat-bubble ai">Most AI platforms answer questions. Qefro also performs business actions using your knowledge, APIs, and permissions — configure once, deploy everywhere.</div>
+                <div class="chat-bubble ai">Conversation → Knowledge → Business Tool → Action. Customer AI, Employee AI, and Admin Console on one platform.</div>
               </div>
               <div class="chat-mock-input">
                 <span>Type your question…</span>
@@ -932,11 +940,75 @@ def home_body() -> str:
     <section class="section" id="platform" aria-labelledby="platform-heading">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} Platform overview</span>
-          <h2 id="platform-heading">Configure knowledge once. Deploy it everywhere.</h2>
-          <p>Set up workspaces, knowledge, business actions, and permissions in the Admin Console — then deploy Customer AI and Employee AI across every channel. <a href="/how-it-works">See how the platform works</a>.</p>
+          <span class="badge badge-indigo">{ICONS["zap"]} Three surfaces</span>
+          <h2 id="platform-heading">Customer AI. Employee AI. Admin Console.</h2>
+          <p>One platform for customers, employees, and operators — shared knowledge, permissions, and business actions. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
-        <div class="arch-diagram arch-diagram-flow reveal" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI" data-motion="architecture">
+        <div class="exp-grid reveal">
+          <article class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["headphones"]}</div>
+            <h3>Customer AI</h3>
+            <p>Website widget and WhatsApp — answer questions, run business actions, capture leads, and hand off to humans.</p>
+          </article>
+          <article class="exp-card exp-card-featured tilt-3d">
+            <div class="exp-icon">{ICONS["building"]}</div>
+            <h3>Employee AI</h3>
+            <p>Branded Internal Portal for internal teams — workspaces, conversations, documents, and source citations.</p>
+          </article>
+          <article class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["server"]}</div>
+            <h3>Admin Console</h3>
+            <p>Configure knowledge, actions, teams, branding, channels, analytics, and inbox in one place.</p>
+          </article>
+        </div>
+        <div class="section-head reveal" style="margin-top:3rem">
+          <span class="badge badge-purple">{ICONS["zap"]} How it works</span>
+          <h2>From conversation to action</h2>
+          <p>Every turn follows a simple path through knowledge and your business tools.</p>
+        </div>
+        <div class="pipeline pipeline-flow reveal" role="img" aria-label="Conversation to Knowledge to Business Tool to Action">
+          <div class="pipeline-node">
+            <span class="pipeline-k">01</span>
+            <span class="pipeline-v">Conversation</span>
+            <span class="pipeline-d">Customer or employee asks</span>
+          </div>
+          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+          <div class="pipeline-node">
+            <span class="pipeline-k">02</span>
+            <span class="pipeline-v">Knowledge</span>
+            <span class="pipeline-d">Grounded retrieval &amp; citations</span>
+          </div>
+          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+          <div class="pipeline-node">
+            <span class="pipeline-k">03</span>
+            <span class="pipeline-v">Business Tool</span>
+            <span class="pipeline-d">REST/OpenAPI or Backend SDK</span>
+          </div>
+          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+          <div class="pipeline-node pipeline-node-accent">
+            <span class="pipeline-k">04</span>
+            <span class="pipeline-v">Action</span>
+            <span class="pipeline-d">Secure business outcome</span>
+          </div>
+        </div>
+        <div class="section-head reveal" style="margin-top:3rem">
+          <span class="badge badge-blue">{ICONS["server"]} Integrations</span>
+          <h2>Two ways to connect your systems</h2>
+          <p>Use the path that fits your stack — existing APIs or backend-controlled workflows.</p>
+        </div>
+        <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
+          <article class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["globe"]}</div>
+            <h3>REST / OpenAPI</h3>
+            <p>Connect existing APIs as Business Tools. Import an OpenAPI spec or configure REST endpoints — encrypted credentials, scoped per workspace.</p>
+          </article>
+          <article class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["lock"]}</div>
+            <h3>Backend SDK</h3>
+            <p>Handle authentication and workflows in your backend with the Qefro Backend SDK — identity, tool callbacks, and secure action execution.</p>
+          </article>
+        </div>
+        <div class="arch-diagram arch-diagram-flow reveal" style="margin-top:3rem" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI" data-motion="architecture">
           <div class="arch-hub">
             <span class="arch-hub-label">Admin Console</span>
             <span class="arch-hub-sub">Configure Once</span>
@@ -969,23 +1041,6 @@ def home_body() -> str:
           <span class="workspace-pill">Engineering</span>
         </div>
         <p class="integrations-note reveal" style="text-align:center;margin-top:1rem">Each AI Workspace has its own isolated knowledge, instructions, actions, and permissions.</p>
-        <div class="exp-grid reveal" style="margin-top:2.5rem">
-          <article class="exp-card tilt-3d">
-            <div class="exp-icon">{ICONS["headphones"]}</div>
-            <h3>Customer AI</h3>
-            <p>Website widget and WhatsApp with knowledge answers, business actions, lead capture, and human handoff.</p>
-          </article>
-          <article class="exp-card exp-card-featured tilt-3d">
-            <div class="exp-icon">{ICONS["building"]}</div>
-            <h3>Employee AI</h3>
-            <p>Branded Internal Portal with workspace selector, conversations, documents, and source citations.</p>
-          </article>
-          <article class="exp-card tilt-3d">
-            <div class="exp-icon">{ICONS["server"]}</div>
-            <h3>Admin Console</h3>
-            <p>One place to configure knowledge, actions, teams, branding, channels, analytics, and inbox.</p>
-          </article>
-        </div>
         <div class="product-mock-grid reveal" style="margin-top:2.5rem">
           <figure class="product-mock tilt-3d">
             <figcaption><strong>Admin Console</strong><span>Configure workspaces, knowledge, actions &amp; permissions</span></figcaption>
@@ -1036,7 +1091,7 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-purple">{ICONS["sparkles"]} Features</span>
           <h2 id="features-heading">Knowledge, business actions, and channels</h2>
-          <p>Grounded answers from your content, secure actions via your APIs, and deployment where your people already work. <a href="/features">Explore all features</a>.</p>
+          <p>Grounded answers from your content, secure actions via REST/OpenAPI or the Backend SDK, and deployment where your people already work. <a href="/features">Explore all features</a>.</p>
         </div>
         <div class="outcome-grid reveal">
           <article class="outcome-card tilt-3d">
@@ -1044,9 +1099,9 @@ def home_body() -> str:
             <ul>
               <li>Powered by Business Tools</li>
               <li>REST &amp; OpenAPI import</li>
+              <li>Backend SDK workflows</li>
               <li>Encrypted credentials</li>
               <li>Identity forwarding</li>
-              <li>Execution logs</li>
             </ul>
           </article>
           <article class="outcome-card tilt-3d">
@@ -1165,7 +1220,7 @@ def home_body() -> str:
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
-        <h2 id="cta-heading">Deploy your company&rsquo;s AI workspace.</h2>
+        <h2 id="cta-heading">Build AI assistants that answer and act.</h2>
         <p>Start free for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
@@ -1178,10 +1233,10 @@ def home_body() -> str:
 
 
 PAGES["index.html"] = page(
-    title="Qefro — AI That Knows Your Business and Gets Work Done",
+    title="Qefro — Connect Conversations to Your Business",
     description=(
-        "Qefro deploys AI across support and internal teams — "
-        "grounded answers plus secure business actions. Start free."
+        "Build AI assistants that answer questions and take secure business actions. "
+        "Customer AI, Employee AI, and Admin Console — via REST/OpenAPI or Backend SDK."
     ),
     path="",
     jsonld=[
@@ -1189,8 +1244,8 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         webpage_json(
-            "Qefro — AI That Knows Your Business and Gets Work Done",
-            "Qefro deploys AI across support and internal teams — grounded answers plus secure business actions. Start free.",
+            "Qefro — Connect Conversations to Your Business",
+            "Build AI assistants that answer questions and take secure business actions. Customer AI, Employee AI, and Admin Console — via REST/OpenAPI or Backend SDK.",
             "",
         ),
     ],
@@ -1203,7 +1258,7 @@ def features_page_content() -> str:
     return f"""        <div class="outcome-grid reveal">
           <article class="outcome-card tilt-3d"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>SSRF &amp; DNS-pinned webhooks</li><li>Execution logs &amp; schema validation</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Backend SDK for auth &amp; workflows</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>Execution logs &amp; schema validation</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Growth+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
@@ -1233,7 +1288,7 @@ def features_page_content() -> str:
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-purple">{ICONS["zap"]} Business Actions</span>
           <h2>AI that gets work done — not just answers questions</h2>
-          <p>Powered by Business Tools. Import OpenAPI or configure REST endpoints for order lookup, booking, ticketing, CRM queries, or ERP reads. Credentials are encrypted; outbound calls use HTTPS with SSRF protections.</p>
+          <p>Two integration paths: import OpenAPI or configure REST endpoints as Business Tools, or use the Backend SDK for authentication and workflows. Credentials are encrypted; outbound calls use HTTPS with SSRF protections.</p>
         </div>
         <div class="scenario-grid reveal">
           <article class="scenario-card tilt-3d">
@@ -1266,7 +1321,7 @@ def features_page_content() -> str:
 def how_it_works_page_content() -> str:
     return f"""        <div class="steps-grid reveal">
           <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Configure once</h3><p>In the Admin Console, create AI Workspaces, upload knowledge, set instructions, define business actions, invite teams, and set Owner / Admin / Member permissions.</p></article>
-          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect business systems</h3><p>Import OpenAPI or configure REST endpoints as Business Tools. Store encrypted credentials or forward end-user JWTs via identify(). Scope actions per workspace.</p></article>
+          <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Connect business systems</h3><p>Two paths: import OpenAPI or configure REST as Business Tools, or use the Backend SDK for authentication and workflows. Store encrypted credentials or forward end-user JWTs via identify(). Scope actions per workspace.</p></article>
           <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Deploy everywhere</h3><p>Launch Customer AI on website and WhatsApp, and Employee AI on a branded Internal Portal — same knowledge, actions, and permissions underneath.</p></article>
           <article class="step tilt-3d"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Monitor &amp; improve</h3><p>Review conversations, analytics, and action logs. Hand off to humans when needed. Reindex documents as policies change.</p></article>
         </div>
@@ -1307,7 +1362,9 @@ def how_it_works_page_content() -> str:
           <h2>Developer integration</h2>
           <p>Register via email OTP — no password storage. For production widgets, issue short-lived JWTs from your backend or use portal-issued tokens for testing.</p>
           <ul>
-            <li>REST API for documents, Business Tools, conversations, and billing</li>
+            <li>REST / OpenAPI — connect existing APIs as Business Tools</li>
+            <li>Backend SDK — authentication, workflows, and tool callbacks in your stack</li>
+            <li>REST API for documents, conversations, and billing</li>
             <li>WebSocket chat with streaming tokens and tool-call events</li>
             <li>Widget SDK with identify(), lazy voice, and theme customization</li>
             <li>Internal Portal at yourcompany.qefro.com for employees</li>
@@ -1699,10 +1756,10 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
 PAGES["features.html"] = inner(
     "Features | Qefro AI Workspace Platform",
     "Features",
-    "Qefro AI Workspace Platform: AI Workspaces, knowledge RAG, business actions (REST/OpenAPI), Customer AI widget, Internal Portal, WhatsApp, voice, RBAC, and agent handoff.",
+    "Qefro AI Workspace Platform: AI Workspaces, knowledge RAG, business actions (REST/OpenAPI or Backend SDK), Customer AI, Employee AI, Admin Console, WhatsApp, voice, and RBAC.",
     "features.html",
     "features",
-    "<p>Qefro combines <strong>AI Workspaces</strong>, a <strong>knowledge platform</strong>, <strong>business actions</strong>, and <strong>three AI experiences</strong> — Customer AI, Employee AI, and Admin Console — so organizations can answer questions, take secure actions, and govern access from one platform.</p>",
+    "<p>Qefro combines <strong>AI Workspaces</strong>, a <strong>knowledge platform</strong>, <strong>business actions</strong>, and <strong>three surfaces</strong> — Customer AI, Employee AI, and Admin Console — so organizations can answer questions, take secure actions, and govern access from one platform.</p>",
     features_page_content(),
     badge=f'{ICONS["sparkles"]} Features',
 )
@@ -1710,10 +1767,10 @@ PAGES["features.html"] = inner(
 PAGES["how-it-works.html"] = inner(
     "Platform | Qefro — configure once, deploy everywhere",
     "Platform",
-    "How the Qefro platform works: configure AI Workspaces, knowledge, and business actions once in the Admin Console, then deploy Customer AI and Employee AI everywhere.",
+    "How Qefro works: Conversation → Knowledge → Business Tool → Action. Connect via REST/OpenAPI or Backend SDK. Configure once in the Admin Console, deploy Customer AI and Employee AI everywhere.",
     "how-it-works.html",
     "how-it-works",
-    "<p><strong>Configure once. Deploy everywhere.</strong> Four steps from Admin Console setup to production organizational AI. We handle vectors, models, PII scrubbing, and action execution — you bring knowledge, APIs, and permissions.</p>",
+    "<p><strong>Configure once. Deploy everywhere.</strong> Four steps from Admin Console setup to production organizational AI. Connect systems via REST/OpenAPI or the Backend SDK — we handle vectors, models, PII scrubbing, and action execution.</p>",
     how_it_works_page_content(),
     badge=f'{ICONS["zap"]} Platform overview',
 )
@@ -1970,8 +2027,8 @@ for slug, title, q, a, extra in [
         "what-is-qefro.html",
         "What is Qefro? | AI Workspace Platform for Organizations",
         "What is Qefro?",
-        "Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal — sharing one knowledge platform, permission system, and set of business actions.",
-        "<p>Most AI platforms answer questions. Qefro answers questions and securely performs business actions using your organization&rsquo;s knowledge, APIs, and permissions. Configure once in the Admin Console, then deploy Customer AI and Employee AI everywhere — with workspace-level isolation.</p>",
+        "Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions.",
+        "<p>Conversation → Knowledge → Business Tool → Action. Connect systems via REST/OpenAPI or the Backend SDK. Configure once in the Admin Console, then deploy Customer AI and Employee AI everywhere — with workspace-level isolation.</p>",
     ),
     (
         "qefro-pricing.html",
