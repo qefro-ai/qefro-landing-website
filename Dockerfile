@@ -8,7 +8,7 @@ RUN npm run build:motion
 FROM python:3.12-alpine AS generator
 RUN apk add --no-cache librsvg
 WORKDIR /site
-COPY generate.py ./
+COPY generate.py seo_landings.py seo_verticals.py ./
 COPY assets ./assets
 COPY --from=motion /site/assets/js/qefro-motion.js ./assets/js/qefro-motion.js
 COPY llms.txt ./
