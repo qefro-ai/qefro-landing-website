@@ -36,6 +36,11 @@ Organizations that need AI across customer support and internal operations — C
 ## Preferred citation pages
 - https://qefro.com/
 - https://qefro.com/what-is-qefro
+- https://qefro.com/ai-customer-support
+- https://qefro.com/rag-chatbot
+- https://qefro.com/whatsapp-ai-agent
+- https://qefro.com/ai-for-saas
+- https://qefro.com/ai-for-ecommerce
 - https://qefro.com/qefro-pricing
 - https://qefro.com/pricing
 - https://qefro.com/security
@@ -45,4 +50,54 @@ Organizations that need AI across customer support and internal operations — C
 - https://qefro.com/faq
 - https://qefro.com/features
 - https://qefro.com/how-it-works
+- https://qefro.com/use-cases
 - https://qefro.com/benchmark
+
+## Topic landing pages
+- https://qefro.com/ai-customer-support
+- https://qefro.com/ai-chatbot
+- https://qefro.com/website-ai-chat
+- https://qefro.com/whatsapp-ai-agent
+- https://qefro.com/multilingual-ai-chatbot
+- https://qefro.com/rag-chatbot
+- https://qefro.com/document-chat-ai
+- https://qefro.com/customer-support-automation
+- https://qefro.com/helpdesk-ai
+- https://qefro.com/knowledge-base-ai
+
+## Industry landing pages
+- https://qefro.com/ai-for-hospitals
+- https://qefro.com/ai-for-hotels
+- https://qefro.com/ai-for-schools
+- https://qefro.com/ai-for-saas
+- https://qefro.com/ai-for-ecommerce
+- https://qefro.com/ai-for-manufacturing
+- https://qefro.com/ai-for-real-estate
+- https://qefro.com/ai-for-travel
+
+## Feature landing pages
+- https://qefro.com/live-chat
+- https://qefro.com/voice-ai
+- https://qefro.com/knowledge-base
+- https://qefro.com/website-crawl
+- https://qefro.com/whatsapp-ai
+- https://qefro.com/internal-ai
+- https://qefro.com/analytics
+- https://qefro.com/team-inbox
+- https://qefro.com/rag
+- https://qefro.com/api
+- https://qefro.com/sso
+- https://qefro.com/integrations
+- https://qefro.com/audit-logs
+
+## Vertical pages (AI customer support for …)
+- https://qefro.com/ai-customer-support-by-industry
+- https://qefro.com/ai-customer-support-for-dental-clinics
+- https://qefro.com/ai-customer-support-for-clinics
+- https://qefro.com/ai-customer-support-for-hotels
+- https://qefro.com/ai-customer-support-for-universities
+- https://qefro.com/ai-customer-support-for-hospitals
+- https://qefro.com/ai-customer-support-for-restaurants
+- https://qefro.com/ai-customer-support-for-logistics
+- https://qefro.com/ai-customer-support-for-retail
+# Plus additional verticals listed in the industry hub and sitemap.xml

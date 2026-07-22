@@ -2190,8 +2190,17 @@ button.demo-chat:hover .chat-mock {
   border: 1px solid var(--border);
   background: var(--bg-card);
   font-size: 0.8rem;
-  font-weight: 650;
+  font-weight: 500;
   color: var(--text-sub);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+a.workspace-pill:hover {
+  border-color: var(--color-primary);
+  color: var(--color-foreground);
+  background: var(--color-muted);
 }
 .trust-strip .logo-placeholder {
   max-width: 16rem;

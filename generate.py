@@ -10,6 +10,15 @@ from datetime import date
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from seo_landings import (
+    all_landings,
+    feature_link_grid,
+    industry_link_grid,
+    topic_link_grid,
+    vertical_link_grid,
+    sitemap_slugs,
+)
+
 ROOT = Path(__file__).resolve().parent
 SITE = "https://qefro.com"
 PORTAL = "https://app.qefro.com"
@@ -18,7 +27,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "39"
+ASSET_VERSION = "40"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
@@ -95,6 +104,10 @@ SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("privacy", []),
     ("terms", []),
 ]
+
+# Programmatic SEO landings (topics, industries, features) — appended for sitemap.
+for _slug in sitemap_slugs():
+    SITEMAP_ENTRIES.append((_slug, []))
 
 
 def site_url(path: str) -> str:
@@ -257,6 +270,9 @@ def footer() -> str:
           <a href="/how-it-works">Platform</a>
           <a href="/features">Features</a>
           <a href="/use-cases">Solutions</a>
+          <a href="/ai-customer-support">AI Support</a>
+          <a href="/ai-customer-support-by-industry">By Industry</a>
+          <a href="/ai-for-saas">AI for SaaS</a>
           <a href="/pricing">Pricing</a>
           <a href="/security">Security</a>
           <a href="/what-is-qefro">What is Qefro</a>
@@ -1368,6 +1384,20 @@ def how_it_works_page_content() -> str:
             <li>Widget SDK with identify(), lazy voice, and theme customization</li>
             <li>Internal Portal at yourcompany.qefro.com for employees</li>
           </ul>
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Feature pages</h2>
+          <p>Each capability has its own page for deeper detail — from live chat and WhatsApp to RAG, APIs, and audit logs.</p>
+        </div>
+        <div class="workspace-pills reveal" aria-label="Feature landing pages" style="margin-top:1rem">
+{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in feature_link_grid())}
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Popular topic pages</h2>
+          <p>Looking for a specific keyword journey? Start here.</p>
+        </div>
+        <div class="workspace-pills reveal" aria-label="Topic landing pages" style="margin-top:1rem">
+{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in topic_link_grid())}
         </div>"""
 
 
@@ -1403,7 +1433,24 @@ def use_cases_page_content() -> str:
         </div>
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Industries</h2>
-          <p>Teams in SaaS, healthcare, education, manufacturing, retail, professional services, government, and internal IT use Qefro to deploy organizational AI without building a platform from scratch.</p>
+          <p>Teams in SaaS, healthcare, education, manufacturing, retail, hospitality, travel, real estate, and internal IT use Qefro to deploy organizational AI without building a platform from scratch.</p>
+        </div>
+        <div class="workspace-pills reveal" aria-label="Industry landing pages" style="margin-top:1rem">
+{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in industry_link_grid())}
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Topic pages</h2>
+          <p>Explore how Qefro maps to common search intents — from RAG chatbots to WhatsApp agents.</p>
+        </div>
+        <div class="workspace-pills reveal" aria-label="Topic landing pages" style="margin-top:1rem">
+{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in topic_link_grid())}
+        </div>
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>AI customer support by industry</h2>
+          <p>Programmatic pages for niche search intent — dental clinics, hotels, logistics, and more.</p>
+        </div>
+        <div class="workspace-pills reveal" aria-label="Vertical landing pages" style="margin-top:1rem">
+{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in vertical_link_grid())}
         </div>"""
 
 
@@ -1456,7 +1503,7 @@ def pricing_page_content() -> str:
           <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs</span></div>
         </div>
         <div class="prose reveal" style="margin-top:2rem">
-          <p>Billing is prepaid via Razorpay in the portal. Upgrade or top up anytime; owners manage subscriptions and invoices from the billing page.</p>
+          <p>Billing is prepaid via Razorpay in the portal. Upgrade or top up anytime; owners manage subscriptions and invoices from the billing page. Also see the short answer page: <a href="/qefro-pricing">How much does Qefro cost?</a></p>
         </div>"""
 
 
@@ -2058,6 +2105,261 @@ for slug, title, q, a, extra in [
     </section>
 """,
     )
+
+
+def _related_href(slug: str) -> str:
+    if slug == "docs":
+        return DOCS
+    return f"/{slug.removesuffix('.html')}"
+
+
+def seo_landing_content(landing) -> str:
+    paras = "\n".join(f"          <p>{escape(p)}</p>" for p in landing.paragraphs)
+    bullets = "\n".join(
+        f"            <li>{ICONS['check']} {escape(b)}</li>" for b in landing.bullets
+    )
+    related = ""
+    if landing.related:
+        pills = "\n".join(
+            f'          <a class="workspace-pill" href="{_related_href(slug)}">{escape(label)}</a>'
+            for slug, label in landing.related
+        )
+        related = f"""
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>Related pages</h2>
+        </div>
+        <div class="workspace-pills reveal" style="justify-content:flex-start;margin-top:1rem">
+{pills}
+        </div>"""
+    faqs = ""
+    if landing.faqs:
+        items = "".join(
+            f"""          <div class="faq-item">
+            <button type="button" aria-expanded="false"><span>{escape(q)}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
+            <div class="faq-a"><p>{escape(a)}</p></div>
+          </div>
+"""
+            for q, a in landing.faqs
+        )
+        faqs = f"""
+        <div class="section-head reveal" style="text-align:left;margin-top:3rem">
+          <h2>FAQ</h2>
+          <p>Common questions about {escape(landing.h1)}.</p>
+        </div>
+        <div class="faq-list reveal">
+{items}        </div>"""
+    return f"""        <div class="prose reveal">
+{paras}
+          <h2>How Qefro delivers {escape(landing.h1)}</h2>
+          <p>
+            Configure knowledge, instructions, and Business Tools once in the Admin Console.
+            Deploy <strong>Customer AI</strong> on your website widget and WhatsApp, and
+            <strong>Employee AI</strong> on a branded Internal Portal — with the same retrieval,
+            permissions, and action layer underneath.
+          </p>
+          <p>
+            Answers are grounded in your documents and crawled pages. Hybrid search combines
+            keyword and vector retrieval, returns source citations, and is designed to decline
+            when nothing relevant exists — so teams can trust support and internal assistants
+            in production.
+          </p>
+          <p>
+            When chat must change state — order lookups, tickets, CRM updates — connect your
+            APIs via REST/OpenAPI or the Backend SDK. Credentials are encrypted; outbound calls
+            use HTTPS with SSRF protections; execution logs support review and QA.
+          </p>
+          <h2>Why teams choose Qefro for this use case</h2>
+          <p>
+            You should not rebuild RAG infrastructure, hosting, or channel adapters for every
+            project. Qefro gives organizations a multi-tenant AI Workspace Platform: isolated
+            knowledge per workspace, RBAC for owners/admins/members, PII scrubbing on model
+            calls, and a 14-day free trial with full premium access so you can prove value
+            before buying.
+          </p>
+          <p>
+            Compare plans on the <a href="/pricing">pricing page</a>, review
+            <a href="/security">security controls</a>, and read the
+            <a href="/benchmark">benchmark methodology</a> for how we evaluate grounding and
+            refusal behavior. Product docs live at
+            <a href="{DOCS}">docs.qefro.com</a>.
+          </p>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:2.5rem">
+          <h2>What you get with Qefro</h2>
+          <p>Practical capabilities for {escape(landing.h1.lower())} — not a demo chatbot.</p>
+        </div>
+        <ul class="uc-list reveal" style="max-width:40rem">
+{bullets}
+        </ul>
+        <div class="cap-grid reveal" style="margin-top:2rem">
+          <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>Tenant &amp; workspace isolation</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>Source citations</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["zap"]}</div><span>Secure business actions</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Web · WhatsApp · Internal Portal</span></div>
+        </div>
+{related}
+{faqs}
+        <p class="integrations-note reveal" style="margin-top:2rem">
+          <a href="/features">All features</a> ·
+          <a href="/use-cases">Solutions</a> ·
+          <a href="/pricing">Pricing</a> ·
+          <a href="/security">Security</a> ·
+          <a href="{DOCS}">Docs</a>
+        </p>"""
+
+
+def register_seo_landings() -> None:
+    """Generate topic, industry, feature, and vertical landing pages into PAGES."""
+    vertical_pills = "\n".join(
+        f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>'
+        for slug, label in vertical_link_grid()
+    )
+    # Dedicated hub so verticals are never orphaned from a crawl path.
+    hub_path = "ai-customer-support-by-industry.html"
+    PAGES[hub_path] = page(
+        title="AI Customer Support by Industry | Qefro",
+        description=(
+            "Explore AI customer support pages by industry — clinics, hotels, universities, "
+            "logistics, retail, and more — built on Qefro’s AI Workspace Platform."
+        ),
+        path=hub_path,
+        active="use-cases",
+        jsonld=[
+            webpage_json(
+                "AI Customer Support by Industry | Qefro",
+                "Explore AI customer support pages by industry on Qefro.",
+                hub_path,
+            ),
+            breadcrumb_json(
+                [
+                    ("Home", "/"),
+                    ("AI customer support", "ai-customer-support"),
+                    ("By industry", "ai-customer-support-by-industry"),
+                ]
+            ),
+        ],
+        body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs([("Home", "/"), ("AI customer support", "/ai-customer-support"), ("By industry", "")])}
+        <div class="page-hero-inner">
+          <span class="badge badge-indigo">{ICONS["building"]} Industries</span>
+          <h1>AI Customer Support by Industry</h1>
+          <div class="direct-answer" style="text-align:left">
+            <p>Choose your vertical to see how Qefro deploys grounded Customer AI, optional WhatsApp, secure API actions, and staff Internal Portals — without building RAG from scratch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+        <div class="prose">
+          <p>Each page targets a specific “AI customer support for …” search intent with scenarios, integrations, and FAQs for that niche. Start a free trial from any page when you are ready.</p>
+        </div>
+        <div class="workspace-pills" style="justify-content:flex-start;margin-top:1.5rem" aria-label="Industry support pages">
+{vertical_pills}
+        </div>
+        <p class="integrations-note" style="margin-top:2rem">
+          <a href="/ai-customer-support">AI customer support overview</a> ·
+          <a href="/use-cases">Solutions</a> ·
+          <a href="/features">Features</a> ·
+          <a href="/pricing">Pricing</a>
+        </p>
+      </div>
+    </section>
+""",
+    )
+
+    for landing in all_landings():
+        path = f"{landing.slug}.html"
+        if landing.kind == "feature":
+            crumb_nav = [("Home", "/"), ("Features", "/features"), (landing.h1, "")]
+            crumb_json = [("Home", "/"), ("Features", "features"), (landing.h1, landing.slug)]
+            active = "features"
+            badge = f'{ICONS["sparkles"]} Feature'
+        elif landing.kind == "industry":
+            crumb_nav = [("Home", "/"), ("Solutions", "/use-cases"), (landing.h1, "")]
+            crumb_json = [("Home", "/"), ("Solutions", "use-cases"), (landing.h1, landing.slug)]
+            active = "use-cases"
+            badge = f'{ICONS["building"]} Industry'
+        elif landing.kind == "vertical":
+            crumb_nav = [
+                ("Home", "/"),
+                ("AI customer support", "/ai-customer-support"),
+                ("By industry", "/ai-customer-support-by-industry"),
+                (landing.h1, ""),
+            ]
+            crumb_json = [
+                ("Home", "/"),
+                ("AI customer support", "ai-customer-support"),
+                ("By industry", "ai-customer-support-by-industry"),
+                (landing.h1, landing.slug),
+            ]
+            active = "use-cases"
+            badge = f'{ICONS["headphones"]} Vertical'
+        else:
+            crumb_nav = [("Home", "/"), (landing.h1, "")]
+            crumb_json = [("Home", "/"), (landing.h1, landing.slug)]
+            active = None
+            badge = f'{ICONS["zap"]} Topic'
+
+        extra_hub = ""
+        if landing.slug == "ai-customer-support":
+            extra_hub = f"""
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>By industry</h2>
+          <p>See niche pages for clinics, hotels, universities, logistics, retail, and more.</p>
+          <p><a class="btn btn-ghost" href="/ai-customer-support-by-industry">Browse all industries</a></p>
+        </div>
+        <div class="workspace-pills reveal" style="justify-content:flex-start;margin-top:1rem" aria-label="Popular verticals">
+{vertical_pills}
+        </div>"""
+
+        PAGES[path] = page(
+            title=landing.title,
+            description=landing.description,
+            path=path,
+            active=active,
+            jsonld=[
+                webpage_json(landing.title, landing.description, path),
+                breadcrumb_json(crumb_json),
+            ],
+            body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs(crumb_nav)}
+        <div class="page-hero-inner">
+          <span class="badge badge-indigo">{badge}</span>
+          <h1>{escape(landing.h1)}</h1>
+          <div class="direct-answer" style="text-align:left">{landing.answer}</div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap reveal">
+{seo_landing_content(landing)}
+{extra_hub}
+      </div>
+    </section>
+    <section class="cta-final">
+      <div class="cta-final-glow" aria-hidden="true"></div>
+      <div class="wrap-narrow reveal">
+        <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
+        <h2>Try {escape(landing.h1)} with Qefro.</h2>
+        <p>Start a 14-day free trial — Customer AI, Employee AI, and Admin Console. No credit card required.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start 14-Day Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/ai-customer-support-by-industry">Browse industries</a>
+        </div>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
+      </div>
+    </section>
+""",
+        )
+
+
+# Hub must be in sitemap too.
+SITEMAP_ENTRIES.append(("ai-customer-support-by-industry", []))
+
+register_seo_landings()
 
 
 def ensure_logo() -> None:
