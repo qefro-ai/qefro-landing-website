@@ -1,0 +1,1445 @@
+# Qefro — llm.txt / llms.txt
+# Answer-engine friendly summary for crawlers and AI systems.
+
+name: Qefro
+url: https://qefro.com
+app: https://app.qefro.com
+api: https://api.qefro.com
+contact: support@qefro.com
+category: AI Workspace Platform
+
+## What is Qefro?
+Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal (yourcompany.qefro.com). Everything shares one knowledge platform, one permission system, and one set of business actions. Most AI platforms answer questions; Qefro also securely performs business actions using your organization's knowledge, APIs, and permissions.
+
+## Core message
+Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console — from one centralized AI platform.
+
+## Pricing
+- Free: $0 — 100 conversations, knowledge for getting started, connect 1 business system (no credit card required)
+- Starter: $29/month billed annually ($348/year) or $39/month monthly — knowledge for one team, connect up to 5 business systems
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — WhatsApp + unlimited business system connections
+- Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
+- Annual billing saves ~26% vs monthly
+
+## Key capabilities
+- AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, business actions, conversations, and permissions — every workspace has its own isolated knowledge base
+- Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source, workspace isolation
+- Business Actions (powered by Business Tools): REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
+- Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
+- Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
+- Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SOC 2 compliance is on the roadmap (contact Sales for timeline); SSO and platform admin audit trail on Enterprise roadmap
+- Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
+
+## Who it is for
+Organizations that need AI across customer support and internal operations — Customer Support, HR, IT, Sales, Finance, Engineering — and industries including SaaS, healthcare, education, manufacturing, retail, professional services, and government.
+
+## Preferred citation pages
+- https://qefro.com/
+- https://qefro.com/what-is-qefro
+- https://qefro.com/ai-customer-support
+- https://qefro.com/rag-chatbot
+- https://qefro.com/whatsapp-ai-agent
+- https://qefro.com/ai-for-saas
+- https://qefro.com/ai-for-ecommerce
+- https://qefro.com/qefro-pricing
+- https://qefro.com/pricing
+- https://qefro.com/security
+- https://qefro.com/privacy
+- https://qefro.com/terms
+- https://docs.qefro.com/
+- https://qefro.com/faq
+- https://qefro.com/features
+- https://qefro.com/how-it-works
+- https://qefro.com/use-cases
+- https://qefro.com/benchmark
+
+## Topic landing pages
+- https://qefro.com/ai-customer-support
+- https://qefro.com/ai-chatbot
+- https://qefro.com/website-ai-chat
+- https://qefro.com/whatsapp-ai-agent
+- https://qefro.com/multilingual-ai-chatbot
+- https://qefro.com/rag-chatbot
+- https://qefro.com/document-chat-ai
+- https://qefro.com/customer-support-automation
+- https://qefro.com/helpdesk-ai
+- https://qefro.com/knowledge-base-ai
+
+## Industry landing pages
+- https://qefro.com/ai-for-hospitals
+- https://qefro.com/ai-for-hotels
+- https://qefro.com/ai-for-schools
+- https://qefro.com/ai-for-saas
+- https://qefro.com/ai-for-ecommerce
+- https://qefro.com/ai-for-manufacturing
+- https://qefro.com/ai-for-real-estate
+- https://qefro.com/ai-for-travel
+
+## Feature landing pages
+- https://qefro.com/live-chat
+- https://qefro.com/voice-ai
+- https://qefro.com/knowledge-base
+- https://qefro.com/website-crawl
+- https://qefro.com/whatsapp-ai
+- https://qefro.com/internal-ai
+- https://qefro.com/analytics
+- https://qefro.com/team-inbox
+- https://qefro.com/rag
+- https://qefro.com/api
+- https://qefro.com/sso
+- https://qefro.com/integrations
+- https://qefro.com/audit-logs
+
+## Vertical pages (AI customer support for …)
+- https://qefro.com/ai-customer-support-by-industry
+- https://qefro.com/ai-customer-support-for-dental-clinics
+- https://qefro.com/ai-customer-support-for-clinics
+- https://qefro.com/ai-customer-support-for-hotels
+- https://qefro.com/ai-customer-support-for-universities
+- https://qefro.com/ai-customer-support-for-hospitals
+- https://qefro.com/ai-customer-support-for-restaurants
+- https://qefro.com/ai-customer-support-for-logistics
+- https://qefro.com/ai-customer-support-for-retail
+# Plus additional verticals listed in the industry hub and sitemap.xml
+
+
+# Expanded Landing Specifications & Direct Answers
+
+
+## AI Customer Support (https://qefro.com/ai-customer-support)
+Kind: Topic
+Title: AI Customer Support Platform | Qefro
+Description: Qefro AI customer support answers from your knowledge base, runs secure business actions, and works on website chat and WhatsApp.
+Direct Answer: Qefro is an AI customer support platform that grounds answers in your docs and APIs, then takes secure actions — not just chat replies.
+Overview: Generic chatbots often invent answers. Qefro retrieves from your verified content, cites sources, and is designed to decline when nothing relevant exists — so support stays accurate. Beyond Q&A, connect order, billing, and ticketing systems via REST/OpenAPI or the Backend SDK so the assistant can look up live status, create tickets, and hand off to humans with full context. Deploy Customer AI on your website widget and WhatsApp from one Admin Console, with workspace isolation, RBAC, and encrypted secrets.
+Key Capabilities:
+- Grounded answers with source citations
+- Secure business actions through your APIs
+- Website widget + WhatsApp channels
+- Human handoff and lead capture
+- 14-day free trial — no credit card
+FAQs:
+  Q: How is Qefro different from a basic AI chatbot?
+  A: Qefro combines knowledge retrieval with secure business actions, workspace permissions, and channels for both customers and employees — not chat-only demos.
+  Q: Can it create tickets or look up orders?
+  A: Yes. Connect your helpdesk or order APIs as Business Tools, or use the Backend SDK so actions run with the end-user’s identity.
+
+## AI Chatbot for Business (https://qefro.com/ai-chatbot)
+Kind: Topic
+Title: AI Chatbot for Business | Qefro
+Description: Build a business AI chatbot with Qefro: multilingual RAG, citations, WhatsApp, website widget, and secure API actions.
+Direct Answer: Qefro’s business AI chatbot answers from your company knowledge and can execute approved actions in your systems.
+Overview: Most chatbot tools stop at conversation. Qefro indexes PDFs, sites, and docs, then answers with citations across languages including English, Arabic, Tamil, and Hindi. When customers need more than text — order status, refunds, appointment links — Business Tools call your APIs with encrypted credentials or forwarded identity. One platform covers Customer AI, Employee AI, and an Admin Console so you configure knowledge and permissions once.
+Key Capabilities:
+- Hybrid retrieval (keyword + vectors)
+- OCR for scans and image PDFs
+- Widget JWT auth and streaming replies
+- Internal Portal for employee chatbots
+- Refuse when the knowledge base has no answer
+
+## Website AI Chat (https://qefro.com/website-ai-chat)
+Kind: Topic
+Title: Website AI Chat Widget | Qefro
+Description: Add website AI chat with Qefro’s embeddable widget — grounded answers, voice options, lead capture, and secure business actions.
+Direct Answer: Embed Qefro’s website AI chat widget to answer visitors from your knowledge base and trigger secure actions on your stack.
+Overview: Install with a short script and widget token. Messages stream over WebSocket, stay size-bounded, and can scrub PII before model calls. Visitors get answers grounded in your site crawl and uploaded docs. When they need a human, hand off to your team inbox with conversation context. Optional voice STT/TTS in the widget helps mobile and accessibility use cases without a separate product.
+Key Capabilities:
+- One-line embed for your site
+- Crawl your public site into the knowledge base
+- Lead capture forms in-chat
+- Brand colors and welcome message
+- Works with identify() for signed-in users
+
+## WhatsApp AI Agent (https://qefro.com/whatsapp-ai-agent)
+Kind: Topic
+Title: WhatsApp AI Agent for Business | Qefro
+Description: Run a WhatsApp AI agent with Qefro — same knowledge and business actions as your website chat, with Starter+ WhatsApp support.
+Direct Answer: Qefro’s WhatsApp AI agent uses the same workspaces, knowledge, and Business Tools as your website assistant.
+Overview: Customers already live in WhatsApp. Connect the channel once in the Admin Console so policies, FAQs, and API actions stay consistent with web chat. Identity-aware actions let authenticated flows look up accounts or create tickets without storing end-user passwords in Qefro. Available on Starter and above so growing teams can add messaging without rebuilding RAG infrastructure.
+Key Capabilities:
+- Shared knowledge with website Customer AI
+- Business actions via REST/OpenAPI or SDK
+- Handoff path to human agents
+- Workspace-scoped instructions and tools
+- Audit-friendly execution logs
+
+## Multilingual AI Chatbot (https://qefro.com/multilingual-ai-chatbot)
+Kind: Topic
+Title: Multilingual AI Chatbot | Qefro
+Description: Multilingual AI chatbot with Qefro RAG — English, Arabic, Tamil, Hindi and more, with OCR and source citations.
+Direct Answer: Qefro’s multilingual AI chatbot retrieves and answers across languages using hybrid search, OCR, and citations.
+Overview: Global teams need support that matches the customer’s language without separate bots per locale. Qefro indexes mixed-language corpora in isolated workspaces. OCR helps scanned PDFs and image-heavy manuals stay searchable. Hybrid BM25 + vector retrieval improves recall for short queries and proper nouns. Refusal behavior reduces hallucinations when the corpus has no matching content — critical for regulated copy in every language.
+Key Capabilities:
+- EN, AR, TA, HI and more
+- OCR for non-Latin scanned docs
+- Per-workspace language content
+- Cited sources in answers
+- Website and WhatsApp channels
+
+## RAG Chatbot (https://qefro.com/rag-chatbot)
+Kind: Topic
+Title: RAG Chatbot Platform | Qefro
+Description: Deploy a production RAG chatbot with Qefro — hybrid retrieval, citations, refusal when unsure, and optional API actions.
+Direct Answer: Qefro is a production RAG chatbot platform: chunk, embed, retrieve, cite — then optionally act through your APIs.
+Overview: Retrieval-augmented generation only works if retrieval is reliable. Qefro combines dense vectors with full-text search and workspace filters for tenant-safe results. Every answer can cite source documents. When retrieval is empty or weak, the assistant is designed to say it does not know instead of guessing. Add Business Tools when chat must change state — refunds, lookups, tickets — with encrypted secrets and execution logs.
+Key Capabilities:
+- Document + website ingestion
+- Hybrid BM25 + vector search
+- Source citations and grounding
+- Tenant and workspace isolation
+- Benchmark methodology published
+FAQs:
+  Q: Do I host my own vector database?
+  A: No. Qefro runs retrieval infrastructure for you. You upload content and configure workspaces in the Admin Console.
+
+## Document Chat AI (https://qefro.com/document-chat-ai)
+Kind: Topic
+Title: Document Chat AI | Ask PDFs with Qefro
+Description: Chat with PDFs, DOCX, Markdown, and crawled pages using Qefro document chat AI — citations, OCR, and workspace isolation.
+Direct Answer: Qefro document chat AI lets teams ask questions over PDFs and docs with citations — and optional actions when APIs are connected.
+Overview: Upload handbooks, contracts, and product manuals. Qefro chunks and indexes them per workspace so HR content never leaks into a public support bot. OCR unlocks scanned packets. Employees use the Internal Portal; customers use the website widget against public workspaces only. Combine document answers with Business Tools when the next step is submitting a form or opening a ticket in your system of record.
+Key Capabilities:
+- PDF, DOCX, Markdown, TXT
+- Website crawl into the same index
+- OCR for image-based PDFs
+- Cited passages in answers
+- Private vs public workspaces
+
+## Customer Support Automation (https://qefro.com/customer-support-automation)
+Kind: Topic
+Title: Customer Support Automation | Qefro
+Description: Automate customer support with Qefro — deflection for FAQs, API actions for live data, and human handoff when needed.
+Direct Answer: Qefro customer support automation deflects routine questions, executes approved API actions, and escalates with context.
+Overview: Automation fails when it hides humans. Qefro keeps handoff first-class: agents see the thread, sources, and tool runs. Automate the repetitive layer — shipping status, password reset links via your API, policy quotes — while complex cases reach people faster. Measure quality with grounded answers and refusal behavior instead of vanity “messages answered” metrics alone.
+Key Capabilities:
+- FAQ and policy deflection
+- Live data via Business Tools
+- Inbox handoff for agents
+- Lead capture for sales-assist flows
+- Analytics on conversations
+
+## Helpdesk AI (https://qefro.com/helpdesk-ai)
+Kind: Topic
+Title: Helpdesk AI Software | Qefro
+Description: Helpdesk AI with Qefro: grounded answers, ticket creation via your APIs, Internal Portal for agents, and audit-friendly logs.
+Direct Answer: Use Qefro as helpdesk AI that answers from docs and creates tickets in your existing helpdesk through secure integrations.
+Overview: Qefro does not replace your CRM or ticketing system of record. It sits in front with knowledge and actions that call your APIs. Agents and employees can use the Internal Portal for runbooks while customers use the widget — same Admin Console configuration. Execution logs show which tools ran, supporting QA and compliance reviews.
+Key Capabilities:
+- Create tickets via OpenAPI/REST
+- Runbook and SOP retrieval
+- Employee + customer surfaces
+- RBAC and workspace isolation
+- Encrypted integration secrets
+
+## Knowledge Base AI (https://qefro.com/knowledge-base-ai)
+Kind: Topic
+Title: Knowledge Base AI | Qefro
+Description: Turn your knowledge base into AI answers with Qefro — uploads, site crawl, multilingual RAG, citations, and workspace isolation.
+Direct Answer: Qefro knowledge base AI turns documents and crawled pages into grounded conversational answers with citations.
+Overview: Static FAQ pages go stale. Keep a living knowledge base in workspaces and let Customer AI and Employee AI share the same indexed content with different visibility. Hybrid retrieval helps both exact policy IDs and natural-language questions. OCR covers legacy scans. When content is missing, refusal beats a wrong answer — especially for legal, medical, or financial copy.
+Key Capabilities:
+- Upload and crawl into one index
+- Per-workspace knowledge isolation
+- Multilingual retrieval
+- Source citations
+- Admin Console governance
+
+## AI for Hospitals (https://qefro.com/ai-for-hospitals)
+Kind: Industry
+Title: AI for Hospitals | Internal & Patient Support | Qefro
+Description: AI for hospitals with Qefro: protocol lookup for staff, patient-facing FAQs with citations, tenant isolation, and secure API actions.
+Direct Answer: Hospitals use Qefro for staff protocol lookup and carefully scoped patient FAQs — with isolation, citations, and optional secure actions.
+Overview: Clinical and operational teams need fast access to protocols without chatting across department boundaries. Workspaces keep nursing, IT, and HR knowledge separated. Patient-facing bots should stick to approved public content and refuse medical advice outside the knowledge base. Qefro’s grounding and refusal design support that posture. Enterprise options include private deployment discussions for organizations with stricter hosting requirements.
+Key Capabilities:
+- Workspace isolation for departments
+- Cited answers from approved docs
+- PII scrubbing on model calls
+- Audit and execution logs
+- Private deployment conversations for Enterprise
+FAQs:
+  Q: Is Qefro a clinical decision system?
+  A: No. Qefro retrieves and acts on content and APIs you configure. It is not a diagnostic device and should only use approved knowledge.
+
+## AI for Hotels (https://qefro.com/ai-for-hotels)
+Kind: Industry
+Title: AI for Hotels | Guest & Staff Assistants | Qefro
+Description: AI for hotels: guest website and WhatsApp answers, staff Internal Portal for SOPs, and booking or PMS actions via your APIs.
+Direct Answer: Hotels use Qefro for guest FAQs on web and WhatsApp plus staff SOP assistants — with optional PMS or booking API actions.
+Overview: Guests ask about amenities, check-in, and local tips. Ground answers in your property content and escalate edge cases to the front desk with handoff. Staff use the Internal Portal for housekeeping and security SOPs without exposing those docs on the public widget. Connect booking or loyalty APIs as Business Tools when you want the assistant to fetch reservation status securely.
+Key Capabilities:
+- Multilingual guest support
+- WhatsApp for travelers
+- Staff-only workspaces
+- API actions for live reservation data
+- Brandable widget
+
+## AI for Schools (https://qefro.com/ai-for-schools)
+Kind: Industry
+Title: AI for Schools & Universities | Qefro
+Description: AI for schools: student and parent FAQs, staff policy portals, multilingual RAG, and integrations with your SIS or ticketing APIs.
+Direct Answer: Schools and universities use Qefro for admissions FAQs, campus services, and staff policy assistants with workspace isolation.
+Overview: Parents and students need consistent answers about calendars, fees, and procedures. Keep public content in a public workspace and internal HR in a private one. Multilingual retrieval helps diverse communities. OCR covers scanned circulars and handwritten-adjacent scans when digitized. Ticket creation via your helpdesk API keeps IT and registrar workflows in systems you already trust.
+Key Capabilities:
+- Admissions and campus FAQ bots
+- Staff Internal Portal
+- Multilingual knowledge
+- Helpdesk API actions
+- Role-based access
+
+## AI for SaaS (https://qefro.com/ai-for-saas)
+Kind: Industry
+Title: AI for SaaS Companies | Qefro
+Description: AI for SaaS: in-app or website support, docs RAG, identify() for logged-in users, and product API actions for account tasks.
+Direct Answer: SaaS teams use Qefro to turn product docs into support AI — with identity-aware actions for signed-in customers.
+Overview: Deflect “how do I…” tickets with cited docs, then use identify() so billing or workspace actions run as the real user against your APIs. Employee AI helps CS and success teams search runbooks while Customer AI stays on public and authenticated experiences you choose. OpenAPI import speeds connecting your existing customer-facing APIs as Business Tools.
+Key Capabilities:
+- Docs + changelog ingestion
+- identify() for authenticated chat
+- OpenAPI Business Tools
+- In-app or marketing-site widget
+- Growth plan WhatsApp option
+
+## AI for Ecommerce (https://qefro.com/ai-for-ecommerce)
+Kind: Industry
+Title: AI for Ecommerce | Orders, Policies & Chat | Qefro
+Description: AI for ecommerce: policy answers with citations, order tracking via your APIs, website and WhatsApp chat, and human handoff.
+Direct Answer: Ecommerce brands use Qefro for policy Q&A, order lookups through your APIs, and WhatsApp or website chat with handoff.
+Overview: Shoppers ask about shipping, returns, and sizing. Ground answers in your policies and product content; refuse when SKU data is not in the knowledge base. Connect order and subscription APIs so “where is my order?” returns live tracking instead of a generic script. Handoff preserves cart and conversation context for agents during peak seasons.
+Key Capabilities:
+- Returns and shipping policy RAG
+- Order API business actions
+- WhatsApp for post-purchase support
+- Lead capture for abandoned-cart assists
+- Workspace separation for brands
+
+## AI for Manufacturing (https://qefro.com/ai-for-manufacturing)
+Kind: Industry
+Title: AI for Manufacturing | SOPs & Ops AI | Qefro
+Description: AI for manufacturing: SOP and safety doc chat for operators, engineering runbooks, OCR for manuals, and optional MES/ticket APIs.
+Direct Answer: Manufacturers use Qefro so operators and engineers can query SOPs and runbooks with citations — plus optional plant system actions.
+Overview: Paper manuals and PDF equipment packs are hard to search on the floor. OCR and document chat make procedures findable in the Internal Portal. Keep safety-critical content in controlled workspaces with RBAC. Public marketing chat stays separate from plant knowledge. Integrate ticketing or maintenance APIs when the assistant should open work orders instead of only quoting a PDF.
+Key Capabilities:
+- SOP and safety document RAG
+- OCR for equipment manuals
+- Operator Internal Portal
+- Maintenance ticket actions
+- Audit-friendly logs
+
+## AI for Real Estate (https://qefro.com/ai-for-real-estate)
+Kind: Industry
+Title: AI for Real Estate | Listing & Client AI | Qefro
+Description: AI for real estate: listing and brochure chat, agent Internal Portal, lead capture, and CRM actions via your APIs.
+Direct Answer: Real estate teams use Qefro to answer listing questions, capture leads, and assist agents with internal playbooks.
+Overview: Buyers ask about amenities, fees, and availability. Ground public answers in listing packs and site content; push hot leads into your CRM through Business Tools. Agents use Employee AI for compliance scripts and transaction checklists without exposing them on the public widget. Multilingual chat helps cross-border and diaspora buyers engage in their preferred language.
+Key Capabilities:
+- Listing and brochure RAG
+- Website lead capture
+- CRM/API follow-ups
+- Agent Internal Portal
+- Multilingual support
+
+## AI for Travel (https://qefro.com/ai-for-travel)
+Kind: Industry
+Title: AI for Travel & Tourism | Qefro
+Description: AI for travel: itinerary and policy FAQs, WhatsApp traveler support, multilingual RAG, and booking system actions via APIs.
+Direct Answer: Travel companies use Qefro for traveler FAQs on web and WhatsApp, with optional booking API lookups and multilingual RAG.
+Overview: Travelers message at odd hours about visas, baggage, and changes. Keep answers cited from your published policies and escalate exceptions to humans. WhatsApp reaches travelers on the move. Share the same knowledge as your website assistant for consistency. Connect booking engines as Business Tools when you want authenticated itinerary status without building a custom RAG stack.
+Key Capabilities:
+- Policy and itinerary FAQs
+- WhatsApp traveler support
+- Multilingual retrieval
+- Booking API actions
+- Human handoff
+
+## Live Chat (https://qefro.com/live-chat)
+Kind: Feature
+Title: Live Chat with AI + Humans | Qefro
+Description: Qefro live chat combines AI answers on your website with human handoff, lead capture, and optional API actions.
+Direct Answer: Qefro live chat starts with grounded AI replies and hands off to humans when needed — with full thread context.
+Overview: Visitors open the widget for instant answers from your knowledge base. When they ask for a person, agents continue in the team inbox. Lead capture collects emails mid-conversation for sales-assist flows without a separate form tool. Pair live chat with Business Tools so “track my order” hits your API instead of a canned reply.
+Key Capabilities:
+- Website widget live chat
+- AI deflection + human handoff
+- Lead capture
+- Streaming responses
+- Brandable UI
+
+## Voice AI (https://qefro.com/voice-ai)
+Kind: Feature
+Title: Voice AI in Website Chat | Qefro
+Description: Qefro Voice AI adds speech-to-text and text-to-speech inside the website widget for hands-free customer support.
+Direct Answer: Use Qefro Voice AI in the website widget so visitors can speak questions and hear answers without a separate voice product.
+Overview: Voice lowers friction on mobile and for accessibility. STT/TTS runs in the widget experience alongside text chat. Answers still come from your RAG knowledge and can trigger the same Business Tools as typed messages. Keep voice on Customer AI surfaces you enable — internal teams can continue with text in the Internal Portal.
+Key Capabilities:
+- STT and TTS in the widget
+- Same knowledge as text chat
+- Works with business actions
+- Optional per deployment
+- Pairs with live chat handoff
+
+## Knowledge Base (https://qefro.com/knowledge-base)
+Kind: Feature
+Title: AI Knowledge Base | Qefro
+Description: Qefro knowledge base features: uploads, crawl, OCR, multilingual hybrid RAG, citations, and per-workspace isolation.
+Direct Answer: The Qefro knowledge base powers grounded answers for Customer AI and Employee AI with citations and isolation.
+Overview: Each workspace gets its own index so public support content never mixes with confidential HR files. Ingest PDFs, DOCX, Markdown, TXT, and crawled pages. OCR covers scans. Hybrid search improves tough queries. Govern from the Admin Console: who can upload, which channels can read which workspace, and how tools are scoped.
+Key Capabilities:
+- Multi-format ingestion
+- Website crawl
+- OCR
+- Citations and refusal
+- Workspace isolation
+
+## Website Crawl (https://qefro.com/website-crawl)
+Kind: Feature
+Title: Website Crawl for AI Knowledge | Qefro
+Description: Crawl your website into Qefro’s knowledge base so Customer AI stays updated with public pages and FAQs.
+Direct Answer: Qefro website crawl indexes your public pages into a workspace knowledge base for grounded chat answers.
+Overview: Keep marketing and help center pages in sync without manual copy-paste into a bot CMS. Combine crawl with PDF uploads for deeper manuals that are not on the public site. Re-crawl when content changes so answers track your latest policies.
+Key Capabilities:
+- Automated site ingestion
+- Pairs with document uploads
+- Workspace-scoped indexes
+- Feeds website and WhatsApp AI
+- Admin Console controls
+
+## WhatsApp AI (https://qefro.com/whatsapp-ai)
+Kind: Feature
+Title: WhatsApp AI Channel | Qefro
+Description: Enable WhatsApp AI on Qefro Starter+ — shared knowledge and business actions with your website Customer AI.
+Direct Answer: Qefro WhatsApp AI uses the same workspaces, retrieval, and Business Tools as your website assistant.
+Overview: Configure WhatsApp in the Admin Console instead of maintaining a second bot stack. Customers get consistent answers whether they message on-site or in WhatsApp. Available on Starter and higher plans with Growth unlocking unlimited business system connections.
+Key Capabilities:
+- Shared RAG knowledge
+- Business Tool actions
+- Handoff-ready threads
+- Starter+ availability
+- Admin Console setup
+
+## Internal AI (https://qefro.com/internal-ai)
+Kind: Feature
+Title: Internal AI Portal for Employees | Qefro
+Description: Qefro Internal AI gives employees a branded portal for workspace chat, documents, citations, and secure internal actions.
+Direct Answer: Employee AI on Qefro is a branded Internal Portal — workspaces, conversations, documents, and citations for your teams.
+Overview: HR, IT, Finance, and Engineering each get isolated knowledge and tools under one organization. Hosted as yourcompany.qefro.com style experiences so employees have a clear place to ask and act. Same security model as Customer AI: RBAC, encryption, and optional API actions with identity controls.
+Key Capabilities:
+- Branded Internal Portal
+- Per-team workspaces
+- Document chat with citations
+- Internal Business Tools
+- Owner/Admin/Member roles
+
+## Analytics (https://qefro.com/analytics)
+Kind: Feature
+Title: AI Conversation Analytics | Qefro
+Description: Qefro analytics help you monitor conversations, channels, and assistant usage from the Admin Console.
+Direct Answer: Use Qefro analytics in the Admin Console to understand conversation volume and how Customer AI and Employee AI are used.
+Overview: See where demand concentrates — widget, WhatsApp, or internal portal — and which workspaces are busiest. Pair analytics with execution logs when debugging Business Tool runs. Improve content where refusal rates or handoffs signal knowledge gaps.
+Key Capabilities:
+- Conversation and channel insights
+- Admin Console dashboards
+- Supports content iteration
+- Complements audit logs
+- Org-wide visibility for owners
+
+## Team Inbox (https://qefro.com/team-inbox)
+Kind: Feature
+Title: Team Inbox & Human Handoff | Qefro
+Description: Qefro team inbox receives human handoffs from AI chat with full conversation context for support agents.
+Direct Answer: The Qefro team inbox lets agents take over AI conversations with history, sources, and tool context intact.
+Overview: Customers should never restart their story after escalation. Handoff brings the thread to humans cleanly. Use inbox workflows alongside AI deflection so routine questions never reach agents. Owners and admins manage access through RBAC so only the right teams see customer conversations.
+Key Capabilities:
+- AI-to-human handoff
+- Full thread context
+- Works with website chat
+- RBAC-aware access
+- Pairs with analytics
+
+## RAG (https://qefro.com/rag)
+Kind: Feature
+Title: RAG Retrieval for Business AI | Qefro
+Description: Qefro RAG: hybrid BM25 + vector retrieval, multilingual indexing, citations, workspace filters, and refusal when unsure.
+Direct Answer: Qefro’s RAG stack retrieves only from your tenant’s content with hybrid search, citations, and safe refusals.
+Overview: Production RAG needs filters for tenant and workspace, not a single shared index. Qefro isolates by design. Hybrid search helps exact IDs and fuzzy questions. Multilingual and OCR expand what you can index. Publishable benchmark methodology explains how we think about accuracy and refusal — not vanity chat scores.
+Key Capabilities:
+- Hybrid retrieval
+- Citations
+- Workspace filters
+- Multilingual + OCR
+- Managed infrastructure
+
+## API (https://qefro.com/api)
+Kind: Feature
+Title: Qefro API & Backend SDK
+Description: Use the Qefro API surface and Backend SDK for identity, tool callbacks, and secure business actions alongside REST/OpenAPI tools.
+Direct Answer: Integrate with Qefro via REST/OpenAPI Business Tools or the Backend SDK for auth and workflow control.
+Overview: Import OpenAPI specs to expose existing APIs as assistant tools with encrypted credentials. Prefer the Backend SDK when authentication and multi-step workflows must stay in your service. identify() forwards end-user identity into chat so actions authorize as the real user.
+Key Capabilities:
+- OpenAPI import
+- REST Business Tools
+- Backend SDK
+- identify() identity forwarding
+- Execution logs
+
+## SSO (https://qefro.com/sso)
+Kind: Feature
+Title: SSO / SAML for Qefro (Roadmap)
+Description: SSO and SAML are on the Qefro Enterprise roadmap. Today: email OTP auth, RBAC, and identity forwarding for actions.
+Direct Answer: SSO/SAML is on Qefro’s Enterprise roadmap. Today organizations use email OTP, RBAC, and identify() for end-user actions.
+Overview: We list SSO honestly as roadmap so buyers can plan identity strategy without surprise marketing claims. Current controls still include workspace RBAC, tenant isolation, and encrypted secrets. Contact Sales for Enterprise identity timelines and private deployment options.
+Key Capabilities:
+- SSO/SAML on Enterprise roadmap
+- Email OTP today (no password store)
+- Owner/Admin/Member RBAC
+- identify() for customer identity
+- Talk to Sales for roadmap dates
+
+## Integrations (https://qefro.com/integrations)
+Kind: Feature
+Title: Integrations | REST, OpenAPI & SDK | Qefro
+Description: Qefro integrations connect your APIs as Business Tools via REST/OpenAPI or the Backend SDK — with encrypted secrets and logs.
+Direct Answer: Integrate Qefro with your stack through REST/OpenAPI Business Tools or the Backend SDK — no rip-and-replace of systems of record.
+Overview: Import an OpenAPI document or configure REST endpoints. Credentials stay encrypted at rest. Outbound calls use HTTPS with SSRF protections. Execution logs support debugging and audits. Use the SDK when you need custom auth or multi-step workflows behind your firewall.
+Key Capabilities:
+- OpenAPI import
+- REST tools
+- Backend SDK
+- Encrypted secrets
+- SSRF-aware webhooks
+
+## Audit Logs (https://qefro.com/audit-logs)
+Kind: Feature
+Title: Audit & Execution Logs | Qefro
+Description: Qefro audit and execution logs attach conversation history and Business Tool runs for accountability and review.
+Direct Answer: Qefro keeps conversation and Business Tool execution logs so teams can review what the assistant answered and which actions ran.
+Overview: Support QA and compliance stakeholders need evidence — not black-box chat. Logs show tool invocations alongside threads. Combine with RBAC so only authorized roles inspect sensitive conversations. Platform-wide admin audit trail enhancements remain on the Enterprise roadmap; execution logs are available for Business Tools today.
+Key Capabilities:
+- Conversation history
+- Business Tool execution logs
+- Supports QA reviews
+- Works with RBAC
+- Enterprise audit roadmap items
+
+## AI Customer Support for Dental Clinics (https://qefro.com/ai-customer-support-for-dental-clinics)
+Kind: Vertical
+Title: AI Customer Support for Dental Clinics | Qefro
+Description: AI customer support for dental clinics with Qefro — grounded answers for patients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for dental clinics: cited answers for patients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for dental clinics helps patients get fast, accurate answers about your dental practice — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you accept my insurance?”, “How do I prepare for a root canal?”, and “Can I reschedule my cleaning?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: look up appointment slots via your scheduling api; create a front-desk ticket for insurance questions; send post-visit care instructions from approved docs. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for hygiene protocols, fee guides, and front-desk scripts, while Customer AI stays on the channels you enable. Website widget for new patients; optional WhatsApp for reminders and FAQs. Keep clinical advice limited to approved patient education — refuse when content is missing. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for hygiene protocols
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for dental clinics?
+  A: Yes. Teams configure knowledge and channels for a dental practice, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Clinics (https://qefro.com/ai-customer-support-for-clinics)
+Kind: Vertical
+Title: AI Customer Support for Clinics | Qefro
+Description: AI customer support for clinics with Qefro — grounded answers for patients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for clinics: cited answers for patients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for clinics helps patients get fast, accurate answers about your outpatient clinic — without hiring a 24/7 team for every repetitive question. Typical questions include “What are your visiting hours?”, “How do I get lab results?”, and “Where do I park for my appointment?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check appointment status in your emr/scheduling api; open a nurse-line ticket for callback requests; route billing questions to your billing workflow api. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for nursing SOPs, referral policies, and intake checklists, while Customer AI stays on the channels you enable. Embed on the clinic site; use WhatsApp where patients already message staff. Separate public FAQs from internal clinical protocols with workspace isolation. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for nursing SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for clinics?
+  A: Yes. Teams configure knowledge and channels for a outpatient clinic, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Hotels (https://qefro.com/ai-customer-support-for-hotels)
+Kind: Vertical
+Title: AI Customer Support for Hotels | Qefro
+Description: AI customer support for hotels with Qefro — grounded answers for guests, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for hotels: cited answers for guests, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for hotels helps guests get fast, accurate answers about your hotel property — without hiring a 24/7 team for every repetitive question. Typical questions include “What time is check-in?”, “Is breakfast included?”, and “Can I request a late checkout?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: fetch reservation status from your pms api; create a concierge ticket for special requests; share local guide content from your knowledge base. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for housekeeping SOPs, safety procedures, and upsell playbooks, while Customer AI stays on the channels you enable. Website chat for bookers; WhatsApp for in-stay questions. Public guest answers stay cited from property content; staff SOPs stay in private workspaces. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for guests
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for housekeeping SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for hotels?
+  A: Yes. Teams configure knowledge and channels for a hotel property, then deploy Customer AI for guests and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Universities (https://qefro.com/ai-customer-support-for-universities)
+Kind: Vertical
+Title: AI Customer Support for Universities | Qefro
+Description: AI customer support for universities with Qefro — grounded answers for students and parents, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for universities: cited answers for students and parents, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for universities helps students and parents get fast, accurate answers about your campus — without hiring a 24/7 team for every repetitive question. Typical questions include “When does registration open?”, “How do I apply for housing?”, and “Where do I find financial aid forms?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create an it or registrar helpdesk ticket; point to the correct portal link from approved docs; capture leads for admissions follow-up. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for faculty handbooks, IT runbooks, and student services scripts, while Customer AI stays on the channels you enable. Public admissions widget plus Internal Portal for staff and faculty. Multilingual RAG helps diverse student communities without separate bots per language. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for students and parents
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for faculty handbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for universities?
+  A: Yes. Teams configure knowledge and channels for a campus, then deploy Customer AI for students and parents and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Hospitals (https://qefro.com/ai-customer-support-for-hospitals)
+Kind: Vertical
+Title: AI Customer Support for Hospitals | Qefro
+Description: AI customer support for hospitals with Qefro — grounded answers for patients and families, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for hospitals: cited answers for patients and families, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for hospitals helps patients and families get fast, accurate answers about your hospital system — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I find a specialist?”, “What documents do I bring for admission?”, and “Where is the visitor desk?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a patient-services ticket; share wayfinding and department faqs from approved content; escalate clinical questions to human staff — never invent care advice. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for department protocols, IT runbooks, and HR policies, while Customer AI stays on the channels you enable. Public FAQs on the hospital site; staff Internal Portal for protocols. Not a diagnostic system — only retrieve approved knowledge and hand off clinical questions. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients and families
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for department protocols
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for hospitals?
+  A: Yes. Teams configure knowledge and channels for a hospital system, then deploy Customer AI for patients and families and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Restaurants (https://qefro.com/ai-customer-support-for-restaurants)
+Kind: Vertical
+Title: AI Customer Support for Restaurants | Qefro
+Description: AI customer support for restaurants with Qefro — grounded answers for diners, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for restaurants: cited answers for diners, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for restaurants helps diners get fast, accurate answers about your restaurant group — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you have vegan options?”, “Can I book a table for six?”, and “What are your catering packages?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check reservation availability via your booking api; capture catering leads for the events team; share allergen and menu pdfs with citations. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for franchise SOPs, allergen procedures, and shift checklists, while Customer AI stays on the channels you enable. Website widget + WhatsApp for reservations and catering. Allergen answers must come from current menu docs — refuse when the knowledge base is outdated. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for diners
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for franchise SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for restaurants?
+  A: Yes. Teams configure knowledge and channels for a restaurant group, then deploy Customer AI for diners and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Logistics (https://qefro.com/ai-customer-support-for-logistics)
+Kind: Vertical
+Title: AI Customer Support for Logistics | Qefro
+Description: AI customer support for logistics with Qefro — grounded answers for shippers and consignees, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for logistics: cited answers for shippers and consignees, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for logistics helps shippers and consignees get fast, accurate answers about your logistics company — without hiring a 24/7 team for every repetitive question. Typical questions include “Where is my shipment?”, “What are your cut-off times?”, and “How do I file a claim?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: look up tracking status from your tms/wms api; create a claims or support ticket with shipment context; quote published rate-card rules from documents. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for driver SOPs, warehouse safety docs, and exception playbooks, while Customer AI stays on the channels you enable. Customer portal widget and WhatsApp for high-volume status questions. Live tracking should come from your systems of record — Qefro calls your APIs rather than storing shipment truth. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for shippers and consignees
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for driver SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for logistics?
+  A: Yes. Teams configure knowledge and channels for a logistics company, then deploy Customer AI for shippers and consignees and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Retail (https://qefro.com/ai-customer-support-for-retail)
+Kind: Vertical
+Title: AI Customer Support for Retail | Qefro
+Description: AI customer support for retail with Qefro — grounded answers for shoppers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for retail: cited answers for shoppers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for retail helps shoppers get fast, accurate answers about your retail brand — without hiring a 24/7 team for every repetitive question. Typical questions include “What is your return policy?”, “Do you price-match?”, and “Where is my online order?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: fetch order status from your ecommerce/oms api; create a support ticket for damaged items; capture leads for personal shopping appointments. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for store ops manuals, loss-prevention briefs, and seasonal playbooks, while Customer AI stays on the channels you enable. Site chat for shoppers; WhatsApp for post-purchase support. Keep return windows and promos cited from current policy docs to avoid outdated answers. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for shoppers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for store ops manuals
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for retail?
+  A: Yes. Teams configure knowledge and channels for a retail brand, then deploy Customer AI for shoppers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Schools (https://qefro.com/ai-customer-support-for-schools)
+Kind: Vertical
+Title: AI Customer Support for Schools | Qefro
+Description: AI customer support for schools with Qefro — grounded answers for parents and students, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for schools: cited answers for parents and students, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for schools helps parents and students get fast, accurate answers about your K-12 school — without hiring a 24/7 team for every repetitive question. Typical questions include “When is the school calendar published?”, “How do I report an absence?”, and “What are bus routes?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create an attendance or it ticket; share handbook sections with citations; capture enrollment interest leads. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for teacher handbooks and facilities SOPs, while Customer AI stays on the channels you enable. Public FAQ widget; staff Internal Portal for policies. Keep student PII out of public workspaces; use private portals for staff. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for parents and students
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for teacher handbooks and facilities SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for schools?
+  A: Yes. Teams configure knowledge and channels for a K-12 school, then deploy Customer AI for parents and students and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Colleges (https://qefro.com/ai-customer-support-for-colleges)
+Kind: Vertical
+Title: AI Customer Support for Colleges | Qefro
+Description: AI customer support for colleges with Qefro — grounded answers for students, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for colleges: cited answers for students, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for colleges helps students get fast, accurate answers about your college campus — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I drop a class?”, “Where is the counseling center?”, and “How do meal plans work?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: open a registrar or student-services ticket; link to the correct self-service portal from docs; answer housing faqs from approved packets. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for student affairs playbooks and IT runbooks, while Customer AI stays on the channels you enable. Website and optional WhatsApp for student services. Workspace isolation keeps student-facing FAQs separate from HR content. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for students
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for student affairs playbooks and IT runbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for colleges?
+  A: Yes. Teams configure knowledge and channels for a college campus, then deploy Customer AI for students and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Ecommerce Brands (https://qefro.com/ai-customer-support-for-ecommerce)
+Kind: Vertical
+Title: AI Customer Support for Ecommerce Brands | Qefro
+Description: AI customer support for ecommerce brands with Qefro — grounded answers for online shoppers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for ecommerce brands: cited answers for online shoppers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for ecommerce brands helps online shoppers get fast, accurate answers about your online store — without hiring a 24/7 team for every repetitive question. Typical questions include “How long does shipping take?”, “Can I change my address?”, and “Do you ship internationally?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: return live tracking from your order api; start a return or exchange ticket; quote shipping zones from policy docs. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for CX macros, fraud playbooks, and warehouse SOPs, while Customer AI stays on the channels you enable. Storefront widget + WhatsApp for order updates. Ground sizing and policy answers in current catalogs — refuse when SKU data is not indexed. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for online shoppers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for CX macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for ecommerce brands?
+  A: Yes. Teams configure knowledge and channels for a online store, then deploy Customer AI for online shoppers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for SaaS Companies (https://qefro.com/ai-customer-support-for-saas)
+Kind: Vertical
+Title: AI Customer Support for SaaS Companies | Qefro
+Description: AI customer support for saas companies with Qefro — grounded answers for product users, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for saas companies: cited answers for product users, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for saas companies helps product users get fast, accurate answers about your software company — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I reset SSO?”, “Where are webhook docs?”, and “How do I upgrade my plan?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a support ticket in your helpdesk api; run account lookups with identify() for signed-in users; point to changelog and docs with citations. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for CS runbooks and on-call playbooks, while Customer AI stays on the channels you enable. In-app or marketing-site widget; Internal Portal for CS and success. Use identify() so account actions authorize as the real user — passwords never stored in Qefro. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for product users
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for CS runbooks and on-call playbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for saas companies?
+  A: Yes. Teams configure knowledge and channels for a software company, then deploy Customer AI for product users and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Real Estate Agencies (https://qefro.com/ai-customer-support-for-real-estate)
+Kind: Vertical
+Title: AI Customer Support for Real Estate Agencies | Qefro
+Description: AI customer support for real estate agencies with Qefro — grounded answers for buyers and renters, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for real estate agencies: cited answers for buyers and renters, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for real estate agencies helps buyers and renters get fast, accurate answers about your brokerage — without hiring a 24/7 team for every repetitive question. Typical questions include “Is this listing still available?”, “What are HOA fees?”, and “Can I schedule a viewing?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture a viewing-request lead to your crm api; share brochure and disclosure pdfs with citations; escalate negotiation questions to a human agent. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for compliance scripts and transaction checklists, while Customer AI stays on the channels you enable. Website chat for listings; WhatsApp for touring logistics. Public listing answers stay in public workspaces; offer docs stay private to agents. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for buyers and renters
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for compliance scripts and transaction checklists
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for real estate agencies?
+  A: Yes. Teams configure knowledge and channels for a brokerage, then deploy Customer AI for buyers and renters and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Property Management (https://qefro.com/ai-customer-support-for-property-management)
+Kind: Vertical
+Title: AI Customer Support for Property Management | Qefro
+Description: AI customer support for property management with Qefro — grounded answers for tenants, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for property management: cited answers for tenants, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for property management helps tenants get fast, accurate answers about your property portfolio — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I submit a maintenance request?”, “When is rent due?”, and “How do I renew my lease?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a maintenance work order via your api; share lease faq excerpts with citations; route payment questions to your billing workflow. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for vendor SOPs and emergency procedures, while Customer AI stays on the channels you enable. Tenant portal widget; staff Internal Portal for ops. Emergency safety instructions must come from approved docs and escalate quickly to humans. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for tenants
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for vendor SOPs and emergency procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for property management?
+  A: Yes. Teams configure knowledge and channels for a property portfolio, then deploy Customer AI for tenants and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Travel Agencies (https://qefro.com/ai-customer-support-for-travel-agencies)
+Kind: Vertical
+Title: AI Customer Support for Travel Agencies | Qefro
+Description: AI customer support for travel agencies with Qefro — grounded answers for travelers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for travel agencies: cited answers for travelers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for travel agencies helps travelers get fast, accurate answers about your travel agency — without hiring a 24/7 team for every repetitive question. Typical questions include “What is your cancellation policy?”, “Do I need a visa for this trip?”, and “Can I change my flight dates?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: look up booking status via your gds/booking api; create a change-request ticket for agents; share visa checklist pdfs from approved content. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for destination playbooks and supplier escalation guides, while Customer AI stays on the channels you enable. Website + WhatsApp for travelers across time zones. Visa and medical advice must be limited to published checklists — hand off edge cases. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for travelers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for destination playbooks and supplier escalation guides
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for travel agencies?
+  A: Yes. Teams configure knowledge and channels for a travel agency, then deploy Customer AI for travelers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Manufacturing (https://qefro.com/ai-customer-support-for-manufacturing)
+Kind: Vertical
+Title: AI Customer Support for Manufacturing | Qefro
+Description: AI customer support for manufacturing with Qefro — grounded answers for B2B buyers and partners, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for manufacturing: cited answers for B2B buyers and partners, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for manufacturing helps B2B buyers and partners get fast, accurate answers about your manufacturing company — without hiring a 24/7 team for every repetitive question. Typical questions include “What is the lead time for SKU X?”, “Where is my PO status?”, and “Do you have ISO certificates?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: fetch order or po status from erp apis; share certificate pdfs with citations; create a quality or logistics ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for SOP manuals, safety docs, and quality playbooks, while Customer AI stays on the channels you enable. Buyer portal chat; optional WhatsApp for distributors. Operator Internal Portal for SOPs; public site for buyer FAQs only. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for B2B buyers and partners
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for SOP manuals
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for manufacturing?
+  A: Yes. Teams configure knowledge and channels for a manufacturing company, then deploy Customer AI for B2B buyers and partners and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Law Firms (https://qefro.com/ai-customer-support-for-law-firms)
+Kind: Vertical
+Title: AI Customer Support for Law Firms | Qefro
+Description: AI customer support for law firms with Qefro — grounded answers for prospective clients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for law firms: cited answers for prospective clients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for law firms helps prospective clients get fast, accurate answers about your law practice — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you handle my case type?”, “How do consultations work?”, and “Where are your offices?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture intake leads to your crm/practice api; share published practice-area faqs with citations; book consult slots via your scheduling api when allowed. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for intake checklists and conflicts procedures, while Customer AI stays on the channels you enable. Website widget for intake; private workspaces for staff knowledge. Never invent legal advice — only published marketing FAQs, then human attorneys. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for prospective clients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for intake checklists and conflicts procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for law firms?
+  A: Yes. Teams configure knowledge and channels for a law practice, then deploy Customer AI for prospective clients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Accounting Firms (https://qefro.com/ai-customer-support-for-accounting-firms)
+Kind: Vertical
+Title: AI Customer Support for Accounting Firms | Qefro
+Description: AI customer support for accounting firms with Qefro — grounded answers for clients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for accounting firms: cited answers for clients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for accounting firms helps clients get fast, accurate answers about your accounting practice — without hiring a 24/7 team for every repetitive question. Typical questions include “When are tax documents due?”, “How do I upload my files securely?”, and “Who is my account manager?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a client-service ticket; share filing calendar excerpts from approved docs; point to your secure upload portal link. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for engagement letter templates and internal review checklists, while Customer AI stays on the channels you enable. Client portal widget; Internal Portal for staff. Tax guidance must stay within published firm content; escalate complex scenarios to CPAs. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for clients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for engagement letter templates and internal review checklists
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for accounting firms?
+  A: Yes. Teams configure knowledge and channels for a accounting practice, then deploy Customer AI for clients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Insurance Agencies (https://qefro.com/ai-customer-support-for-insurance)
+Kind: Vertical
+Title: AI Customer Support for Insurance Agencies | Qefro
+Description: AI customer support for insurance agencies with Qefro — grounded answers for policyholders, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for insurance agencies: cited answers for policyholders, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for insurance agencies helps policyholders get fast, accurate answers about your insurance agency — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I file a claim?”, “What does my deductible mean?”, and “Can I update my beneficiaries?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: start a claim intake ticket via your api; cite policy faq language from approved docs; escalate coverage disputes to licensed agents. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for claims playbooks and compliance scripts, while Customer AI stays on the channels you enable. Website and WhatsApp for FNOL-style FAQs with handoff. Coverage answers must cite current policy materials; licensed humans handle advice. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for policyholders
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for claims playbooks and compliance scripts
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for insurance agencies?
+  A: Yes. Teams configure knowledge and channels for a insurance agency, then deploy Customer AI for policyholders and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Fintech (https://qefro.com/ai-customer-support-for-fintech)
+Kind: Vertical
+Title: AI Customer Support for Fintech | Qefro
+Description: AI customer support for fintech with Qefro — grounded answers for account holders, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for fintech: cited answers for account holders, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for fintech helps account holders get fast, accurate answers about your fintech product — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I verify my identity?”, “Why was my transfer delayed?”, and “Where are fee disclosures?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a support case in your ticketing api; share fee schedule pdfs with citations; use identify() for authenticated account questions. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for ops runbooks and compliance macros, while Customer AI stays on the channels you enable. In-app or web widget with identity forwarding. Refuse speculative financial advice; stick to disclosed product docs and human escalation. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for account holders
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for ops runbooks and compliance macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for fintech?
+  A: Yes. Teams configure knowledge and channels for a fintech product, then deploy Customer AI for account holders and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Gyms & Fitness Clubs (https://qefro.com/ai-customer-support-for-gyms)
+Kind: Vertical
+Title: AI Customer Support for Gyms & Fitness Clubs | Qefro
+Description: AI customer support for gyms & fitness clubs with Qefro — grounded answers for members, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for gyms & fitness clubs: cited answers for members, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for gyms & fitness clubs helps members get fast, accurate answers about your fitness club — without hiring a 24/7 team for every repetitive question. Typical questions include “What are your class times?”, “How do I freeze my membership?”, and “Do you have day passes?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check membership status via your club api; create a front-desk ticket for billing issues; share class schedule pages from crawled content. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for trainer SOPs and safety procedures, while Customer AI stays on the channels you enable. Website chat + WhatsApp for memberships and classes. Medical or training advice stays limited to approved club content. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for members
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for trainer SOPs and safety procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for gyms & fitness clubs?
+  A: Yes. Teams configure knowledge and channels for a fitness club, then deploy Customer AI for members and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Spas & Wellness (https://qefro.com/ai-customer-support-for-spas)
+Kind: Vertical
+Title: AI Customer Support for Spas & Wellness | Qefro
+Description: AI customer support for spas & wellness with Qefro — grounded answers for guests, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for spas & wellness: cited answers for guests, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for spas & wellness helps guests get fast, accurate answers about your spa — without hiring a 24/7 team for every repetitive question. Typical questions include “Which treatments are available today?”, “What is your cancellation policy?”, and “Do you offer couples packages?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check booking availability via your spa api; capture package inquiry leads; cite aftercare instructions from approved pdfs. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for therapist protocols and sanitation checklists, while Customer AI stays on the channels you enable. Website and WhatsApp for bookings. Clinical-adjacent claims must stay within published service descriptions. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for guests
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for therapist protocols and sanitation checklists
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for spas & wellness?
+  A: Yes. Teams configure knowledge and channels for a spa, then deploy Customer AI for guests and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Auto Dealerships (https://qefro.com/ai-customer-support-for-auto-dealerships)
+Kind: Vertical
+Title: AI Customer Support for Auto Dealerships | Qefro
+Description: AI customer support for auto dealerships with Qefro — grounded answers for shoppers and owners, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for auto dealerships: cited answers for shoppers and owners, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for auto dealerships helps shoppers and owners get fast, accurate answers about your dealership — without hiring a 24/7 team for every repetitive question. Typical questions include “Is this vehicle still available?”, “What financing options do you offer?”, and “How do I book a service appointment?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a sales or service lead in your crm api; book service slots via your dms/scheduling api; share warranty faq excerpts with citations. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for F&I scripts and service advisor playbooks, while Customer AI stays on the channels you enable. Inventory pages widget; WhatsApp for service reminders. Financing details must cite current offers; humans close regulated credit conversations. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for shoppers and owners
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for F&I scripts and service advisor playbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for auto dealerships?
+  A: Yes. Teams configure knowledge and channels for a dealership, then deploy Customer AI for shoppers and owners and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Veterinary Clinics (https://qefro.com/ai-customer-support-for-veterinary-clinics)
+Kind: Vertical
+Title: AI Customer Support for Veterinary Clinics | Qefro
+Description: AI customer support for veterinary clinics with Qefro — grounded answers for pet owners, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for veterinary clinics: cited answers for pet owners, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for veterinary clinics helps pet owners get fast, accurate answers about your vet clinic — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you take emergencies?”, “What vaccines does my puppy need?”, and “How do I refill a prescription?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a triage or callback ticket; share vaccine schedule pdfs from approved content; point to prescription refill portal links. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for clinical SOPs and controlled-substance procedures, while Customer AI stays on the channels you enable. Website widget for FAQs; staff portal for protocols. Not a substitute for veterinary diagnosis — educate from approved materials and escalate. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for pet owners
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for clinical SOPs and controlled-substance procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for veterinary clinics?
+  A: Yes. Teams configure knowledge and channels for a vet clinic, then deploy Customer AI for pet owners and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Pharmacies (https://qefro.com/ai-customer-support-for-pharmacies)
+Kind: Vertical
+Title: AI Customer Support for Pharmacies | Qefro
+Description: AI customer support for pharmacies with Qefro — grounded answers for patients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for pharmacies: cited answers for patients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for pharmacies helps patients get fast, accurate answers about your pharmacy — without hiring a 24/7 team for every repetitive question. Typical questions include “Is my prescription ready?”, “What are your hours?”, and “Do you deliver?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check refill status via your pharmacy api when integrated; share published counseling faqs with citations; create a pharmacist-callback ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for dispensing SOPs and counseling checklists, while Customer AI stays on the channels you enable. Store site widget; optional WhatsApp for pickup updates. Medication advice must stay within approved counseling content; pharmacists handle clinical judgment. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for dispensing SOPs and counseling checklists
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for pharmacies?
+  A: Yes. Teams configure knowledge and channels for a pharmacy, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Healthcare Practices (https://qefro.com/ai-customer-support-for-healthcare-practices)
+Kind: Vertical
+Title: AI Customer Support for Healthcare Practices | Qefro
+Description: AI customer support for healthcare practices with Qefro — grounded answers for patients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for healthcare practices: cited answers for patients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for healthcare practices helps patients get fast, accurate answers about your medical practice — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I complete intake forms?”, “Which insurers do you accept?”, and “How do telehealth visits work?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: share intake links from approved content; create a front-desk callback ticket; cite telehealth policies from current docs. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for clinical admin SOPs and billing macros, while Customer AI stays on the channels you enable. Practice website chat; staff Internal Portal. No diagnostic chatbot claims — grounded education and human escalation only. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for clinical admin SOPs and billing macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for healthcare practices?
+  A: Yes. Teams configure knowledge and channels for a medical practice, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Urgent Care Centers (https://qefro.com/ai-customer-support-for-urgent-care)
+Kind: Vertical
+Title: AI Customer Support for Urgent Care Centers | Qefro
+Description: AI customer support for urgent care centers with Qefro — grounded answers for patients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for urgent care centers: cited answers for patients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for urgent care centers helps patients get fast, accurate answers about your urgent care clinic — without hiring a 24/7 team for every repetitive question. Typical questions include “What is the current wait time?”, “Do I need an appointment?”, and “What should I bring?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: publish wait guidance from approved ops content; create a front-desk triage ticket; share location and insurance faqs with citations. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for triage scripts and facility SOPs, while Customer AI stays on the channels you enable. Website widget for wait/FAQ; WhatsApp optional. Emergency symptoms should always escalate to human/ER guidance from approved scripts. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for patients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for triage scripts and facility SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for urgent care centers?
+  A: Yes. Teams configure knowledge and channels for a urgent care clinic, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Banks & Credit Unions (https://qefro.com/ai-customer-support-for-banks)
+Kind: Vertical
+Title: AI Customer Support for Banks & Credit Unions | Qefro
+Description: AI customer support for banks & credit unions with Qefro — grounded answers for members and customers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for banks & credit unions: cited answers for members and customers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for banks & credit unions helps members and customers get fast, accurate answers about your financial institution — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I report a lost card?”, “What are wire cut-off times?”, and “Where are fee schedules?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a secure-messaging or branch ticket; cite fee schedules from published disclosures; escalate fraud concerns to human specialists immediately. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for branch ops manuals and fraud playbooks, while Customer AI stays on the channels you enable. Authenticated widget with identify(); public pages for product FAQs only. Regulated advice stays with licensed staff; AI cites disclosures and routes securely. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for members and customers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for branch ops manuals and fraud playbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for banks & credit unions?
+  A: Yes. Teams configure knowledge and channels for a financial institution, then deploy Customer AI for members and customers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Mortgage Lenders (https://qefro.com/ai-customer-support-for-mortgage)
+Kind: Vertical
+Title: AI Customer Support for Mortgage Lenders | Qefro
+Description: AI customer support for mortgage lenders with Qefro — grounded answers for borrowers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for mortgage lenders: cited answers for borrowers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for mortgage lenders helps borrowers get fast, accurate answers about your mortgage company — without hiring a 24/7 team for every repetitive question. Typical questions include “What documents do I need to apply?”, “How long does underwriting take?”, and “What are today’s published rate disclaimers?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture application interest leads to your los/crm; share checklist pdfs with citations; create a loan-officer callback ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for processor checklists and compliance macros, while Customer AI stays on the channels you enable. Website chat for checklists; authenticated portal for borrowers when integrated. Rate and credit advice must follow published disclosures; humans close regulated conversations. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for borrowers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for processor checklists and compliance macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for mortgage lenders?
+  A: Yes. Teams configure knowledge and channels for a mortgage company, then deploy Customer AI for borrowers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Marketing Agencies (https://qefro.com/ai-customer-support-for-agencies)
+Kind: Vertical
+Title: AI Customer Support for Marketing Agencies | Qefro
+Description: AI customer support for marketing agencies with Qefro — grounded answers for clients and prospects, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for marketing agencies: cited answers for clients and prospects, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for marketing agencies helps clients and prospects get fast, accurate answers about your agency — without hiring a 24/7 team for every repetitive question. Typical questions include “What services do you offer?”, “How do retainers work?”, and “Can I see case studies?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture rfp leads to your crm; share case-study pages from crawled content; create an account-management ticket for clients. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for delivery playbooks and brand guidelines, while Customer AI stays on the channels you enable. Agency site widget; Internal Portal for teams. Client workspaces stay private; public site answers stay on marketing content. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for clients and prospects
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for delivery playbooks and brand guidelines
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for marketing agencies?
+  A: Yes. Teams configure knowledge and channels for a agency, then deploy Customer AI for clients and prospects and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Consultancies (https://qefro.com/ai-customer-support-for-consultancies)
+Kind: Vertical
+Title: AI Customer Support for Consultancies | Qefro
+Description: AI customer support for consultancies with Qefro — grounded answers for clients, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for consultancies: cited answers for clients, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for consultancies helps clients get fast, accurate answers about your consulting firm — without hiring a 24/7 team for every repetitive question. Typical questions include “Which industries do you serve?”, “How do engagements start?”, and “Where can I read whitepapers?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture inbound leads to crm; cite published methodology pdfs; create a partner-request ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for delivery kits and proposal templates, while Customer AI stays on the channels you enable. Website widget for inbound; Internal Portal for consultants. Confidential client materials stay in private workspaces — never on public Customer AI. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for clients
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for delivery kits and proposal templates
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for consultancies?
+  A: Yes. Teams configure knowledge and channels for a consulting firm, then deploy Customer AI for clients and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Nonprofits (https://qefro.com/ai-customer-support-for-nonprofits)
+Kind: Vertical
+Title: AI Customer Support for Nonprofits | Qefro
+Description: AI customer support for nonprofits with Qefro — grounded answers for donors and beneficiaries, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for nonprofits: cited answers for donors and beneficiaries, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for nonprofits helps donors and beneficiaries get fast, accurate answers about your nonprofit organization — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I donate?”, “What programs do you run?”, and “How do I volunteer?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture donor or volunteer leads; share program faqs with citations; create a constituent-services ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for program SOPs and volunteer handbooks, while Customer AI stays on the channels you enable. Website chat for donors; WhatsApp where communities prefer messaging. Keep beneficiary PII out of public bots; use private staff workspaces. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for donors and beneficiaries
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for program SOPs and volunteer handbooks
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for nonprofits?
+  A: Yes. Teams configure knowledge and channels for a nonprofit organization, then deploy Customer AI for donors and beneficiaries and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Government Services (https://qefro.com/ai-customer-support-for-government)
+Kind: Vertical
+Title: AI Customer Support for Government Services | Qefro
+Description: AI customer support for government services with Qefro — grounded answers for residents, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for government services: cited answers for residents, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for government services helps residents get fast, accurate answers about your public agency — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I renew a permit?”, “Where do I pay a fine?”, and “What are office hours?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: link to official payment portals from approved content; create a constituent ticket for callbacks; cite ordinance or faq pages carefully. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for internal procedure manuals for staff, while Customer AI stays on the channels you enable. Public site widget; Internal Portal for employees. Official answers must cite published agency content; escalate legal interpretations to staff. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for residents
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for internal procedure manuals for staff
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for government services?
+  A: Yes. Teams configure knowledge and channels for a public agency, then deploy Customer AI for residents and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Utilities (https://qefro.com/ai-customer-support-for-utilities)
+Kind: Vertical
+Title: AI Customer Support for Utilities | Qefro
+Description: AI customer support for utilities with Qefro — grounded answers for ratepayers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for utilities: cited answers for ratepayers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for utilities helps ratepayers get fast, accurate answers about your utility provider — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I report an outage?”, “How do I set up autopay?”, and “What is the reconnection process?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create an outage or billing ticket via your api; cite published reconnection faqs; share safety advisories from approved docs. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for field ops SOPs and safety protocols, while Customer AI stays on the channels you enable. Website + WhatsApp for high-volume status questions. Safety and outage guidance must come from approved scripts with fast human escalation. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for ratepayers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for field ops SOPs and safety protocols
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for utilities?
+  A: Yes. Teams configure knowledge and channels for a utility provider, then deploy Customer AI for ratepayers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Airlines (https://qefro.com/ai-customer-support-for-airlines)
+Kind: Vertical
+Title: AI Customer Support for Airlines | Qefro
+Description: AI customer support for airlines with Qefro — grounded answers for passengers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for airlines: cited answers for passengers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for airlines helps passengers get fast, accurate answers about your airline — without hiring a 24/7 team for every repetitive question. Typical questions include “What is the baggage allowance?”, “How do I change my flight?”, and “What is your disruption policy?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: look up booking status via your pss/api when integrated; create a rebooking assistance ticket; cite published fare rules and baggage pages. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for airport ops playbooks and disruption macros, while Customer AI stays on the channels you enable. Web + WhatsApp for travelers; staff portal for ops. Operational changes move fast — ground answers in current published policies and hand off exceptions. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for passengers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for airport ops playbooks and disruption macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for airlines?
+  A: Yes. Teams configure knowledge and channels for a airline, then deploy Customer AI for passengers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Tour Operators (https://qefro.com/ai-customer-support-for-tour-operators)
+Kind: Vertical
+Title: AI Customer Support for Tour Operators | Qefro
+Description: AI customer support for tour operators with Qefro — grounded answers for travelers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for tour operators: cited answers for travelers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for tour operators helps travelers get fast, accurate answers about your tour company — without hiring a 24/7 team for every repetitive question. Typical questions include “What is included in the package?”, “What is the cancellation window?”, and “Do you need fitness requirements?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture booking interest leads; cite itinerary pdfs with sources; create an operations ticket for day-of issues. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for guide briefings and supplier escalation guides, while Customer AI stays on the channels you enable. Website and WhatsApp for pre-trip FAQs. Safety requirements must come from current trip dossiers. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for travelers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for guide briefings and supplier escalation guides
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for tour operators?
+  A: Yes. Teams configure knowledge and channels for a tour company, then deploy Customer AI for travelers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Vacation Rentals (https://qefro.com/ai-customer-support-for-vacation-rentals)
+Kind: Vertical
+Title: AI Customer Support for Vacation Rentals | Qefro
+Description: AI customer support for vacation rentals with Qefro — grounded answers for guests, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for vacation rentals: cited answers for guests, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for vacation rentals helps guests get fast, accurate answers about your vacation rental portfolio — without hiring a 24/7 team for every repetitive question. Typical questions include “What is the check-in process?”, “Is parking included?”, and “How do I request early check-in?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: fetch reservation details via your pms api; create a guest-services ticket; share house manuals with citations. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for turnover checklists and vendor SOPs, while Customer AI stays on the channels you enable. Listing-site chat and WhatsApp for guests. House rules and local guidance should be property-specific knowledge bases. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for guests
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for turnover checklists and vendor SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for vacation rentals?
+  A: Yes. Teams configure knowledge and channels for a vacation rental portfolio, then deploy Customer AI for guests and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Wholesale Distributors (https://qefro.com/ai-customer-support-for-wholesale)
+Kind: Vertical
+Title: AI Customer Support for Wholesale Distributors | Qefro
+Description: AI customer support for wholesale distributors with Qefro — grounded answers for retail buyers, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for wholesale distributors: cited answers for retail buyers, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for wholesale distributors helps retail buyers get fast, accurate answers about your wholesale distributor — without hiring a 24/7 team for every repetitive question. Typical questions include “What are MOQ rules?”, “Where is my B2B order?”, and “Do you have a dealer price list?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: fetch b2b order status from erp apis; share published catalog pdfs with citations; create an account-manager ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for warehouse SOPs and credit procedures, while Customer AI stays on the channels you enable. Dealer portal widget with identity forwarding. Price lists may be workspace-gated for authenticated dealers only. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for retail buyers
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for warehouse SOPs and credit procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for wholesale distributors?
+  A: Yes. Teams configure knowledge and channels for a wholesale distributor, then deploy Customer AI for retail buyers and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Industrial Supplies (https://qefro.com/ai-customer-support-for-industrial-supplies)
+Kind: Vertical
+Title: AI Customer Support for Industrial Supplies | Qefro
+Description: AI customer support for industrial supplies with Qefro — grounded answers for procurement teams, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for industrial supplies: cited answers for procurement teams, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for industrial supplies helps procurement teams get fast, accurate answers about your industrial supplier — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you stock this SKU?”, “What is the cut-off for same-day ship?”, and “Where are SDS sheets?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: check inventory via your erp/api; share sds pdfs with citations; create a quotes or inside-sales ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for safety data procedures and warehouse manuals, while Customer AI stays on the channels you enable. Buyer portal chat; staff Internal Portal. SDS and hazmat answers must cite current documents — no improvisation. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for procurement teams
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for safety data procedures and warehouse manuals
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for industrial supplies?
+  A: Yes. Teams configure knowledge and channels for a industrial supplier, then deploy Customer AI for procurement teams and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for EdTech Companies (https://qefro.com/ai-customer-support-for-edtech)
+Kind: Vertical
+Title: AI Customer Support for EdTech Companies | Qefro
+Description: AI customer support for edtech companies with Qefro — grounded answers for teachers and students, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for edtech companies: cited answers for teachers and students, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for edtech companies helps teachers and students get fast, accurate answers about your education technology product — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I reset a student password?”, “Where are LMS integration docs?”, and “What is your data privacy policy?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a support ticket with school context; cite help-center articles and privacy docs; use identify() for authenticated admin users. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for CS escalation playbooks and status-page macros, while Customer AI stays on the channels you enable. In-product widget; Internal Portal for CS. Student data stays out of public bots; use authenticated workspaces and your APIs. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for teachers and students
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for CS escalation playbooks and status-page macros
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for edtech companies?
+  A: Yes. Teams configure knowledge and channels for a education technology product, then deploy Customer AI for teachers and students and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Daycare & Childcare (https://qefro.com/ai-customer-support-for-daycare)
+Kind: Vertical
+Title: AI Customer Support for Daycare & Childcare | Qefro
+Description: AI customer support for daycare & childcare with Qefro — grounded answers for parents, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for daycare & childcare: cited answers for parents, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for daycare & childcare helps parents get fast, accurate answers about your childcare center — without hiring a 24/7 team for every repetitive question. Typical questions include “What are your tuition rates?”, “What is your illness policy?”, and “How do waitlists work?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture enrollment leads; cite handbook policies with sources; create a director callback ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for classroom SOPs and emergency procedures, while Customer AI stays on the channels you enable. Website widget for parents; private staff portal. Child safety procedures must come from approved handbooks with human escalation. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for parents
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for classroom SOPs and emergency procedures
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for daycare & childcare?
+  A: Yes. Teams configure knowledge and channels for a childcare center, then deploy Customer AI for parents and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Pet Stores (https://qefro.com/ai-customer-support-for-pet-stores)
+Kind: Vertical
+Title: AI Customer Support for Pet Stores | Qefro
+Description: AI customer support for pet stores with Qefro — grounded answers for pet owners, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for pet stores: cited answers for pet owners, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for pet stores helps pet owners get fast, accurate answers about your pet retail — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you groom on weekends?”, “What is your return policy on food?”, and “Do you carry this brand?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture grooming appointment leads; cite return policies from current docs; create a special-order ticket. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for store ops and animal-care SOPs, while Customer AI stays on the channels you enable. Store site chat + WhatsApp. Health advice for pets should stay educational and escalate to vets when needed. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for pet owners
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for store ops and animal-care SOPs
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for pet stores?
+  A: Yes. Teams configure knowledge and channels for a pet retail, then deploy Customer AI for pet owners and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Cafes & Coffee Shops (https://qefro.com/ai-customer-support-for-cafes)
+Kind: Vertical
+Title: AI Customer Support for Cafes & Coffee Shops | Qefro
+Description: AI customer support for cafes & coffee shops with Qefro — grounded answers for guests, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for cafes & coffee shops: cited answers for guests, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for cafes & coffee shops helps guests get fast, accurate answers about your cafe group — without hiring a 24/7 team for every repetitive question. Typical questions include “Do you have oat milk?”, “What are catering minimums?”, and “Where is Wi-Fi info?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: capture catering leads; share allergen menus with citations; create a store-manager ticket for complaints. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for barista SOPs and opening checklists, while Customer AI stays on the channels you enable. Website widget; WhatsApp for catering. Allergen info must track current menu documents. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for guests
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for barista SOPs and opening checklists
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for cafes & coffee shops?
+  A: Yes. Teams configure knowledge and channels for a cafe group, then deploy Customer AI for guests and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.
+
+## AI Customer Support for Facilities Management (https://qefro.com/ai-customer-support-for-facilities)
+Kind: Vertical
+Title: AI Customer Support for Facilities Management | Qefro
+Description: AI customer support for facilities management with Qefro — grounded answers for occupants and vendors, website and WhatsApp chat, secure API actions, and an Internal Portal for staff.
+Direct Answer: Qefro provides AI customer support for facilities management: cited answers for occupants and vendors, optional WhatsApp, secure business actions, and staff assistants in one AI Workspace Platform.
+Overview: AI customer support for facilities management helps occupants and vendors get fast, accurate answers about your facilities organization — without hiring a 24/7 team for every repetitive question. Typical questions include “How do I report a building issue?”, “What are loading-dock hours?”, and “How do visitor badges work?”. Qefro grounds replies in your uploaded policies, crawled site pages, and handbooks, with source citations and refusal when nothing relevant exists. When chat must do more than answer, connect your systems: create a work order via your cmms api; cite building handbook pages; capture vendor access requests. Credentials stay encrypted; actions can use end-user identity via identify(). Staff get a branded Internal Portal for EHS procedures and vendor manuals, while Customer AI stays on the channels you enable. Occupant portal chat; staff Internal Portal. Safety incidents need approved scripts and immediate human escalation paths. Start with a 14-day free trial, then scale workspaces as locations grow.
+Key Capabilities:
+- Grounded FAQs for occupants and vendors
+- Website widget and optional WhatsApp
+- Business actions through your APIs
+- Internal Portal for EHS procedures and vendor manuals
+- Workspace isolation and RBAC
+- Citations and safe refusal behavior
+FAQs:
+  Q: Is Qefro built for facilities management?
+  A: Yes. Teams configure knowledge and channels for a facilities organization, then deploy Customer AI for occupants and vendors and Employee AI for staff — without building RAG infrastructure.
+  Q: Can it connect to our scheduling or order systems?
+  A: Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.
+  Q: How fast can we launch?
+  A: Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.

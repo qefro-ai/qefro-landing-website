@@ -87,12 +87,19 @@ def main() -> int:
         parser = LinkParser()
         parser.feed(html.read_text(encoding="utf-8", errors="replace"))
         page_path = "/" if html.name == "index.html" else f"/{html.stem}"
+    if not (ROOT / "llms-full.txt").is_file():
+        errors.append("llms-full.txt missing from root directory")
+
+    for html in html_files:
+        parser = LinkParser()
+        parser.feed(html.read_text(encoding="utf-8", errors="replace"))
+        page_path = "/" if html.name == "index.html" else f"/{html.stem}"
         for href in parser.hrefs:
             target = normalize_internal(href)
             if target is None:
                 continue
             # Ignore asset-only and special files
-            if target.startswith("/assets") or target in {"/llms.txt", "/sitemap.xml", "/robots.txt"}:
+            if target.startswith("/assets") or target in {"/llms.txt", "/llms-full.txt", "/sitemap.xml", "/robots.txt"}:
                 continue
             dest = file_for_path(target)
             if dest is None:

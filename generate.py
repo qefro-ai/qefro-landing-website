@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 from datetime import date
@@ -127,10 +128,12 @@ def meta_block(
         "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     ),
     include_canonical: bool = True,
+    og_type: str = "website",
 ) -> str:
     url = site_url(path)
     # Absolute HTTPS canonicals only — Google prefers absolute URLs for rel=canonical
     canonical = f'  <link rel="canonical" href="{url}" />\n' if include_canonical else ""
+    page_og_alt = escape(f"Qefro AI Platform — {title}")
     return f"""  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{escape(title)}</title>
@@ -150,8 +153,9 @@ def meta_block(
     }})();
   </script>
 {canonical}  <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
+  <link rel="alternate" type="text/plain" href="{SITE}/llms-full.txt" title="Full LLM documentation digest" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{og_type}" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="{escape(title)}" />
   <meta property="og:description" content="{escape(description)}" />
@@ -161,14 +165,14 @@ def meta_block(
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="{OG_IMAGE_ALT}" />
+  <meta property="og:image:alt" content="{page_og_alt}" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@qefro" />
   <meta name="twitter:title" content="{escape(title)}" />
   <meta name="twitter:description" content="{escape(description)}" />
   <meta name="twitter:image" content="{OG_IMAGE}" />
-  <meta name="twitter:image:alt" content="{OG_IMAGE_ALT}" />
+  <meta name="twitter:image:alt" content="{page_og_alt}" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
   <!-- Favicons: stable URLs, square, ≥48px PNG for Google Search eligibility
@@ -306,6 +310,7 @@ def page(
         "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     ),
     include_canonical: bool = True,
+    og_type: str = "website",
     extra_scripts: str = "",
 ) -> str:
     schemas = "\n".join(f'  <script type="application/ld+json">\n{b}\n  </script>' for b in (jsonld or []))
@@ -328,7 +333,7 @@ def page(
     return f"""<!DOCTYPE html>
 <html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
-{meta_block(title, description, path, robots=robots, include_canonical=include_canonical)}
+{meta_block(title, description, path, robots=robots, include_canonical=include_canonical, og_type=og_type)}
 {schemas}
 {gtag}
 {clarity}
@@ -389,6 +394,83 @@ def webpage_json(title: str, description: str, path: str) -> str:
                 "width": 1200,
                 "height": 630,
             },
+        },
+        indent=2,
+    )
+
+
+def speakable_json(path: str) -> str:
+    """SpeakableSpecification for AEO / voice / AI answer extraction."""
+    url = site_url(path)
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": f"{url}#webpage",
+            "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": [".quick-answer-card", ".direct-answer", ".hero-sub", "h1"],
+            },
+        },
+        indent=2,
+    )
+
+
+def howto_json(path: str = "how-it-works.html") -> str:
+    """HowTo schema for platform setup and deployment steps."""
+    url = site_url(path)
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Configure and Deploy Qefro AI Workspace Platform",
+            "description": "Step-by-step guide to connecting knowledge sources, setting up business actions, and deploying Customer AI and Employee AI.",
+            "url": url,
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "position": 1,
+                    "name": "Connect Knowledge & Business Systems",
+                    "text": "Upload documents (PDF, DOCX, Markdown) or crawl websites. Import REST APIs or OpenAPI specs as Business Tools.",
+                    "url": f"{url}#step-1",
+                },
+                {
+                    "@type": "HowToStep",
+                    "position": 2,
+                    "name": "Configure AI Workspaces & Permissions",
+                    "text": "Organize teams into isolated workspaces (Support, HR, Sales) with workspace-specific knowledge and action credentials.",
+                    "url": f"{url}#step-2",
+                },
+                {
+                    "@type": "HowToStep",
+                    "position": 3,
+                    "name": "Deploy Customer AI & Employee AI",
+                    "text": "Embed the website chat widget, connect WhatsApp, or invite employees to your branded Internal Portal.",
+                    "url": f"{url}#step-3",
+                },
+            ],
+        },
+        indent=2,
+    )
+
+
+def tech_article_json(title: str, description: str, path: str) -> str:
+    """TechArticle schema for deep technical overview and benchmark pages."""
+    url = site_url(path)
+    return json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "@id": f"{url}#article",
+            "headline": title,
+            "description": description,
+            "url": url,
+            "inLanguage": "en-US",
+            "datePublished": "2024-01-01",
+            "dateModified": BUILD_DATE,
+            "author": {"@id": f"{SITE}/#organization"},
+            "publisher": {"@id": f"{SITE}/#organization"},
+            "mainEntityOfPage": url,
         },
         indent=2,
     )
@@ -1316,6 +1398,55 @@ def features_page_content() -> str:
           </article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-indigo">Channel &amp; Capabilities Matrix</span>
+          <h2>Platform Specs &amp; Deployment Surface Comparison</h2>
+          <p>How Customer AI, Employee AI, and Admin Console compare across access, auth, and actions.</p>
+        </div>
+        <div class="table-wrap reveal" style="margin-top:1.5rem">
+          <table class="compare-table" aria-label="Qefro Platform Capability Matrix">
+            <thead>
+              <tr>
+                <th>Capability / Surface</th>
+                <th>Customer AI (Widget &amp; WhatsApp)</th>
+                <th>Employee AI (Internal Portal)</th>
+                <th>Admin Console</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Target Audience</td>
+                <td>Website visitors &amp; WhatsApp users</td>
+                <td>Employees &amp; internal teams</td>
+                <td>Org Owners, Admins, &amp; Workspace Leads</td>
+              </tr>
+              <tr>
+                <td>Knowledge Scope</td>
+                <td>Public workspace knowledge</td>
+                <td>Team-specific private knowledge</td>
+                <td>Global organization knowledge base</td>
+              </tr>
+              <tr>
+                <td>Authentication</td>
+                <td>Short-lived widget JWT / <code>identify()</code></td>
+                <td>Branded email OTP &amp; workspace session</td>
+                <td>Email OTP + Role-Based Access Control (RBAC)</td>
+              </tr>
+              <tr>
+                <td>Business Actions</td>
+                <td>User-authorized APIs &amp; tickets</td>
+                <td>Internal SOPs, HR &amp; IT workflows</td>
+                <td>OpenAPI import, secrets &amp; execution logs</td>
+              </tr>
+              <tr>
+                <td>Multilingual &amp; OCR</td>
+                <td>Supported (50+ languages)</td>
+                <td>Supported (50+ languages)</td>
+                <td>Multi-file upload &amp; crawler indexing</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-blue">{ICONS["msg"]} Experiences</span>
           <h2>Configure once. Deploy everywhere.</h2>
           <p>One Admin Console for knowledge, actions, permissions, and branding — then deploy Customer AI on website and WhatsApp, and Employee AI on a branded Internal Portal.</p>
@@ -1757,6 +1888,7 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     jl = [
         webpage_json(title, desc, path),
         breadcrumb_json([("Home", "/"), (h1, path)]),
+        speakable_json(path),
     ]
     if extra_jsonld:
         jl.extend(extra_jsonld)
@@ -1772,7 +1904,10 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
         {crumbs([("Home", "/"), (h1, "")])}
         <div class="page-hero-inner">{badge_html}
           <h1>{h1}</h1>
-          <div class="direct-answer" style="text-align:left">{answer}</div>
+          <aside class="quick-answer-card" aria-label="Quick Summary">
+            <span class="quick-answer-badge">{ICONS["sparkles"]} Quick Answer</span>
+            <div style="text-align:left">{answer}</div>
+          </aside>
         </div>
       </div>
     </section>
@@ -1818,6 +1953,7 @@ PAGES["how-it-works.html"] = inner(
     "how-it-works",
     "<p><strong>Configure once. Deploy everywhere.</strong> Four steps from Admin Console setup to production organizational AI. Connect systems via REST/OpenAPI or the Backend SDK — we handle vectors, models, PII scrubbing, and action execution.</p>",
     how_it_works_page_content(),
+    extra_jsonld=[howto_json("how-it-works.html")],
     badge=f'{ICONS["zap"]} Platform overview',
 )
 
@@ -1900,6 +2036,7 @@ PAGES["benchmark.html"] = page(
     title="Benchmark methodology | Qefro",
     description="How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
     path="benchmark.html",
+    og_type="article",
     jsonld=[
         webpage_json(
             "Benchmark methodology | Qefro",
@@ -1907,6 +2044,12 @@ PAGES["benchmark.html"] = page(
             "benchmark",
         ),
         breadcrumb_json([("Home", "/"), ("Benchmark Methodology", "benchmark")]),
+        tech_article_json(
+            "Benchmark methodology | Qefro",
+            "How Qefro measures answer accuracy: test set composition, evaluation methodology, results, and known limitations.",
+            "benchmark",
+        ),
+        speakable_json("benchmark.html"),
     ],
     body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
@@ -2084,20 +2227,27 @@ for slug, title, q, a, extra in [
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
+    page_jsonld = [
+        webpage_json(title, a, slug),
+        breadcrumb_json([("Home", "/"), (q, slug.removesuffix(".html"))]),
+        speakable_json(slug),
+    ]
+    if slug == "what-is-qefro.html":
+        page_jsonld.append(tech_article_json(title, a, slug))
     PAGES[slug] = page(
         title=title,
         description=a,
         path=slug,
-        # No FAQPage on AEO pages — Google guidelines: mark up each FAQ only once (on /faq).
-        jsonld=[
-            webpage_json(title, a, slug),
-            breadcrumb_json([("Home", "/"), (q, slug.removesuffix(".html"))]),
-        ],
+        og_type="article" if slug == "what-is-qefro.html" else "website",
+        jsonld=page_jsonld,
         body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
         {crumbs([("Home", "/"), (q, "")])}
         <h1>{q}</h1>
-        <div class="direct-answer"><p>{a}</p></div>
+        <aside class="quick-answer-card" aria-label="Quick Summary">
+          <span class="quick-answer-badge">{ICONS["sparkles"]} Quick Answer</span>
+          <p>{a}</p>
+        </aside>
         <div class="prose" style="margin-top:1.5rem">{extra}
           <p><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start 14-day free trial</a></p>
         </div>
@@ -2314,22 +2464,31 @@ def register_seo_landings() -> None:
 {vertical_pills}
         </div>"""
 
+        landing_jsonld = [
+            webpage_json(landing.title, landing.description, path),
+            breadcrumb_json(crumb_json),
+            speakable_json(path),
+        ]
+        if landing.faqs:
+            landing_jsonld.append(faq_schema(landing.faqs))
+
         PAGES[path] = page(
             title=landing.title,
             description=landing.description,
             path=path,
             active=active,
-            jsonld=[
-                webpage_json(landing.title, landing.description, path),
-                breadcrumb_json(crumb_json),
-            ],
+            jsonld=landing_jsonld,
             body=f"""    <section class="page-hero">
       <div class="wrap-5xl">
         {crumbs(crumb_nav)}
         <div class="page-hero-inner">
           <span class="badge badge-indigo">{badge}</span>
           <h1>{escape(landing.h1)}</h1>
-          <div class="direct-answer" style="text-align:left">{landing.answer}</div>
+          <aside class="quick-answer-card" aria-label="Quick Summary">
+            <span class="quick-answer-badge">{ICONS["sparkles"]} Quick Answer</span>
+            <div style="text-align:left">{landing.answer}</div>
+          </aside>
+        </div>
         </div>
       </div>
     </section>
@@ -2384,6 +2543,8 @@ def write_robots_txt() -> None:
 
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 # Explicitly allow rendering resources (Google recommends not blocking these).
 Allow: /assets/
@@ -2396,6 +2557,36 @@ Sitemap: {SITE}/sitemap.xml
 """
     (ROOT / "robots.txt").write_text(content, encoding="utf-8")
     print("wrote robots.txt")
+
+
+def write_llms_full_txt() -> None:
+    """Generate comprehensive llms-full.txt plain-text digest for LLM crawlers."""
+    llms_path = ROOT / "llms.txt"
+    base_llms = llms_path.read_text(encoding="utf-8") if llms_path.is_file() else ""
+
+    sections = [base_llms.strip(), "\n\n# Expanded Landing Specifications & Direct Answers\n"]
+
+    for landing in all_landings():
+        url = site_url(landing.slug)
+        sections.append(f"\n## {landing.h1} ({url})")
+        sections.append(f"Kind: {landing.kind.capitalize()}")
+        sections.append(f"Title: {landing.title}")
+        sections.append(f"Description: {landing.description}")
+        clean_answer = re.sub(r"<[^>]+>", "", landing.answer).strip()
+        sections.append(f"Direct Answer: {clean_answer}")
+        if landing.paragraphs:
+            sections.append("Overview: " + " ".join(landing.paragraphs))
+        if landing.bullets:
+            sections.append("Key Capabilities:\n" + "\n".join(f"- {b}" for b in landing.bullets))
+        if landing.faqs:
+            sections.append("FAQs:")
+            for q, a in landing.faqs:
+                clean_a = re.sub(r"<[^>]+>", "", a).strip()
+                sections.append(f"  Q: {q}\n  A: {clean_a}")
+
+    content = "\n".join(sections) + "\n"
+    (ROOT / "llms-full.txt").write_text(content, encoding="utf-8")
+    print("wrote llms-full.txt")
 
 
 def write_sitemap_xml() -> None:
@@ -2458,6 +2649,7 @@ def write_all() -> None:
     build_og_image()
     write_robots_txt()
     write_sitemap_xml()
+    write_llms_full_txt()
     for name, html in PAGES.items():
         (ROOT / name).write_text(html, encoding="utf-8")
         print("wrote", name)

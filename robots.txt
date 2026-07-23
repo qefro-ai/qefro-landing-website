@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 # Explicitly allow rendering resources (Google recommends not blocking these).
 Allow: /assets/
