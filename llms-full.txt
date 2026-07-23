@@ -15,17 +15,18 @@ Qefro is an AI Workspace Platform for organizations. Configure once in the Admin
 Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console — from one centralized AI platform.
 
 ## Pricing
-- Free: $0 — 100 conversations, knowledge for getting started, connect 1 business system (no credit card required)
-- Starter: $29/month billed annually ($348/year) or $39/month monthly — knowledge for one team, connect up to 5 business systems
-- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — WhatsApp + unlimited business system connections
-- Enterprise: Custom — unlimited usage options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
-- Annual billing saves ~26% vs monthly
+- Trial (14 days): $0 — full premium access, no credit card; no permanent free/freemium plan
+- Starter: $29/month billed annually ($348/year) or $39/month monthly — 1,000 messages, 50 documents, 5 seats, 5 Business Tools, widget + WhatsApp + voice
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — 10,000 messages, 500 documents, 20 seats, unlimited Business Tools, WhatsApp, analytics & handoff
+- Enterprise: Custom — unlimited options, private deployment, SSO/SAML (roadmap), dedicated CSM, SLA
+- Annual billing saves ~26% vs monthly; India INR via Razorpay
+- Downgrades schedule at period end (no charge at schedule time)
 
 ## Key capabilities
 - AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, business actions, conversations, and permissions — every workspace has its own isolated knowledge base
 - Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source, workspace isolation
 - Business Actions (powered by Business Tools): REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
-- Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Growth+), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
+- Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Trial + paid plans), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
 - Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
 - Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SOC 2 compliance is on the roadmap (contact Sales for timeline); SSO and platform admin audit trail on Enterprise roadmap
 - Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
