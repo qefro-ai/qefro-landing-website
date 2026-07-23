@@ -54,8 +54,8 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
-  <link rel="preload" href="/assets/css/styles.css?v=40" as="style" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=40" />
+  <link rel="preload" href="/assets/css/styles.css?v=41" as="style" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=41" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -225,8 +225,8 @@
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img class="logo-light" src="/assets/images/qefro-logo.png?v=40" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" fetchpriority="high" />
-        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=40" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v=41" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" fetchpriority="high" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=41" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="/how-it-works">Platform</a>
@@ -286,7 +286,7 @@
           <span><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Web · WhatsApp · internal teams</span>
         </div>
         <p class="hero-diff" data-motion="hero-diff">Answer, act, and scale across web, WhatsApp, and internal teams — from one platform.</p>
-        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></p>
+        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#platform" data-clarity-event="cta_scroll_platform">Explore the platform <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></p>
       </div>
     </section>
 
@@ -306,17 +306,17 @@
       <div class="wrap">
         <div class="demo-split reveal">
           <div class="demo-copy">
-            <span class="badge badge-green"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg> Live demo</span>
+            <button type="button" class="badge badge-green badge-btn" data-open-demo data-clarity-event="cta_live_demo_badge"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 4 20 12 6 20 6 4"/></svg> Live demo</button>
             <h2 id="demo-heading">Try Customer AI on this page</h2>
             <p>Open the chat bubble in the corner. Ask about the platform, workspaces, business actions, <a href="/pricing">pricing</a>, or <a href="/security">security</a>.</p>
             <div class="widget-demo-hint">
-              <div class="widget-demo-card">
+              <button type="button" class="widget-demo-card" data-open-demo data-clarity-event="cta_demo_card" aria-label="Open live chat demo">
                 <div class="widget-demo-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M9 8V6a3 3 0 016 0v2M9 14h.01M15 14h.01"/></svg></div>
                 <div>
                   <strong>Live assistant is active on this page</strong>
-                  <p>Answers come from Qefro&rsquo;s demo knowledge base.</p>
+                  <p>Answers come from Qefro&rsquo;s demo knowledge base. Click to chat.</p>
                 </div>
-              </div>
+              </button>
               <p class="widget-demo-suggestions">Try: <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What is Qefro?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What are AI Workspaces?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">Is my data secure?</button></p>
             </div>
             <p class="integrations-note" style="margin-top:1.25rem">
@@ -353,51 +353,54 @@
           <p>One platform for customers, employees, and operators — shared knowledge, permissions, and business actions. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
         <div class="exp-grid reveal">
-          <article class="exp-card tilt-3d">
+          <a class="exp-card tilt-3d" href="/ai-chatbot" data-clarity-event="card_customer_ai">
             <div class="exp-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 13a8 8 0 0116 0"/><path d="M4 13v5a2 2 0 002 2h1v-7H6a2 2 0 00-2 2zM20 13v5a2 2 0 01-2 2h-1v-7h1a2 2 0 012 2z"/></svg></div>
             <h3>Customer AI</h3>
             <p>Website widget and WhatsApp — answer questions, run business actions, capture leads, and hand off to humans.</p>
-          </article>
-          <article class="exp-card exp-card-featured tilt-3d">
+            <span class="exp-card-cta">Learn more <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="exp-card exp-card-featured tilt-3d" href="/internal-ai" data-clarity-event="card_employee_ai">
             <div class="exp-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V5a1 1 0 011-1h8a1 1 0 011 1v16M14 9h5a1 1 0 011 1v11"/><path d="M8 8h2M8 12h2M8 16h2M17 13h1M17 17h1"/></svg></div>
             <h3>Employee AI</h3>
             <p>Branded Internal Portal for internal teams — workspaces, conversations, documents, and source citations.</p>
-          </article>
-          <article class="exp-card tilt-3d">
+            <span class="exp-card-cta">Learn more <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="exp-card tilt-3d" href="/how-it-works" data-clarity-event="card_admin_console">
             <div class="exp-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg></div>
             <h3>Admin Console</h3>
             <p>Configure knowledge, actions, teams, branding, channels, analytics, and inbox in one place.</p>
-          </article>
+            <span class="exp-card-cta">See how it works <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
         </div>
         <div class="section-head reveal" style="margin-top:3rem">
           <span class="badge badge-purple"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> How it works</span>
           <h2>From conversation to action</h2>
           <p>Every turn follows a simple path through knowledge and your business tools.</p>
         </div>
-        <div class="pipeline pipeline-flow reveal" role="img" aria-label="Conversation to Knowledge to Business Tool to Action">
-          <div class="pipeline-node">
+        <div class="pipeline pipeline-flow reveal" aria-label="Conversation to Knowledge to Business Tool to Action">
+          <a class="pipeline-node" href="/ai-chatbot" data-clarity-event="pipeline_conversation">
             <span class="pipeline-k">01</span>
             <span class="pipeline-v">Conversation</span>
             <span class="pipeline-d">Customer or employee asks</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
-          <div class="pipeline-node">
+          <a class="pipeline-node" href="/knowledge-base" data-clarity-event="pipeline_knowledge">
             <span class="pipeline-k">02</span>
             <span class="pipeline-v">Knowledge</span>
             <span class="pipeline-d">Grounded retrieval &amp; citations</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
-          <div class="pipeline-node">
+          <a class="pipeline-node" href="/features" data-clarity-event="pipeline_business_tool">
             <span class="pipeline-k">03</span>
             <span class="pipeline-v">Business Tool</span>
             <span class="pipeline-d">REST/OpenAPI or Backend SDK</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
-          <div class="pipeline-node pipeline-node-accent">
+          <a class="pipeline-node pipeline-node-accent" href="/how-it-works" data-clarity-event="pipeline_action">
             <span class="pipeline-k">04</span>
             <span class="pipeline-v">Action</span>
             <span class="pipeline-d">Secure business outcome</span>
-          </div>
+          </a>
         </div>
         <div class="section-head reveal" style="margin-top:3rem">
           <span class="badge badge-blue"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01"/></svg> Integrations</span>
@@ -405,16 +408,18 @@
           <p>Use the path that fits your stack — existing APIs or backend-controlled workflows.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
-          <article class="exp-card tilt-3d">
+          <a class="exp-card tilt-3d" href="/features" data-clarity-event="card_rest_openapi">
             <div class="exp-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></div>
             <h3>REST / OpenAPI</h3>
             <p>Connect existing APIs as Business Tools. Import an OpenAPI spec or configure REST endpoints — encrypted credentials, scoped per workspace.</p>
-          </article>
-          <article class="exp-card tilt-3d">
+            <span class="exp-card-cta">See features <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="exp-card tilt-3d" href="https://docs.qefro.com" data-clarity-event="card_backend_sdk">
             <div class="exp-icon"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div>
             <h3>Backend SDK</h3>
             <p>Handle authentication and workflows in your backend with the Qefro Backend SDK — identity, tool callbacks, and secure action execution.</p>
-          </article>
+            <span class="exp-card-cta">Read the docs <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </a>
         </div>
         <div class="arch-diagram arch-diagram-flow reveal" style="margin-top:3rem" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI" data-motion="architecture">
           <div class="arch-hub">
@@ -740,8 +745,8 @@
     <div class="wrap">
       <div class="footer-top">
         <a class="brand" href="/" aria-label="Qefro home">
-          <img class="logo-light" src="/assets/images/qefro-logo.png?v=40" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" />
-          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=40" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
+          <img class="logo-light" src="/assets/images/qefro-logo.png?v=41" alt="Qefro AI Workspace Platform logo" width="40" height="40" decoding="async" />
+          <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=41" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
         </a>
         <nav class="footer-links" aria-label="Footer">
           <a href="/how-it-works">Platform</a>
@@ -778,7 +783,7 @@
     data-position="bottom-right"
     data-primary-color="#7c3aed"
     data-welcome-message="Hi! I'm the Qefro assistant. Ask how Qefro connects conversations to your business — Customer AI, Employee AI, business actions, pricing, and security."></script>
-  <script src="/assets/js/main.js?v=40" defer></script>
-  <script type="module" src="/assets/js/qefro-motion.js?v=40"></script>
+  <script src="/assets/js/main.js?v=41" defer></script>
+  <script type="module" src="/assets/js/qefro-motion.js?v=41"></script>
 </body>
 </html>

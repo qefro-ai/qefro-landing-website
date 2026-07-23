@@ -448,6 +448,16 @@ a:focus-visible {
   font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
 }
 .badge svg { width: 0.875rem; height: 0.875rem; flex-shrink: 0; }
+button.badge-btn {
+  font: inherit;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+button.badge-btn:hover { transform: translateY(-1px); }
+button.badge-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
 .badge-indigo { background: rgba(8,145,178,0.08); border-color: rgba(8,145,178,0.22); color: #0e7490; }
 .badge-purple { background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.2); color: #6d28d9; }
 .badge-blue { background: rgba(8,145,178,0.08); border-color: rgba(8,145,178,0.22); color: #0e7490; }
@@ -529,8 +539,8 @@ a:focus-visible {
   text-align: left;
 }
 .hero-scroll-cue {
-  margin: 1.25rem 0 0;
-  font-size: 0.9rem;
+  margin: 1.5rem 0 0;
+  font-size: 0.95rem;
 }
 .hero-scroll-cue a {
   display: inline-flex;
@@ -539,8 +549,15 @@ a:focus-visible {
   color: var(--hero-check);
   font-weight: 600;
   text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--hero-check) 28%, transparent);
+  background: color-mix(in srgb, var(--hero-check) 8%, transparent);
 }
-.hero-scroll-cue a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.hero-scroll-cue a:hover {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--hero-check) 14%, transparent);
+}
 .hero-scroll-cue svg { width: 1rem; height: 1rem; }
 .hero-actions {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;
@@ -579,6 +596,18 @@ a:focus-visible {
   border: 1px solid var(--hero-pipeline-border);
   background: var(--hero-pipeline-bg);
   text-align: left;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+}
+a.pipeline-node:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 45%, transparent);
+  background: var(--surface-accent-soft);
+  transform: translateY(-1px);
+}
+a.pipeline-node:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 .pipeline-k {
   font-family: var(--font-mono);
@@ -1386,9 +1415,24 @@ button.demo-chat:hover .chat-mock {
 .chat-mock-input .chat-mock-send svg { width: 0.875rem; height: 0.875rem; }
 .widget-demo-card {
   display: flex; align-items: flex-start; gap: 1rem; text-align: left;
+  width: 100%;
   padding: 1.25rem 1.5rem; border-radius: 1rem;
   border: 1px solid var(--border); background: var(--bg-card);
   box-shadow: var(--card-shadow);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+button.widget-demo-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  background: var(--surface-accent-soft);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+button.widget-demo-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 .widget-demo-icon {
   width: 3rem; height: 3rem; border-radius: 0.9rem; flex-shrink: 0;
@@ -1893,6 +1937,8 @@ button.demo-chat:hover .chat-mock {
   background: var(--bg-card);
   box-shadow: var(--card-shadow);
   overflow: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 .mock-sidebar {
   display: grid;
@@ -2021,7 +2067,31 @@ button.demo-chat:hover .chat-mock {
   border: 1px solid var(--border);
   background: var(--bg-card);
   box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
+a.exp-card:hover {
+  border-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  background: var(--surface-accent-soft);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+a.exp-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.exp-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.exp-card-cta svg { width: 0.95rem; height: 0.95rem; }
 .exp-card-featured {
   border-color: var(--price-popular-border);
   background: var(--surface-featured);

@@ -9,8 +9,10 @@
   const WIDGET_CDN_URL = root.dataset.widgetCdn || "https://cdn.qefro.com/widget.js";
 
   const removeWidget = () => {
-    document.getElementById("qefro-widget-script")?.remove();
-    document.getElementById("ai-widget-container")?.remove();
+    const scriptEl = document.getElementById("qefro-widget-script");
+    const containerEl = document.getElementById("ai-widget-container");
+    if (scriptEl) scriptEl.remove();
+    if (containerEl) containerEl.remove();
   };
 
   const applyWidgetTheme = (theme) => {
@@ -52,7 +54,11 @@
         body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
       });
       const json = await res.json();
-      const fetched = json?.data?.demoWidgetToken?.token;
+      const fetched =
+        json &&
+        json.data &&
+        json.data.demoWidgetToken &&
+        json.data.demoWidgetToken.token;
       if (typeof fetched === "string" && fetched.length > 0) token = fetched;
     } catch (error) {
       console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
@@ -92,7 +98,8 @@
     }
     const widgetTheme = getTheme();
     const existing = document.getElementById("qefro-widget-script");
-    const currentWidgetTheme = existing?.dataset.theme || "light";
+    const currentWidgetTheme =
+      (existing && existing.dataset && existing.dataset.theme) || "light";
     if (!existing || currentWidgetTheme !== widgetTheme) {
       refreshWidget(widgetTheme);
     }
@@ -134,7 +141,8 @@
           item.parentElement.querySelectorAll(".faq-item.is-open").forEach((el) => {
             if (el !== item) {
               el.classList.remove("is-open");
-              el.querySelector("button")?.setAttribute("aria-expanded", "false");
+              const openBtn = el.querySelector("button");
+              if (openBtn) openBtn.setAttribute("aria-expanded", "false");
             }
           });
           item.classList.toggle("is-open", open);
@@ -197,7 +205,8 @@
           if (node.nodeType === Node.TEXT_NODE) node.textContent = `${price} `;
         });
         if (!span) el.insertAdjacentHTML("beforeend", "<span>/month</span>");
-        const billed = el.parentElement?.querySelector(".price-billed");
+        const billed =
+          el.parentElement && el.parentElement.querySelector(".price-billed");
         if (billed) {
           billed.textContent =
             period === "annual"
@@ -238,12 +247,12 @@
   const openLiveDemo = () => {
     trackClarity("open_live_demo");
     const demo = document.getElementById("demo");
-    demo?.scrollIntoView({ behavior: "auto", block: "start" });
+    if (demo) demo.scrollIntoView({ behavior: "auto", block: "start" });
     window.setTimeout(() => {
       const launcher =
         document.querySelector("#ai-widget-container button") ||
         document.querySelector("button[aria-label*='chat' i], button[aria-label*='Chat' i]");
-      launcher?.click();
+      if (launcher) launcher.click();
     }, 0);
   };
 

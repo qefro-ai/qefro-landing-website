@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "40"
+ASSET_VERSION = "41"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
@@ -975,7 +975,7 @@ def home_body() -> str:
           <span>{ICONS["check"]} Web · WhatsApp · internal teams</span>
         </div>
         <p class="hero-diff" data-motion="hero-diff">Answer, act, and scale across web, WhatsApp, and internal teams — from one platform.</p>
-        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#demo" data-open-demo data-clarity-event="cta_scroll_demo">Try the live demo {ICONS["arrow"]}</a></p>
+        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#platform" data-clarity-event="cta_scroll_platform">Explore the platform {ICONS["chevron"]}</a></p>
       </div>
     </section>
 
@@ -995,17 +995,17 @@ def home_body() -> str:
       <div class="wrap">
         <div class="demo-split reveal">
           <div class="demo-copy">
-            <span class="badge badge-green">{ICONS["play"]} Live demo</span>
+            <button type="button" class="badge badge-green badge-btn" data-open-demo data-clarity-event="cta_live_demo_badge">{ICONS["play"]} Live demo</button>
             <h2 id="demo-heading">Try Customer AI on this page</h2>
             <p>Open the chat bubble in the corner. Ask about the platform, workspaces, business actions, <a href="/pricing">pricing</a>, or <a href="/security">security</a>.</p>
             <div class="widget-demo-hint">
-              <div class="widget-demo-card">
+              <button type="button" class="widget-demo-card" data-open-demo data-clarity-event="cta_demo_card" aria-label="Open live chat demo">
                 <div class="widget-demo-icon">{ICONS["bot"]}</div>
                 <div>
                   <strong>Live assistant is active on this page</strong>
-                  <p>Answers come from Qefro&rsquo;s demo knowledge base.</p>
+                  <p>Answers come from Qefro&rsquo;s demo knowledge base. Click to chat.</p>
                 </div>
-              </div>
+              </button>
               <p class="widget-demo-suggestions">Try: <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What is Qefro?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">What are AI Workspaces?</button> · <button type="button" class="demo-chip" data-open-demo data-clarity-event="demo_chip">Is my data secure?</button></p>
             </div>
             <p class="integrations-note" style="margin-top:1.25rem">
@@ -1042,51 +1042,54 @@ def home_body() -> str:
           <p>One platform for customers, employees, and operators — shared knowledge, permissions, and business actions. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
         <div class="exp-grid reveal">
-          <article class="exp-card tilt-3d">
+          <a class="exp-card tilt-3d" href="/ai-chatbot" data-clarity-event="card_customer_ai">
             <div class="exp-icon">{ICONS["headphones"]}</div>
             <h3>Customer AI</h3>
             <p>Website widget and WhatsApp — answer questions, run business actions, capture leads, and hand off to humans.</p>
-          </article>
-          <article class="exp-card exp-card-featured tilt-3d">
+            <span class="exp-card-cta">Learn more {ICONS["arrow"]}</span>
+          </a>
+          <a class="exp-card exp-card-featured tilt-3d" href="/internal-ai" data-clarity-event="card_employee_ai">
             <div class="exp-icon">{ICONS["building"]}</div>
             <h3>Employee AI</h3>
             <p>Branded Internal Portal for internal teams — workspaces, conversations, documents, and source citations.</p>
-          </article>
-          <article class="exp-card tilt-3d">
+            <span class="exp-card-cta">Learn more {ICONS["arrow"]}</span>
+          </a>
+          <a class="exp-card tilt-3d" href="/how-it-works" data-clarity-event="card_admin_console">
             <div class="exp-icon">{ICONS["server"]}</div>
             <h3>Admin Console</h3>
             <p>Configure knowledge, actions, teams, branding, channels, analytics, and inbox in one place.</p>
-          </article>
+            <span class="exp-card-cta">See how it works {ICONS["arrow"]}</span>
+          </a>
         </div>
         <div class="section-head reveal" style="margin-top:3rem">
           <span class="badge badge-purple">{ICONS["zap"]} How it works</span>
           <h2>From conversation to action</h2>
           <p>Every turn follows a simple path through knowledge and your business tools.</p>
         </div>
-        <div class="pipeline pipeline-flow reveal" role="img" aria-label="Conversation to Knowledge to Business Tool to Action">
-          <div class="pipeline-node">
+        <div class="pipeline pipeline-flow reveal" aria-label="Conversation to Knowledge to Business Tool to Action">
+          <a class="pipeline-node" href="/ai-chatbot" data-clarity-event="pipeline_conversation">
             <span class="pipeline-k">01</span>
             <span class="pipeline-v">Conversation</span>
             <span class="pipeline-d">Customer or employee asks</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <div class="pipeline-node">
+          <a class="pipeline-node" href="/knowledge-base" data-clarity-event="pipeline_knowledge">
             <span class="pipeline-k">02</span>
             <span class="pipeline-v">Knowledge</span>
             <span class="pipeline-d">Grounded retrieval &amp; citations</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <div class="pipeline-node">
+          <a class="pipeline-node" href="/features" data-clarity-event="pipeline_business_tool">
             <span class="pipeline-k">03</span>
             <span class="pipeline-v">Business Tool</span>
             <span class="pipeline-d">REST/OpenAPI or Backend SDK</span>
-          </div>
+          </a>
           <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <div class="pipeline-node pipeline-node-accent">
+          <a class="pipeline-node pipeline-node-accent" href="/how-it-works" data-clarity-event="pipeline_action">
             <span class="pipeline-k">04</span>
             <span class="pipeline-v">Action</span>
             <span class="pipeline-d">Secure business outcome</span>
-          </div>
+          </a>
         </div>
         <div class="section-head reveal" style="margin-top:3rem">
           <span class="badge badge-blue">{ICONS["server"]} Integrations</span>
@@ -1094,16 +1097,18 @@ def home_body() -> str:
           <p>Use the path that fits your stack — existing APIs or backend-controlled workflows.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))">
-          <article class="exp-card tilt-3d">
+          <a class="exp-card tilt-3d" href="/features" data-clarity-event="card_rest_openapi">
             <div class="exp-icon">{ICONS["globe"]}</div>
             <h3>REST / OpenAPI</h3>
             <p>Connect existing APIs as Business Tools. Import an OpenAPI spec or configure REST endpoints — encrypted credentials, scoped per workspace.</p>
-          </article>
-          <article class="exp-card tilt-3d">
+            <span class="exp-card-cta">See features {ICONS["arrow"]}</span>
+          </a>
+          <a class="exp-card tilt-3d" href="{DOCS}" data-clarity-event="card_backend_sdk">
             <div class="exp-icon">{ICONS["lock"]}</div>
             <h3>Backend SDK</h3>
             <p>Handle authentication and workflows in your backend with the Qefro Backend SDK — identity, tool callbacks, and secure action execution.</p>
-          </article>
+            <span class="exp-card-cta">Read the docs {ICONS["arrow"]}</span>
+          </a>
         </div>
         <div class="arch-diagram arch-diagram-flow reveal" style="margin-top:3rem" role="img" aria-label="Admin Console configures once, then deploys Customer AI and Employee AI" data-motion="architecture">
           <div class="arch-hub">

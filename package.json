@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:motion": "esbuild src/motion/index.js --bundle --format=esm --minify --target=es2020 --outfile=assets/js/qefro-motion.js",
+    "build:motion": "esbuild src/motion/index.js --bundle --format=esm --minify --target=es2018 --outfile=assets/js/qefro-motion.js",
     "build": "npm run build:motion && python3 generate.py"
   },
   "dependencies": {
