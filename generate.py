@@ -631,6 +631,16 @@ PRICING_OFFERS_JSON = json.dumps(
             },
             {
                 "@type": "Offer",
+                "name": "Pro",
+                "price": 49,
+                "priceCurrency": "USD",
+                "description": "Billed annually ($59/month if billed monthly)",
+                "url": f"{SITE}/pricing",
+                "availability": "https://schema.org/InStock",
+                "priceValidUntil": "2027-12-31",
+            },
+            {
+                "@type": "Offer",
                 "name": "Growth",
                 "price": 99,
                 "priceCurrency": "USD",
@@ -670,7 +680,7 @@ def price_feat(text: str, meta: str | None = None) -> str:
 
 
 def price_cards_html(*, interactive: bool = False) -> str:
-    """Shared Trial / Starter / Growth / Enterprise cards for homepage + /pricing."""
+    """Shared Trial / Starter / Pro / Growth / Enterprise cards for homepage + /pricing."""
     cta = ' data-price-cta' if interactive else ""
     clarity = (
         lambda event: f' data-clarity-event="{event}"' if interactive else ""
@@ -708,6 +718,22 @@ def price_cards_html(*, interactive: bool = False) -> str:
           </article>
           <article class="price-card is-popular{cta}">
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
+            <h3>Pro</h3>
+            <p class="price-best">Best for scaling teams</p>
+            <div class="price-amount" data-price-annual="$49" data-price-monthly="$59">$49 <span>/month</span></div>
+            <p class="price-billed">billed annually · or $59/mo monthly</p>
+            <p class="price-desc">For teams past startup volume</p>
+            <ul class="price-feats">
+              {price_feat("5,000 conversations/month")}
+              {price_feat("Knowledge for growing teams", "200 documents")}
+              {price_feat("Connect up to 25 business systems")}
+              {price_feat("Widget + WhatsApp + voice")}
+              {price_feat("Analytics &amp; agent handoff")}
+              {price_feat("Email support")}
+            </ul>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Pro</a>
+          </article>
+          <article class="price-card{cta}">
             <h3>Growth</h3>
             <p class="price-best">Best for growing companies</p>
             <div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div>
@@ -722,7 +748,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
               {price_feat("Priority support")}
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-primary" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
           </article>
           <article class="price-card{cta}">
             <h3>Enterprise</h3>
@@ -788,7 +814,7 @@ FAQ_ITEMS = [
         "Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, "
         "permission system, and set of business actions.",
     ),
-    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom."),
+    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
@@ -1290,10 +1316,10 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} Pricing</span>
           <h2 id="pricing-heading">Plans that scale with your organization</h2>
-          <p>14-day free trial with full access. Save ~26% with yearly billing — Starter from $29/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
+          <p>14-day free trial with full access. Save ~26% with yearly billing — Starter from $29/mo, Pro from $49/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
         </div>
         <div class="direct-answer reveal">
-          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -1617,7 +1643,7 @@ def security_page_content() -> str:
 
 def pricing_page_content() -> str:
     return f"""        <div class="direct-answer reveal">
-          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, WhatsApp + unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -1985,12 +2011,12 @@ PAGES["security.html"] = inner(
 )
 
 PAGES["pricing.html"] = inner(
-    "Pricing | Qefro — Trial, Starter from $29/mo, Growth from $99/mo",
+    "Pricing | Qefro — Trial, Starter from $29/mo, Pro from $49/mo, Growth from $99/mo",
     "Pricing",
-    "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Growth $99/mo with WhatsApp and unlimited business system connections.",
+    "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Pro $49/mo annual, Growth $99/mo with unlimited business system connections.",
     "pricing.html",
     "pricing",
-    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale to unlimited business system connections on Growth. Enterprise adds private deployment and custom SLAs.</p>",
+    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale with Pro or Growth. Enterprise adds private deployment and custom SLAs.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
@@ -2228,7 +2254,7 @@ for slug, title, q, a, extra in [
         "qefro-pricing.html",
         "How much does Qefro cost? | Pricing overview",
         "How much does Qefro cost?",
-        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom.",
+        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Pro from $49/month billed annually (up to 25 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
