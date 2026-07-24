@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "41"
+ASSET_VERSION = "42"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
@@ -672,6 +672,13 @@ PRICE_FAIR_USE_NOTE = (
     "</p>"
 )
 
+ENTERPRISE_FAIR_USE_NOTE = (
+    '<p class="price-desc price-fair-use">'
+    "Enterprise is a custom capacity contract — seats, messages, documents, storage, and tools are quoted to your requirements. "
+    'Contact <a href="/contact">Sales</a> for a quotation.'
+    "</p>"
+)
+
 
 def price_feat(text: str, meta: str | None = None) -> str:
     """Feature row with check icon; keep text in a body so the icon never orphans on wrap."""
@@ -726,6 +733,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <ul class="price-feats">
               {price_feat("5,000 conversations/month")}
               {price_feat("Knowledge for growing teams", "200 documents")}
+              {price_feat("10 team members")}
               {price_feat("Connect up to 25 business systems")}
               {price_feat("Widget + WhatsApp + voice")}
               {price_feat("Analytics &amp; agent handoff")}
@@ -742,6 +750,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <ul class="price-feats">
               {price_feat("10,000 conversations/month")}
               {price_feat("Knowledge across teams", "500 documents")}
+              {price_feat("20 team members")}
               {price_feat("Widget + WhatsApp + voice")}
               {price_feat("Unlimited business system connections")}
               {price_feat("Analytics &amp; agent handoff")}
@@ -754,17 +763,16 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <h3>Enterprise</h3>
             <p class="price-best">Best for regulated organizations</p>
             <div class="price-amount">Custom</div>
-            <p class="price-desc">For advanced security and scale</p>
+            <p class="price-desc">Pay for the capacity you need</p>
             <ul class="price-feats">
-              {price_feat("Unlimited conversations")}
-              {price_feat("Unlimited knowledge")}
+              {price_feat("Custom seats, messages &amp; documents")}
+              {price_feat("Custom storage, crawls &amp; tools")}
               {price_feat("Private deployment")}
-              {price_feat("SSO &amp; SAML (roadmap)")}
               {price_feat("Dedicated CSM")}
-              {price_feat("Unlimited business system connections")}
-              {price_feat("SLA guarantee")}
+              {price_feat("Custom SLA")}
+              {price_feat("SSO &amp; SAML (roadmap)")}
             </ul>
-            {PRICE_FAIR_USE_NOTE}
+            {ENTERPRISE_FAIR_USE_NOTE}
             <a class="btn btn-plan" href="/contact"{clarity("cta_talk_to_sales")}>Talk to Sales</a>
           </article>"""
 
@@ -814,7 +822,7 @@ FAQ_ITEMS = [
         "Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, "
         "permission system, and set of business actions.",
     ),
-    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom."),
+    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
@@ -843,7 +851,7 @@ FAQ_ITEMS = [
         "Yes. Customer AI runs on your website and WhatsApp. Employee AI runs in a branded Internal Portal "
         "(yourcompany.qefro.com) connected to company knowledge, business actions, and workspace permissions.",
     ),
-    ("Do you offer enterprise pricing?", "Yes. Enterprise plans include unlimited conversations, private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline."),
+    ("Do you offer enterprise pricing?", "Yes. Enterprise is a custom capacity contract — seats, messages, documents, storage, crawls, and business tools are quoted to your needs — plus private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline."),
     (
         "What languages does Qefro support?",
         "Qefro supports multilingual document indexing and multilingual retrieval from the languages present "
@@ -1319,7 +1327,7 @@ def home_body() -> str:
           <p>14-day free trial with full access. Save ~26% with yearly billing — Starter from $29/mo, Pro from $49/mo, Growth from $99/mo. <a href="/pricing">Full pricing details</a>.</p>
         </div>
         <div class="direct-answer reveal">
-          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and custom Enterprise plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly), and <strong>Enterprise</strong> custom capacity contracts.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -1643,7 +1651,7 @@ def security_page_content() -> str:
 
 def pricing_page_content() -> str:
     return f"""        <div class="direct-answer reveal">
-          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, unlimited business system connections), and custom <strong>Enterprise</strong> plans.</p>
+          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, unlimited business system connections), and <strong>Enterprise</strong> custom capacity contracts.</p>
         </div>
         <div class="billing-toggle reveal" role="group" aria-label="Billing period">
           <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
@@ -2016,7 +2024,7 @@ PAGES["pricing.html"] = inner(
     "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Pro $49/mo annual, Growth $99/mo with unlimited business system connections.",
     "pricing.html",
     "pricing",
-    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale with Pro or Growth. Enterprise adds private deployment and custom SLAs.</p>",
+    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale with Pro or Growth. Enterprise is custom capacity plus private deployment and SLAs.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
@@ -2254,7 +2262,7 @@ for slug, title, q, a, extra in [
         "qefro-pricing.html",
         "How much does Qefro cost? | Pricing overview",
         "How much does Qefro cost?",
-        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Pro from $49/month billed annually (up to 25 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom.",
+        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Pro from $49/month billed annually (up to 25 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom capacity priced to your requirements.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
