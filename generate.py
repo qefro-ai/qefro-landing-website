@@ -714,7 +714,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <p class="price-billed">billed annually · or $39/mo monthly</p>
             <p class="price-desc">For one team going live</p>
             <ul class="price-feats">
-              {price_feat("1,000 conversations/month")}
+              {price_feat("10,000 AI Messages / month")}
               {price_feat("Knowledge for one team", "50 documents")}
               {price_feat("Connect up to 5 business systems")}
               {price_feat("Widget + WhatsApp + voice")}
@@ -731,7 +731,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <p class="price-billed">billed annually · or $59/mo monthly</p>
             <p class="price-desc">For teams past startup volume</p>
             <ul class="price-feats">
-              {price_feat("5,000 conversations/month")}
+              {price_feat("30,000 AI Messages / month")}
               {price_feat("Knowledge for growing teams", "200 documents")}
               {price_feat("10 team members")}
               {price_feat("Connect up to 25 business systems")}
@@ -748,7 +748,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <p class="price-billed">billed annually · or $119/mo monthly</p>
             <p class="price-desc">For teams deploying across channels</p>
             <ul class="price-feats">
-              {price_feat("10,000 conversations/month")}
+              {price_feat("100,000 AI Messages / month")}
               {price_feat("Knowledge across teams", "500 documents")}
               {price_feat("20 team members")}
               {price_feat("Widget + WhatsApp + voice")}
@@ -765,8 +765,9 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <div class="price-amount">Custom</div>
             <p class="price-desc">Pay for the capacity you need</p>
             <ul class="price-feats">
-              {price_feat("Custom seats, messages &amp; documents")}
-              {price_feat("Custom storage, crawls &amp; tools")}
+              {price_feat("Custom AI Messages")}
+              {price_feat("Custom documents &amp; seats")}
+              {price_feat("Custom Business Tools &amp; storage")}
               {price_feat("Private deployment")}
               {price_feat("Dedicated CSM")}
               {price_feat("Custom SLA")}

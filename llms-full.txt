@@ -16,10 +16,10 @@ Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console �
 
 ## Pricing
 - Trial (14 days): $0 — full premium access, no credit card; no permanent free/freemium plan
-- Starter: $29/month billed annually ($348/year) or $39/month monthly — 1,000 messages, 50 documents, 5 seats, 5 Business Tools, widget + WhatsApp + voice
-- Pro: $49/month billed annually or $59/month monthly — 5,000 messages, 200 documents, 10 seats, 25 Business Tools, widget + WhatsApp + voice, analytics & handoff
-- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — 10,000 messages, 500 documents, 20 seats, unlimited Business Tools, WhatsApp, analytics & handoff
-- Enterprise: Custom capacity contract (seats, messages, documents, storage, crawls, tools quoted to requirements) — private deployment, dedicated CSM, SLA, SSO/SAML (roadmap)
+- Starter: $29/month billed annually ($348/year) or $39/month monthly — 10,000 AI Messages / month, 50 documents, 5 seats, 5 Business Tools, widget + WhatsApp + voice
+- Pro: $49/month billed annually or $59/month monthly — 30,000 AI Messages / month, 200 documents, 10 seats, 25 Business Tools, widget + WhatsApp + voice, analytics & handoff
+- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — 100,000 AI Messages / month, 500 documents, 20 seats, unlimited Business Tools, WhatsApp, analytics & handoff
+- Enterprise: Custom capacity contract (Custom AI Messages, documents, seats, storage, tools) — private deployment, dedicated CSM, SLA, SSO/SAML (roadmap)
 - Annual billing saves ~26% vs monthly; India INR via Razorpay
 - Downgrades schedule at period end (no charge at schedule time)
 
