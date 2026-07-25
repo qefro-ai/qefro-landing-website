@@ -1021,7 +1021,7 @@ def home_body() -> str:
         <div class="logo-cloud" role="list">
           <span class="logo-placeholder" role="listitem">{ICONS["headphones"]} Built for modern support teams</span>
           <span class="logo-placeholder" role="listitem">{ICONS["shield"]} Secure multi-tenant architecture</span>
-          <span class="logo-placeholder" role="listitem">{ICONS["server"]} Self-host or cloud</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["server"]} Cloud or private cloud</span>
           <span class="logo-placeholder" role="listitem">{ICONS["lock"]} Privacy-first AI</span>
         </div>
       </div>
