@@ -717,7 +717,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
               {price_feat("10,000 AI Messages / month")}
               {price_feat("Knowledge for one team", "50 documents")}
               {price_feat("Connect up to 5 business systems")}
-              {price_feat("Widget + WhatsApp + voice")}
+              {price_feat("Widget + WhatsApp")}
               {price_feat("Custom branding")}
               {price_feat("Email support")}
             </ul>
@@ -768,6 +768,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
               {price_feat("Custom AI Messages")}
               {price_feat("Custom documents &amp; seats")}
               {price_feat("Custom Business Tools &amp; storage")}
+              {price_feat("WhatsApp + Voice AI")}
               {price_feat("Private deployment")}
               {price_feat("Dedicated CSM")}
               {price_feat("Custom SLA")}
@@ -873,7 +874,7 @@ FAQ_ITEMS = [
     ),
     (
         "What channels can I deploy on?",
-        "Configure once, deploy everywhere: website widget (with optional voice), public chat pages, "
+        "Configure once, deploy everywhere: website widget (voice on Pro+), public chat pages, "
         "branded Internal Portal for employees, WhatsApp on Starter+, and direct API/WebSocket access for custom UIs.",
     ),
     (
@@ -1254,7 +1255,7 @@ def home_body() -> str:
           <article class="outcome-card tilt-3d">
             <h3>Channels</h3>
             <ul>
-              <li>Website widget &amp; voice</li>
+              <li>Website widget (voice on Pro+)</li>
               <li>Internal Portal</li>
               <li>WhatsApp (Starter+)</li>
               <li>Human handoff</li>
@@ -1396,7 +1397,7 @@ def features_page_content() -> str:
           <article class="outcome-card tilt-3d"><h3>AI Workspaces</h3><ul><li>Per-team AI contexts</li><li>Isolated knowledge bases</li><li>Scoped business actions</li><li>Public &amp; private workspaces</li><li>Owner / Admin / Member RBAC</li><li>Separate conversations &amp; permissions</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Knowledge Platform</h3><ul><li>PDF, DOCX, Markdown, TXT</li><li>Website crawler</li><li>OCR for scans &amp; images</li><li>Multilingual (EN, AR, TA, HI+)</li><li>Hybrid BM25 + vector search</li><li>Source citations &amp; refusal when unsure</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Business Actions</h3><ul><li>Powered by Business Tools</li><li>REST &amp; OpenAPI import</li><li>Backend SDK for auth &amp; workflows</li><li>Encrypted API credentials</li><li>End-user identity via identify()</li><li>Execution logs &amp; schema validation</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Starter+)</li><li>Voice STT/TTS in widget</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>AI Experiences</h3><ul><li>Website widget (JWT auth)</li><li>Internal Portal for employees</li><li>WhatsApp (Starter+)</li><li>Voice STT/TTS in widget (Pro+)</li><li>WebSocket streaming</li><li>Handoff to human agents</li></ul></article>
         </div>
         <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
           <span class="badge badge-blue">{ICONS["building"]} AI Workspaces</span>
@@ -1529,7 +1530,7 @@ def how_it_works_page_content() -> str:
               <li>{ICONS["check"]} Website widget</li>
               <li>{ICONS["check"]} WhatsApp</li>
               <li>{ICONS["check"]} Internal Portal</li>
-              <li>{ICONS["check"]} Voice</li>
+              <li>{ICONS["check"]} Voice (Pro+)</li>
               <li>{ICONS["check"]} Future channels</li>
             </ul>
           </div>
@@ -2022,10 +2023,10 @@ PAGES["security.html"] = inner(
 PAGES["pricing.html"] = inner(
     "Pricing | Qefro — Trial, Starter from $29/mo, Pro from $49/mo, Growth from $99/mo",
     "Pricing",
-    "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual, Pro $49/mo annual, Growth $99/mo with unlimited business system connections.",
+    "Qefro pricing: 14-day free trial with full premium access (RAG, widget, WhatsApp, voice). Starter $29/mo annual (widget + WhatsApp). Pro $49/mo annual adds Voice AI. Growth $99/mo with unlimited business system connections.",
     "pricing.html",
     "pricing",
-    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. Scale with Pro or Growth. Enterprise is custom capacity plus private deployment and SLAs.</p>",
+    "<p>Start a 14-day free trial with multilingual RAG, widget JWT auth, WhatsApp, and voice. After trial, Voice AI is on Pro, Growth, and Enterprise. Scale with Growth or Enterprise for custom capacity and SLAs.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],

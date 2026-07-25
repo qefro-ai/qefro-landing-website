@@ -168,7 +168,7 @@ TOPIC_LANDINGS: tuple[Landing, ...] = (
         (
             "Install with a short script and widget token. Messages stream over WebSocket, stay size-bounded, and can scrub PII before model calls.",
             "Visitors get answers grounded in your site crawl and uploaded docs. When they need a human, hand off to your team inbox with conversation context.",
-            "Optional voice STT/TTS in the widget helps mobile and accessibility use cases without a separate product.",
+            "Optional voice STT/TTS in the widget (Pro+) helps mobile and accessibility use cases without a separate product.",
         ),
         (
             "One-line embed for your site",
@@ -605,18 +605,18 @@ FEATURE_LANDINGS: tuple[Landing, ...] = (
         "voice-ai",
         "Voice AI",
         "Voice AI in Website Chat | Qefro",
-        "Qefro Voice AI adds speech-to-text and text-to-speech inside the website widget for hands-free customer support.",
+        "Qefro Voice AI adds speech-to-text and text-to-speech in the website widget — available on Pro, Growth, and Enterprise plans.",
         "<p>Use Qefro Voice AI in the website widget so visitors can speak questions and hear answers without a separate voice product.</p>",
         (
+            "Voice Assistant is available on Pro, Growth, and Enterprise plans (included during the free trial). Starter keeps text chat and WhatsApp.",
             "Voice lowers friction on mobile and for accessibility. STT/TTS runs in the widget experience alongside text chat.",
             "Answers still come from your RAG knowledge and can trigger the same Business Tools as typed messages.",
-            "Keep voice on Customer AI surfaces you enable — internal teams can continue with text in the Internal Portal.",
         ),
         (
             "STT and TTS in the widget",
+            "Pro, Growth, and Enterprise",
             "Same knowledge as text chat",
             "Works with business actions",
-            "Optional per deployment",
             "Pairs with live chat handoff",
         ),
         related=(
