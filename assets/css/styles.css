@@ -343,20 +343,17 @@ a:focus-visible {
 /* Nav */
 .site-header {
   position: sticky; top: 0; z-index: 50;
+  /* Keep blur/size stable — changing either on scroll caused intermittent flicker */
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   background: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
+  /* Own compositor layer; avoids backdrop repaint flicker over hero motion */
+  transform: translateZ(0);
+  transition: box-shadow 180ms ease, background-color 180ms ease;
 }
 .site-header.is-scrolled {
-  backdrop-filter: blur(28px);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-}
-.site-header.is-scrolled .nav {
-  min-height: 3.35rem;
-}
-.site-header.is-scrolled .brand img {
-  width: 2.15rem;
-  height: 2.15rem;
 }
 .nav {
   display: flex; align-items: center; justify-content: space-between;
