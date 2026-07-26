@@ -34,12 +34,12 @@ OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
     "Customer AI, Employee AI, and Admin Console."
 )
-DEMO_WIDGET_TOKEN = "demo-qefro-widget-token"
+DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
-WIDGET_WELCOME = (
-    "Hi! I'm the Qefro assistant. Ask how Qefro connects conversations to your "
-    "business — Customer AI, Employee AI, business actions, pricing, and security."
-)
+WIDGET_WELCOME = "Hello! How can I help?"
+WIDGET_PRIMARY_COLOR = "#6366f1"
+WIDGET_WORKSPACE_ID = "ef7afd02-2db8-4453-a894-1ed44f3f42cd"
+WIDGET_THEME = "dark"
 META_KEYWORDS = (
     "AI Workspace, Enterprise AI Platform, AI Customer Support Platform, "
     "Internal AI Assistant, Customer Support AI, Business AI, AI Knowledge Platform, "
@@ -245,15 +245,17 @@ def header(active: str | None = None) -> str:
   </header>"""
 
 
-def widget_embed(theme: str = "light") -> str:
+def widget_embed(theme: str | None = None) -> str:
+    theme = theme or WIDGET_THEME
     return f"""  <script id="qefro-widget-script"
     src="{WIDGET_CDN}"
     data-token="{DEMO_WIDGET_TOKEN}"
     data-endpoint="{API}"
     data-theme="{theme}"
     data-position="bottom-right"
-    data-primary-color="#7c3aed"
-    data-welcome-message="{WIDGET_WELCOME}"></script>"""
+    data-primary-color="{WIDGET_PRIMARY_COLOR}"
+    data-welcome-message="{WIDGET_WELCOME}"
+    data-workspace-id="{WIDGET_WORKSPACE_ID}"></script>"""
 
 
 def page_scripts(extra: str = "") -> str:
