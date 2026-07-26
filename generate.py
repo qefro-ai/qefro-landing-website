@@ -750,7 +750,7 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <p class="price-billed">billed annually · or $119/mo monthly</p>
             <p class="price-desc">For teams deploying across channels</p>
             <ul class="price-feats">
-              {price_feat("100,000 AI Messages / month")}
+              {price_feat("60,000 AI Messages / month")}
               {price_feat("Knowledge across teams", "500 documents")}
               {price_feat("20 team members")}
               {price_feat("Widget + WhatsApp + voice")}
