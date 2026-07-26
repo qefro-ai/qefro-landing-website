@@ -5,10 +5,25 @@ function setFaqOpen(item, open) {
 
   btn.setAttribute("aria-expanded", String(open));
   item.classList.toggle("is-open", open);
-
-  panel.style.height = open ? "auto" : "0px";
-  panel.style.opacity = open ? "1" : "0";
   panel.style.overflow = "hidden";
+
+  // Animate between measured pixel heights — CSS can't tween to/from "auto".
+  // The transition curve lives in styles.css (html[data-motion] .faq-a).
+  if (open) {
+    panel.style.height = panel.scrollHeight + "px";
+    panel.style.opacity = "1";
+    panel.addEventListener("transitionend", function onEnd(e) {
+      if (e.propertyName !== "height") return;
+      panel.removeEventListener("transitionend", onEnd);
+      if (item.classList.contains("is-open")) panel.style.height = "auto";
+    });
+  } else {
+    // Pin the current height first so collapsing from "auto" still animates.
+    panel.style.height = panel.scrollHeight + "px";
+    panel.getBoundingClientRect();
+    panel.style.height = "0px";
+    panel.style.opacity = "0";
+  }
 }
 
 export function initFaq() {

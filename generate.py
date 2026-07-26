@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "42"
+ASSET_VERSION = "43"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
@@ -1359,16 +1359,16 @@ def home_body() -> str:
               </tr>
             </thead>
             <tbody>
-              <tr><td>Answers questions</td><td>✓</td><td>✓</td></tr>
-              <tr><td>Company knowledge</td><td>✓</td><td>✓</td></tr>
-              <tr><td>Business actions</td><td>✗</td><td>✓</td></tr>
-              <tr><td>Employee portal</td><td>✗</td><td>✓</td></tr>
-              <tr><td>Website widget</td><td>✓</td><td>✓</td></tr>
-              <tr><td>WhatsApp</td><td>Limited</td><td>✓</td></tr>
-              <tr><td>Workspace permissions</td><td>✗</td><td>✓</td></tr>
-              <tr><td>Team RBAC</td><td>✗</td><td>✓</td></tr>
-              <tr><td>OpenAPI integrations</td><td>Rare</td><td>✓</td></tr>
-              <tr><td>Multi-workspace AI</td><td>✗</td><td>✓</td></tr>
+              <tr><td>Answers questions</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Company knowledge</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Business actions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Employee portal</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Website widget</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>WhatsApp</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Workspace permissions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Team RBAC</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>OpenAPI integrations</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Multi-workspace AI</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
             </tbody>
           </table>
         </div>
