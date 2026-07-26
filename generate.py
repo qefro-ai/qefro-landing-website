@@ -996,24 +996,76 @@ def home_body() -> str:
     return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
-        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} Qefro</span>
+        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI CUSTOMER SUPPORT PLATFORM</span>
         <h1 data-motion="hero-title">
-          <span class="hero-line">The AI platform that connects</span>
-          <span class="hero-accent">conversations to your business</span>
+          <span class="hero-line">AI Customer Support That</span>
+          <span class="hero-accent">Knows Your Business</span>
         </h1>
-        <p class="hero-sub" data-motion="hero-sub">Build AI assistants that answer questions and take secure business actions.</p>
+        <p class="hero-sub" data-motion="hero-sub">Train AI using your documents and website. Deliver accurate answers instantly.</p>
         <div class="hero-actions" data-motion="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start 14-Day Free Trial {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Your FREE 14-Day Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
         </div>
         <div class="hero-checks" data-motion="hero-checks">
-          <span>{ICONS["check"]} Customer AI · Employee AI · Admin Console</span>
-          <span>{ICONS["check"]} REST/OpenAPI or Backend SDK</span>
-          <span>{ICONS["check"]} Full access for 14 days · no credit card</span>
-          <span>{ICONS["check"]} Web · WhatsApp · internal teams</span>
+          <span>{ICONS["check"]} No Setup Fees</span>
+          <span>{ICONS["check"]} Cancel Anytime</span>
+          <span>{ICONS["check"]} Full Access</span>
+          <span>{ICONS["check"]} 24/7 Support</span>
         </div>
-        <p class="hero-diff" data-motion="hero-diff">Answer, act, and scale across web, WhatsApp, and internal teams — from one platform.</p>
-        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#platform" data-clarity-event="cta_scroll_platform">Explore the platform {ICONS["chevron"]}</a></p>
+        <p class="hero-diff" data-motion="hero-diff">Trusted by businesses to automate support and improve customer happiness.</p>
+        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#capabilities" data-clarity-event="cta_scroll_platform">Explore platform capabilities {ICONS["chevron"]}</a></p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="capabilities" aria-labelledby="core-features-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <span class="badge badge-purple">{ICONS["sparkles"]} Platform Features</span>
+          <h2 id="core-features-heading">Everything you need for AI Customer Support</h2>
+          <p>Train AI on your knowledge base, automate support workflows, and scale across channels.</p>
+        </div>
+        <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["msg"]}</div>
+            <h3>AI Chat</h3>
+            <p>Smart, accurate and context-aware responses in real-time.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["globe"]}</div>
+            <h3>Website Crawler</h3>
+            <p>Automatically crawl and index your website content.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["file"]}</div>
+            <h3>Document Intelligence</h3>
+            <p>Extract, understand and answer from any document.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["headphones"]}</div>
+            <h3>Voice Support</h3>
+            <p>Voice-to-voice interactions for better customer experience.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["globe"]}</div>
+            <h3>Multi-language</h3>
+            <p>Support customers in 100+ languages seamlessly.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["building"]}</div>
+            <h3>Team Workspace</h3>
+            <p>Collaborate with your team with role-based access.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["shield"]}</div>
+            <h3>Enterprise Security</h3>
+            <p>Your data is encrypted, private and always protected.</p>
+          </div>
+          <div class="exp-card tilt-3d">
+            <div class="exp-icon">{ICONS["zap"]}</div>
+            <h3>Real-time Streaming</h3>
+            <p>Get answers instantly with live streaming responses.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1373,10 +1425,11 @@ def home_body() -> str:
 
 
 PAGES["index.html"] = page(
-    title="Qefro — Connect Conversations to Your Business",
+    title="Qefro — AI Customer Support Platform That Knows Your Business",
     description=(
-        "Build AI assistants that answer questions and take secure business actions. "
-        "Customer AI, Employee AI, and Admin Console — via REST/OpenAPI or Backend SDK."
+        "Train AI using your documents and website. Deliver accurate answers instantly "
+        "with AI Chat, Website Crawler, Document Intelligence, Voice Support, Multi-language, "
+        "Team Workspace, Enterprise Security, and Real-time Streaming."
     ),
     path="",
     jsonld=[
@@ -1384,8 +1437,8 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         webpage_json(
-            "Qefro — Connect Conversations to Your Business",
-            "Build AI assistants that answer questions and take secure business actions. Customer AI, Employee AI, and Admin Console — via REST/OpenAPI or Backend SDK.",
+            "Qefro — AI Customer Support Platform That Knows Your Business",
+            "Train AI using your documents and website. Deliver accurate answers instantly with AI Chat, Website Crawler, Document Intelligence, Voice Support, Multi-language, Team Workspace, Enterprise Security, and Real-time Streaming.",
             "",
         ),
     ],
