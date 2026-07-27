@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "43"
+ASSET_VERSION = "44"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is the AI platform that connects conversations to your business — "
@@ -262,6 +262,7 @@ def widget_embed(theme: str | None = None) -> str:
 def page_scripts(extra: str = "") -> str:
     return f"""{widget_embed()}
   <script src="/assets/js/main.js?v={ASSET_VERSION}" defer></script>
+  <script src="/assets/js/qefro-ref.js?v={ASSET_VERSION}" defer></script>
   <script type="module" src="/assets/js/qefro-motion.js?v={ASSET_VERSION}"></script>{extra}"""
 
 
