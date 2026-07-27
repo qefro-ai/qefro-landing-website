@@ -40,11 +40,13 @@ WIDGET_WELCOME = "Hello! How can I help?"
 WIDGET_PRIMARY_COLOR = "#6366f1"
 WIDGET_WORKSPACE_ID = "ef7afd02-2db8-4453-a894-1ed44f3f42cd"
 WIDGET_THEME = "dark"
+# Used only for schema.org "keywords" in JSON-LD — the <meta name="keywords"> tag
+# is deliberately not emitted (Google has ignored it since 2009).
 META_KEYWORDS = (
-    "AI Workspace, Enterprise AI Platform, AI Customer Support Platform, "
-    "Internal AI Assistant, Customer Support AI, Business AI, AI Knowledge Platform, "
-    "AI Employee Assistant, AI Powered Helpdesk, AI Business Automation, "
-    "Organizational AI, WhatsApp AI"
+    "AI customer support software, AI customer support platform, "
+    "AI chatbot for website, AI helpdesk, AI knowledge base, "
+    "customer support automation, AI support agent, WhatsApp AI, "
+    "Internal AI assistant, Employee AI"
 )
 
 # Inline SVG icons (lucide-like)
@@ -138,7 +140,6 @@ def meta_block(
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{escape(title)}</title>
   <meta name="description" content="{escape(description)}" />
-  <meta name="keywords" content="{escape(META_KEYWORDS)}" />
   <meta name="robots" content="{robots}" />
   <meta name="googlebot" content="{robots}" />
   <meta name="author" content="Qefro" />
@@ -1001,7 +1002,7 @@ def home_body() -> str:
           <span class="hero-line">AI Customer Support That</span>
           <span class="hero-accent">Knows Your Business</span>
         </h1>
-        <p class="hero-sub" data-motion="hero-sub">Train AI using your documents and website. Deliver accurate answers instantly.</p>
+        <p class="hero-sub" data-motion="hero-sub">AI customer support software that trains on your documents and website — deploy an AI chatbot for your website, WhatsApp, and employees in minutes.</p>
         <div class="hero-actions" data-motion="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Your FREE 14-Day Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
@@ -1012,7 +1013,7 @@ def home_body() -> str:
           <span>{ICONS["check"]} Full Access</span>
           <span>{ICONS["check"]} 24/7 Support</span>
         </div>
-        <p class="hero-diff" data-motion="hero-diff">Trusted by businesses to automate support and improve customer happiness.</p>
+        <p class="hero-diff" data-motion="hero-diff">Trusted by businesses to automate customer support and improve customer happiness.</p>
         <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#capabilities" data-clarity-event="cta_scroll_platform">Explore platform capabilities {ICONS["chevron"]}</a></p>
       </div>
     </section>
@@ -1022,13 +1023,13 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-purple">{ICONS["sparkles"]} Platform Features</span>
           <h2 id="core-features-heading">Everything you need for AI Customer Support</h2>
-          <p>Train AI on your knowledge base, automate support workflows, and scale across channels.</p>
+          <p>Build an AI knowledge base from your content, automate customer support workflows, and scale your AI helpdesk across channels.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
           <div class="exp-card tilt-3d">
             <div class="exp-icon">{ICONS["msg"]}</div>
-            <h3>AI Chat</h3>
-            <p>Smart, accurate and context-aware responses in real-time.</p>
+            <h3>AI Chatbot</h3>
+            <p>An AI chatbot for your website with smart, context-aware responses in real-time.</p>
           </div>
           <div class="exp-card tilt-3d">
             <div class="exp-icon">{ICONS["globe"]}</div>
@@ -1135,7 +1136,7 @@ def home_body() -> str:
           <a class="exp-card tilt-3d" href="/ai-chatbot" data-clarity-event="card_customer_ai">
             <div class="exp-icon">{ICONS["headphones"]}</div>
             <h3>Customer AI</h3>
-            <p>Website widget and WhatsApp — answer questions, run business actions, capture leads, and hand off to humans.</p>
+            <p>An AI support agent for your website widget and WhatsApp — answers questions, runs business actions, captures leads, and hands off to humans.</p>
             <span class="exp-card-cta">Learn more {ICONS["arrow"]}</span>
           </a>
           <a class="exp-card exp-card-featured tilt-3d" href="/internal-ai" data-clarity-event="card_employee_ai">
@@ -1297,7 +1298,7 @@ def home_body() -> str:
             </ul>
           </article>
           <article class="outcome-card tilt-3d">
-            <h3>Knowledge Platform</h3>
+            <h3>AI Knowledge Base</h3>
             <ul>
               <li>PDF, DOCX, Markdown, TXT</li>
               <li>Website crawling &amp; OCR</li>
@@ -1425,11 +1426,11 @@ def home_body() -> str:
 
 
 PAGES["index.html"] = page(
-    title="Qefro — AI Customer Support Platform That Knows Your Business",
+    title="AI Customer Support Software | Qefro",
     description=(
-        "Train AI using your documents and website. Deliver accurate answers instantly "
-        "with AI Chat, Website Crawler, Document Intelligence, Voice Support, Multi-language, "
-        "Team Workspace, Enterprise Security, and Real-time Streaming."
+        "AI customer support platform that trains on your documents and website. "
+        "Deploy AI chatbots for your website, WhatsApp, and employees in minutes. "
+        "Start your free 14-day trial."
     ),
     path="",
     jsonld=[
@@ -1437,8 +1438,8 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         webpage_json(
-            "Qefro — AI Customer Support Platform That Knows Your Business",
-            "Train AI using your documents and website. Deliver accurate answers instantly with AI Chat, Website Crawler, Document Intelligence, Voice Support, Multi-language, Team Workspace, Enterprise Security, and Real-time Streaming.",
+            "AI Customer Support Software | Qefro",
+            "AI customer support platform that trains on your documents and website. Deploy AI chatbots for your website, WhatsApp, and employees in minutes. Start your free 14-day trial.",
             "",
         ),
     ],
