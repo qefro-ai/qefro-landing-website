@@ -1428,9 +1428,8 @@ def home_body() -> str:
 PAGES["index.html"] = page(
     title="AI Customer Support Software | Qefro",
     description=(
-        "AI customer support platform that trains on your documents and website. "
-        "Deploy AI chatbots for your website, WhatsApp, and employees in minutes. "
-        "Start your free 14-day trial."
+        "AI customer support software that trains on your documents and website. "
+        "Deploy chatbots for web, WhatsApp, and teams in minutes."
     ),
     path="",
     jsonld=[
@@ -1439,7 +1438,7 @@ PAGES["index.html"] = page(
         SOFTWARE_JSON,
         webpage_json(
             "AI Customer Support Software | Qefro",
-            "AI customer support platform that trains on your documents and website. Deploy AI chatbots for your website, WhatsApp, and employees in minutes. Start your free 14-day trial.",
+            "AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes.",
             "",
         ),
     ],
