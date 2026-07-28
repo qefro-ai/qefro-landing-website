@@ -14,8 +14,10 @@
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* storage blocked (privacy mode) — default theme */ }
     })();
   </script>
   <link rel="canonical" href="https://qefro.com/use-cases" />
@@ -69,7 +71,7 @@
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-07-28",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -163,10 +165,10 @@
         </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
         <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
-    <div class="mobile-panel wrap">
+    <div class="mobile-panel wrap" id="mobile-nav-panel">
       <a href="/how-it-works">Platform</a>
       <a href="/features">Features</a>
       <a href="/use-cases" aria-current="page">Solutions</a>
@@ -233,85 +235,88 @@
           <h2>Industries</h2>
           <p>Teams in SaaS, healthcare, education, manufacturing, retail, hospitality, travel, real estate, and internal IT use Qefro to deploy organizational AI without building a platform from scratch.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Industry landing pages" style="margin-top:1rem">
-          <a class="workspace-pill" href="/ai-for-hospitals">AI for Hospitals</a>
-          <a class="workspace-pill" href="/ai-for-hotels">AI for Hotels</a>
-          <a class="workspace-pill" href="/ai-for-schools">AI for Schools</a>
-          <a class="workspace-pill" href="/ai-for-saas">AI for SaaS</a>
-          <a class="workspace-pill" href="/ai-for-ecommerce">AI for Ecommerce</a>
-          <a class="workspace-pill" href="/ai-for-manufacturing">AI for Manufacturing</a>
-          <a class="workspace-pill" href="/ai-for-real-estate">AI for Real Estate</a>
-          <a class="workspace-pill" href="/ai-for-travel">AI for Travel</a>
-
-        </div>
+        <nav aria-label="Industry landing pages">
+        <ul class="workspace-pills reveal mt-1">
+          <li><a class="workspace-pill" href="/ai-for-hospitals">AI for Hospitals</a></li>
+          <li><a class="workspace-pill" href="/ai-for-hotels">AI for Hotels</a></li>
+          <li><a class="workspace-pill" href="/ai-for-schools">AI for Schools</a></li>
+          <li><a class="workspace-pill" href="/ai-for-saas">AI for SaaS</a></li>
+          <li><a class="workspace-pill" href="/ai-for-ecommerce">AI for Ecommerce</a></li>
+          <li><a class="workspace-pill" href="/ai-for-manufacturing">AI for Manufacturing</a></li>
+          <li><a class="workspace-pill" href="/ai-for-real-estate">AI for Real Estate</a></li>
+          <li><a class="workspace-pill" href="/ai-for-travel">AI for Travel</a></li>
+        </ul>
+      </nav>
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Topic pages</h2>
           <p>Explore how Qefro maps to common search intents — from RAG chatbots to WhatsApp agents.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Topic landing pages" style="margin-top:1rem">
-          <a class="workspace-pill" href="/ai-customer-support">AI Customer Support</a>
-          <a class="workspace-pill" href="/ai-chatbot">AI Chatbot for Business</a>
-          <a class="workspace-pill" href="/website-ai-chat">Website AI Chat</a>
-          <a class="workspace-pill" href="/whatsapp-ai-agent">WhatsApp AI Agent</a>
-          <a class="workspace-pill" href="/multilingual-ai-chatbot">Multilingual AI Chatbot</a>
-          <a class="workspace-pill" href="/rag-chatbot">RAG Chatbot</a>
-          <a class="workspace-pill" href="/document-chat-ai">Document Chat AI</a>
-          <a class="workspace-pill" href="/customer-support-automation">Customer Support Automation</a>
-          <a class="workspace-pill" href="/helpdesk-ai">Helpdesk AI</a>
-          <a class="workspace-pill" href="/knowledge-base-ai">Knowledge Base AI</a>
-
-        </div>
+        <nav aria-label="Topic landing pages">
+        <ul class="workspace-pills reveal mt-1">
+          <li><a class="workspace-pill" href="/ai-customer-support">AI Customer Support</a></li>
+          <li><a class="workspace-pill" href="/ai-chatbot">AI Chatbot for Business</a></li>
+          <li><a class="workspace-pill" href="/website-ai-chat">Website AI Chat</a></li>
+          <li><a class="workspace-pill" href="/whatsapp-ai-agent">WhatsApp AI Agent</a></li>
+          <li><a class="workspace-pill" href="/multilingual-ai-chatbot">Multilingual AI Chatbot</a></li>
+          <li><a class="workspace-pill" href="/rag-chatbot">RAG Chatbot</a></li>
+          <li><a class="workspace-pill" href="/document-chat-ai">Document Chat AI</a></li>
+          <li><a class="workspace-pill" href="/customer-support-automation">Customer Support Automation</a></li>
+          <li><a class="workspace-pill" href="/helpdesk-ai">Helpdesk AI</a></li>
+          <li><a class="workspace-pill" href="/knowledge-base-ai">Knowledge Base AI</a></li>
+        </ul>
+      </nav>
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>AI customer support by industry</h2>
           <p>Programmatic pages for niche search intent — dental clinics, hotels, logistics, and more.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Vertical landing pages" style="margin-top:1rem">
-          <a class="workspace-pill" href="/ai-customer-support-for-dental-clinics">AI Customer Support for Dental Clinics</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-clinics">AI Customer Support for Clinics</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-hotels">AI Customer Support for Hotels</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-universities">AI Customer Support for Universities</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-hospitals">AI Customer Support for Hospitals</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-restaurants">AI Customer Support for Restaurants</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-logistics">AI Customer Support for Logistics</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-retail">AI Customer Support for Retail</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-schools">AI Customer Support for Schools</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-colleges">AI Customer Support for Colleges</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-ecommerce">AI Customer Support for Ecommerce Brands</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-saas">AI Customer Support for SaaS Companies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-real-estate">AI Customer Support for Real Estate Agencies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-property-management">AI Customer Support for Property Management</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-travel-agencies">AI Customer Support for Travel Agencies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-manufacturing">AI Customer Support for Manufacturing</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-law-firms">AI Customer Support for Law Firms</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-accounting-firms">AI Customer Support for Accounting Firms</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-insurance">AI Customer Support for Insurance Agencies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-fintech">AI Customer Support for Fintech</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-gyms">AI Customer Support for Gyms &amp; Fitness Clubs</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-spas">AI Customer Support for Spas &amp; Wellness</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-auto-dealerships">AI Customer Support for Auto Dealerships</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-veterinary-clinics">AI Customer Support for Veterinary Clinics</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-pharmacies">AI Customer Support for Pharmacies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-healthcare-practices">AI Customer Support for Healthcare Practices</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-urgent-care">AI Customer Support for Urgent Care Centers</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-banks">AI Customer Support for Banks &amp; Credit Unions</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-mortgage">AI Customer Support for Mortgage Lenders</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-agencies">AI Customer Support for Marketing Agencies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-consultancies">AI Customer Support for Consultancies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-nonprofits">AI Customer Support for Nonprofits</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-government">AI Customer Support for Government Services</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-utilities">AI Customer Support for Utilities</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-airlines">AI Customer Support for Airlines</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-tour-operators">AI Customer Support for Tour Operators</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-vacation-rentals">AI Customer Support for Vacation Rentals</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-wholesale">AI Customer Support for Wholesale Distributors</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-industrial-supplies">AI Customer Support for Industrial Supplies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-edtech">AI Customer Support for EdTech Companies</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-daycare">AI Customer Support for Daycare &amp; Childcare</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-pet-stores">AI Customer Support for Pet Stores</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-cafes">AI Customer Support for Cafes &amp; Coffee Shops</a>
-          <a class="workspace-pill" href="/ai-customer-support-for-facilities">AI Customer Support for Facilities Management</a>
-
-        </div>
+        <nav aria-label="Vertical landing pages">
+        <ul class="workspace-pills reveal mt-1">
+          <li><a class="workspace-pill" href="/ai-customer-support-for-dental-clinics">AI Customer Support for Dental Clinics</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-clinics">AI Customer Support for Clinics</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-hotels">AI Customer Support for Hotels</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-universities">AI Customer Support for Universities</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-hospitals">AI Customer Support for Hospitals</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-restaurants">AI Customer Support for Restaurants</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-logistics">AI Customer Support for Logistics</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-retail">AI Customer Support for Retail</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-schools">AI Customer Support for Schools</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-colleges">AI Customer Support for Colleges</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-ecommerce">AI Customer Support for Ecommerce Brands</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-saas">AI Customer Support for SaaS Companies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-real-estate">AI Customer Support for Real Estate Agencies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-property-management">AI Customer Support for Property Management</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-travel-agencies">AI Customer Support for Travel Agencies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-manufacturing">AI Customer Support for Manufacturing</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-law-firms">AI Customer Support for Law Firms</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-accounting-firms">AI Customer Support for Accounting Firms</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-insurance">AI Customer Support for Insurance Agencies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-fintech">AI Customer Support for Fintech</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-gyms">AI Customer Support for Gyms &amp; Fitness Clubs</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-spas">AI Customer Support for Spas &amp; Wellness</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-auto-dealerships">AI Customer Support for Auto Dealerships</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-veterinary-clinics">AI Customer Support for Veterinary Clinics</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-pharmacies">AI Customer Support for Pharmacies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-healthcare-practices">AI Customer Support for Healthcare Practices</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-urgent-care">AI Customer Support for Urgent Care Centers</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-banks">AI Customer Support for Banks &amp; Credit Unions</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-mortgage">AI Customer Support for Mortgage Lenders</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-agencies">AI Customer Support for Marketing Agencies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-consultancies">AI Customer Support for Consultancies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-nonprofits">AI Customer Support for Nonprofits</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-government">AI Customer Support for Government Services</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-utilities">AI Customer Support for Utilities</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-airlines">AI Customer Support for Airlines</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-tour-operators">AI Customer Support for Tour Operators</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-vacation-rentals">AI Customer Support for Vacation Rentals</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-wholesale">AI Customer Support for Wholesale Distributors</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-industrial-supplies">AI Customer Support for Industrial Supplies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-edtech">AI Customer Support for EdTech Companies</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-daycare">AI Customer Support for Daycare &amp; Childcare</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-pet-stores">AI Customer Support for Pet Stores</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-cafes">AI Customer Support for Cafes &amp; Coffee Shops</a></li>
+          <li><a class="workspace-pill" href="/ai-customer-support-for-facilities">AI Customer Support for Facilities Management</a></li>
+        </ul>
+      </nav>
       </div>
     </section>
 
@@ -366,11 +371,12 @@
   </div>
   <script id="qefro-widget-script"
     src="https://cdn.qefro.com/widget.js"
+    defer
     data-token="wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
     data-endpoint="https://api.qefro.com"
-    data-theme="dark"
+    data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
   <script src="/assets/js/main.js?v=44" defer></script>

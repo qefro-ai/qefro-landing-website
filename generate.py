@@ -37,9 +37,10 @@ OG_IMAGE_ALT = (
 DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = "Hello! How can I help?"
-WIDGET_PRIMARY_COLOR = "#6366f1"
+WIDGET_PRIMARY_COLOR = "#7c3aed"
 WIDGET_WORKSPACE_ID = "ef7afd02-2db8-4453-a894-1ed44f3f42cd"
-WIDGET_THEME = "dark"
+# Matches the default (light) page theme so first load doesn't re-theme/re-mount the widget.
+WIDGET_THEME = "light"
 # Used only for schema.org "keywords" in JSON-LD — the <meta name="keywords"> tag
 # is deliberately not emitted (Google has ignored it since 2009).
 META_KEYWORDS = (
@@ -149,8 +150,10 @@ def meta_block(
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {{
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      try {{
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      }} catch (e) {{ /* storage blocked (privacy mode) — default theme */ }}
     }})();
   </script>
 {canonical}  <link rel="alternate" type="text/plain" href="{SITE}/llms.txt" title="LLM-readable summary" />
@@ -227,10 +230,10 @@ def header(active: str | None = None) -> str:
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
         <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Free Trial {ICONS["arrow"]}</a>
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">{ICONS["menu"]}</button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">{ICONS["menu"]}</button>
       </div>
     </div>
-    <div class="mobile-panel wrap">
+    <div class="mobile-panel wrap" id="mobile-nav-panel">
 {mobile}
       <a href="/faq">FAQ</a>
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
@@ -250,6 +253,7 @@ def widget_embed(theme: str | None = None) -> str:
     theme = theme or WIDGET_THEME
     return f"""  <script id="qefro-widget-script"
     src="{WIDGET_CDN}"
+    defer
     data-token="{DEMO_WIDGET_TOKEN}"
     data-endpoint="{API}"
     data-theme="{theme}"
@@ -823,10 +827,10 @@ def product_screenshots_html() -> str:
 FAQ_ITEMS = [
     (
         "What is Qefro?",
-        "Qefro is the AI platform that connects conversations to your business. "
-        "Build AI assistants that answer questions and take secure business actions across "
-        "Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, "
-        "permission system, and set of business actions.",
+        "Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, "
+        "and Employee AI in a branded Internal Portal. Both answer from your approved company knowledge and "
+        "execute business actions through your APIs — with shared permissions, isolated AI Workspaces, "
+        "and one Admin Console to govern it all.",
     ),
     ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
@@ -982,15 +986,41 @@ def contact_page_json(title: str, description: str) -> str:
 
 PAGES: dict[str, str] = {}
 
+
+def faq_item_html(q: str, a: str, prefix: str, index: int, *, raw: bool = True) -> str:
+    """Accordion item with button↔panel ARIA pairing. raw=False escapes plain-text q/a."""
+    q_html = q if raw else escape(q)
+    a_html = a if raw else escape(a)
+    return f"""          <div class="faq-item">
+            <button type="button" id="{prefix}-q{index}" aria-expanded="false" aria-controls="{prefix}-a{index}"><span>{q_html}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
+            <div class="faq-a" id="{prefix}-a{index}" role="region" aria-labelledby="{prefix}-q{index}"><p>{a_html}</p></div>
+          </div>
+"""
+
+
+def pill_cloud(items, label: str, *, ul_class: str = "") -> str:
+    """Pill cloud with real list semantics; wrapped in a labelled nav when items are links.
+
+    items: iterable of (href, text) — pass href="" for a static (non-link) pill.
+    """
+    items_html = "\n".join(
+        (
+            f'          <li><a class="workspace-pill" href="{href}">{escape(text)}</a></li>'
+            if href
+            else f'          <li class="workspace-pill">{escape(text)}</li>'
+        )
+        for href, text in items
+    )
+    ul = f'<ul class="workspace-pills{ul_class}">\n{items_html}\n        </ul>'
+    if any(href for href, _ in items):
+        return f'<nav aria-label="{escape(label)}">\n        {ul}\n      </nav>'
+    return f'{ul}<!-- static pill list: {escape(label)} -->'
+
+
 # ── Home ────────────────────────────────────────────────────────────
 def home_faq_preview(n: int = 8) -> str:
     return "".join(
-        f"""          <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>{q}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
-            <div class="faq-a"><p>{a}</p></div>
-          </div>
-"""
-        for q, a in FAQ_ITEMS[:n]
+        faq_item_html(q, a, "home-faq", i) for i, (q, a) in enumerate(FAQ_ITEMS[:n])
     )
 
 
@@ -998,12 +1028,12 @@ def home_body() -> str:
     return f"""    <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
-        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI CUSTOMER SUPPORT PLATFORM</span>
+        <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI CUSTOMER SUPPORT THAT TAKES ACTION</span>
         <h1 data-motion="hero-title">
           <span class="hero-line">AI Customer Support That</span>
-          <span class="hero-accent">Knows Your Business</span>
+          <span class="hero-accent">Replies — and Takes Action</span>
         </h1>
-        <p class="hero-sub" data-motion="hero-sub">AI customer support software that trains on your documents and website — deploy an AI chatbot for your website, WhatsApp, and employees in minutes.</p>
+        <p class="hero-sub" data-motion="hero-sub">Qefro answers from your help docs and website, then executes the follow-through — live order lookups, ticket creation, lead capture, and human handoff — on your website and WhatsApp.</p>
         <div class="hero-actions" data-motion="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Your FREE 14-Day Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
@@ -1014,7 +1044,7 @@ def home_body() -> str:
           <span>{ICONS["check"]} Full Access</span>
           <span>{ICONS["check"]} 24/7 Support</span>
         </div>
-        <p class="hero-diff" data-motion="hero-diff">Trusted by businesses to automate customer support and improve customer happiness.</p>
+        <p class="hero-diff" data-motion="hero-diff">Most AI chatbots stop at replies. Qefro closes the loop with real business actions through your APIs.</p>
         <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#capabilities" data-clarity-event="cta_scroll_platform">Explore platform capabilities {ICONS["chevron"]}</a></p>
       </div>
     </section>
@@ -1024,7 +1054,7 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-purple">{ICONS["sparkles"]} Platform Features</span>
           <h2 id="core-features-heading">Everything you need for AI Customer Support</h2>
-          <p>Build an AI knowledge base from your content, automate customer support workflows, and scale your AI helpdesk across channels.</p>
+          <p>Grounded answers from your content, real actions through your APIs — order lookups, tickets, lead capture, and human handoff across website and WhatsApp.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
           <div class="exp-card tilt-3d">
@@ -1129,9 +1159,9 @@ def home_body() -> str:
     <section class="section" id="platform" aria-labelledby="platform-heading">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} Three surfaces</span>
-          <h2 id="platform-heading">Customer AI. Employee AI. Admin Console.</h2>
-          <p>One platform for customers, employees, and operators — shared knowledge, permissions, and business actions. <a href="/how-it-works">See how the platform works</a>.</p>
+          <span class="badge badge-indigo">{ICONS["zap"]} Two surfaces, one platform</span>
+          <h2 id="platform-heading">One AI platform. Two front doors.</h2>
+          <p>Customer AI on your website and WhatsApp. Employee AI in a branded Internal Portal. Both run on shared knowledge, permissions, and business actions — governed from one Admin Console. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
         <div class="exp-grid reveal">
           <a class="exp-card tilt-3d" href="/ai-chatbot" data-clarity-event="card_customer_ai">
@@ -1226,14 +1256,11 @@ def home_body() -> str:
             </div>
           </div>
         </div>
-        <div class="workspace-pills reveal" aria-label="Example AI Workspaces">
-          <span class="workspace-pill">Customer Support</span>
-          <span class="workspace-pill">HR</span>
-          <span class="workspace-pill">IT</span>
-          <span class="workspace-pill">Sales</span>
-          <span class="workspace-pill">Finance</span>
-          <span class="workspace-pill">Engineering</span>
-        </div>
+        {pill_cloud(
+            [("", "Customer Support"), ("", "HR"), ("", "IT"), ("", "Sales"), ("", "Finance"), ("", "Engineering")],
+            "Example AI Workspaces",
+            ul_class=" reveal",
+        )}
         <p class="integrations-note reveal" style="text-align:center;margin-top:1rem">Each AI Workspace has its own isolated knowledge, instructions, actions, and permissions.</p>
         <div class="product-mock-grid reveal" style="margin-top:2.5rem">
           <figure class="product-mock tilt-3d">
@@ -1347,8 +1374,8 @@ def home_body() -> str:
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["chart"]} Comparison</span>
-          <h2 id="compare-heading">Traditional AI chatbot vs Qefro</h2>
-          <p>Answering questions is table stakes. Organizations need actions, employee access, and workspace permissions.</p>
+          <h2 id="compare-heading">Most AI chatbots only reply. Qefro replies and acts.</h2>
+          <p>Answering questions is table stakes. Resolution needs order lookups, ticket creation, lead capture, and clean human handoff.</p>
         </div>
         <div class="table-wrap reveal">
           <table class="compare-table">
@@ -1361,16 +1388,16 @@ def home_body() -> str:
               </tr>
             </thead>
             <tbody>
-              <tr><td>Answers questions</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Company knowledge</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Business actions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Employee portal</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Website widget</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>WhatsApp</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Workspace permissions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Team RBAC</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>OpenAPI integrations</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Multi-workspace AI</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Answers from your docs &amp; website</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Live order lookups via your APIs</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Creates tickets in your helpdesk</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Lead capture from conversations</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Human handoff with full transcript</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>WhatsApp deployment</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Declines instead of guessing (cited)</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Employee AI portal included</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Workspace permissions &amp; team RBAC</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>OpenAPI / Backend SDK integrations</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1414,8 +1441,8 @@ def home_body() -> str:
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
-        <h2 id="cta-heading">Build AI assistants that answer and act.</h2>
-        <p>Start a 14-day free trial for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
+        <h2 id="cta-heading">Stop deflecting. Start resolving.</h2>
+        <p>Start a 14-day free trial — grounded answers plus real business actions on your website and WhatsApp. No credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start 14-Day Free Trial {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
@@ -1427,10 +1454,10 @@ def home_body() -> str:
 
 
 PAGES["index.html"] = page(
-    title="AI Customer Support Software | Qefro",
+    title="AI Customer Support That Takes Action | Qefro",
     description=(
-        "AI customer support software that trains on your documents and website. "
-        "Deploy chatbots for web, WhatsApp, and teams in minutes."
+        "Most AI chatbots only reply. Qefro answers from your docs and website, then acts — "
+        "order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp."
     ),
     path="",
     jsonld=[
@@ -1438,8 +1465,8 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         webpage_json(
-            "AI Customer Support Software | Qefro",
-            "AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes.",
+            "AI Customer Support That Takes Action | Qefro",
+            "Most AI chatbots only reply. Qefro answers from your docs and website, then acts — order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp.",
             "",
         ),
     ],
@@ -1617,16 +1644,12 @@ def how_it_works_page_content() -> str:
           <h2>Feature pages</h2>
           <p>Each capability has its own page for deeper detail — from live chat and WhatsApp to RAG, APIs, and audit logs.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Feature landing pages" style="margin-top:1rem">
-{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in feature_link_grid())}
-        </div>
+        {pill_cloud([(f"/{s}", l) for s, l in feature_link_grid()], "Feature landing pages", ul_class=" reveal mt-1")}
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Popular topic pages</h2>
           <p>Looking for a specific keyword journey? Start here.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Topic landing pages" style="margin-top:1rem">
-{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in topic_link_grid())}
-        </div>"""
+        {pill_cloud([(f"/{s}", l) for s, l in topic_link_grid()], "Topic landing pages", ul_class=" reveal mt-1")}"""
 
 
 def use_cases_page_content() -> str:
@@ -1663,23 +1686,17 @@ def use_cases_page_content() -> str:
           <h2>Industries</h2>
           <p>Teams in SaaS, healthcare, education, manufacturing, retail, hospitality, travel, real estate, and internal IT use Qefro to deploy organizational AI without building a platform from scratch.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Industry landing pages" style="margin-top:1rem">
-{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in industry_link_grid())}
-        </div>
+        {pill_cloud([(f"/{s}", l) for s, l in industry_link_grid()], "Industry landing pages", ul_class=" reveal mt-1")}
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Topic pages</h2>
           <p>Explore how Qefro maps to common search intents — from RAG chatbots to WhatsApp agents.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Topic landing pages" style="margin-top:1rem">
-{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in topic_link_grid())}
-        </div>
+        {pill_cloud([(f"/{s}", l) for s, l in topic_link_grid()], "Topic landing pages", ul_class=" reveal mt-1")}
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>AI customer support by industry</h2>
           <p>Programmatic pages for niche search intent — dental clinics, hotels, logistics, and more.</p>
         </div>
-        <div class="workspace-pills reveal" aria-label="Vertical landing pages" style="margin-top:1rem">
-{"".join(f'          <a class="workspace-pill" href="/{slug}">{escape(label)}</a>\n' for slug, label in vertical_link_grid())}
-        </div>"""
+        {pill_cloud([(f"/{s}", l) for s, l in vertical_link_grid()], "Vertical landing pages", ul_class=" reveal mt-1")}"""
 
 
 def security_page_content() -> str:
@@ -2090,12 +2107,7 @@ PAGES["pricing.html"] = inner(
 )
 
 faq_html = "".join(
-    f"""          <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>{q}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
-            <div class="faq-a"><p>{a}</p></div>
-          </div>
-"""
-    for q, a in FAQ_ITEMS
+    faq_item_html(q, a, "faq", i) for i, (q, a) in enumerate(FAQ_ITEMS)
 )
 
 PAGES["faq.html"] = page(
@@ -2313,8 +2325,8 @@ for slug, title, q, a, extra in [
         "what-is-qefro.html",
         "What is Qefro? | AI Workspace Platform for Organizations",
         "What is Qefro?",
-        "Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions.",
-        "<p>Conversation → Knowledge → Business Tool → Action. Connect systems via REST/OpenAPI or the Backend SDK. Configure once in the Admin Console, then deploy Customer AI and Employee AI everywhere — with workspace-level isolation.</p>",
+        "Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs — with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console.",
+        "<p>Point chatbots answer one audience and can&rsquo;t execute. Qefro runs customer-facing and employee-facing AI on one governed foundation: Conversation → Knowledge → Business Tool → Action. Connect systems via REST/OpenAPI or the Backend SDK, scope credentials per workspace, and deploy everywhere from a single configuration.</p>",
     ),
     (
         "qefro-pricing.html",
@@ -2381,12 +2393,8 @@ def seo_landing_content(landing) -> str:
     faqs = ""
     if landing.faqs:
         items = "".join(
-            f"""          <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>{escape(q)}</span><span class="faq-chevron">{ICONS["chevron"]}</span></button>
-            <div class="faq-a"><p>{escape(a)}</p></div>
-          </div>
-"""
-            for q, a in landing.faqs
+            faq_item_html(q, a, f"{landing.slug}-faq", i, raw=False)
+            for i, (q, a) in enumerate(landing.faqs)
         )
         faqs = f"""
         <div class="section-head reveal" style="text-align:left;margin-top:3rem">

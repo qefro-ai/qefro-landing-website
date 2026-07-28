@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>What is Qefro? | AI Workspace Platform for Organizations</title>
-  <meta name="description" content="Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions." />
+  <meta name="description" content="Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs — with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Qefro" />
@@ -14,8 +14,10 @@
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* storage blocked (privacy mode) — default theme */ }
     })();
   </script>
   <link rel="canonical" href="https://qefro.com/what-is-qefro" />
@@ -25,7 +27,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Qefro" />
   <meta property="og:title" content="What is Qefro? | AI Workspace Platform for Organizations" />
-  <meta property="og:description" content="Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions." />
+  <meta property="og:description" content="Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs — with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console." />
   <meta property="og:url" content="https://qefro.com/what-is-qefro" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
@@ -37,7 +39,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@qefro" />
   <meta name="twitter:title" content="What is Qefro? | AI Workspace Platform for Organizations" />
-  <meta name="twitter:description" content="Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions." />
+  <meta name="twitter:description" content="Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs — with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta name="twitter:image:alt" content="Qefro AI Platform — What is Qefro? | AI Workspace Platform for Organizations" />
   <meta name="geo.region" content="IN" />
@@ -62,14 +64,14 @@
   "@id": "https://qefro.com/what-is-qefro#webpage",
   "url": "https://qefro.com/what-is-qefro",
   "name": "What is Qefro? | AI Workspace Platform for Organizations",
-  "description": "Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console \u2014 sharing one knowledge platform, permission system, and set of business actions.",
+  "description": "Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs \u2014 with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console.",
   "isPartOf": {
     "@id": "https://qefro.com/#website"
   },
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-07-28",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -121,11 +123,11 @@
   "@type": "TechArticle",
   "@id": "https://qefro.com/what-is-qefro#article",
   "headline": "What is Qefro? | AI Workspace Platform for Organizations",
-  "description": "Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console \u2014 sharing one knowledge platform, permission system, and set of business actions.",
+  "description": "Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs \u2014 with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console.",
   "url": "https://qefro.com/what-is-qefro",
   "inLanguage": "en-US",
   "datePublished": "2024-01-01",
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-07-28",
   "author": {
     "@id": "https://qefro.com/#organization"
   },
@@ -183,10 +185,10 @@
         </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
         <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
-    <div class="mobile-panel wrap">
+    <div class="mobile-panel wrap" id="mobile-nav-panel">
       <a href="/how-it-works">Platform</a>
       <a href="/features">Features</a>
       <a href="/use-cases">Solutions</a>
@@ -211,9 +213,9 @@
         <h1>What is Qefro?</h1>
         <aside class="quick-answer-card" aria-label="Quick Summary">
           <span class="quick-answer-badge"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Quick Answer</span>
-          <p>Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions.</p>
+          <p>Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from approved company knowledge and execute business actions through your APIs — with isolated AI Workspaces (Support, HR, IT, Finance), role-based permissions, and one Admin Console.</p>
         </aside>
-        <div class="prose" style="margin-top:1.5rem"><p>Conversation → Knowledge → Business Tool → Action. Connect systems via REST/OpenAPI or the Backend SDK. Configure once in the Admin Console, then deploy Customer AI and Employee AI everywhere — with workspace-level isolation.</p>
+        <div class="prose" style="margin-top:1.5rem"><p>Point chatbots answer one audience and can&rsquo;t execute. Qefro runs customer-facing and employee-facing AI on one governed foundation: Conversation → Knowledge → Business Tool → Action. Connect systems via REST/OpenAPI or the Backend SDK, scope credentials per workspace, and deploy everywhere from a single configuration.</p>
           <p><a class="btn btn-primary" href="https://app.qefro.com/login">Start 14-day free trial</a></p>
         </div>
       </div>
@@ -256,11 +258,12 @@
   </div>
   <script id="qefro-widget-script"
     src="https://cdn.qefro.com/widget.js"
+    defer
     data-token="wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
     data-endpoint="https://api.qefro.com"
-    data-theme="dark"
+    data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
   <script src="/assets/js/main.js?v=44" defer></script>

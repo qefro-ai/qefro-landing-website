@@ -14,8 +14,10 @@
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* storage blocked (privacy mode) — default theme */ }
     })();
   </script>
   <link rel="canonical" href="https://qefro.com/ai-customer-support-for-dental-clinics" />
@@ -69,7 +71,7 @@
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-07-28",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -207,10 +209,10 @@
         </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
         <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
-    <div class="mobile-panel wrap">
+    <div class="mobile-panel wrap" id="mobile-nav-panel">
       <a href="/how-it-works">Platform</a>
       <a href="/features">Features</a>
       <a href="/use-cases" aria-current="page">Solutions</a>
@@ -322,16 +324,16 @@
         </div>
         <div class="faq-list reveal">
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>Is Qefro built for dental clinics?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Yes. Teams configure knowledge and channels for a dental practice, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.</p></div>
+            <button type="button" id="ai-customer-support-for-dental-clinics-faq-q0" aria-expanded="false" aria-controls="ai-customer-support-for-dental-clinics-faq-a0"><span>Is Qefro built for dental clinics?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="ai-customer-support-for-dental-clinics-faq-a0" role="region" aria-labelledby="ai-customer-support-for-dental-clinics-faq-q0"><p>Yes. Teams configure knowledge and channels for a dental practice, then deploy Customer AI for patients and Employee AI for staff — without building RAG infrastructure.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>Can it connect to our scheduling or order systems?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.</p></div>
+            <button type="button" id="ai-customer-support-for-dental-clinics-faq-q1" aria-expanded="false" aria-controls="ai-customer-support-for-dental-clinics-faq-a1"><span>Can it connect to our scheduling or order systems?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="ai-customer-support-for-dental-clinics-faq-a1" role="region" aria-labelledby="ai-customer-support-for-dental-clinics-faq-q1"><p>Yes. Import OpenAPI or configure REST Business Tools, or use the Backend SDK for authenticated workflows in your stack.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>How fast can we launch?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.</p></div>
+            <button type="button" id="ai-customer-support-for-dental-clinics-faq-q2" aria-expanded="false" aria-controls="ai-customer-support-for-dental-clinics-faq-a2"><span>How fast can we launch?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="ai-customer-support-for-dental-clinics-faq-a2" role="region" aria-labelledby="ai-customer-support-for-dental-clinics-faq-q2"><p>Most teams embed the website widget in minutes, then upload policies or crawl the site. API actions depend on your integration readiness.</p></div>
           </div>
         </div>
         <p class="integrations-note reveal" style="margin-top:2rem">
@@ -395,11 +397,12 @@
   </div>
   <script id="qefro-widget-script"
     src="https://cdn.qefro.com/widget.js"
+    defer
     data-token="wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
     data-endpoint="https://api.qefro.com"
-    data-theme="dark"
+    data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
   <script src="/assets/js/main.js?v=44" defer></script>

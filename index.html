@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>AI Customer Support Software | Qefro</title>
-  <meta name="description" content="AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes." />
+  <title>AI Customer Support That Takes Action | Qefro</title>
+  <meta name="description" content="Most AI chatbots only reply. Qefro answers from your docs and website, then acts — order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="author" content="Qefro" />
@@ -14,8 +14,10 @@
   <meta name="theme-color" content="#ffffff" id="theme-color-meta" />
   <script>
     (function () {
-      var saved = localStorage.getItem("theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      } catch (e) { /* storage blocked (privacy mode) — default theme */ }
     })();
   </script>
   <link rel="canonical" href="https://qefro.com/" />
@@ -24,22 +26,22 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Qefro" />
-  <meta property="og:title" content="AI Customer Support Software | Qefro" />
-  <meta property="og:description" content="AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes." />
+  <meta property="og:title" content="AI Customer Support That Takes Action | Qefro" />
+  <meta property="og:description" content="Most AI chatbots only reply. Qefro answers from your docs and website, then acts — order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp." />
   <meta property="og:url" content="https://qefro.com/" />
   <meta property="og:image" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:secure_url" content="https://qefro.com/assets/images/og-cover.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Qefro AI Platform — AI Customer Support Software | Qefro" />
+  <meta property="og:image:alt" content="Qefro AI Platform — AI Customer Support That Takes Action | Qefro" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@qefro" />
-  <meta name="twitter:title" content="AI Customer Support Software | Qefro" />
-  <meta name="twitter:description" content="AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes." />
+  <meta name="twitter:title" content="AI Customer Support That Takes Action | Qefro" />
+  <meta name="twitter:description" content="Most AI chatbots only reply. Qefro answers from your docs and website, then acts — order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp." />
   <meta name="twitter:image" content="https://qefro.com/assets/images/og-cover.png" />
-  <meta name="twitter:image:alt" content="Qefro AI Platform — AI Customer Support Software | Qefro" />
+  <meta name="twitter:image:alt" content="Qefro AI Platform — AI Customer Support That Takes Action | Qefro" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="Global" />
   <!-- Favicons: stable URLs, square, ≥48px PNG for Google Search eligibility
@@ -177,15 +179,15 @@
   "@type": "WebPage",
   "@id": "https://qefro.com/#webpage",
   "url": "https://qefro.com/",
-  "name": "AI Customer Support Software | Qefro",
-  "description": "AI customer support software that trains on your documents and website. Deploy chatbots for web, WhatsApp, and teams in minutes.",
+  "name": "AI Customer Support That Takes Action | Qefro",
+  "description": "Most AI chatbots only reply. Qefro answers from your docs and website, then acts \u2014 order lookups, ticket creation, lead capture, and human handoff on web + WhatsApp.",
   "isPartOf": {
     "@id": "https://qefro.com/#website"
   },
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-07-28",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -243,10 +245,10 @@
         </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
         <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
-        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
-    <div class="mobile-panel wrap">
+    <div class="mobile-panel wrap" id="mobile-nav-panel">
       <a href="/how-it-works">Platform</a>
       <a href="/features">Features</a>
       <a href="/use-cases">Solutions</a>
@@ -268,12 +270,12 @@
     <section class="hero" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-inner">
-        <span class="eyebrow" data-motion="hero-badge"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> AI CUSTOMER SUPPORT PLATFORM</span>
+        <span class="eyebrow" data-motion="hero-badge"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> AI CUSTOMER SUPPORT THAT TAKES ACTION</span>
         <h1 data-motion="hero-title">
           <span class="hero-line">AI Customer Support That</span>
-          <span class="hero-accent">Knows Your Business</span>
+          <span class="hero-accent">Replies — and Takes Action</span>
         </h1>
-        <p class="hero-sub" data-motion="hero-sub">AI customer support software that trains on your documents and website — deploy an AI chatbot for your website, WhatsApp, and employees in minutes.</p>
+        <p class="hero-sub" data-motion="hero-sub">Qefro answers from your help docs and website, then executes the follow-through — live order lookups, ticket creation, lead capture, and human handoff — on your website and WhatsApp.</p>
         <div class="hero-actions" data-motion="hero-actions">
           <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login?mode=signup" data-clarity-event="cta_start_free">Start Your FREE 14-Day Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
@@ -284,7 +286,7 @@
           <span><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Full Access</span>
           <span><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 24/7 Support</span>
         </div>
-        <p class="hero-diff" data-motion="hero-diff">Trusted by businesses to automate customer support and improve customer happiness.</p>
+        <p class="hero-diff" data-motion="hero-diff">Most AI chatbots stop at replies. Qefro closes the loop with real business actions through your APIs.</p>
         <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#capabilities" data-clarity-event="cta_scroll_platform">Explore platform capabilities <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></a></p>
       </div>
     </section>
@@ -294,7 +296,7 @@
         <div class="section-head reveal">
           <span class="badge badge-purple"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Platform Features</span>
           <h2 id="core-features-heading">Everything you need for AI Customer Support</h2>
-          <p>Build an AI knowledge base from your content, automate customer support workflows, and scale your AI helpdesk across channels.</p>
+          <p>Grounded answers from your content, real actions through your APIs — order lookups, tickets, lead capture, and human handoff across website and WhatsApp.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
           <div class="exp-card tilt-3d">
@@ -399,9 +401,9 @@
     <section class="section" id="platform" aria-labelledby="platform-heading">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> Three surfaces</span>
-          <h2 id="platform-heading">Customer AI. Employee AI. Admin Console.</h2>
-          <p>One platform for customers, employees, and operators — shared knowledge, permissions, and business actions. <a href="/how-it-works">See how the platform works</a>.</p>
+          <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/></svg> Two surfaces, one platform</span>
+          <h2 id="platform-heading">One AI platform. Two front doors.</h2>
+          <p>Customer AI on your website and WhatsApp. Employee AI in a branded Internal Portal. Both run on shared knowledge, permissions, and business actions — governed from one Admin Console. <a href="/how-it-works">See how the platform works</a>.</p>
         </div>
         <div class="exp-grid reveal">
           <a class="exp-card tilt-3d" href="/ai-chatbot" data-clarity-event="card_customer_ai">
@@ -496,14 +498,14 @@
             </div>
           </div>
         </div>
-        <div class="workspace-pills reveal" aria-label="Example AI Workspaces">
-          <span class="workspace-pill">Customer Support</span>
-          <span class="workspace-pill">HR</span>
-          <span class="workspace-pill">IT</span>
-          <span class="workspace-pill">Sales</span>
-          <span class="workspace-pill">Finance</span>
-          <span class="workspace-pill">Engineering</span>
-        </div>
+        <ul class="workspace-pills reveal">
+          <li class="workspace-pill">Customer Support</li>
+          <li class="workspace-pill">HR</li>
+          <li class="workspace-pill">IT</li>
+          <li class="workspace-pill">Sales</li>
+          <li class="workspace-pill">Finance</li>
+          <li class="workspace-pill">Engineering</li>
+        </ul><!-- static pill list: Example AI Workspaces -->
         <p class="integrations-note reveal" style="text-align:center;margin-top:1rem">Each AI Workspace has its own isolated knowledge, instructions, actions, and permissions.</p>
         <div class="product-mock-grid reveal" style="margin-top:2.5rem">
           <figure class="product-mock tilt-3d">
@@ -617,8 +619,8 @@
       <div class="wrap">
         <div class="section-head reveal">
           <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16v-5M12 16V8M16 16v-3"/></svg> Comparison</span>
-          <h2 id="compare-heading">Traditional AI chatbot vs Qefro</h2>
-          <p>Answering questions is table stakes. Organizations need actions, employee access, and workspace permissions.</p>
+          <h2 id="compare-heading">Most AI chatbots only reply. Qefro replies and acts.</h2>
+          <p>Answering questions is table stakes. Resolution needs order lookups, ticket creation, lead capture, and clean human handoff.</p>
         </div>
         <div class="table-wrap reveal">
           <table class="compare-table">
@@ -631,16 +633,16 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Answers questions</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Company knowledge</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Business actions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Employee portal</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Website widget</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>WhatsApp</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Workspace permissions</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Team RBAC</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>OpenAPI integrations</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
-              <tr><td>Multi-workspace AI</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Answers from your docs &amp; website</td><td><span class="mark mark-yes">✓</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Live order lookups via your APIs</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Creates tickets in your helpdesk</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Lead capture from conversations</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Human handoff with full transcript</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>WhatsApp deployment</td><td><span class="mark mark-part">Limited</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Declines instead of guessing (cited)</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Employee AI portal included</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>Workspace permissions &amp; team RBAC</td><td><span class="mark mark-no">✗</span></td><td><span class="mark mark-yes">✓</span></td></tr>
+              <tr><td>OpenAPI / Backend SDK integrations</td><td><span class="mark mark-part">Rare</span></td><td><span class="mark mark-yes">✓</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -759,36 +761,36 @@
         </div>
         <div class="faq-list reveal">
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>What is Qefro?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Qefro is the AI platform that connects conversations to your business. Build AI assistants that answer questions and take secure business actions across Customer AI, Employee AI, and the Admin Console — sharing one knowledge platform, permission system, and set of business actions.</p></div>
+            <button type="button" id="home-faq-q0" aria-expanded="false" aria-controls="home-faq-a0"><span>What is Qefro?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a0" role="region" aria-labelledby="home-faq-q0"><p>Qefro is an AI Workspace Platform with two surfaces: Customer AI on your website and WhatsApp, and Employee AI in a branded Internal Portal. Both answer from your approved company knowledge and execute business actions through your APIs — with shared permissions, isolated AI Workspaces, and one Admin Console to govern it all.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>How much does Qefro cost?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements.</p></div>
+            <button type="button" id="home-faq-q1" aria-expanded="false" aria-controls="home-faq-a1"><span>How much does Qefro cost?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a1" role="region" aria-labelledby="home-faq-q1"><p>Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>What types of content can I upload?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering.</p></div>
+            <button type="button" id="home-faq-q2" aria-expanded="false" aria-controls="home-faq-a2"><span>What types of content can I upload?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a2" role="region" aria-labelledby="home-faq-q2"><p>PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>How accurate are the answers?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Qefro retrieves only from your verified content and is designed to decline answering when no relevant information exists in your knowledge base, rather than guessing. See our <a href="/benchmark">benchmark methodology</a> for how we evaluate accuracy and refusal behavior.</p></div>
+            <button type="button" id="home-faq-q3" aria-expanded="false" aria-controls="home-faq-a3"><span>How accurate are the answers?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a3" role="region" aria-labelledby="home-faq-q3"><p>Qefro retrieves only from your verified content and is designed to decline answering when no relevant information exists in your knowledge base, rather than guessing. See our <a href="/benchmark">benchmark methodology</a> for how we evaluate accuracy and refusal behavior.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>Is my data secure?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Qefro provides tenant isolation and workspace isolation, encryption at rest and in transit, end-user identity forwarding, zero-trust style authorization for business actions, audit and execution logs, and encrypted storage for API secrets. End-user passwords are never stored, and your data is never used to train AI models. Private deployment is available for Enterprise. SOC 2 compliance is on our roadmap. Contact Sales for our current timeline.</p></div>
+            <button type="button" id="home-faq-q4" aria-expanded="false" aria-controls="home-faq-a4"><span>Is my data secure?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a4" role="region" aria-labelledby="home-faq-q4"><p>Qefro provides tenant isolation and workspace isolation, encryption at rest and in transit, end-user identity forwarding, zero-trust style authorization for business actions, audit and execution logs, and encrypted storage for API secrets. End-user passwords are never stored, and your data is never used to train AI models. Private deployment is available for Enterprise. SOC 2 compliance is on our roadmap. Contact Sales for our current timeline.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>Can Qefro take action in my systems?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Yes. Two integration paths: connect existing APIs with REST/OpenAPI as Business Tools, or use the Backend SDK for authentication and workflows. AI can retrieve live data, create tickets, look up orders, and more — with encrypted credentials or end-user identity you forward via identify().</p></div>
+            <button type="button" id="home-faq-q5" aria-expanded="false" aria-controls="home-faq-a5"><span>Can Qefro take action in my systems?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a5" role="region" aria-labelledby="home-faq-q5"><p>Yes. Two integration paths: connect existing APIs with REST/OpenAPI as Business Tools, or use the Backend SDK for authentication and workflows. AI can retrieve live data, create tickets, look up orders, and more — with encrypted credentials or end-user identity you forward via identify().</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>How long does setup take?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Most teams embed the website widget in under 5 minutes. Connecting business systems and rolling out the Internal Portal depends on your APIs and knowledge prep — typically a day or less for straightforward integrations.</p></div>
+            <button type="button" id="home-faq-q6" aria-expanded="false" aria-controls="home-faq-a6"><span>How long does setup take?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a6" role="region" aria-labelledby="home-faq-q6"><p>Most teams embed the website widget in under 5 minutes. Connecting business systems and rolling out the Internal Portal depends on your APIs and knowledge prep — typically a day or less for straightforward integrations.</p></div>
           </div>
           <div class="faq-item">
-            <button type="button" aria-expanded="false"><span>Can I use this for employees as well as customers?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a"><p>Yes. Customer AI runs on your website and WhatsApp. Employee AI runs in a branded Internal Portal (yourcompany.qefro.com) connected to company knowledge, business actions, and workspace permissions.</p></div>
+            <button type="button" id="home-faq-q7" aria-expanded="false" aria-controls="home-faq-a7"><span>Can I use this for employees as well as customers?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+            <div class="faq-a" id="home-faq-a7" role="region" aria-labelledby="home-faq-q7"><p>Yes. Customer AI runs on your website and WhatsApp. Employee AI runs in a branded Internal Portal (yourcompany.qefro.com) connected to company knowledge, business actions, and workspace permissions.</p></div>
           </div>
 
         </div>
@@ -800,8 +802,8 @@
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
         <span class="badge badge-indigo"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> Get started today</span>
-        <h2 id="cta-heading">Build AI assistants that answer and act.</h2>
-        <p>Start a 14-day free trial for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
+        <h2 id="cta-heading">Stop deflecting. Start resolving.</h2>
+        <p>Start a 14-day free trial — grounded answers plus real business actions on your website and WhatsApp. No credit card required.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login?mode=signup" data-clarity-event="cta_start_free">Start 14-Day Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo data-clarity-event="cta_try_live_demo">Try Live Demo</a>
@@ -847,11 +849,12 @@
   </div>
   <script id="qefro-widget-script"
     src="https://cdn.qefro.com/widget.js"
+    defer
     data-token="wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
     data-endpoint="https://api.qefro.com"
-    data-theme="dark"
+    data-theme="light"
     data-position="bottom-right"
-    data-primary-color="#6366f1"
+    data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
   <script src="/assets/js/main.js?v=44" defer></script>
