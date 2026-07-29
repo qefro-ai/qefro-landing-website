@@ -291,7 +291,7 @@ def footer() -> str:
           <a href="/features">Features</a>
           <a href="/use-cases">Solutions</a>
           <a href="/business-flows">Business Flows</a>
-          <a href="/workflow-engine">Workflow Engine</a>
+          <a href="/workflow-engine">Business Process Automation</a>
           <a href="/business-tools">Business Tools</a>
           <a href="/sdk">SDK</a>
           <a href="/openapi">OpenAPI</a>
@@ -1061,7 +1061,85 @@ def home_body() -> str:
           <span>{ICONS["check"]} SDK &amp; OpenAPI</span>
         </div>
         <p class="hero-diff" data-motion="hero-diff">Chatbots stop at replies. Qefro completes real business processes — securely connected to the systems you already run.</p>
-        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#pillars" data-clarity-event="cta_scroll_platform">See how work gets done {ICONS["chevron"]}</a></p>
+        <p class="hero-scroll-cue" data-motion="hero-cue"><a href="#automate" data-clarity-event="cta_scroll_platform">See what Qefro can automate {ICONS["chevron"]}</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="automate" aria-labelledby="automate-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <span class="badge badge-green">{ICONS["zap"]} What Qefro automates</span>
+          <h2 id="automate-heading">What can Qefro automate for you?</h2>
+          <p>Qefro connects conversations to your business systems and completes real work — across the tools you already run. Not every request ends with an answer; most end with a task done.</p>
+        </div>
+        <div class="logo-cloud reveal" role="list">
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Resolve support requests</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Create &amp; track orders</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Process returns &amp; refunds</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Approve leave &amp; expenses</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Reset passwords &amp; unlock accounts</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Generate invoices</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Track shipments</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Schedule appointments</span>
+          <span class="logo-placeholder" role="listitem">{ICONS["check"]} Update CRM records</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="industry-outcomes" aria-labelledby="industry-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <span class="badge badge-indigo">{ICONS["building"]} By industry</span>
+          <h2 id="industry-heading">Real outcomes for your industry</h2>
+          <p>See the processes Qefro agents complete end to end in the businesses that run on them.</p>
+        </div>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d"><h3>E-commerce</h3><ul><li>Order tracking</li><li>Returns &amp; refunds</li><li>Coupons &amp; discounts</li><li>Delivery updates</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Healthcare</h3><ul><li>Appointment scheduling</li><li>Insurance verification</li><li>Patient onboarding</li><li>Reminders &amp; follow-ups</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Finance</h3><ul><li>KYC verification</li><li>Loan applications</li><li>Card blocking</li><li>Document collection</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>HR</h3><ul><li>Leave requests</li><li>Expense approvals</li><li>Employee onboarding</li><li>Policy answers</li></ul></article>
+        </div>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a href="/use-cases">Explore all industry solutions {ICONS["arrow"]}</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="business-flows-feature" aria-labelledby="bf-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <span class="badge badge-purple">{ICONS["zap"]} Business Flows</span>
+          <h2 id="bf-heading">Automate real business processes</h2>
+          <p>Not every request ends with an answer. Some need information collected, some need approvals, some need multiple systems called. Business Flows let AI orchestrate every step until the work is complete — the moat between a chatbot that replies and an agent that finishes the job.</p>
+        </div>
+        <div class="reveal" style="margin-top:1.5rem">
+          <p class="facts-label">Return an order</p>
+          <div class="pipeline pipeline-flow" aria-label="Return order process automated by Qefro">
+            <span class="pipeline-node"><span class="pipeline-v">&ldquo;I want to return my order&rdquo;</span><span class="pipeline-d">Customer</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Check eligibility</span><span class="pipeline-d">AI + policy</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Generate label</span><span class="pipeline-d">Shipping API</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Notify warehouse</span><span class="pipeline-d">OMS</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node pipeline-node-accent"><span class="pipeline-v">{ICONS["check"]} Completed</span><span class="pipeline-d">Confirmation sent</span></span>
+          </div>
+          <p class="facts-label" style="margin-top:2rem">Request leave</p>
+          <div class="pipeline pipeline-flow" aria-label="Leave request process automated by Qefro">
+            <span class="pipeline-node"><span class="pipeline-v">&ldquo;I need leave&rdquo;</span><span class="pipeline-d">Employee</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Manager approval</span><span class="pipeline-d">Human in the loop</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Update HR system</span><span class="pipeline-d">HRIS</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node"><span class="pipeline-v">Update calendar</span><span class="pipeline-d">Calendar API</span></span>
+            <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
+            <span class="pipeline-node pipeline-node-accent"><span class="pipeline-v">{ICONS["check"]} Complete</span><span class="pipeline-d">Employee notified</span></span>
+          </div>
+        </div>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1.75rem">
+          <a class="btn btn-primary" href="/business-flows" data-clarity-event="cta_business_flows">See Business Flows {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost" href="/workflow-engine" style="margin-left:0.5rem" data-clarity-event="cta_workflow">Business process automation</a>
+        </p>
       </div>
     </section>
 
@@ -1069,8 +1147,8 @@ def home_body() -> str:
       <div class="wrap-5xl">
         <div class="section-head reveal">
           <span class="badge badge-purple">{ICONS["sparkles"]} How Qefro works</span>
-          <h2 id="pillars-heading">Four steps from a message to a completed task</h2>
-          <p>Every business interaction starts with a conversation and ends with work being done. Qefro closes that loop — it doesn&rsquo;t stop at an answer.</p>
+          <h2 id="pillars-heading">How every request gets completed</h2>
+          <p>You&rsquo;ve seen what Qefro completes. Here&rsquo;s how — the same four steps run behind every conversation, from a customer message to a finished task.</p>
         </div>
         <div class="exp-grid reveal" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;">
           <div class="exp-card tilt-3d">
@@ -1223,7 +1301,7 @@ def home_body() -> str:
           </a>
           <a class="exp-card tilt-3d" href="/sdk" data-clarity-event="card_backend_sdk">
             <div class="exp-icon">{ICONS["lock"]}</div>
-            <h3>Business Tool SDK</h3>
+            <h3>Connect your business systems</h3>
             <p>Handle authentication and workflows in your backend with the Business Tool SDK (Rust, JavaScript, Python) — identity, tool callbacks, and secure execution.</p>
             <span class="exp-card-cta">Explore the SDK {ICONS["arrow"]}</span>
           </a>
@@ -1306,7 +1384,7 @@ def home_body() -> str:
     <section class="section section-alt" id="features" aria-labelledby="features-heading">
       <div class="wrap">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["sparkles"]} Capabilities</span>
+          <span class="badge badge-purple">{ICONS["sparkles"]} Everything your AI agent needs</span>
           <h2 id="features-heading">Everything needed to complete real work</h2>
           <p>Knowledge, business flows, secure tool calls, and human approvals — the building blocks of an AI agent that finishes the job. <a href="/features">Explore all features</a>.</p>
         </div>
