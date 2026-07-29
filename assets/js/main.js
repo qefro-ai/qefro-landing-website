@@ -1,5 +1,6 @@
 (() => {
   const THEME_KEY = "theme";
+  const TOKEN_SESSION_KEY = "qefro-demo-widget-token";
   const FALLBACK_DEMO_TOKEN = "demo-qefro-widget-token";
   const WELCOME_MESSAGE =
     "Hi! I'm the Qefro assistant. Ask about the AI Workspace Platform, workspaces, Business Tools, pricing, or security.";
@@ -7,6 +8,24 @@
   const themeMeta = document.getElementById("theme-color-meta");
   const API_URL = root.dataset.apiUrl || "https://api.qefro.com";
   const WIDGET_CDN_URL = root.dataset.widgetCdn || "https://cdn.qefro.com/widget.js";
+
+  // localStorage/sessionStorage throw in some privacy modes — never let that break the page.
+  const store = {
+    get(area, key) {
+      try {
+        return window[area].getItem(key);
+      } catch (_) {
+        return null;
+      }
+    },
+    set(area, key, value) {
+      try {
+        window[area].setItem(key, value);
+      } catch (_) {
+        /* storage unavailable */
+      }
+    },
+  };
 
   const removeWidget = () => {
     const scriptEl = document.getElementById("qefro-widget-script");
@@ -46,22 +65,28 @@
     if (document.getElementById("ai-widget-container") && applyWidgetTheme(theme)) {
       return;
     }
-    let token = FALLBACK_DEMO_TOKEN;
-    try {
-      const res = await fetch(`${API_URL}/graphql`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
-      });
-      const json = await res.json();
-      const fetched =
-        json &&
-        json.data &&
-        json.data.demoWidgetToken &&
-        json.data.demoWidgetToken.token;
-      if (typeof fetched === "string" && fetched.length > 0) token = fetched;
-    } catch (error) {
-      console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
+    // Cached per tab so page navigation doesn't re-hit the API for a token.
+    let token = store.get("sessionStorage", TOKEN_SESSION_KEY) || FALLBACK_DEMO_TOKEN;
+    if (token === FALLBACK_DEMO_TOKEN) {
+      try {
+        const res = await fetch(`${API_URL}/graphql`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: "{ demoWidgetToken { token } }" }),
+        });
+        const json = await res.json();
+        const fetched =
+          json &&
+          json.data &&
+          json.data.demoWidgetToken &&
+          json.data.demoWidgetToken.token;
+        if (typeof fetched === "string" && fetched.length > 0) {
+          token = fetched;
+          store.set("sessionStorage", TOKEN_SESSION_KEY, fetched);
+        }
+      } catch (error) {
+        console.warn("[Qefro] demoWidgetToken fetch failed, using fallback", error);
+      }
     }
     mountWidget(theme, token);
   };
@@ -78,21 +103,23 @@
     }
     document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
       btn.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+      btn.setAttribute("aria-pressed", String(isDark));
     });
-    localStorage.setItem(THEME_KEY, theme);
+    store.set("localStorage", THEME_KEY, theme);
     if (reloadWidget) refreshWidget(theme);
   };
 
   const getTheme = () => (root.getAttribute("data-theme") === "dark" ? "dark" : "light");
 
   document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.setAttribute("aria-pressed", String(getTheme() === "dark"));
     btn.addEventListener("click", () => {
       applyTheme(getTheme() === "dark" ? "light" : "dark");
     });
   });
 
   const syncTheme = () => {
-    const saved = localStorage.getItem(THEME_KEY);
+    const saved = store.get("localStorage", THEME_KEY);
     if (saved === "dark") {
       applyTheme("dark", false);
     }
@@ -116,7 +143,8 @@
   const motionOwned = () => document.documentElement.dataset.motion === "1";
 
   // Mobile menu, FAQ, and reveals are owned by qefro-motion.js when loaded.
-  // Fallback if the Motion bundle fails to load within a short window.
+  // The fallback binds only if the Motion bundle failed by DOMContentLoaded
+  // (module scripts run before DOMContentLoaded, so data-motion is reliable then).
   const bindFallbackUi = () => {
     if (motionOwned()) return;
 
@@ -158,31 +186,14 @@
     });
   };
 
-  document.addEventListener("qefro:motion-ready", () => {
-    /* Motion owns menu / FAQ / reveal */
-  });
-  bindFallbackUi();
-
-  document.querySelectorAll("[data-uc-tabs]").forEach((root) => {
-    const tabs = root.querySelectorAll("[data-uc-tab]");
-    const panels = root.querySelectorAll("[data-uc-panel]");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const id = tab.dataset.ucTab;
-        tabs.forEach((t) => {
-          const active = t === tab;
-          t.classList.toggle("is-active", active);
-          t.setAttribute("aria-selected", String(active));
-        });
-        panels.forEach((panel) => {
-          const show = panel.dataset.ucPanel === id;
-          panel.classList.toggle("is-active", show);
-          if (show) panel.removeAttribute("hidden");
-          else panel.setAttribute("hidden", "");
-        });
-      });
-    });
-  });
+  // Deferred scripts run at readyState "interactive", *before* DOMContentLoaded —
+  // and the Motion module runs after this file in that same window. Waiting for
+  // DOMContentLoaded guarantees data-motion reflects whether Motion took ownership.
+  if (document.readyState === "complete") {
+    bindFallbackUi();
+  } else {
+    document.addEventListener("DOMContentLoaded", bindFallbackUi);
+  }
 
   const year = document.querySelector("[data-year]");
   if (year) year.textContent = String(new Date().getFullYear());
