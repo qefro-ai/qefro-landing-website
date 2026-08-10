@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "46"
+ASSET_VERSION = "47"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI Business Application Platform. Connect your systems, "
@@ -291,28 +291,28 @@ def footer() -> str:
         </div>
         <nav class="footer-col" aria-label="Platform">
           <h3>Platform</h3>
-          <a href="/how-it-works">AI Applications</a>
-          <a href="/features">Customer Hub</a>
+          <a href="/how-it-works">How it works</a>
+          <a href="/features">Capabilities</a>
+          <a href="/#customer-hub">Customer Hub</a>
           <a href="/workflow-engine">Organization Workflows</a>
-          <a href="/features">Marketing</a>
-          <a href="/whatsapp">Channels</a>
+          <a href="/#channels">Channels</a>
           <a href="/security">Security</a>
         </nav>
         <nav class="footer-col" aria-label="Developers">
           <h3>Developers</h3>
           <a href="/sdk">SDK</a>
           <a href="/sdk">External Connections</a>
-          <a href="/sdk">Marketplace Apps</a>
+          <a href="/integrations">Integrations</a>
           <a href="{DOCS}">Documentation</a>
           <a href="/api">API</a>
         </nav>
-        <nav class="footer-col" aria-label="Solutions">
-          <h3>Solutions</h3>
+        <nav class="footer-col" aria-label="Applications">
+          <h3>Applications</h3>
+          <a href="/use-cases">All applications</a>
           <a href="/ai-customer-support-for-restaurants">Restaurant</a>
           <a href="/ai-customer-support-for-clinics">Healthcare</a>
-          <a href="/use-cases">Finance</a>
-          <a href="/use-cases">Sales</a>
           <a href="/enterprise">Enterprise</a>
+          <a href="/sdk">Build a custom app</a>
         </nav>
         <nav class="footer-col" aria-label="Company">
           <h3>Company</h3>
@@ -735,10 +735,10 @@ def price_cards_html(*, interactive: bool = False) -> str:
             <p class="price-desc">14-day free trial — no credit card</p>
             <ul class="price-feats">
               {price_feat("Full premium access for 14 days")}
-              {price_feat("AI support, WhatsApp, voice &amp; widget")}
+              {price_feat("Applications, channels &amp; workflows")}
               {price_feat("Knowledge base, crawler &amp; uploads")}
               {price_feat("Team management &amp; analytics")}
-              {price_feat("Custom domains &amp; automation")}
+              {price_feat("SDK connections &amp; business tools")}
               {price_feat("No credit card required")}
             </ul>
             <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>Start 14-Day Free Trial</a>
@@ -1057,7 +1057,7 @@ def home_body() -> str:
           <h1 data-motion="hero-title">
             <span class="hero-line">Connect Your Systems.</span>
             <span class="hero-line">Build Intelligent Applications.</span>
-            <span class="hero-accent">Automate Your Organization.</span>
+            <span class="hero-line">Automate Your Organization.</span>
           </h1>
           <p class="hero-sub" data-motion="hero-sub">Connect your existing business systems, build AI-powered applications, and automate work across teams&mdash;all on one platform.</p>
           <div class="hero-actions" data-motion="hero-actions">
@@ -1120,8 +1120,8 @@ def home_body() -> str:
           <article class="three-way-card">
             <h3>Connect</h3>
             <p class="three-way-lead">Bring your existing systems</p>
-            <p>Connect ERP, CRM, inventory, pricing, databases and internal APIs through Qefro APIs or the Backend SDK.</p>
-            <div class="mini-flow" aria-hidden="true"><span>Your Systems</span><span>{ICONS["arrow"]}</span><span>Qefro SDK</span><span>{ICONS["arrow"]}</span><span>AI</span></div>
+            <p>Connect ERP, CRM, inventory, pricing, databases and internal APIs through Qefro APIs or External SDK Connections.</p>
+            <div class="mini-flow" aria-hidden="true"><span>Your Systems</span><span>{ICONS["arrow"]}</span><span>External SDK</span><span>{ICONS["arrow"]}</span><span>Qefro</span></div>
             <a class="btn btn-ghost" href="/integrations">Explore Integrations {ICONS["arrow"]}</a>
           </article>
           <article class="three-way-card">
@@ -1154,9 +1154,9 @@ def home_body() -> str:
             <div class="arch-box arch-box-accent">QEFRO<span>AI + Applications</span></div>
           </div>
           <div class="arch-row">
-            <div class="arch-box">AI Chat</div>
+            <div class="arch-box">Channels</div>
             <div class="arch-box">Workflows</div>
-            <div class="arch-box">Teams</div>
+            <div class="arch-box">Applications</div>
           </div>
           <div class="arch-row">
             <div class="arch-box arch-box-wide">Qefro Runtime</div>
@@ -1387,7 +1387,7 @@ app.tool(
           <article class="outcome-card"><h3>Finance</h3><ul><li>Request</li><li>Approval</li><li>Execution</li></ul></article>
           <article class="outcome-card"><h3>Enterprise Integrations</h3><ul><li>ERP / CRM</li><li>SDK</li><li>AI + workflows</li></ul></article>
         </div>
-        <p class="integrations-note" style="text-align:center;margin-top:1.25rem"><a href="/use-cases">Explore solutions {ICONS["arrow"]}</a></p>
+        <p class="integrations-note" style="text-align:center;margin-top:1.25rem"><a href="/use-cases">Explore Applications {ICONS["arrow"]}</a></p>
       </div>
     </section>
 
@@ -1460,13 +1460,13 @@ app.tool(
     <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Start building</span>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} Build with Qefro</span>
         <h2 id="cta-heading">Build the AI layer for your business.</h2>
         <p>Connect your systems. Build intelligent applications. Automate the work between them.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_building">Start Building {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_build_qefro">Build with Qefro {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/contact" data-clarity-event="cta_talk_sales">Talk to Sales</a>
-          <a class="btn btn-link btn-lg" href="{DOCS}" data-clarity-event="cta_read_docs">Read Developer Docs</a>
+          <a class="btn btn-link btn-lg" href="{DOCS}" data-clarity-event="cta_read_docs">Explore the SDK</a>
         </div>
       </div>
     </section>
@@ -1980,12 +1980,13 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
-        <h2>Deploy your company&rsquo;s AI workspace.</h2>
-        <p>Start a 14-day free trial for Customer AI, Employee AI, and the Admin Console — no credit card required.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} Build with Qefro</span>
+        <h2>Build the AI layer for your business.</h2>
+        <p>Connect your systems, ship applications, and automate organization workflows — start a 14-day free trial, no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start 14-Day Free Trial {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="#demo" data-open-demo>Try Live Demo</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Build with Qefro {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
+          <a class="btn btn-link btn-lg" href="{DOCS}">Explore the SDK</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/security">Security overview</a></p>
       </div>
@@ -2556,7 +2557,6 @@ def seo_landing_content(landing) -> str:
 {paras}
           <h2>How Qefro delivers {escape(landing.h1)}</h2>
           <p>
-            Configure knowledge, instructions, and Business Tools once in the Admin Console.
             Connect systems or install apps once in the Admin Console, then deploy across
             <strong>Website</strong>, <strong>WhatsApp</strong>, <strong>Internal Portal</strong>, and
             <strong>API</strong> channels — with the same retrieval, permissions, and tool layer underneath.
@@ -2570,7 +2570,7 @@ def seo_landing_content(landing) -> str:
           </p>
           <p>
             When chat must change state — order lookups, tickets, CRM updates — connect your
-            APIs via REST/OpenAPI or the Backend SDK. Credentials are encrypted; outbound calls
+            APIs via REST/OpenAPI or an External SDK Connection. Credentials are encrypted; outbound calls
             use HTTPS with SSRF protections; execution logs support review and QA.
           </p>
           <h2>Why teams choose Qefro for this use case</h2>
@@ -2756,12 +2756,13 @@ def register_seo_landings() -> None:
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Get started today</span>
-        <h2>Try {escape(landing.h1)} with Qefro.</h2>
-        <p>Start a 14-day free trial — Customer AI, Employee AI, and Admin Console. No credit card required.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} Build with Qefro</span>
+        <h2>Try {escape(landing.h1)} on the Qefro platform.</h2>
+        <p>Customer support is one application on Qefro. Start a 14-day free trial — no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start 14-Day Free Trial {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/ai-customer-support-by-industry">Browse industries</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Build with Qefro {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
+          <a class="btn btn-link btn-lg" href="/ai-customer-support-by-industry">Browse industries</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
       </div>
