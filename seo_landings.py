@@ -103,12 +103,12 @@ TOPIC_LANDINGS: tuple[Landing, ...] = (
         "ai-customer-support",
         "AI Customer Support",
         "AI Customer Support Platform | Qefro",
-        "Qefro AI customer support answers from your knowledge base, runs secure business actions, and works on website chat and WhatsApp.",
-        "<p><strong>Qefro</strong> is an AI customer support platform that grounds answers in your docs and APIs, then takes secure actions — not just chat replies.</p>",
+        "AI customer support on the Qefro platform — grounded answers, secure business actions, website chat and WhatsApp as channels.",
+        "<p><strong>Customer support</strong> is one application on the <strong>Qefro AI Business Application Platform</strong>. Ground answers in your docs and APIs, then take secure actions — not just chat replies.</p>",
         (
-            "Generic chatbots often invent answers. Qefro retrieves from your verified content, cites sources, and is designed to decline when nothing relevant exists — so support stays accurate.",
-            "Beyond Q&A, connect order, billing, and ticketing systems via REST/OpenAPI or the Backend SDK so the assistant can look up live status, create tickets, and hand off to humans with full context.",
-            "Deploy Customer AI on your website widget and WhatsApp from one Admin Console, with workspace isolation, RBAC, and encrypted secrets.",
+            "Generic chatbots often invent answers. As a support application on Qefro, replies retrieve from your verified content, cite sources, and are designed to decline when nothing relevant exists.",
+            "Beyond Q&A, connect order, billing, and ticketing systems via REST/OpenAPI or an External SDK Connection so the assistant can look up live status, create tickets, and hand off with full context.",
+            "Deploy on website widget and WhatsApp from one Admin Console — channels on a shared platform with workspace isolation, RBAC, and encrypted secrets.",
         ),
         (
             "Grounded answers with source citations",
@@ -143,7 +143,7 @@ TOPIC_LANDINGS: tuple[Landing, ...] = (
         (
             "Most chatbot tools stop at conversation. Qefro indexes PDFs, sites, and docs, then answers with citations across languages including English, Arabic, Tamil, and Hindi.",
             "When customers need more than text — order status, refunds, appointment links — Business Tools call your APIs with encrypted credentials or forwarded identity.",
-            "One platform covers Customer AI, Employee AI, and an Admin Console so you configure knowledge and permissions once.",
+            "One AI Business Application Platform covers customer channels, employee Internal Portal, and an Admin Console — configure knowledge and permissions once.",
         ),
         (
             "Hybrid retrieval (keyword + vectors)",
@@ -849,13 +849,13 @@ FEATURE_LANDINGS: tuple[Landing, ...] = (
     _f(
         "integrations",
         "Integrations",
-        "Integrations | REST, OpenAPI & SDK | Qefro",
-        "Qefro integrations connect your APIs as Business Tools via REST/OpenAPI or the Backend SDK — with encrypted secrets and logs.",
-        "<p>Integrate Qefro with your stack through REST/OpenAPI Business Tools or the Backend SDK — no rip-and-replace of systems of record.</p>",
+        "Integrations | Connect systems to Qefro | Qefro",
+        "Connect ERP, CRM, and APIs to the Qefro AI Business Application Platform via External SDK Connections, REST/OpenAPI tools, or Managed Marketplace Apps.",
+        "<p>Connect systems you already run — External SDK Connections, REST/OpenAPI Business Tools, or Managed Marketplace Apps — without moving systems of record.</p>",
         (
-            "Import an OpenAPI document or configure REST endpoints. Credentials stay encrypted at rest.",
+            "Import an OpenAPI document or configure REST endpoints as controlled tools. Credentials stay encrypted at rest.",
             "Outbound calls use HTTPS with SSRF protections. Execution logs support debugging and audits.",
-            "Use the SDK when you need custom auth or multi-step workflows behind your firewall.",
+            "Use an External SDK Connection when you need custom auth or sensitive backends behind your firewall.",
         ),
         (
             "OpenAPI import",

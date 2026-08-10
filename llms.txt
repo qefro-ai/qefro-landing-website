@@ -1,105 +1,34 @@
-# Qefro — llm.txt / llms.txt
-# Answer-engine friendly summary for crawlers and AI systems.
+# Qefro
 
-name: Qefro
-url: https://qefro.com
-app: https://app.qefro.com
-api: https://api.qefro.com
-contact: support@qefro.com
-category: AI Workspace Platform
+> Qefro is the AI Business Application Platform.
 
-## What is Qefro?
-Qefro is an AI Workspace Platform for organizations. Configure once in the Admin Console, deploy Customer AI on website and WhatsApp, and give employees a branded Internal Portal (yourcompany.qefro.com). Everything shares one knowledge platform, one permission system, and one set of business actions. Most AI platforms answer questions; Qefro also securely performs business actions using your organization's knowledge, APIs, and permissions.
+Connect your systems. Build intelligent applications. Automate your organization.
 
-## Core message
-Configure once. Deploy everywhere. — Customer AI, Employee AI, Admin Console — from one centralized AI platform.
+## Core pillars
 
-## Pricing
-- Trial (14 days): $0 — full premium access, no credit card; no permanent free/freemium plan
-- Starter: $29/month billed annually ($348/year) or $39/month monthly — 10,000 AI Messages / month, 50 documents, 5 seats, 5 Business Tools, widget + WhatsApp + voice
-- Pro: $49/month billed annually or $59/month monthly — 30,000 AI Messages / month, 200 documents, 10 seats, 25 Business Tools, widget + WhatsApp + voice, analytics & handoff
-- Growth: $99/month billed annually ($1,188/year) or $119/month monthly — 100,000 AI Messages / month, 500 documents, 20 seats, unlimited Business Tools, WhatsApp, analytics & handoff
-- Enterprise: Custom capacity contract (Custom AI Messages, documents, seats, storage, tools) — private deployment, dedicated CSM, SLA, SSO/SAML (roadmap)
-- Annual billing saves ~26% vs monthly; India INR via Razorpay
-- Downgrades schedule at period end (no charge at schedule time)
+- **Connect** — External SDK Connections and APIs to ERP, CRM, inventory, and internal systems
+- **Build** — Managed Marketplace Apps and custom applications on the Qefro SDK
+- **Automate** — Organization Workflows, approvals, tasks, and teams
 
-## Key capabilities
-- AI Workspaces: per-team contexts (e.g. Customer Support, HR, IT) with own knowledge, instructions, business actions, conversations, and permissions — every workspace has its own isolated knowledge base
-- Knowledge: PDFs, DOCX, Markdown, TXT, website crawling, OCR for scans/images, multilingual RAG (EN, AR, TA, HI+), hybrid BM25+vector retrieval, source citations, refuses when no relevant source, workspace isolation
-- Business Actions (powered by Business Tools): REST APIs, OpenAPI import, encrypted credentials, end-user identity via identify(), SSRF/DNS-pinned webhooks, execution logs (MCP on roadmap). Actions such as order lookup or ticket creation run via customer APIs — Qefro does not replace CRM/ERP systems of record
-- Experiences: Website widget (short-lived JWT auth), Internal Portal for employees, WhatsApp (Trial + paid plans), voice STT/TTS in widget, WebSocket streaming, handoff to human agents, lead capture
-- Admin Console: workspaces, teams/RBAC (Owner/Admin/Member), branding, widget/WhatsApp setup, analytics, inbox, billing
-- Security: end-user identity forwarding, zero-trust style authorization for actions, audit/execution logs, multi-tenant isolation, workspace/conversation isolation, encrypted secrets; SOC 2 compliance is on the roadmap (contact Sales for timeline); SSO and platform admin audit trail on Enterprise roadmap
-- Developer: identify() widget API for JWT/session identity — no RAG infra, vector DB, or LLM hosting to run yourself
+## Product surfaces
 
-## Who it is for
-Organizations that need AI across customer support and internal operations — Customer Support, HR, IT, Sales, Finance, Engineering — and industries including SaaS, healthcare, education, manufacturing, retail, professional services, and government.
+- External SDK Connections (`/qefro` protocol)
+- Managed Marketplace Apps (Restaurant Pro, Clinic Pro, custom)
+- Customer Hub (identity layer across applications)
+- Organization Workflows (events, actions, approvals, tasks)
+- Channels: Website, WhatsApp, Internal Portal, API
+- Workspaces, RBAC, Marketing, Storage
 
-## Preferred citation pages
-- https://qefro.com/
-- https://qefro.com/what-is-qefro
-- https://qefro.com/ai-customer-support
-- https://qefro.com/rag-chatbot
-- https://qefro.com/whatsapp-ai-agent
-- https://qefro.com/ai-for-saas
-- https://qefro.com/ai-for-ecommerce
-- https://qefro.com/qefro-pricing
-- https://qefro.com/pricing
-- https://qefro.com/security
-- https://qefro.com/privacy
-- https://qefro.com/terms
-- https://docs.qefro.com/
-- https://qefro.com/faq
-- https://qefro.com/features
-- https://qefro.com/how-it-works
-- https://qefro.com/use-cases
-- https://qefro.com/benchmark
+## Primary links
 
-## Topic landing pages
-- https://qefro.com/ai-customer-support
-- https://qefro.com/ai-chatbot
-- https://qefro.com/website-ai-chat
-- https://qefro.com/whatsapp-ai-agent
-- https://qefro.com/multilingual-ai-chatbot
-- https://qefro.com/rag-chatbot
-- https://qefro.com/document-chat-ai
-- https://qefro.com/customer-support-automation
-- https://qefro.com/helpdesk-ai
-- https://qefro.com/knowledge-base-ai
+- Homepage: https://qefro.com/
+- Platform: https://qefro.com/how-it-works
+- SDK: https://qefro.com/sdk
+- Docs: https://docs.qefro.com
+- Pricing: https://qefro.com/pricing
+- Contact: https://qefro.com/contact
+- Portal: https://app.qefro.com
 
-## Industry landing pages
-- https://qefro.com/ai-for-hospitals
-- https://qefro.com/ai-for-hotels
-- https://qefro.com/ai-for-schools
-- https://qefro.com/ai-for-saas
-- https://qefro.com/ai-for-ecommerce
-- https://qefro.com/ai-for-manufacturing
-- https://qefro.com/ai-for-real-estate
-- https://qefro.com/ai-for-travel
+## Note
 
-## Feature landing pages
-- https://qefro.com/live-chat
-- https://qefro.com/voice-ai
-- https://qefro.com/knowledge-base
-- https://qefro.com/website-crawl
-- https://qefro.com/whatsapp-ai
-- https://qefro.com/internal-ai
-- https://qefro.com/analytics
-- https://qefro.com/team-inbox
-- https://qefro.com/rag
-- https://qefro.com/api
-- https://qefro.com/sso
-- https://qefro.com/integrations
-- https://qefro.com/audit-logs
-
-## Vertical pages (AI customer support for …)
-- https://qefro.com/ai-customer-support-by-industry
-- https://qefro.com/ai-customer-support-for-dental-clinics
-- https://qefro.com/ai-customer-support-for-clinics
-- https://qefro.com/ai-customer-support-for-hotels
-- https://qefro.com/ai-customer-support-for-universities
-- https://qefro.com/ai-customer-support-for-hospitals
-- https://qefro.com/ai-customer-support-for-restaurants
-- https://qefro.com/ai-customer-support-for-logistics
-- https://qefro.com/ai-customer-support-for-retail
-# Plus additional verticals listed in the industry hub and sitemap.xml
+Customer support chat is one channel use case on the platform — not the definition of Qefro.

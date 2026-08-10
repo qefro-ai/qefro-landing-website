@@ -8,6 +8,7 @@ import { initHero } from "./hero.js";
 import { initMicro } from "./micro.js";
 import { initMobileMenu } from "./mobile-menu.js";
 import { initNav } from "./nav.js";
+import { initPillars } from "./pillars.js";
 import { initPricingInteractions } from "./pricing.js";
 import { initReveal } from "./reveal.js";
 import { initStats } from "./stats.js";
@@ -19,6 +20,7 @@ function boot() {
   initNav();
   initMobileMenu();
   initHero();
+  initPillars();
   initDemo();
   initArchitecture();
   initReveal();

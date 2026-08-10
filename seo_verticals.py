@@ -974,8 +974,8 @@ def _build_landing(spec: VerticalSpec, all_keys: dict[str, VerticalSpec]) -> Lan
     faqs = (
         (
             f"Is Qefro built for {label.lower()}?",
-            f"Yes. Teams configure knowledge and channels for a {setting}, then deploy Customer AI "
-            f"for {audience} and Employee AI for staff — without building RAG infrastructure.",
+            f"Yes. Teams configure knowledge and channels for a {setting}, then deploy customer channels "
+            f"for {audience} and staff Internal Portal access — without building the platform from scratch.",
         ),
         (
             "Can it connect to our scheduling or order systems?",
@@ -999,9 +999,9 @@ def _build_landing(spec: VerticalSpec, all_keys: dict[str, VerticalSpec]) -> Lan
             f"website and WhatsApp chat, secure API actions, and an Internal Portal for staff."
         ),
         answer=(
-            f"<p><strong>Qefro</strong> provides AI customer support for {label.lower()}: "
-            f"cited answers for {audience}, optional WhatsApp, secure business actions, and "
-            f"staff assistants in one AI Workspace Platform.</p>"
+            f"<p><strong>AI customer support for {label.lower()}</strong> is one application on the "
+            f"<strong>Qefro AI Business Application Platform</strong>: cited answers for {audience}, "
+            f"optional WhatsApp, secure business actions, and staff assistants on shared workspaces.</p>"
         ),
         paragraphs=paragraphs,
         bullets=bullets,
