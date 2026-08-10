@@ -1,15 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" fill="none" aria-hidden="true" class="illust-svg">
-  <rect class="i-surface-2 i-stroke" x="16" y="16" width="56" height="44" rx="8"/>
-  <rect class="i-accent-fill" x="28" y="28" width="32" height="5" rx="2"/>
-  <rect class="i-muted-fill" x="28" y="40" width="24" height="4" rx="2"/>
-  <rect class="i-surface-2 i-stroke" x="84" y="16" width="56" height="44" rx="8"/>
-  <rect class="i-accent-fill" x="96" y="28" width="32" height="5" rx="2"/>
-  <rect class="i-muted-fill" x="96" y="40" width="24" height="4" rx="2"/>
-  <rect class="i-surface-2 i-stroke" x="152" y="16" width="56" height="44" rx="8"/>
-  <rect class="i-accent-fill" x="164" y="28" width="32" height="5" rx="2"/>
-  <rect class="i-muted-fill" x="164" y="40" width="24" height="4" rx="2"/>
-  <rect class="i-surface-2 i-stroke" x="220" y="16" width="56" height="44" rx="8"/>
-  <rect class="i-accent-fill" x="232" y="28" width="32" height="5" rx="2"/>
-  <rect class="i-muted-fill" x="232" y="40" width="24" height="4" rx="2"/>
-  <rect class="i-accent-soft" x="28" y="68" width="232" height="10" rx="5"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-soft" x="20" y="72" width="280" height="16" rx="8"/>
+  <rect class="i-surface-2 i-stroke" x="36" y="20" width="52" height="58" rx="10" stroke-width="2"/>
+  <rect class="i-accent-fill" x="46" y="32" width="32" height="6" rx="3"/>
+  <rect class="i-soft" x="46" y="44" width="32" height="5" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="100" y="12" width="52" height="66" rx="10" stroke-width="2"/>
+  <rect class="i-accent-fill" x="110" y="24" width="32" height="6" rx="3"/>
+  <rect class="i-soft" x="110" y="36" width="32" height="5" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="164" y="20" width="52" height="58" rx="10" stroke-width="2"/>
+  <rect class="i-accent-fill" x="174" y="32" width="32" height="6" rx="3"/>
+  <rect class="i-soft" x="174" y="44" width="32" height="5" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="228" y="28" width="48" height="50" rx="10" stroke-width="2"/>
+  <rect class="i-soft" x="238" y="40" width="28" height="5" rx="2"/>
+  <circle class="i-accent-fill" cx="252" cy="60" r="8"/>
 </svg>

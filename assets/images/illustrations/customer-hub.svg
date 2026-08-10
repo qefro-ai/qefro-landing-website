@@ -1,22 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 280" fill="none" aria-hidden="true" class="illust-svg">
-  <circle class="i-accent-soft i-accent-stroke" cx="280" cy="140" r="72" stroke-width="2"/>
-  <circle class="i-accent-fill" cx="280" cy="140" r="48"/>
-  <text class="i-on-accent" x="280" y="134" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="800">Customer Hub</text>
-  <text class="i-on-accent" x="280" y="152" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" opacity="0.9">Identity layer</text>
-  <!-- spokes -->
-  <path class="i-muted-stroke" d="M280 68 V40 M232 88 L160 48 M328 88 L400 48 M216 160 L120 180 M344 160 L440 180 M248 200 L200 248 M312 200 L360 248" stroke-width="1.5"/>
-  <rect class="i-surface-2 i-stroke" x="232" y="16" width="96" height="28" rx="8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" fill="none" aria-hidden="true" class="illust-svg">
+  <circle class="i-soft" cx="70" cy="60" r="30"/>
+  <circle class="i-soft" cx="500" cy="250" r="36"/>
+  <circle class="i-soft" cx="280" cy="150" r="78"/>
+  <circle class="i-accent-fill" cx="280" cy="150" r="52"/>
+  <text class="i-on-accent" x="280" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="800">Customer Hub</text>
+  <text class="i-on-accent" x="280" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10">Identity</text>
+  <path class="i-muted-stroke" d="M280 72 V40 M220 100 L160 60 M340 100 L400 60 M210 180 L130 200 M350 180 L430 200" stroke-width="2"/>
+  <rect class="i-surface-2 i-stroke" x="232" y="16" width="96" height="28" rx="10" stroke-width="2"/>
   <text class="i-ink" x="280" y="35" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Timeline</text>
-  <rect class="i-surface-2 i-stroke" x="96" y="28" width="80" height="28" rx="8"/>
-  <text class="i-ink" x="136" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Consent</text>
-  <rect class="i-surface-2 i-stroke" x="384" y="28" width="88" height="28" rx="8"/>
-  <text class="i-ink" x="428" y="47" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Attributes</text>
-  <rect class="i-surface i-stroke" x="48" y="164" width="88" height="40" rx="10"/>
-  <text class="i-ink" x="92" y="189" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Sales</text>
-  <rect class="i-surface i-stroke" x="424" y="164" width="88" height="40" rx="10"/>
-  <text class="i-ink" x="468" y="189" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Support</text>
-  <rect class="i-surface i-stroke" x="156" y="232" width="100" height="36" rx="10"/>
-  <text class="i-ink" x="206" y="255" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Restaurant</text>
-  <rect class="i-surface i-stroke" x="304" y="232" width="100" height="36" rx="10"/>
-  <text class="i-ink" x="354" y="255" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Memberships</text>
+  <rect class="i-surface-2 i-stroke" x="96" y="40" width="80" height="28" rx="10" stroke-width="2"/>
+  <text class="i-ink" x="136" y="59" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Consent</text>
+  <rect class="i-surface-2 i-stroke" x="384" y="40" width="88" height="28" rx="10" stroke-width="2"/>
+  <text class="i-ink" x="428" y="59" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Attributes</text>
+  <rect class="i-surface-2 i-stroke" x="48" y="180" width="96" height="40" rx="12" stroke-width="2"/>
+  <circle class="i-accent-fill" cx="72" cy="200" r="10"/>
+  <text class="i-ink" x="110" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Sales</text>
+  <rect class="i-surface-2 i-stroke" x="416" y="180" width="96" height="40" rx="12" stroke-width="2"/>
+  <circle class="i-soft" cx="440" cy="200" r="10"/>
+  <text class="i-ink" x="478" y="205" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Support</text>
+  <rect class="i-surface-2 i-stroke" x="180" y="240" width="100" height="36" rx="12" stroke-width="2"/>
+  <text class="i-ink" x="230" y="263" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Restaurant</text>
+  <rect class="i-surface-2 i-stroke" x="300" y="240" width="100" height="36" rx="12" stroke-width="2"/>
+  <text class="i-ink" x="350" y="263" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Clinic</text>
 </svg>

@@ -1,24 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" fill="none" aria-hidden="true" class="illust-svg">
-  <rect class="i-surface" x="12" y="12" width="396" height="216" rx="16"/>
-  <rect class="i-accent-soft i-accent-stroke" x="48" y="168" width="324" height="36" rx="10"/>
-  <text class="i-accent" x="210" y="191" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Shared platform / AI / Hub / Workflows / RBAC</text>
-  <rect class="i-surface-2 i-stroke" x="40" y="48" width="80" height="96" rx="12"/>
-  <rect class="i-accent-fill" x="56" y="64" width="48" height="8" rx="4"/>
-  <rect class="i-muted-fill" x="56" y="84" width="48" height="6" rx="3"/>
-  <rect class="i-muted-fill" x="56" y="98" width="36" height="6" rx="3"/>
-  <text class="i-ink" x="80" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Restaurant</text>
-  <rect class="i-surface-2 i-stroke" x="136" y="48" width="80" height="96" rx="12"/>
-  <rect class="i-accent-fill" x="152" y="64" width="48" height="8" rx="4"/>
-  <rect class="i-muted-fill" x="152" y="84" width="48" height="6" rx="3"/>
-  <rect class="i-muted-fill" x="152" y="98" width="36" height="6" rx="3"/>
-  <text class="i-ink" x="176" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Clinic Pro</text>
-  <rect class="i-surface-2 i-stroke" x="232" y="48" width="80" height="96" rx="12"/>
-  <rect class="i-accent-fill" x="248" y="64" width="48" height="8" rx="4"/>
-  <rect class="i-muted-fill" x="248" y="84" width="48" height="6" rx="3"/>
-  <rect class="i-muted-fill" x="248" y="98" width="36" height="6" rx="3"/>
-  <text class="i-ink" x="272" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Finance</text>
-  <rect class="i-surface-2 i-stroke" x="328" y="48" width="64" height="96" rx="12"/>
-  <rect class="i-accent-fill" x="340" y="64" width="40" height="8" rx="4"/>
-  <rect class="i-muted-fill" x="340" y="84" width="40" height="6" rx="3"/>
-  <text class="i-ink" x="360" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Custom</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none" aria-hidden="true" class="illust-svg">
+  <circle class="i-soft" cx="48" cy="56" r="32"/>
+  <circle class="i-soft" cx="440" cy="220" r="40"/>
+  <!-- platform base -->
+  <rect class="i-soft" x="40" y="200" width="400" height="36" rx="12"/>
+  <rect class="i-accent-fill" x="60" y="210" width="360" height="8" rx="4"/>
+  <!-- app cards -->
+  <g>
+    <rect class="i-surface-2 i-stroke" x="56" y="72" width="88" height="118" rx="14" stroke-width="2.5"/>
+    <rect class="i-accent-fill" x="72" y="92" width="56" height="10" rx="5"/>
+    <rect class="i-soft" x="72" y="114" width="56" height="8" rx="4"/>
+    <rect class="i-soft" x="72" y="130" width="40" height="8" rx="4"/>
+    <circle class="i-soft" cx="100" cy="164" r="14"/>
+  </g>
+  <g>
+    <rect class="i-surface-2 i-stroke" x="160" y="52" width="88" height="138" rx="14" stroke-width="2.5"/>
+    <rect class="i-accent-fill" x="176" y="72" width="56" height="10" rx="5"/>
+    <rect class="i-soft" x="176" y="94" width="56" height="8" rx="4"/>
+    <rect class="i-soft" x="176" y="110" width="40" height="8" rx="4"/>
+    <rect class="i-soft" x="176" y="148" width="56" height="24" rx="8"/>
+  </g>
+  <g>
+    <rect class="i-surface-2 i-stroke" x="264" y="72" width="88" height="118" rx="14" stroke-width="2.5"/>
+    <rect class="i-accent-fill" x="280" y="92" width="56" height="10" rx="5"/>
+    <rect class="i-soft" x="280" y="114" width="56" height="8" rx="4"/>
+    <rect class="i-soft" x="280" y="130" width="40" height="8" rx="4"/>
+    <circle class="i-accent-fill" cx="308" cy="164" r="14"/>
+  </g>
+  <g>
+    <rect class="i-surface-2 i-stroke" x="368" y="88" width="72" height="102" rx="14" stroke-width="2.5"/>
+    <rect class="i-soft" x="382" y="108" width="44" height="8" rx="4"/>
+    <rect class="i-soft" x="382" y="124" width="32" height="8" rx="4"/>
+    <rect class="i-accent-fill" x="382" y="150" width="44" height="20" rx="8"/>
+  </g>
+  <text class="i-ink" x="240" y="40" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700">Marketplace Apps</text>
 </svg>

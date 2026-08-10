@@ -1,17 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" fill="none" aria-hidden="true" class="illust-svg">
-  <rect class="i-surface" x="12" y="12" width="396" height="216" rx="16"/>
-  <rect class="i-surface-2 i-stroke" x="32" y="88" width="72" height="48" rx="10"/>
-  <text class="i-ink" x="68" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Event</text>
-  <path class="i-accent-stroke" d="M104 112 H132" stroke-width="2"/>
-  <rect class="i-accent-soft i-accent-stroke" x="132" y="80" width="88" height="64" rx="10"/>
-  <text class="i-accent" x="176" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Workflow</text>
-  <text class="i-muted" x="176" y="126" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9">Qefro</text>
-  <path class="i-accent-stroke" d="M220 112 H248" stroke-width="2"/>
-  <rect class="i-surface-2 i-stroke" x="248" y="88" width="72" height="48" rx="10"/>
-  <text class="i-ink" x="284" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Approve</text>
-  <path class="i-accent-stroke" d="M320 112 H348" stroke-width="2"/>
-  <rect class="i-accent-fill" x="348" y="88" width="48" height="48" rx="10"/>
-  <text class="i-on-accent" x="372" y="116" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Done</text>
-  <text class="i-muted" x="210" y="52" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Organization Workflows</text>
-  <text class="i-muted" x="210" y="196" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10">Events / Tasks / Approvals / Teams / RBAC</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 280" fill="none" aria-hidden="true" class="illust-svg">
+  <circle class="i-soft" cx="60" cy="60" r="28"/>
+  <circle class="i-soft" cx="430" cy="50" r="34"/>
+  <!-- workflow cards -->
+  <rect class="i-surface-2 i-stroke" x="36" y="110" width="78" height="56" rx="12" stroke-width="2.5"/>
+  <text class="i-ink" x="75" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Event</text>
+  <path class="i-accent-stroke" d="M114 138 H148" stroke-width="3" stroke-linecap="round"/>
+  <polygon class="i-accent-fill" points="148,132 160,138 148,144"/>
+  <rect class="i-accent-fill" x="160" y="102" width="96" height="72" rx="14"/>
+  <text class="i-on-accent" x="208" y="136" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800">Workflow</text>
+  <text class="i-on-accent" x="208" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10">Qefro</text>
+  <path class="i-accent-stroke" d="M256 138 H290" stroke-width="3" stroke-linecap="round"/>
+  <polygon class="i-accent-fill" points="290,132 302,138 290,144"/>
+  <rect class="i-surface-2 i-stroke" x="302" y="110" width="78" height="56" rx="12" stroke-width="2.5"/>
+  <text class="i-ink" x="341" y="144" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700">Approve</text>
+  <path class="i-accent-stroke" d="M380 138 H404" stroke-width="3" stroke-linecap="round"/>
+  <rect class="i-soft i-stroke" x="404" y="110" width="52" height="56" rx="12" stroke-width="2.5"/>
+  <circle class="i-accent-fill" cx="430" cy="138" r="12"/>
+  <!-- person with tablet (simplified figurative) -->
+  <circle class="i-soft" cx="120" cy="214" r="18"/>
+  <path class="i-accent-fill" d="M96 248c4-18 18-28 24-28s20 10 24 28z"/>
+  <rect class="i-surface-2 i-stroke" x="148" y="208" width="70" height="48" rx="8" stroke-width="2"/>
+  <rect class="i-accent-fill" x="158" y="220" width="28" height="6" rx="3"/>
+  <rect class="i-soft" x="158" y="232" width="40" height="6" rx="3"/>
+  <text class="i-ink" x="280" y="72" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700">Organization Workflows</text>
 </svg>

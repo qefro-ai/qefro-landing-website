@@ -2947,7 +2947,7 @@ a.pipeline-node:hover {
   .arch-box-wide { flex-basis: 100%; }
 }
 
-/* Enterprise diagram illustrations */
+/* Soft figurative illustrations (reference style: soft blue + accent panels) */
 .illust {
   margin: 1rem 0 0;
   width: 100%;
@@ -2959,26 +2959,27 @@ a.pipeline-node:hover {
   justify-content: center;
   margin-top: 1.75rem;
 }
-.illust-board .illust { max-width: 44rem; margin: 0; }
+.illust-board .illust { max-width: 48rem; margin: 0; }
 .illust-svg {
   display: block;
   width: 100%;
   height: auto;
 }
 .hero-arch .illust { margin-top: 0.35rem; }
-.pillar-panel .illust-svg { min-height: 11rem; }
+.pillar-panel .illust-svg { min-height: 12rem; }
 
-.illust-svg .i-ink { fill: #0f172a; }
+.illust-svg .i-ink { fill: #1e293b; }
 .illust-svg .i-muted { fill: #64748b; }
-.illust-svg .i-accent { fill: #0891b2; }
-.illust-svg .i-accent-fill { fill: #0891b2; }
-.illust-svg .i-accent-soft { fill: rgba(8, 145, 178, 0.12); }
+.illust-svg .i-accent { fill: #5479f7; }
+.illust-svg .i-accent-fill { fill: #5479f7; }
+.illust-svg .i-soft { fill: #e2eaff; }
+.illust-svg .i-accent-soft { fill: #e2eaff; }
 .illust-svg .i-on-accent { fill: #ffffff; }
-.illust-svg .i-surface { fill: #f8fafc; }
+.illust-svg .i-surface { fill: #f4f7ff; }
 .illust-svg .i-surface-2 { fill: #ffffff; }
-.illust-svg .i-muted-fill { fill: #cbd5e1; }
-.illust-svg .i-stroke { stroke: #cbd5e1; }
-.illust-svg .i-accent-stroke { stroke: #0891b2; }
+.illust-svg .i-muted-fill { fill: #c7d2fe; }
+.illust-svg .i-stroke { stroke: #1e293b; }
+.illust-svg .i-accent-stroke { stroke: #5479f7; }
 .illust-svg .i-muted-stroke { stroke: #94a3b8; }
 .illust-svg path.i-accent-stroke,
 .illust-svg path.i-muted-stroke { fill: none; }
@@ -2986,16 +2987,17 @@ a.pipeline-node:hover {
 
 [data-theme="dark"] .illust-svg .i-ink { fill: #e2e8f0; }
 [data-theme="dark"] .illust-svg .i-muted { fill: #94a3b8; }
-[data-theme="dark"] .illust-svg .i-accent { fill: #22d3ee; }
-[data-theme="dark"] .illust-svg .i-accent-fill { fill: #0891b2; }
-[data-theme="dark"] .illust-svg .i-accent-soft { fill: rgba(34, 211, 238, 0.12); }
+[data-theme="dark"] .illust-svg .i-accent { fill: #8ba4ff; }
+[data-theme="dark"] .illust-svg .i-accent-fill { fill: #5479f7; }
+[data-theme="dark"] .illust-svg .i-soft,
+[data-theme="dark"] .illust-svg .i-accent-soft { fill: rgba(84, 121, 247, 0.22); }
 [data-theme="dark"] .illust-svg .i-on-accent { fill: #f8fafc; }
 [data-theme="dark"] .illust-svg .i-surface { fill: #0f172a; }
 [data-theme="dark"] .illust-svg .i-surface-2 { fill: #1e293b; }
-[data-theme="dark"] .illust-svg .i-muted-fill { fill: #475569; }
-[data-theme="dark"] .illust-svg .i-stroke { stroke: #334155; }
+[data-theme="dark"] .illust-svg .i-muted-fill { fill: #334155; }
+[data-theme="dark"] .illust-svg .i-stroke { stroke: #94a3b8; }
 [data-theme="dark"] .illust-svg .i-muted-stroke { stroke: #64748b; }
-[data-theme="dark"] .illust-svg .i-accent-stroke { stroke: #22d3ee; }
+[data-theme="dark"] .illust-svg .i-accent-stroke { stroke: #8ba4ff; }
 [data-theme="dark"] .illust-svg path.i-accent-stroke,
 [data-theme="dark"] .illust-svg path.i-muted-stroke { fill: none; }
 
