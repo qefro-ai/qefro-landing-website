@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" fill="none" aria-hidden="true" class="illust-svg">
+  <!-- Qefro top -->
+  <rect class="i-accent-fill" x="200" y="24" width="240" height="52" rx="12"/>
+  <text class="i-on-accent" x="320" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800">QEFRO</text>
+  <text class="i-on-accent" x="320" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" opacity="0.9">AI + Applications</text>
+  <!-- surface row -->
+  <rect class="i-surface-2 i-stroke" x="72" y="100" width="150" height="44" rx="10"/>
+  <text class="i-ink" x="147" y="127" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Channels</text>
+  <rect class="i-surface-2 i-stroke" x="245" y="100" width="150" height="44" rx="10"/>
+  <text class="i-ink" x="320" y="127" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Workflows</text>
+  <rect class="i-surface-2 i-stroke" x="418" y="100" width="150" height="44" rx="10"/>
+  <text class="i-ink" x="493" y="127" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Applications</text>
+  <!-- connectors down -->
+  <path class="i-muted-stroke" d="M147 144 V168 M320 144 V168 M493 144 V168 M147 168 H493" stroke-width="1.5"/>
+  <!-- runtime -->
+  <rect class="i-accent-soft i-accent-stroke" x="120" y="168" width="400" height="48" rx="12"/>
+  <text class="i-accent" x="320" y="198" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700">Qefro Runtime</text>
+  <path class="i-muted-stroke" d="M320 216 V240" stroke-width="1.5"/>
+  <!-- connector layer -->
+  <rect class="i-surface-2 i-stroke" x="120" y="240" width="400" height="48" rx="12"/>
+  <text class="i-ink" x="320" y="270" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="600">Connector Layer</text>
+  <path class="i-muted-stroke" d="M220 288 V312 M420 288 V312" stroke-width="1.5"/>
+  <!-- bottom two -->
+  <rect class="i-surface i-stroke" x="72" y="312" width="220" height="72" rx="12"/>
+  <text class="i-ink" x="182" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700">External SDK</text>
+  <text class="i-muted" x="182" y="364" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11">Customer systems</text>
+  <rect class="i-surface i-stroke" x="348" y="312" width="220" height="72" rx="12"/>
+  <text class="i-ink" x="458" y="344" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="700">Managed Apps</text>
+  <text class="i-muted" x="458" y="364" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11">Qefro Marketplace</text>
+</svg>

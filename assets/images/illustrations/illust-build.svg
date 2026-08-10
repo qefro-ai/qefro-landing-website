@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-surface-2 i-stroke" x="16" y="16" width="56" height="44" rx="8"/>
+  <rect class="i-accent-fill" x="28" y="28" width="32" height="5" rx="2"/>
+  <rect class="i-muted-fill" x="28" y="40" width="24" height="4" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="84" y="16" width="56" height="44" rx="8"/>
+  <rect class="i-accent-fill" x="96" y="28" width="32" height="5" rx="2"/>
+  <rect class="i-muted-fill" x="96" y="40" width="24" height="4" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="152" y="16" width="56" height="44" rx="8"/>
+  <rect class="i-accent-fill" x="164" y="28" width="32" height="5" rx="2"/>
+  <rect class="i-muted-fill" x="164" y="40" width="24" height="4" rx="2"/>
+  <rect class="i-surface-2 i-stroke" x="220" y="16" width="56" height="44" rx="8"/>
+  <rect class="i-accent-fill" x="232" y="28" width="32" height="5" rx="2"/>
+  <rect class="i-muted-fill" x="232" y="40" width="24" height="4" rx="2"/>
+  <rect class="i-accent-soft" x="28" y="68" width="232" height="10" rx="5"/>
+</svg>

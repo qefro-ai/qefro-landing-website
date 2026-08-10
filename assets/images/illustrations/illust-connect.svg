@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-surface-2 i-stroke" x="8" y="24" width="84" height="40" rx="10"/>
+  <text class="i-ink" x="50" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600">Systems</text>
+  <path class="i-accent-stroke" d="M92 44 H118" stroke-width="2"/>
+  <circle class="i-accent-fill" cx="132" cy="44" r="14"/>
+  <text class="i-on-accent" x="132" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" font-weight="700">SDK</text>
+  <path class="i-accent-stroke" d="M146 44 H172" stroke-width="2"/>
+  <rect class="i-accent-soft i-accent-stroke" x="172" y="24" width="84" height="40" rx="10"/>
+  <text class="i-accent" x="214" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Qefro</text>
+</svg>

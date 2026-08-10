@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 140" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-surface-2 i-stroke" x="16" y="44" width="100" height="52" rx="12"/>
+  <text class="i-ink" x="66" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Website</text>
+  <rect class="i-surface-2 i-stroke" x="132" y="44" width="108" height="52" rx="12"/>
+  <text class="i-ink" x="186" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">WhatsApp</text>
+  <rect class="i-surface-2 i-stroke" x="256" y="44" width="120" height="52" rx="12"/>
+  <text class="i-ink" x="316" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">Portal</text>
+  <rect class="i-surface-2 i-stroke" x="392" y="44" width="80" height="52" rx="12"/>
+  <text class="i-ink" x="432" y="75" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600">API</text>
+  <path class="i-accent-stroke" d="M472 70 H520" stroke-width="2.5"/>
+  <polygon class="i-accent-fill" points="520,62 536,70 520,78"/>
+  <rect class="i-accent-fill" x="540" y="36" width="164" height="68" rx="14"/>
+  <text class="i-on-accent" x="622" y="68" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="800">Applications</text>
+  <text class="i-on-accent" x="622" y="86" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" opacity="0.9">Same tools &amp; permissions</text>
+</svg>

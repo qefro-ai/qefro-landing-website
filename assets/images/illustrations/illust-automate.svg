@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-surface-2 i-stroke" x="8" y="24" width="58" height="40" rx="8"/>
+  <text class="i-ink" x="37" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Event</text>
+  <path class="i-accent-stroke" d="M66 44 H86" stroke-width="2"/>
+  <rect class="i-accent-soft i-accent-stroke" x="86" y="24" width="70" height="40" rx="8"/>
+  <text class="i-accent" x="121" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700">Workflow</text>
+  <path class="i-accent-stroke" d="M156 44 H176" stroke-width="2"/>
+  <rect class="i-surface-2 i-stroke" x="176" y="24" width="62" height="40" rx="8"/>
+  <text class="i-ink" x="207" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Approve</text>
+  <path class="i-accent-stroke" d="M238 44 H258" stroke-width="2"/>
+  <rect class="i-accent-fill" x="258" y="24" width="50" height="40" rx="8"/>
+  <text class="i-on-accent" x="283" y="48" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="700">Action</text>
+</svg>

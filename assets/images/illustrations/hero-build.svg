@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 240" fill="none" aria-hidden="true" class="illust-svg">
+  <rect class="i-surface" x="12" y="12" width="396" height="216" rx="16"/>
+  <rect class="i-accent-soft i-accent-stroke" x="48" y="168" width="324" height="36" rx="10"/>
+  <text class="i-accent" x="210" y="191" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700">Shared platform / AI / Hub / Workflows / RBAC</text>
+  <rect class="i-surface-2 i-stroke" x="40" y="48" width="80" height="96" rx="12"/>
+  <rect class="i-accent-fill" x="56" y="64" width="48" height="8" rx="4"/>
+  <rect class="i-muted-fill" x="56" y="84" width="48" height="6" rx="3"/>
+  <rect class="i-muted-fill" x="56" y="98" width="36" height="6" rx="3"/>
+  <text class="i-ink" x="80" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Restaurant</text>
+  <rect class="i-surface-2 i-stroke" x="136" y="48" width="80" height="96" rx="12"/>
+  <rect class="i-accent-fill" x="152" y="64" width="48" height="8" rx="4"/>
+  <rect class="i-muted-fill" x="152" y="84" width="48" height="6" rx="3"/>
+  <rect class="i-muted-fill" x="152" y="98" width="36" height="6" rx="3"/>
+  <text class="i-ink" x="176" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Clinic Pro</text>
+  <rect class="i-surface-2 i-stroke" x="232" y="48" width="80" height="96" rx="12"/>
+  <rect class="i-accent-fill" x="248" y="64" width="48" height="8" rx="4"/>
+  <rect class="i-muted-fill" x="248" y="84" width="48" height="6" rx="3"/>
+  <rect class="i-muted-fill" x="248" y="98" width="36" height="6" rx="3"/>
+  <text class="i-ink" x="272" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Finance</text>
+  <rect class="i-surface-2 i-stroke" x="328" y="48" width="64" height="96" rx="12"/>
+  <rect class="i-accent-fill" x="340" y="64" width="40" height="8" rx="4"/>
+  <rect class="i-muted-fill" x="340" y="84" width="40" height="6" rx="3"/>
+  <text class="i-ink" x="360" y="128" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Custom</text>
+</svg>

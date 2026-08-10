@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "47"
+ASSET_VERSION = "48"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI Business Application Platform. Connect your systems, "
@@ -1042,6 +1042,22 @@ def pill_cloud(items, label: str, *, ul_class: str = "") -> str:
 
 
 # ── Home ────────────────────────────────────────────────────────────
+_ILLUST_DIR = ROOT / "assets" / "images" / "illustrations"
+_ILLUST_CACHE: dict[str, str] = {}
+
+
+def illustration(name: str, *, alt: str = "", figure_class: str = "illust") -> str:
+    """Inline an enterprise-diagram SVG so CSS can theme light/dark."""
+    if name not in _ILLUST_CACHE:
+        path = _ILLUST_DIR / f"{name}.svg"
+        if not path.is_file():
+            raise FileNotFoundError(f"Missing illustration: {path}")
+        _ILLUST_CACHE[name] = path.read_text(encoding="utf-8").strip()
+    svg = _ILLUST_CACHE[name]
+    label = f' aria-label="{escape(alt)}"' if alt else ' aria-hidden="true"'
+    return f'<figure class="{figure_class}" role="img"{label}>\n{svg}\n        </figure>'
+
+
 def home_faq_preview(n: int = 8) -> str:
     return "".join(
         faq_item_html(q, a, "home-faq", i) for i, (q, a) in enumerate(FAQ_ITEMS[:n])
@@ -1049,6 +1065,15 @@ def home_faq_preview(n: int = 8) -> str:
 
 
 def home_body() -> str:
+    hero_connect = illustration("hero-connect", alt="Connect systems to Qefro through External SDK")
+    hero_build = illustration("hero-build", alt="Build applications on the Qefro platform")
+    hero_automate = illustration("hero-automate", alt="Automate organization workflows")
+    card_connect = illustration("illust-connect", figure_class="illust illust-sm", alt="")
+    card_build = illustration("illust-build", figure_class="illust illust-sm", alt="")
+    card_automate = illustration("illust-automate", figure_class="illust illust-sm", alt="")
+    arch = illustration("platform-architecture", alt="Qefro platform architecture layers")
+    hub = illustration("customer-hub", alt="Customer Hub identity shared across applications")
+    channels = illustration("channels", alt="Website WhatsApp Portal and API channels into applications")
     return f"""    <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-5xl hero-platform-grid">
@@ -1081,7 +1106,8 @@ def home_body() -> str:
           </div>
           <div class="pillar-panels">
             <div class="pillar-panel is-active" data-pillar-panel="connect" role="tabpanel">
-              <ul class="pillar-list">
+              {hero_connect}
+              <ul class="pillar-list sr-only">
                 <li>ERP / CRM</li>
                 <li>APIs &amp; Databases</li>
                 <li>SDK Connectors</li>
@@ -1089,7 +1115,8 @@ def home_body() -> str:
               </ul>
             </div>
             <div class="pillar-panel" data-pillar-panel="build" role="tabpanel" hidden>
-              <ul class="pillar-list">
+              {hero_build}
+              <ul class="pillar-list sr-only">
                 <li>Restaurant Pro</li>
                 <li>Clinic Pro</li>
                 <li>Finance &amp; Sales</li>
@@ -1097,7 +1124,8 @@ def home_body() -> str:
               </ul>
             </div>
             <div class="pillar-panel" data-pillar-panel="automate" role="tabpanel" hidden>
-              <ul class="pillar-list">
+              {hero_automate}
+              <ul class="pillar-list sr-only">
                 <li>Events &amp; Actions</li>
                 <li>Approvals &amp; Tasks</li>
                 <li>Organization Workflows</li>
@@ -1121,21 +1149,21 @@ def home_body() -> str:
             <h3>Connect</h3>
             <p class="three-way-lead">Bring your existing systems</p>
             <p>Connect ERP, CRM, inventory, pricing, databases and internal APIs through Qefro APIs or External SDK Connections.</p>
-            <div class="mini-flow" aria-hidden="true"><span>Your Systems</span><span>{ICONS["arrow"]}</span><span>External SDK</span><span>{ICONS["arrow"]}</span><span>Qefro</span></div>
+            {card_connect}
             <a class="btn btn-ghost" href="/integrations">Explore Integrations {ICONS["arrow"]}</a>
           </article>
           <article class="three-way-card">
             <h3>Build</h3>
             <p class="three-way-lead">Create AI-powered business applications</p>
             <p>Build specialized applications using the Qefro SDK or deploy applications through the Qefro Marketplace.</p>
-            <div class="mini-chips" aria-label="Example applications"><span>Restaurant Pro</span><span>Clinic Pro</span><span>Finance</span><span>Sales</span><span>Operations</span></div>
+            {card_build}
             <a class="btn btn-ghost" href="/use-cases">Explore Applications {ICONS["arrow"]}</a>
           </article>
           <article class="three-way-card">
             <h3>Automate</h3>
             <p class="three-way-lead">Orchestrate work across your organization</p>
             <p>Connect business events, AI actions, approvals, tasks and teams through Organization Workflows.</p>
-            <div class="mini-flow" aria-hidden="true"><span>Event</span><span>{ICONS["arrow"]}</span><span>Workflow</span><span>{ICONS["arrow"]}</span><span>Approval</span><span>{ICONS["arrow"]}</span><span>Action</span></div>
+            {card_automate}
             <a class="btn btn-ghost" href="/workflow-engine">Explore Workflows {ICONS["arrow"]}</a>
           </article>
         </div>
@@ -1149,25 +1177,8 @@ def home_body() -> str:
           <h2 id="architecture-heading">Your systems remain yours. Qefro makes them intelligent.</h2>
           <p>Keep your ERP, CRM, inventory and internal systems exactly where they belong. Qefro connects to them through secure SDK connections and APIs, while providing the AI and orchestration layer on top.</p>
         </div>
-        <div class="arch-board reveal" aria-label="Qefro architecture">
-          <div class="arch-row arch-top">
-            <div class="arch-box arch-box-accent">QEFRO<span>AI + Applications</span></div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box">Channels</div>
-            <div class="arch-box">Workflows</div>
-            <div class="arch-box">Applications</div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box arch-box-wide">Qefro Runtime</div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box arch-box-wide">Connector Layer</div>
-          </div>
-          <div class="arch-row">
-            <div class="arch-box">External SDK<br/><small>Customer systems</small></div>
-            <div class="arch-box">Managed Apps<br/><small>Qefro Marketplace</small></div>
-          </div>
+        <div class="illust-board reveal">
+          {arch}
         </div>
       </div>
     </section>
@@ -1270,9 +1281,8 @@ def home_body() -> str:
           <h2 id="hub-heading">One customer identity across your applications</h2>
           <p>Customer Hub owns people and identity. Applications own their domain relationships.</p>
         </div>
-        <div class="hub-diagram reveal">
-          <div class="hub-center">Customer Hub<span>Identity · Timeline · Consent · Memberships · Attributes</span></div>
-          <div class="hub-apps"><span>Sales</span><span>Restaurant</span><span>Support</span></div>
+        <div class="illust-board reveal">
+          {hub}
         </div>
       </div>
     </section>
@@ -1300,13 +1310,8 @@ def home_body() -> str:
           <h2 id="channels-heading">Meet customers where they already are</h2>
           <p>Website, WhatsApp and internal tools are interaction channels&mdash;not separate systems.</p>
         </div>
-        <div class="channel-row reveal">
-          <span class="channel-pill">Website</span>
-          <span class="channel-pill">WhatsApp</span>
-          <span class="channel-pill">Internal Portal</span>
-          <span class="channel-pill">API</span>
-          <span class="channel-arrow">{ICONS["arrow"]}</span>
-          <span class="channel-pill channel-pill-accent">Qefro Applications</span>
+        <div class="illust-board reveal">
+          {channels}
         </div>
       </div>
     </section>
