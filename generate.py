@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "49"
+ASSET_VERSION = "50"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro — AI Business Application Platform. Connect your systems, "
@@ -245,14 +245,7 @@ def header(active: str | None = None) -> str:
 {mobile}
       <a href="/faq">FAQ</a>
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
-      <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="justify-content:center;margin-top:0.5rem">Build with Qefro</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
-      <div class="mobile-panel-tools">
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
-          <span class="icon-moon" aria-hidden="true">{ICONS["moon"]}</span>
-          <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
-        </button>
-      </div>
     </div>
   </header>"""
 
@@ -1100,12 +1093,12 @@ def home_body() -> str:
         <div class="hero-arch reveal" data-pillars aria-label="Qefro platform pillars">
           <div class="pillar-hub">QEFRO<span>AI Business Application Platform</span></div>
           <div class="pillar-tabs" role="tablist" aria-label="Platform pillars">
-            <button type="button" class="pillar-tab is-active" role="tab" aria-selected="true" data-pillar="connect">Connect</button>
-            <button type="button" class="pillar-tab" role="tab" aria-selected="false" data-pillar="build">Build</button>
-            <button type="button" class="pillar-tab" role="tab" aria-selected="false" data-pillar="automate">Automate</button>
+            <button type="button" class="pillar-tab is-active" role="tab" id="pillar-tab-connect" aria-selected="true" aria-controls="pillar-panel-connect" data-pillar="connect">Connect</button>
+            <button type="button" class="pillar-tab" role="tab" id="pillar-tab-build" aria-selected="false" aria-controls="pillar-panel-build" tabindex="-1" data-pillar="build">Build</button>
+            <button type="button" class="pillar-tab" role="tab" id="pillar-tab-automate" aria-selected="false" aria-controls="pillar-panel-automate" tabindex="-1" data-pillar="automate">Automate</button>
           </div>
           <div class="pillar-panels">
-            <div class="pillar-panel is-active" data-pillar-panel="connect" role="tabpanel">
+            <div class="pillar-panel is-active" id="pillar-panel-connect" data-pillar-panel="connect" role="tabpanel" aria-labelledby="pillar-tab-connect">
               {hero_connect}
               <ul class="pillar-list sr-only">
                 <li>ERP / CRM</li>
@@ -1114,7 +1107,7 @@ def home_body() -> str:
                 <li>On-premise systems</li>
               </ul>
             </div>
-            <div class="pillar-panel" data-pillar-panel="build" role="tabpanel" hidden>
+            <div class="pillar-panel" id="pillar-panel-build" data-pillar-panel="build" role="tabpanel" aria-labelledby="pillar-tab-build" hidden>
               {hero_build}
               <ul class="pillar-list sr-only">
                 <li>Restaurant Pro</li>
@@ -1123,7 +1116,7 @@ def home_body() -> str:
                 <li>Custom Marketplace Apps</li>
               </ul>
             </div>
-            <div class="pillar-panel" data-pillar-panel="automate" role="tabpanel" hidden>
+            <div class="pillar-panel" id="pillar-panel-automate" data-pillar-panel="automate" role="tabpanel" aria-labelledby="pillar-tab-automate" hidden>
               {hero_automate}
               <ul class="pillar-list sr-only">
                 <li>Events &amp; Actions</li>

@@ -1806,11 +1806,6 @@ button.widget-demo-card:focus-visible {
   font-size: 0.875rem; color: var(--text-muted);
 }
 .mobile-panel a:hover { color: var(--link-hover); background: var(--nav-hover-bg); }
-.mobile-panel-tools {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 0.5rem 0 0.75rem; margin-top: 0.5rem;
-  border-top: 1px solid var(--header-border);
-}
 .site-header.is-open .mobile-panel { display: block; }
 
 .compare-advantage {
@@ -2658,6 +2653,9 @@ a.pipeline-node:hover {
 .hero-platform .hero-line { display: block; color: var(--hero-fg); }
 .hero-platform .hero-sub { margin-left: 0; margin-right: 0; }
 .hero-platform .hero-actions { justify-content: flex-start; }
+/* Checks sit under left-aligned hero copy, so keep the tick column aligned
+   instead of inheriting the centered layout used by the older centered hero. */
+.hero-platform .hero-checks { justify-content: flex-start; }
 .three-way-card {
   display: flex;
   flex-direction: column;
@@ -2671,7 +2669,7 @@ a.pipeline-node:hover {
   border: 1px solid var(--border, var(--color-border));
   border-radius: 1rem;
   padding: 1.25rem;
-  background: color-mix(in srgb, var(--bg, var(--color-background)) 88%, #0f172a 12%);
+  background: var(--card-bg);
   box-shadow: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.08));
 }
 .pillar-hub {
