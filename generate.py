@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "53"
+ASSET_VERSION = "54"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro connects your business software to AI-powered customer "
@@ -101,7 +101,10 @@ NAV = [
 # Canonical indexable URLs for sitemap (extensionless; nginx 301s .html → these).
 # Images listed here are included via the image sitemap extension.
 SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
-    ("", [(f"{SITE}/assets/images/og-cover.png", "Qefro — AI customer layer for existing business software")]),
+    ("", [
+        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI customer layer for existing business software"),
+        (f"{SITE}/assets/images/qefro_hero.png", "Qefro connects business apps, AI conversations, CRM, live data, and automation"),
+    ]),
     ("features", []),
     ("how-it-works", []),
     ("use-cases", []),
@@ -152,6 +155,12 @@ def meta_block(
     # Absolute HTTPS canonicals only — Google prefers absolute URLs for rel=canonical
     canonical = f'  <link rel="canonical" href="{url}" />\n' if include_canonical else ""
     page_og_alt = escape(OG_IMAGE_ALT if path in {"", "index.html"} else f"Qefro — {title}")
+    hero_preload = ""
+    if path in {"", "index.html"}:
+        hero_preload = (
+            f'\n  <link rel="preload" as="image" href="/assets/images/qefro_hero.png?v={ASSET_VERSION}" '
+            'fetchpriority="high" />'
+        )
     return f"""  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{escape(title)}</title>
@@ -206,7 +215,7 @@ def meta_block(
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <link rel="preload" href="/assets/css/styles.css?v={ASSET_VERSION}" as="style" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />"""
+  <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />{hero_preload}"""
 
 
 def header(active: str | None = None) -> str:
@@ -1068,6 +1077,19 @@ def home_faq_preview(n: int = 8) -> str:
     )
 
 
+def hero_visual() -> str:
+    return f"""        <figure class="hero-visual">
+          <img
+            src="/assets/images/qefro_hero.png?v={ASSET_VERSION}"
+            alt="Qefro connects business apps, AI conversations, CRM, live data, events, and automation around one customer layer."
+            width="1300"
+            height="872"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </figure>"""
+
+
 def architecture_visual(*, label: str = "Qefro connects business software to customers") -> str:
     apps = "".join(
         f"<span>{name}</span>"
@@ -1105,12 +1127,12 @@ def home_body() -> str:
     shots = product_screenshots_html()
     return f"""    <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
-      <div class="wrap-5xl hero-platform-grid">
+      <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
           <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI LAYER FOR EXISTING BUSINESS SOFTWARE</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line">Connect Your Business Software</span>
-            <span class="hero-line">to AI-Powered Customer Conversations</span>
+            <span class="hero-line hero-line-muted">Connect Your Business Software</span>
+            <span class="hero-line hero-accent">to AI-Powered Customer Conversations</span>
           </h1>
           <p class="hero-sub" data-motion="hero-sub">Qefro connects your ERP, CRM and business applications to AI chat, WhatsApp, customer data and automation &mdash; without replacing the systems your business already uses.</p>
           <div class="hero-actions" data-motion="hero-actions">
@@ -1124,9 +1146,7 @@ def home_body() -> str:
             <span>{ICONS["check"]} CRM around the customer relationship</span>
           </div>
         </div>
-        <div class="hero-arch reveal" aria-label="Qefro product architecture">
-{architecture_visual()}
-        </div>
+{hero_visual()}
       </div>
     </section>
 
