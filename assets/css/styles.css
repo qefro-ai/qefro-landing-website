@@ -2693,7 +2693,7 @@ a.pipeline-node:hover {
 [data-theme="dark"] .hero-visual-img--light { display: none; }
 [data-theme="dark"] .hero-visual-img--dark { display: block; }
 [data-theme="dark"] .hero-visual {
-  background: #01030f;
+  background: var(--hero-bg);
 }
 [data-theme="dark"] .hero.hero-platform {
   border-bottom-color: transparent;
