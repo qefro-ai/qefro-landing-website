@@ -1,28 +1,34 @@
 # Qefro
 
-> Qefro is the AI Business Application Platform.
+> Connect your business software to AI-powered customer conversations and automation.
 
-Connect your systems. Build intelligent applications. Automate your organization.
+Keep your ERP. Keep your business applications. Add Qefro.
 
-## Core pillars
+Qefro is not another ERP, CRM replacement, or generic chatbot. It is the AI customer interaction and automation layer that connects existing business software to customers.
 
-- **Connect** — External SDK Connections and APIs to ERP, CRM, inventory, and internal systems
-- **Build** — Managed Marketplace Apps and custom applications on the Qefro SDK
-- **Automate** — Organization Workflows, approvals, tasks, and teams
+## Architecture
+
+Existing Business Software → Qefro → AI Chat + WhatsApp + CRM + Automation → Your customers
+
+## Layers
+
+- **Connect** — SDK, Marketplace apps, external webhooks, and business events
+- **Engage** — Website chat, WhatsApp, voice, multilingual conversations, live business data
+- **Automate** — CRM automation from business events (WhatsApp, email, tags, assignment, follow-ups, tasks)
 
 ## Product surfaces
 
-- External SDK Connections (`/qefro` protocol)
-- Managed Marketplace Apps (Restaurant Pro, Clinic Pro, custom)
-- Customer Hub (identity layer across applications)
-- Organization Workflows (events, actions, approvals, tasks)
-- Channels: Website, WhatsApp, Internal Portal, API
-- Workspaces, RBAC, Marketing, Storage
+- Customer 360 (relationship in Qefro; business records stay in connected apps)
+- CRM around people, conversations, tags, notes, status, assignment
+- Business event automation (examples: quotation.created, order.created — configurable, not hardcoded)
+- WhatsApp and website chat with live business data
+- Qefro SDK capabilities vs business events
+- Marketplace connectors for software customers already use
 
 ## Primary links
 
 - Homepage: https://qefro.com/
-- Platform: https://qefro.com/how-it-works
+- Product: https://qefro.com/how-it-works
 - SDK: https://qefro.com/sdk
 - Docs: https://docs.qefro.com
 - Pricing: https://qefro.com/pricing
@@ -31,7 +37,7 @@ Connect your systems. Build intelligent applications. Automate your organization
 
 ## Note
 
-Customer support chat is one channel use case on the platform — not the definition of Qefro.
+Customer support chat is one channel into the customer layer — not the definition of Qefro.
 
 
 # Expanded Landing Specifications & Direct Answers

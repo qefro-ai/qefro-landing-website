@@ -1,81 +1,65 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Qefro — AI That Knows Your Business and Gets Work Done">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Qefro connects your business software to AI-powered customer conversations and automation">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#f5f3ff"/>
+      <stop offset="100%" stop-color="#f8f7fc"/>
     </linearGradient>
-    <linearGradient id="headline" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="55%" stop-color="#a855f7"/>
-      <stop offset="100%" stop-color="#ec4899"/>
-    </linearGradient>
-    <linearGradient id="cta" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#0891b2"/>
-      <stop offset="100%" stop-color="#0e7490"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#0891b2" flood-opacity="0.16"/>
-    </filter>
-    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.08"/>
-    </filter>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="1040" cy="120" r="180" fill="#7c3aed" opacity="0.08"/>
-  <circle cx="150" cy="520" r="150" fill="#0891b2" opacity="0.07"/>
-  <circle cx="980" cy="500" r="120" fill="#ec4899" opacity="0.06"/>
+  <circle cx="1080" cy="80" r="160" fill="#7c3aed" opacity="0.06"/>
+  <circle cx="80" cy="560" r="140" fill="#7c3aed" opacity="0.05"/>
 
-  <!-- Brand -->
   <rect x="72" y="72" width="56" height="56" rx="14" fill="#7c3aed"/>
   <text x="100" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Q</text>
   <text x="144" y="110" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#111827">Qefro</text>
 
-  <!-- Badge -->
-  <rect x="72" y="156" width="320" height="34" rx="17" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
-  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.2" fill="#6d28d9">AI WORKSPACE PLATFORM</text>
+  <rect x="72" y="156" width="360" height="34" rx="17" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.5"/>
+  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="1.1" fill="#6d28d9">AI LAYER FOR EXISTING SOFTWARE</text>
 
-  <!-- Headline -->
-  <text x="72" y="248" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="800" fill="#111827">AI That Knows Your Business</text>
-  <text x="72" y="308" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="800" fill="url(#headline)">and Gets Work Done</text>
+  <text x="72" y="248" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800" fill="#111827">Connect Your Business Software</text>
+  <text x="72" y="300" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="800" fill="#7c3aed">to AI Customer Conversations</text>
 
-  <!-- Subhead -->
-  <text x="72" y="362" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#6b7280">Answer questions and securely perform business actions</text>
-  <text x="72" y="392" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#6b7280">from one centralized AI platform.</text>
+  <text x="72" y="358" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4b5563">Keep your ERP, CRM, and business apps.</text>
+  <text x="72" y="388" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4b5563">Add AI chat, WhatsApp, CRM, and automation.</text>
 
-  <!-- CTA pill -->
-  <rect x="72" y="430" width="320" height="52" rx="12" fill="url(#cta)" filter="url(#shadow)"/>
-  <text x="232" y="462" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#ffffff">Start Free — No Card Required</text>
+  <rect x="72" y="430" width="280" height="52" rx="12" fill="#7c3aed"/>
+  <text x="212" y="462" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Connect Your App</text>
 
-  <!-- Trust chips -->
-  <text x="72" y="530" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#9ca3af">✓ Configure once   ✓ Deploy everywhere   ✓ Customers &amp; employees</text>
-
-  <!-- Platform diagram card -->
-  <g transform="translate(700 110)" filter="url(#cardShadow)">
-    <rect width="420" height="430" rx="24" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
-    <rect x="100" y="36" width="220" height="64" rx="14" fill="#ecfeff" stroke="#a5f3fc" stroke-width="1"/>
-    <text x="210" y="62" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">Admin Console</text>
-    <text x="210" y="84" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#0e7490">Configure Once</text>
-
-    <line x1="210" y1="100" x2="210" y2="128" stroke="#d1d5db" stroke-width="2"/>
-    <line x1="110" y1="128" x2="310" y2="128" stroke="#d1d5db" stroke-width="2"/>
-    <line x1="110" y1="128" x2="110" y2="148" stroke="#d1d5db" stroke-width="2"/>
-    <line x1="310" y1="128" x2="310" y2="148" stroke="#d1d5db" stroke-width="2"/>
-
-    <rect x="36" y="148" width="148" height="72" rx="14" fill="#faf5ff" stroke="#e9d5ff" stroke-width="1"/>
-    <text x="110" y="178" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#111827">Customer AI</text>
-    <text x="110" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">Website · WhatsApp</text>
-
-    <rect x="236" y="148" width="148" height="72" rx="14" fill="#ecfeff" stroke="#a5f3fc" stroke-width="1.5"/>
-    <text x="310" y="178" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#111827">Employee AI</text>
-    <text x="310" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">Internal Portal</text>
-
-    <rect x="24" y="248" width="372" height="142" rx="16" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1"/>
-    <text x="44" y="280" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#7c3aed">Deploy Everywhere</text>
-    <text x="44" y="310" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#374151">Knowledge  ·  Business Actions</text>
-    <text x="44" y="338" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#374151">Permissions  ·  AI Workspaces</text>
-    <text x="44" y="368" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#9ca3af">Configure once. Deploy everywhere.</text>
-  </g>
-
+  <text x="72" y="530" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#6b7280">Keep your ERP. Keep your applications. Add Qefro.</text>
   <text x="72" y="598" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#7c3aed">qefro.com</text>
+
+  <g transform="translate(690 120)">
+    <rect width="430" height="390" rx="20" fill="#ffffff" stroke="#e5e7eb" stroke-width="1.5"/>
+    <text x="215" y="42" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" fill="#6b7280">YOUR BUSINESS SOFTWARE</text>
+    <rect x="28" y="58" width="68" height="32" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+    <text x="62" y="79" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111827">ERP</text>
+    <rect x="104" y="58" width="68" height="32" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+    <text x="138" y="79" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111827">CRM</text>
+    <rect x="180" y="58" width="110" height="32" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+    <text x="235" y="79" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111827">Restaurant</text>
+    <rect x="298" y="58" width="104" height="32" rx="16" fill="#f8fafc" stroke="#e5e7eb"/>
+    <text x="350" y="79" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#111827">Hospital</text>
+
+    <line x1="215" y1="98" x2="215" y2="122" stroke="#d1d5db" stroke-width="2"/>
+
+    <rect x="125" y="122" width="180" height="58" rx="14" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <text x="215" y="148" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="800" letter-spacing="1.4" fill="#6d28d9">QEFRO</text>
+    <text x="215" y="168" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6b7280">AI customer layer</text>
+
+    <line x1="215" y1="180" x2="215" y2="204" stroke="#d1d5db" stroke-width="2"/>
+
+    <rect x="28" y="204" width="114" height="52" rx="12" fill="#fafafa" stroke="#e5e7eb"/>
+    <text x="85" y="235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#111827">AI Chat</text>
+    <rect x="158" y="204" width="114" height="52" rx="12" fill="#fafafa" stroke="#e5e7eb"/>
+    <text x="215" y="235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#111827">CRM</text>
+    <rect x="288" y="204" width="114" height="52" rx="12" fill="#fafafa" stroke="#e5e7eb"/>
+    <text x="345" y="235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#111827">Automation</text>
+
+    <line x1="215" y1="256" x2="215" y2="280" stroke="#d1d5db" stroke-width="2"/>
+
+    <rect x="90" y="280" width="250" height="64" rx="14" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <text x="215" y="308" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#111827">Your customers</text>
+    <text x="215" y="328" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#6b7280">WhatsApp · Chat · Voice</text>
+  </g>
 </svg>
