@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "54"
+ASSET_VERSION = "56"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro connects your business software to AI-powered customer "
@@ -1080,12 +1080,22 @@ def home_faq_preview(n: int = 8) -> str:
 def hero_visual() -> str:
     return f"""        <figure class="hero-visual">
           <img
+            class="hero-visual-img hero-visual-img--light"
             src="/assets/images/qefro_hero.png?v={ASSET_VERSION}"
             alt="Qefro connects business apps, AI conversations, CRM, live data, events, and automation around one customer layer."
             width="1300"
             height="872"
             decoding="async"
             fetchpriority="high"
+          />
+          <img
+            class="hero-visual-img hero-visual-img--dark"
+            src="/assets/images/qefro_hero_dark.png?v={ASSET_VERSION}"
+            alt=""
+            width="1250"
+            height="894"
+            decoding="async"
+            aria-hidden="true"
           />
         </figure>"""
 

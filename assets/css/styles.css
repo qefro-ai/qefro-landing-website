@@ -536,6 +536,10 @@ button.badge-btn:focus-visible {
   overflow: hidden;
   border-bottom: 1px solid var(--hero-border);
 }
+.hero.hero-platform {
+  padding-top: 0.5rem;
+  padding-bottom: var(--space-xl);
+}
 /* Soft aurora wash behind the headline — two drifting glows */
 .hero::before {
   content: ""; position: absolute; inset: -20% -10%; pointer-events: none; z-index: 0;
@@ -2436,6 +2440,7 @@ a.workspace-pill:hover {
   .uc-list { grid-template-columns: 1fr; }
   .section { padding: 4rem var(--pad); }
   .hero { padding-top: clamp(4.5rem, 10vw, 6rem); }
+  .hero.hero-platform { padding-top: 0.35rem; }
 }
 
 /* ── Depth / hover polish (lightweight, CSS-only) ─────────────────── */
@@ -2648,7 +2653,7 @@ a.pipeline-node:hover {
   grid-template-columns: minmax(18rem, 0.92fr) minmax(20rem, 1.08fr);
   gap: clamp(1.5rem, 3vw, 3rem);
   align-items: center;
-  padding-block: clamp(2.25rem, 7vw, 6.25rem) clamp(1.75rem, 4vw, 4.5rem);
+  padding-block: 0.65rem 2.25rem;
 }
 .hero-platform .hero-copy { max-width: 38rem; }
 .hero-platform .hero-copy h1 {
@@ -2676,12 +2681,29 @@ a.pipeline-node:hover {
 .hero-visual {
   margin: 0;
   width: 100%;
+  position: relative;
 }
-.hero-visual img {
+.hero-visual-img {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
+}
+.hero-visual-img--dark { display: none; }
+[data-theme="dark"] .hero-visual-img--light { display: none; }
+[data-theme="dark"] .hero-visual-img--dark { display: block; }
+[data-theme="dark"] .hero-visual {
+  background: #01030f;
+}
+[data-theme="dark"] .hero.hero-platform {
+  border-bottom-color: transparent;
+}
+[data-theme="dark"] .site-header {
+  background: color-mix(in srgb, var(--hero-bg) 88%, transparent);
+  border-bottom-color: transparent;
+}
+[data-theme="dark"] .site-header.is-scrolled {
+  border-bottom-color: var(--header-border);
 }
 .three-way-card {
   display: flex;
@@ -2970,7 +2992,7 @@ a.pipeline-node:hover {
     grid-template-columns: 1fr;
   }
   .hero-platform .hero-platform-grid {
-    padding-block: 2rem 1.5rem;
+    padding-block: 0.5rem 1.5rem;
     gap: 1.25rem;
   }
   .hero-platform .hero-copy { max-width: none; }
