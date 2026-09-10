@@ -31,17 +31,15 @@ DOCS = "https://docs.qefro.com"
 ASSET_VERSION = "57"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
-    "Qefro connects your business software to AI-powered customer "
-    "conversations, CRM, and automation."
+    "Qefro is AI business software built for your industry."
 )
 POSITIONING = (
-    "Connect your business software to AI-powered customer conversations "
-    "and automation."
+    "AI business software built for your industry."
 )
 POSITIONING_ALT = (
-    "Turn your ERP, CRM and business apps into AI-powered customer experiences."
+    "Pre-built applications for real estate, restaurants, healthcare, "
+    "e-commerce and more."
 )
-POSITIONING_KEEP = "Keep your ERP. Keep your business applications. Add Qefro."
 DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = "Hello! How can I help?"
@@ -52,9 +50,9 @@ WIDGET_THEME = "light"
 # Used only for schema.org "keywords" in JSON-LD — the <meta name="keywords"> tag
 # is deliberately not emitted (Google has ignored it since 2009).
 META_KEYWORDS = (
-    "AI customer conversations, connect ERP to AI, WhatsApp business automation, "
-    "customer 360, CRM for conversations, business event automation, "
-    "Qefro SDK, marketplace connectors, AI customer layer"
+    "AI business software, industry applications, real estate AI, restaurant AI, "
+    "healthcare AI, e-commerce AI, WhatsApp business automation, "
+    "customer CRM, business event automation, AI chat, Qefro"
 )
 
 # Inline SVG icons (lucide-like)
@@ -92,17 +90,17 @@ for _name, _svg in list(ICONS.items()):
 
 NAV = [
     ("how-it-works", "Product"),
-    ("integrations", "Integrations"),
-    ("use-cases", "Solutions"),
-    ("sdk", "Developers"),
+    ("business-apps", "Business Apps"),
+    ("how-it-works", "How It Works"),
     ("pricing", "Pricing"),
+    ("faq", "Resources"),
 ]
 
 # Canonical indexable URLs for sitemap (extensionless; nginx 301s .html → these).
 # Images listed here are included via the image sitemap extension.
 SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("", [
-        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI customer layer for existing business software"),
+        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI business software, built for your industry"),
         (f"{SITE}/assets/images/qefro_hero.png", "Qefro connects business apps, AI conversations, CRM, live data, and automation"),
     ]),
     ("features", []),
@@ -253,7 +251,7 @@ def header(active: str | None = None) -> str:
           <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Get Started {ICONS["arrow"]}</a>
+        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">{ICONS["menu"]}</button>
       </div>
     </div>
@@ -296,48 +294,45 @@ def footer() -> str:
             <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro logo" width="40" height="40" decoding="async" />
             <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
           </a>
-          <p class="footer-tagline">AI customer layer for existing business software</p>
+          <p class="footer-tagline">AI business software, built for your industry</p>
         </div>
-        <nav class="footer-col" aria-label="Product">
-          <h3>Product</h3>
-          <a href="/how-it-works">How it works</a>
-          <a href="/features">Features</a>
-          <a href="/#customer-360">Customer 360</a>
-          <a href="/#crm">CRM</a>
-          <a href="/#automation">Automations</a>
-          <a href="/whatsapp">WhatsApp</a>
-        </nav>
-        <nav class="footer-col" aria-label="Integrations">
-          <h3>Integrations</h3>
-          <a href="/integrations">Marketplace</a>
+        <nav class="footer-col" aria-label="Applications">
+          <h3>Applications</h3>
+          <a href="/business-apps">Real Estate Pro</a>
+          <a href="/business-apps">Restaurant Pro</a>
+          <a href="/business-apps">Clinic Pro</a>
+          <a href="/business-apps">E-commerce</a>
+          <a href="/business-apps">Custom Apps</a>
           <a href="/sdk">SDK</a>
-          <a href="/integrations">Connectors</a>
-          <a href="{DOCS}">Documentation</a>
-          <a href="/api">API</a>
         </nav>
-        <nav class="footer-col" aria-label="Solutions">
-          <h3>Solutions</h3>
-          <a href="/use-cases">All solutions</a>
-          <a href="/use-cases">ERP</a>
-          <a href="/ai-customer-support-for-ecommerce">E-commerce</a>
-          <a href="/ai-customer-support-for-restaurants">Restaurants</a>
-          <a href="/ai-customer-support-for-hospitals">Healthcare</a>
-          <a href="/enterprise">Enterprise</a>
+        <nav class="footer-col" aria-label="Platform">
+          <h3>Platform</h3>
+          <a href="/#ai-automation">AI Conversations</a>
+          <a href="/#ai-automation">Automation</a>
+          <a href="/features">CRM</a>
+          <a href="/whatsapp">WhatsApp</a>
+          <a href="/features">Channels</a>
+        </nav>
+        <nav class="footer-col" aria-label="Resources">
+          <h3>Resources</h3>
+          <a href="/how-it-works">How It Works</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/faq">FAQ</a>
+          <a href="/security">Security</a>
+          <a href="{DOCS}">Docs</a>
+          <a href="/contact">Contact</a>
         </nav>
         <nav class="footer-col" aria-label="Company">
           <h3>Company</h3>
-          <a href="/what-is-qefro">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/pricing">Pricing</a>
-          <a href="/security">Security</a>
+          <a href="/contact">About</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/llms.txt">llms.txt</a>
         </nav>
       </div>
       <div class="footer-bottom">
-        <p>© <span data-year></span> Qefro. All rights reserved.</p>
-        <p>{escape(POSITIONING_KEEP)}</p>
+        <p>&copy; <span data-year></span> Qefro. All rights reserved.</p>
+        <p>{escape(POSITIONING)}</p>
       </div>
     </div>
   </footer>"""
@@ -651,7 +646,7 @@ PRICING_OFFERS_JSON = json.dumps(
         "image": OG_IMAGE,
         "description": (
             "Connect workspaces, conversations, integrations, and automation "
-            "on Qefro — the AI customer layer for existing business software."
+            "on Qefro — AI business software built for your industry."
         ),
         "brand": {"@type": "Brand", "name": "Qefro"},
         "offers": [
@@ -1109,7 +1104,7 @@ def architecture_visual(*, label: str = "Qefro connects business software to cus
           <p class="qefro-arch-kicker">Your business software</p>
           <div class="qefro-arch-apps">{apps}</div>
           <div class="qefro-arch-down" aria-hidden="true"></div>
-          <div class="qefro-arch-hub"><strong>QEFRO</strong><span>AI customer layer</span></div>
+          <div class="qefro-arch-hub"><strong>QEFRO</strong><span>AI business software</span></div>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <div class="qefro-arch-layers">
             <span>AI Chat</span>
@@ -1134,276 +1129,161 @@ def convo_example(customer: str, qefro: str) -> str:
 
 
 def home_body() -> str:
-    shots = product_screenshots_html()
     return f"""    <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
-          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI LAYER FOR EXISTING BUSINESS SOFTWARE</span>
+          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI BUSINESS SOFTWARE</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line hero-line-muted">Connect Your Business Software</span>
-            <span class="hero-line hero-accent">to AI-Powered Customer Conversations</span>
+            <span class="hero-line hero-accent">AI Business Software,</span>
+            <span class="hero-line hero-line-muted">Built for Your Industry</span>
           </h1>
-          <p class="hero-sub" data-motion="hero-sub">Qefro connects your ERP, CRM and business applications to AI chat, WhatsApp, customer data and automation &mdash; without replacing the systems your business already uses.</p>
+          <p class="hero-sub" data-motion="hero-sub">Pre-built applications for real estate, restaurants, healthcare, e-commerce and more. Connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups &mdash; all from one platform.</p>
           <div class="hero-actions" data-motion="hero-actions">
-            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_connect_app">Connect Your App {ICONS["arrow"]}</a>
-            <a class="btn btn-ghost btn-lg" href="/how-it-works" data-clarity-event="cta_see_how">See How It Works</a>
+            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+            <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">Explore Apps</a>
           </div>
           <div class="hero-checks" data-motion="hero-checks">
-            <span>{ICONS["check"]} Keep your existing software</span>
-            <span>{ICONS["check"]} Live business data in conversations</span>
-            <span>{ICONS["check"]} WhatsApp, chat, and automation</span>
-            <span>{ICONS["check"]} CRM around the customer relationship</span>
+            <span>{ICONS["check"]} Industry-specific applications</span>
+            <span>{ICONS["check"]} AI chat + WhatsApp</span>
+            <span>{ICONS["check"]} Live business data</span>
+            <span>{ICONS["check"]} Human control when needed</span>
           </div>
         </div>
 {hero_visual()}
       </div>
     </section>
 
-    <section class="section" id="missing-layer" aria-labelledby="data-heading">
+    <section class="section" id="product-story" aria-labelledby="story-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} Immediate value</span>
-          <h2 id="data-heading">Your software already has the data. Customers cannot easily interact with it.</h2>
-          <p>Your ERP already knows customers, products, orders, quotations, appointments, inventory, and transactions. Qefro creates the missing customer-facing layer.</p>
+          <span class="badge badge-indigo">{ICONS["zap"]} How customers use Qefro</span>
+          <h2 id="story-heading">From first inquiry to closed deal &mdash; AI handles the journey</h2>
+          <p>See how Qefro turns a customer question into a completed business outcome, step by step.</p>
+        </div>
+        <div class="steps-grid reveal steps-grid-3">
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Customer asks</h3><p>&ldquo;What properties match my budget?&rdquo; AI retrieves live data from your connected real estate app and responds instantly.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Business responds</h3><p>Live property data, viewing scheduling, quotations &mdash; no manual lookup, no delays. The customer gets answers in seconds.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Follow-up happens</h3><p>Automated WhatsApp messages, customer tagging, salesperson assignment &mdash; triggered by business events, not manual effort.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Team stays aligned</h3><p>CRM context, conversation history, and notes keep everyone on the same page. No information silos.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">05</div></div><h3>Deal closes</h3><p>Approval workflows, human handoff when needed, and automated confirmations. The customer experience stays seamless end to end.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="flagship" aria-labelledby="flagship-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <span class="badge badge-purple">{ICONS["building"]} Flagship App</span>
+          <h2 id="flagship-heading">See Real Estate Pro in action</h2>
+          <p>Customers ask about properties, schedule viewings, and get quotations &mdash; all through AI conversations connected to live business data.</p>
         </div>
         <div class="convo-grid reveal">
 {convo_example(
-    "What&rsquo;s my last order?",
-    "Retrieves live data from the connected ERP, then replies through WhatsApp or chat.",
+    "What 2-bedroom properties are under $300K?",
+    "Finds 4 matching properties from the connected real estate app, with prices, locations, and photos.",
 )}
 {convo_example(
-    "Can you send me a quotation?",
-    "Invokes the connected business capability, creates or retrieves the quotation, and follows the configured workflow.",
+    "Can I schedule a viewing for the one on Main Street?",
+    "Checks availability, books the viewing, and sends a confirmation through WhatsApp.",
+)}
+{convo_example(
+    "Send me a quotation for that property.",
+    "Generates a quotation with pricing details and follows the configured approval workflow.",
+)}
+{convo_example(
+    "What&rsquo;s the status of my mortgage pre-approval?",
+    "Retrieves the current status from the connected system and shares next steps.",
 )}
         </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem">Live reads and actions happen only when the connected application exposes that capability. Qefro does not copy your business ledger.</p>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/business-apps" data-clarity-event="cta_see_all_apps">See all business apps {ICONS["arrow"]}</a></p>
       </div>
     </section>
 
-    <section class="section section-alt" id="layers" aria-labelledby="layers-heading">
+    <section class="section" id="industry-apps" aria-labelledby="apps-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["sparkles"]} Three layers</span>
-          <h2 id="layers-heading">Connect. Engage. Automate.</h2>
-          <p>Qefro sits between the software you already run and the customers who need to talk to it.</p>
+          <span class="badge badge-green">{ICONS["sparkles"]} Industry Applications</span>
+          <h2 id="apps-heading">Pre-built AI apps for your industry</h2>
+          <p>Each application connects to your existing systems and gives customers an intelligent, conversational interface to your business.</p>
         </div>
-        <div class="pipeline pipeline-flow reveal" aria-label="Connect Engage Automate">
-          <span class="pipeline-node"><span class="pipeline-v">Connect</span><span class="pipeline-d">Existing systems</span></span>
-          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <span class="pipeline-node"><span class="pipeline-v">Engage</span><span class="pipeline-d">AI conversations</span></span>
-          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <span class="pipeline-node pipeline-node-accent"><span class="pipeline-v">Automate</span><span class="pipeline-d">Business events</span></span>
-        </div>
-        <div class="three-way-grid reveal" style="margin-top:2rem">
-          <article class="three-way-card">
-            <h3>Connect</h3>
-            <p class="three-way-lead">Existing business systems</p>
-            <p>SDK, Marketplace apps, external webhooks, and business events &mdash; so Qefro can talk to the software you already use.</p>
-            <ul class="pillar-list">
-              <li>SDK</li>
-              <li>Marketplace Apps</li>
-              <li>External Webhooks</li>
-              <li>Business Events</li>
-            </ul>
-            <a class="btn btn-ghost" href="/integrations">Explore Integrations {ICONS["arrow"]}</a>
-          </article>
-          <article class="three-way-card">
-            <h3>Engage</h3>
-            <p class="three-way-lead">AI-powered customer interface</p>
-            <p>Website chat, WhatsApp, voice, and multilingual conversations with live business data from connected applications.</p>
-            <ul class="pillar-list">
-              <li>Website chat</li>
-              <li>WhatsApp</li>
-              <li>Voice</li>
-              <li>Live business data</li>
-            </ul>
-            <a class="btn btn-ghost" href="/whatsapp">See WhatsApp {ICONS["arrow"]}</a>
-          </article>
-          <article class="three-way-card">
-            <h3>Automate</h3>
-            <p class="three-way-lead">Events into customer actions</p>
-            <p>When something happens in your business software, Qefro can tag, assign, follow up, send WhatsApp, or create a task.</p>
-            <ul class="pillar-list">
-              <li>CRM automation</li>
-              <li>WhatsApp &amp; email</li>
-              <li>Tags, assignment, tasks</li>
-              <li>Follow-ups &amp; delays</li>
-            </ul>
-            <a class="btn btn-ghost" href="/#automation">See Automations {ICONS["arrow"]}</a>
-          </article>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d"><h3>{ICONS["building"]} Real Estate Pro</h3><ul><li>Property search and matching</li><li>Viewing scheduling</li><li>Quotation generation</li><li>WhatsApp follow-ups</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>{ICONS["zap"]} Restaurant Pro</h3><ul><li>Reservation management</li><li>Menu queries and orders</li><li>Order tracking</li><li>Automated confirmations</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>{ICONS["shield"]} Clinic Pro</h3><ul><li>Appointment scheduling</li><li>Patient context and history</li><li>Automated reminders</li><li>WhatsApp and chat channels</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>{ICONS["chart"]} E-commerce</h3><ul><li>Order status and tracking</li><li>Product search and recommendations</li><li>Return handling</li><li>Shipping notifications</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>{ICONS["file"]} ERP + Sales</h3><ul><li>Quotation management</li><li>Order processing</li><li>CRM and lead tracking</li><li>Sales automation</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>{ICONS["server"]} Custom Apps</h3><ul><li>Build with Qefro SDK</li><li>Expose your own capabilities</li><li>Define business events</li><li>Full platform access</li></ul></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="keep-software" aria-labelledby="keep-heading">
+    <section class="section section-alt" id="ai-automation" aria-labelledby="ai-auto-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-green">{ICONS["building"]} Source of truth</span>
-          <h2 id="keep-heading">Don&rsquo;t replace your business software.</h2>
-          <p>Your ERP remains the source of truth. Your restaurant system remains the source of truth. Your hospital system remains the source of truth. Qefro connects to them and gives customers an intelligent way to interact with the data and workflows they already contain.</p>
-        </div>
-        <div class="keep-visual reveal">
-          <div class="qefro-arch-apps">
-            <span>ERP</span>
-            <span>Restaurant App</span>
-            <span>Hospital System</span>
-            <span>Custom ERP</span>
-            <span>E-commerce</span>
-          </div>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <div class="qefro-arch-hub"><strong>QEFRO</strong><span>Keep your existing software. Add an AI customer layer.</span></div>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <div class="qefro-arch-customers"><strong>Customers</strong><span>Conversations with live business context</span></div>
-        </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem">Qefro sits on top of the software your business already uses. Connectors depend on what you install &mdash; we do not claim a catalog of official ERP replacements.</p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="ai-conversations" aria-labelledby="ai-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["msg"]} Conversations</span>
-          <h2 id="ai-heading">Customers talk. Qefro uses your business software to respond.</h2>
-          <p>The product is not a model. Qefro understands customer questions, retrieves relevant business information, executes authorized capabilities, supports multiple languages, and escalates to humans when needed.</p>
+          <span class="badge badge-indigo">{ICONS["sparkles"]} AI + Automation</span>
+          <h2 id="ai-auto-heading">AI that understands your business. Automation that acts on it.</h2>
+          <p>Qefro understands customer questions, retrieves live business data, executes authorized actions, and escalates to humans when needed.</p>
         </div>
         <div class="cap-grid reveal">
           <article><h3>Understand</h3><p>Customer questions in chat, WhatsApp, or voice &mdash; including multilingual conversations.</p></article>
-          <article><h3>Retrieve</h3><p>Live business information from connected applications when the capability exists.</p></article>
-          <article><h3>Act</h3><p>Execute authorized capabilities such as quotations, lookups, and bookings.</p></article>
-          <article><h3>Escalate</h3><p>Hand the conversation to a person with CRM context and history intact.</p></article>
+          <article><h3>Retrieve</h3><p>Live business information from connected applications &mdash; orders, properties, appointments, inventory.</p></article>
+          <article><h3>Act</h3><p>Execute authorized actions: quotations, bookings, scheduling, lookups &mdash; without manual intervention.</p></article>
+          <article><h3>Escalate</h3><p>Hand the conversation to a person with full CRM context and history intact.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="customer-360" aria-labelledby="c360-heading">
-      <div class="wrap-5xl">
-        <div class="split-copy reveal">
-          <div>
-            <span class="badge badge-purple">{ICONS["globe"]} Customer 360</span>
-            <h2 id="c360-heading">See the customer and their business context in one place.</h2>
-            <p>Qefro CRM owns the relationship. Connected applications continue owning business records. Qefro can retrieve live business information from connected applications when the required capability is available &mdash; orders, transactions, reservations, appointments, quotations, and other connected records.</p>
-            <p>Qefro does not store a duplicate ERP ledger.</p>
-          </div>
-          <div class="c360-tree" aria-label="Customer 360 profile">
-            <div class="c360-root">Customer</div>
-            <ul>
-              <li>Conversations</li>
-              <li>CRM</li>
-              <li>Tags</li>
-              <li>Notes</li>
-              <li>Automation history</li>
-              <li>Live business activity</li>
-            </ul>
-          </div>
+        <div class="section-head reveal" style="margin-top:3rem">
+          <h3>When something happens in your business, Qefro responds automatically</h3>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="crm" aria-labelledby="crm-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-green">{ICONS["chart"]} CRM</span>
-          <h2 id="crm-heading">CRM built around customer conversations</h2>
-          <p>Qefro CRM is lightweight and operational. It focuses on people, conversations, tags, notes, status, assignment, Customer 360, and automation history &mdash; not an enterprise CRM suite that replaces the systems you already run.</p>
-        </div>
-        <div class="cap-pills reveal">People · Conversations · Tags · Notes · Status · Assignment · Customer 360 · Automation history</div>
-      </div>
-    </section>
-
-    <section class="section" id="automation" aria-labelledby="auto-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} Automation</span>
-          <h2 id="auto-heading">Turn business events into customer actions</h2>
-          <p>When something happens in your business software, Qefro can automatically respond. Your business app tells Qefro when something important happens. Qefro can react automatically.</p>
-        </div>
-        <div class="event-flow reveal" aria-label="Example automation configuration">
-          <span>Business software</span>
+        <div class="event-flow reveal" aria-label="Example automation">
+          <span>Business event</span>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <code>quotation.created</code>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <span>Qefro Automation</span>
           <div class="qefro-arch-down" aria-hidden="true"></div>
-          <span>IF amount &gt; ₹100,000</span>
+          <span>IF amount &gt; $100,000</span>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <strong>WhatsApp + Tag + Follow-up</strong>
         </div>
         <div class="outcome-grid reveal" style="margin-top:2rem">
           <article class="outcome-card"><h3>quotation.created</h3><p>Send WhatsApp, tag the customer, assign a salesperson.</p></article>
-          <article class="outcome-card"><h3>order.created</h3><p>Send a confirmation through the customer&rsquo;s channel.</p></article>
-          <article class="outcome-card"><h3>payment.received</h3><p>Update customer status in Qefro CRM.</p></article>
+          <article class="outcome-card"><h3>order.created</h3><p>Send confirmation through the customer&rsquo;s preferred channel.</p></article>
           <article class="outcome-card"><h3>appointment.created</h3><p>Send a reminder at the configured delay.</p></article>
-          <article class="outcome-card"><h3>reservation.created</h3><p>Send a confirmation from the connected restaurant system.</p></article>
         </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem">These are examples of possible configurations &mdash; not hardcoded Qefro workflows. Automations react to business events. They do not infer events from capability names.</p>
       </div>
     </section>
 
-    <section class="section section-alt" id="whatsapp" aria-labelledby="wa-heading">
+    <section class="section" id="security" aria-labelledby="control-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["msg"]} WhatsApp</span>
-          <h2 id="wa-heading">Meet customers where they already are</h2>
-          <p>Customer &rarr; WhatsApp &rarr; Qefro &rarr; live business data &rarr; your ERP or business application.</p>
+          <span class="badge badge-indigo">{ICONS["shield"]} Human Control</span>
+          <h2 id="control-heading">You stay in control</h2>
+          <p>AI handles the routine. Humans handle the complex. Every interaction is transparent, auditable, and overrideable.</p>
         </div>
-        <div class="pipeline pipeline-flow reveal" aria-label="WhatsApp path">
-          <span class="pipeline-node"><span class="pipeline-v">Customer</span></span>
-          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <span class="pipeline-node"><span class="pipeline-v">WhatsApp</span></span>
-          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <span class="pipeline-node"><span class="pipeline-v">Qefro</span></span>
-          <div class="pipeline-arrow" aria-hidden="true">{ICONS["arrow"]}</div>
-          <span class="pipeline-node pipeline-node-accent"><span class="pipeline-v">Live data</span><span class="pipeline-d">Connected app</span></span>
-        </div>
-        <div class="convo-grid reveal" style="margin-top:2rem">
-{convo_example("What&rsquo;s my order status?", "Looks up the live order from the connected application and replies in WhatsApp.")}
-{convo_example("Do you have this product?", "Searches the connected catalog and answers with current availability.")}
-{convo_example("Send my quotation.", "Invokes the quotation capability and follows the configured workflow.")}
-{convo_example("When is my appointment?", "Retrieves appointment information from the connected system.")}
-        </div>
-        <p class="integrations-note" style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/whatsapp">WhatsApp details {ICONS["arrow"]}</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="sdk-marketplace" aria-labelledby="sdk-heading">
-      <div class="wrap-5xl">
-        <div class="two-band reveal">
-          <div>
-            <span class="badge badge-green">{ICONS["file"]} SDK</span>
-            <h2 id="sdk-heading">Give your app an AI interface</h2>
-            <p>Expose your application&rsquo;s capabilities to Qefro and let customers interact with your software through natural language.</p>
-            <p><strong>Capabilities</strong> are what Qefro can invoke. <strong>Business events</strong> are what happened and can trigger automation.</p>
-            <div class="mini-flow"><span>createQuotation</span><span>getOrderHistory</span><span>searchProducts</span></div>
-            <p class="sdk-nl">&ldquo;Show my last order.&rdquo; &rarr; getOrderHistory<br/>&ldquo;Create a quotation for 100 units.&rdquo; &rarr; createQuotation</p>
-            <a class="btn btn-primary" href="/sdk">Build with the Qefro SDK {ICONS["arrow"]}</a>
-          </div>
-          <div>
-            <span class="badge badge-indigo">{ICONS["sparkles"]} Marketplace</span>
-            <h2>Connect the software your customers already use</h2>
-            <p>The Marketplace is an ecosystem of business applications and connectors &mdash; ERP, CRM, restaurant management, hospital management, e-commerce, and custom business apps. Marketplace apps are not things Qefro itself replaces.</p>
-            <div class="mini-flow"><span>Marketplace App</span><span>{ICONS["arrow"]}</span><span>Qefro</span><span>{ICONS["arrow"]}</span><span>AI + CRM + Automation</span></div>
-            <a class="btn btn-ghost" href="/integrations">Browse Integrations {ICONS["arrow"]}</a>
-          </div>
+        <div class="sec-grid reveal">
+          <article><h3>Human handoff</h3><p>Seamless escalation from AI to your team with full conversation context and customer history.</p></article>
+          <article><h3>Approval gates</h3><p>High-value actions require human approval before execution. You set the thresholds.</p></article>
+          <article><h3>Workspace isolation</h3><p>Apps, teams, and channels stay scoped to the workspace. No cross-tenant data leakage.</p></article>
+          <article><h3>Audit logs</h3><p>Every AI action, every automation, every handoff &mdash; logged and reviewable.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="use-cases-home" aria-labelledby="uc-home-heading">
+    <section class="section section-alt" id="why-qefro" aria-labelledby="why-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["building"]} Use cases</span>
-          <h2 id="uc-home-heading">Vertical examples. Same Qefro layer.</h2>
-          <p>These depend on the connected application&rsquo;s capabilities. Qefro is not a vertical ERP.</p>
+          <span class="badge badge-purple">{ICONS["sparkles"]} Why Qefro</span>
+          <h2 id="why-heading">Outcomes, not features</h2>
+          <p>Qefro is not another tool to manage. It&rsquo;s the customer interface your business software has been missing.</p>
         </div>
         <div class="outcome-grid reveal">
-          <article class="outcome-card"><h3>ERP + Sales</h3><p>Customer: &ldquo;Show my last quotation.&rdquo; Qefro retrieves live quotation data.</p></article>
-          <article class="outcome-card"><h3>Restaurant</h3><p>Customer: &ldquo;Do I have a reservation tonight?&rdquo; Qefro retrieves reservation data.</p></article>
-          <article class="outcome-card"><h3>Hospital</h3><p>Customer: &ldquo;When is my appointment?&rdquo; Qefro retrieves appointment information.</p></article>
-          <article class="outcome-card"><h3>E-commerce</h3><p>Customer: &ldquo;Where is my order?&rdquo; Qefro retrieves order status.</p></article>
-          <article class="outcome-card"><h3>Business automation</h3><p>Quotation created &rarr; WhatsApp follow-up &rarr; tag customer &rarr; assign salesperson.</p></article>
+          <article class="outcome-card tilt-3d"><h3>Reduce repetitive queries</h3><p>AI handles status checks, FAQs, lookups &mdash; your team focuses on high-value work.</p></article>
+          <article class="outcome-card tilt-3d"><h3>Close deals faster</h3><p>Instant quotations, scheduling, and follow-ups. No more &ldquo;I&rsquo;ll get back to you.&rdquo;</p></article>
+          <article class="outcome-card tilt-3d"><h3>Never miss a customer</h3><p>WhatsApp + chat + automation, 24/7. Customers get responses when they need them.</p></article>
+          <article class="outcome-card tilt-3d"><h3>Keep your existing software</h3><p>Connect, don&rsquo;t replace. Your ERP, CRM, and industry apps stay the source of truth.</p></article>
+          <article class="outcome-card tilt-3d"><h3>Team visibility</h3><p>CRM, conversation history, and assignment in one place. Everyone sees the full picture.</p></article>
+          <article class="outcome-card tilt-3d"><h3>Scale without hiring</h3><p>Automation handles volume. Humans handle complexity. Grow without proportional headcount.</p></article>
         </div>
-        <p class="integrations-note" style="text-align:center;margin-top:1.25rem"><a href="/use-cases">Explore solutions {ICONS["arrow"]}</a></p>
       </div>
     </section>
 
@@ -1412,64 +1292,16 @@ def home_body() -> str:
         <div class="section-head reveal">
           <span class="badge badge-indigo">{ICONS["zap"]} How it works</span>
           <h2 id="hiw-home-heading">Connect. Configure. Engage.</h2>
+          <p>Get started in three steps. No migration, no replacement of existing systems.</p>
         </div>
         <div class="steps-grid reveal steps-grid-3">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Connect</h3><p>Connect your ERP, CRM, business application, or custom system.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Configure</h3><p>Choose customer-facing capabilities, CRM, and automation.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Engage</h3><p>Customers interact through AI chat, WhatsApp, and other channels.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Connect</h3><p>Connect your ERP, CRM, or business application through the SDK, Marketplace apps, or webhooks.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Configure</h3><p>Choose customer-facing capabilities, CRM fields, and automation rules. Your business logic stays yours.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Engage</h3><p>Customers interact through AI chat, WhatsApp, and other channels &mdash; with live data from your systems.</p></article>
         </div>
+        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/how-it-works">See how it works {ICONS["arrow"]}</a></p>
       </div>
     </section>
-
-    <section class="section section-alt" id="audiences" aria-labelledby="owners-heading">
-      <div class="wrap-5xl">
-        <div class="two-band reveal">
-          <div>
-            <span class="badge badge-green">{ICONS["building"]} For business owners</span>
-            <h2 id="owners-heading">Your team doesn&rsquo;t need another system to maintain.</h2>
-            <ul class="check-list">
-              <li>{ICONS["check"]} Keep existing software</li>
-              <li>{ICONS["check"]} Reduce repetitive customer queries</li>
-              <li>{ICONS["check"]} Automate follow-ups</li>
-              <li>{ICONS["check"]} Give customers live business information</li>
-              <li>{ICONS["check"]} Connect WhatsApp to business workflows</li>
-              <li>{ICONS["check"]} Give sales teams customer context</li>
-            </ul>
-          </div>
-          <div>
-            <span class="badge badge-indigo">{ICONS["file"]} For software companies</span>
-            <h2>Turn your software into an AI-powered customer experience</h2>
-            <ul class="check-list">
-              <li>{ICONS["check"]} Qefro SDK</li>
-              <li>{ICONS["check"]} Capabilities customers can invoke</li>
-              <li>{ICONS["check"]} Business events that trigger automation</li>
-              <li>{ICONS["check"]} Marketplace distribution</li>
-              <li>{ICONS["check"]} Customer-facing AI, CRM, and automation</li>
-            </ul>
-            <a class="btn btn-primary" href="/sdk">Build a Qefro Integration {ICONS["arrow"]}</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="security" aria-labelledby="sec-home-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["shield"]} Trust</span>
-          <h2 id="sec-home-heading">Your business data stays under your control</h2>
-          <p>The existing business system remains the source of truth. Qefro CRM does not duplicate entire business ledgers.</p>
-        </div>
-        <div class="sec-grid reveal">
-          <article><h3>Workspace isolation</h3><p>Apps, teams, and channels stay scoped to the workspace.</p></article>
-          <article><h3>Capability-based access</h3><p>Only the capabilities you expose can be invoked.</p></article>
-          <article><h3>Authorized execution</h3><p>Business actions run through signed, authorized connections.</p></article>
-          <article><h3>Signed external events</h3><p>Incoming business events are authenticated before automation runs.</p></article>
-        </div>
-        <p class="integrations-note" style="text-align:center;margin-top:1.25rem"><a href="/security">Security details {ICONS["arrow"]}</a></p>
-      </div>
-    </section>
-
-{shots}
 
     <section class="section section-alt" id="pricing" aria-labelledby="pricing-heading">
       <div class="wrap-5xl">
@@ -1499,13 +1331,13 @@ def home_body() -> str:
     <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Keep your ERP. Add Qefro.</span>
-        <h2 id="cta-heading">Connect the software you already use to AI-powered customer conversations.</h2>
-        <p>Keep your ERP. Keep your business applications. Add Qefro.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI business software, built for your industry</span>
+        <h2 id="cta-heading">Start using AI business software today.</h2>
+        <p>Pre-built applications for your industry. Connect your existing systems. Engage customers through AI chat and WhatsApp.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_connect_app">Connect Your App {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact" data-clarity-event="cta_talk_sales">Talk to Sales</a>
-          <a class="btn btn-link btn-lg" href="/sdk" data-clarity-event="cta_explore_sdk">Build a Qefro Integration</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">Explore Apps</a>
+          <a class="btn btn-link btn-lg" href="/contact" data-clarity-event="cta_talk_sales">Talk to Sales</a>
         </div>
       </div>
     </section>
@@ -1513,11 +1345,11 @@ def home_body() -> str:
 
 
 PAGES["index.html"] = page(
-    title="Qefro — Connect Business Software to AI-Powered Customer Conversations",
+    title="Qefro — AI Business Software, Built for Your Industry",
     description=(
-        "Qefro connects your ERP, CRM and business applications to AI chat, "
-        "WhatsApp, customer data and automation — without replacing the systems "
-        "your business already uses."
+        "Pre-built AI applications for real estate, restaurants, healthcare, "
+        "e-commerce and more. Connect your systems, engage customers through "
+        "AI chat and WhatsApp, and automate follow-ups — all from one platform."
     ),
     path="",
     jsonld=[
@@ -1525,8 +1357,8 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         webpage_json(
-            "Qefro — Connect Business Software to AI-Powered Customer Conversations",
-            "Keep your ERP. Keep your business applications. Add Qefro.",
+            "Qefro — AI Business Software, Built for Your Industry",
+            "Pre-built applications for real estate, restaurants, healthcare, e-commerce and more.",
             "",
         ),
     ],
@@ -1680,6 +1512,111 @@ def use_cases_page_content() -> str:
         </div>
         {pill_cloud([(f"/{s}", l) for s, l in vertical_link_grid()], "Vertical landing pages", ul_class=" reveal mt-1")}"""
 
+
+
+def business_apps_page_content() -> str:
+    re_chat = convo_example(
+        "I need a 2-bedroom apartment near downtown, budget under $1,500/month.",
+        "I found 3 matching listings. The top match is a 2BR on Maple Ave — $1,400/mo, available next week. Want to schedule a viewing?",
+    )
+    rest_chat = convo_example(
+        "Do you have a table for 4 tonight?",
+        "Yes — we have openings at 7:00 and 8:30 PM. Shall I reserve one? I can also share tonight's specials.",
+    )
+    clinic_chat = convo_example(
+        "I need to reschedule my appointment on Thursday.",
+        "I see your appointment with Dr. Patel at 2:00 PM. The nearest available slot is Friday at 10:00 AM. Want me to switch it?",
+    )
+    return f"""        <div class="section-head reveal" style="text-align:left">
+          <span class="badge badge-indigo">{ICONS["sparkles"]} Flagship app</span>
+          <h2>Real Estate Pro</h2>
+          <p>AI-powered property inquiries — from first question to scheduled viewing. Connects to your listing database, handles follow-ups, and keeps your team in the loop.</p>
+        </div>
+        <div class="convo-grid reveal">
+          {re_chat}
+          <div style="display:flex;flex-direction:column;gap:1rem;justify-content:center">
+            <div class="check-list">
+              <span>{ICONS["check"]} Live property search</span>
+              <span>{ICONS["check"]} Viewing scheduling</span>
+              <span>{ICONS["check"]} Quotation generation</span>
+              <span>{ICONS["check"]} WhatsApp follow-up</span>
+              <span>{ICONS["check"]} CRM context &amp; history</span>
+              <span>{ICONS["check"]} Human handoff when needed</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>Industry applications</h2>
+          <p>Pre-built AI apps for the most common business workflows. Each one connects to your existing systems and deploys across chat, WhatsApp, and web.</p>
+        </div>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d">
+            <h3>Restaurant Pro</h3>
+            <p>Reservations, menu queries, order tracking, and customer follow-up — all handled by AI across WhatsApp and web chat.</p>
+            <ul><li>Table reservations</li><li>Menu &amp; specials lookup</li><li>Order status tracking</li><li>Automated follow-ups</li></ul>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>Clinic Pro</h3>
+            <p>Appointment scheduling, patient context, reminders, and rescheduling — reducing front-desk workload while keeping care personal.</p>
+            <ul><li>Appointment management</li><li>Patient history context</li><li>Automated reminders</li><li>Rescheduling &amp; cancellations</li></ul>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>E-commerce</h3>
+            <p>Order status, product search, returns, and proactive shipping updates — the customer service layer on top of your store.</p>
+            <ul><li>Order tracking</li><li>Product search &amp; recommendations</li><li>Return initiation</li><li>Shipping notifications</li></ul>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>ERP + Sales</h3>
+            <p>Quotations, order management, and CRM workflows — bring your ERP data into customer conversations without manual lookup.</p>
+            <ul><li>Quote generation</li><li>Order management</li><li>Customer assignment</li><li>Approval workflows</li></ul>
+          </article>
+        </div>
+
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>See them in action</h2>
+          <p>Each app handles real customer conversations with live data from your connected systems.</p>
+        </div>
+        <div class="convo-grid reveal">
+          {rest_chat}
+          {clinic_chat}
+        </div>
+
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <span class="badge badge-indigo">{ICONS["zap"]} Build your own</span>
+          <h2>Custom applications</h2>
+          <p>When pre-built apps don't cover your workflow, build on the Qefro SDK. Same platform, same AI, same channels — your business logic.</p>
+        </div>
+        <div class="cap-grid reveal">
+          <div class="cap-card"><div class="cap-icon">{ICONS["zap"]}</div><span>OpenAPI tool definitions</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>External SDK Connections</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["lock"]}</div><span>Signed /qefro protocol</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>AI planning &amp; tool calling</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>Workspace-scoped permissions</span></div>
+          <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs &amp; audit trail</span></div>
+        </div>
+
+        <div class="prose reveal" style="margin-top:2.5rem">
+          <h2>How apps connect to your business</h2>
+          <p>Every Qefro app follows the same pattern: connect your existing systems, configure the AI behavior, and deploy across channels. No data migration, no rip-and-replace — Qefro adds the intelligence layer on top of what you already run.</p>
+        </div>
+        <div class="steps-grid steps-grid-3 reveal">
+          <div class="step-card">
+            <span class="step-num">1</span>
+            <h3>Connect</h3>
+            <p>Link your ERP, CRM, listing database, or any system with an API. Signed SDK connections keep credentials in your backend.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">2</span>
+            <h3>Configure</h3>
+            <p>Set AI instructions, tool permissions, approval gates, and workspace boundaries. Control what the AI can do autonomously vs. what needs human approval.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">3</span>
+            <h3>Deploy</h3>
+            <p>Go live across website chat, WhatsApp, and API. Customers get instant answers. Your team gets CRM context, automation, and full visibility.</p>
+          </div>
+        </div>"""
 
 
 def security_page_content() -> str:
@@ -2017,13 +1954,13 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Keep your ERP. Add Qefro.</span>
-        <h2>Build the AI layer for your business.</h2>
-        <p>Connect the software you already use to AI-powered customer conversations, CRM, and automation — start a 14-day free trial, no credit card required.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI business software</span>
+        <h2>Start using AI business software today.</h2>
+        <p>Pre-built applications for your industry — connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups. Start a 14-day free trial, no credit card required.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Get Started {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
-          <a class="btn btn-link btn-lg" href="{DOCS}">Explore the SDK</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/business-apps">Explore Apps</a>
+          <a class="btn btn-link btn-lg" href="/contact">Talk to Sales</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/security">Security overview</a></p>
       </div>
@@ -2049,10 +1986,21 @@ PAGES["how-it-works.html"] = inner(
     "Connect existing systems, configure capabilities, CRM and automation, then engage customers through AI chat and WhatsApp — without replacing your ERP or CRM.",
     "how-it-works.html",
     "how-it-works",
-    "<p><strong>Connect. Configure. Engage.</strong> Keep your systems of record. Qefro adds the AI customer layer on top — conversations, CRM, and automation.</p>",
+    "<p><strong>Connect. Configure. Engage.</strong> Keep your systems of record. Qefro adds the AI business applications on top — conversations, CRM, and automation.</p>",
     how_it_works_page_content(),
     extra_jsonld=[howto_json("how-it-works.html")],
     badge=f'{ICONS["zap"]} How it works',
+)
+
+PAGES["business-apps.html"] = inner(
+    "Business Apps | Qefro",
+    "AI Business Applications",
+    "Pre-built AI applications for real estate, restaurants, healthcare, e-commerce and more. Connect your existing systems, engage customers, and automate follow-ups.",
+    "business-apps.html",
+    "business-apps",
+    "<p>Qefro offers <strong>pre-built AI applications</strong> for common business workflows — plus an SDK to build custom apps. Each one connects to your existing systems and deploys across chat, WhatsApp, and web.</p>",
+    business_apps_page_content(),
+    badge=f'{ICONS["sparkles"]} Business Apps',
 )
 
 PAGES["use-cases.html"] = inner(
@@ -2307,9 +2255,9 @@ PAGES["404.html"] = page(
 for slug, title, q, a, extra in [
     (
         "what-is-qefro.html",
-        "What is Qefro? | AI customer layer for existing business software",
+        "What is Qefro? | AI Business Software, Built for Your Industry",
         "What is Qefro?",
-        "Qefro connects the software your business already uses to AI-powered customer conversations, CRM, and automation. It is not another ERP, CRM replacement, or generic chatbot. Keep your existing systems — Qefro adds the customer-facing layer.",
+        "Qefro is AI business software built for your industry. Pre-built applications for real estate, restaurants, healthcare, e-commerce and more — connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups.",
         "<p>Keep your ERP, CRM, restaurant system, hospital system, or custom app. Qefro connects to them and gives customers an intelligent way to interact through chat, WhatsApp, and automation. Capabilities are what Qefro can invoke. Business events are what happened and can trigger follow-ups.</p>",
     ),
     (

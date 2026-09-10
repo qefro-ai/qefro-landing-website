@@ -917,14 +917,15 @@ def _slug(key: str) -> str:
 
 def _build_landing(spec: VerticalSpec, all_keys: dict[str, VerticalSpec]) -> Landing:
     related: list[tuple[str, str]] = [
-        ("ai-customer-support", "AI customer support"),
+        ("business-apps", "Business Apps"),
+        ("how-it-works", "How It Works"),
         ("whatsapp-ai-agent", "WhatsApp AI agent"),
         ("website-ai-chat", "Website AI chat"),
     ]
     for key in spec.related_keys:
         other = all_keys.get(key)
         if other:
-            related.append((_slug(key), f"AI support for {other.label}"))
+            related.append((_slug(key), f"AI software for {other.label}"))
     related.append(("security", "Security"))
 
     q1, q2, q3 = spec.top_questions
@@ -934,25 +935,9 @@ def _build_landing(spec: VerticalSpec, all_keys: dict[str, VerticalSpec]) -> Lan
     setting = spec.setting
 
     paragraphs = (
-        f"AI customer support for {label.lower()} helps {audience} get fast, accurate answers "
+        f"AI software for {label.lower()} helps {audience} get fast, accurate answers "
         f"about your {setting} — without hiring a 24/7 team for every repetitive question.",
-        f"Typical questions include “{q1}”, “{q2}”, and “{q3}”. Qefro grounds replies in your "
-        f"uploaded policies, crawled site pages, and handbooks, with source citations and refusal "
-        f"when nothing relevant exists.",
-        f"When chat must do more than answer, connect your systems: {a1.lower()}; {a2.lower()}; "
-        f"{a3.lower()}. Credentials stay encrypted; actions can use end-user identity via identify().",
-        f"Staff get a branded Internal Portal for {spec.staff_workspace}, while Customer AI stays "
-        f"on the channels you enable. {spec.channel_note}",
-        f"{spec.trust_note} Review our <a href=\"/security\">security overview</a> and "
-        f"<a href=\"/pricing\">pricing</a> when you are ready to trial.",
-    )
-
-    # paragraphs currently have HTML in last one - Landing paragraphs are escaped in generator!
-    # Need plain text only in paragraphs - put links in template instead.
-    paragraphs = (
-        f"AI customer support for {label.lower()} helps {audience} get fast, accurate answers "
-        f"about your {setting} — without hiring a 24/7 team for every repetitive question.",
-        f"Typical questions include “{q1}”, “{q2}”, and “{q3}”. Qefro grounds replies in your "
+        f"Typical questions include \u201c{q1}\u201d, \u201c{q2}\u201d, and \u201c{q3}\u201d. Qefro grounds replies in your "
         f"uploaded policies, crawled site pages, and handbooks, with source citations and refusal "
         f"when nothing relevant exists.",
         f"When chat must do more than answer, connect your systems: {a1.lower()}; {a2.lower()}; "
@@ -992,14 +977,14 @@ def _build_landing(spec: VerticalSpec, all_keys: dict[str, VerticalSpec]) -> Lan
     return Landing(
         slug=_slug(spec.key),
         kind="vertical",
-        h1=f"AI Customer Support for {label}",
-        title=f"AI Customer Support for {label} | Qefro",
+        h1=f"AI Software for {label}",
+        title=f"AI Software for {label} | Qefro",
         description=(
-            f"AI customer support for {label.lower()} with Qefro — grounded answers for {audience}, "
+            f"AI software for {label.lower()} with Qefro — grounded answers for {audience}, "
             f"website and WhatsApp chat, secure API actions, and an Internal Portal for staff."
         ),
         answer=(
-            f"<p><strong>AI customer support for {label.lower()}</strong> is one application on the "
+            f"<p><strong>AI software for {label.lower()}</strong> is one application on the "
             f"<strong>Qefro AI Business Application Platform</strong>: cited answers for {audience}, "
             f"optional WhatsApp, secure business actions, and staff assistants on shared workspaces.</p>"
         ),

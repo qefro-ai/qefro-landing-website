@@ -102,8 +102,8 @@ TOPIC_LANDINGS: tuple[Landing, ...] = (
     _t(
         "ai-customer-support",
         "AI Customer Support",
-        "AI Customer Support Platform | Qefro",
-        "AI customer support on the Qefro platform — grounded answers, secure business actions, website chat and WhatsApp as channels.",
+        "AI Customer Support Software | Qefro",
+        "AI customer support software on the Qefro platform — grounded answers, secure business actions, website chat and WhatsApp as channels.",
         "<p><strong>Customer support</strong> is one application on the <strong>Qefro AI Business Application Platform</strong>. Ground answers in your docs and APIs, then take secure actions — not just chat replies.</p>",
         (
             "Generic chatbots often invent answers. As a support application on Qefro, replies retrieve from your verified content, cite sources, and are designed to decline when nothing relevant exists.",
