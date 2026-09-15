@@ -115,7 +115,7 @@ TOPIC_LANDINGS: tuple[Landing, ...] = (
             "Secure business actions through your APIs",
             "Website widget + WhatsApp channels",
             "Human handoff and lead capture",
-            "14-day free trial — no credit card",
+            "14-day free trial, then a paid plan",
         ),
         related=(
             ("website-ai-chat", "Website AI chat"),

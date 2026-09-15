@@ -54,9 +54,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
-  <link rel="preload" href="/assets/css/styles.css?v=57" as="style" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=57" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&family=Outfit:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/css/styles.css?v=59" as="style" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=59" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -71,7 +71,7 @@
   "about": {
     "@id": "https://qefro.com/#organization"
   },
-  "dateModified": "2026-09-10",
+  "dateModified": "2026-09-16",
   "inLanguage": "en-US",
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -111,7 +111,7 @@
       "name": "What is Qefro?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Qefro connects the software your business already uses to AI-powered customer conversations, CRM, and automation. It is not another ERP, CRM replacement, or generic chatbot. Keep your existing systems \u2014 Qefro adds the customer-facing layer."
+        "text": "Qefro is an AI Business Platform. Businesses run customer-facing work and operations through AI using actual business data, apps, workflows, automations, and people \u2014 so customers get answers and work actually gets done."
       }
     },
     {
@@ -119,7 +119,7 @@
       "name": "How much does Qefro cost?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements."
+        "text": "Every new organization starts with a 14-day free trial. After the trial, choose a paid plan: Starter \u20b9699/month for 1 user, Pro \u20b91,499/month for 5 users, or Growth \u20b92,999/month for 15 users. Marketplace apps are billed separately. Enterprise is custom."
       }
     },
     {
@@ -151,7 +151,7 @@
       "name": "Can Qefro take action in my systems?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes \u2014 when you expose a capability. Qefro can retrieve live business information or invoke authorized actions (such as creating a quotation) through the connected application. Separately, your business app can tell Qefro when something important happened \u2014 for example quotation.created \u2014 so automation can react. Capabilities are what Qefro can invoke. Business events are what happened."
+        "text": "Yes. Qefro can look up live business information and take authorized actions \u2014 book a viewing, start a collection, confirm an appointment \u2014 then follow up until the work is complete. People stay in the loop for approvals when you want them."
       }
     },
     {
@@ -175,7 +175,7 @@
       "name": "Do you offer enterprise pricing?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Enterprise is a custom capacity contract \u2014 seats, messages, documents, storage, crawls, and business tools are quoted to your needs \u2014 plus private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap \u2014 talk to sales about your timeline."
+        "text": "Yes. Enterprise is a custom contract \u2014 users, CRM customers, documents, storage, SSO, and private deployment are quoted to your needs \u2014 plus dedicated support and SLAs. Talk to sales about your timeline."
       }
     },
     {
@@ -250,15 +250,13 @@
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img class="logo-light" src="/assets/images/qefro-logo.png?v=57" alt="Qefro logo" width="40" height="40" decoding="async" fetchpriority="high" />
-        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=57" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v=59" alt="Qefro logo" width="40" height="40" decoding="async" fetchpriority="high" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=59" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="/how-it-works">Product</a>
-        <a href="/business-apps">Business Apps</a>
         <a href="/how-it-works">How It Works</a>
+        <a href="/business-apps">Apps</a>
         <a href="/pricing">Pricing</a>
-        <a href="/faq" aria-current="page">Resources</a>
         <a href="/faq" aria-current="page">FAQ</a>
         <a href="https://docs.qefro.com" rel="noopener noreferrer">Docs</a>
       </nav>
@@ -268,19 +266,18 @@
           <span class="icon-sun" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span>
         </button>
         <a class="btn-link" href="https://app.qefro.com/login">Sign In</a>
-        <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Start Free <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Start Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
       </div>
     </div>
     <div class="mobile-panel wrap" id="mobile-nav-panel">
-      <a href="/how-it-works">Product</a>
-      <a href="/business-apps">Business Apps</a>
       <a href="/how-it-works">How It Works</a>
+      <a href="/business-apps">Apps</a>
       <a href="/pricing">Pricing</a>
-      <a href="/faq" aria-current="page">Resources</a>
       <a href="/faq">FAQ</a>
       <a href="https://docs.qefro.com" rel="noopener noreferrer">Docs</a>
       <a href="https://app.qefro.com/login">Sign In</a>
+      <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup">Start Free Trial <svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
     </div>
   </header>
   <main id="main">
@@ -296,11 +293,11 @@
         <div class="faq-list reveal">
           <div class="faq-item">
             <button type="button" id="faq-q0" aria-expanded="false" aria-controls="faq-a0"><span>What is Qefro?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a" id="faq-a0" role="region" aria-labelledby="faq-q0"><p>Qefro connects the software your business already uses to AI-powered customer conversations, CRM, and automation. It is not another ERP, CRM replacement, or generic chatbot. Keep your existing systems — Qefro adds the customer-facing layer.</p></div>
+            <div class="faq-a" id="faq-a0" role="region" aria-labelledby="faq-q0"><p>Qefro is an AI Business Platform. Businesses run customer-facing work and operations through AI using actual business data, apps, workflows, automations, and people — so customers get answers and work actually gets done.</p></div>
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><span>How much does Qefro cost?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements.</p></div>
+            <div class="faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1"><p>Every new organization starts with a 14-day free trial. After the trial, choose a paid plan: Starter ₹699/month for 1 user, Pro ₹1,499/month for 5 users, or Growth ₹2,999/month for 15 users. Marketplace apps are billed separately. Enterprise is custom.</p></div>
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>What types of content can I upload?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
@@ -316,7 +313,7 @@
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>Can Qefro take action in my systems?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>Yes — when you expose a capability. Qefro can retrieve live business information or invoke authorized actions (such as creating a quotation) through the connected application. Separately, your business app can tell Qefro when something important happened — for example quotation.created — so automation can react. Capabilities are what Qefro can invoke. Business events are what happened.</p></div>
+            <div class="faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5"><p>Yes. Qefro can look up live business information and take authorized actions — book a viewing, start a collection, confirm an appointment — then follow up until the work is complete. People stay in the loop for approvals when you want them.</p></div>
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span>How long does setup take?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
@@ -328,7 +325,7 @@
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8"><span>Do you offer enterprise pricing?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
-            <div class="faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8"><p>Yes. Enterprise is a custom capacity contract — seats, messages, documents, storage, crawls, and business tools are quoted to your needs — plus private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline.</p></div>
+            <div class="faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8"><p>Yes. Enterprise is a custom contract — users, CRM customers, documents, storage, SSO, and private deployment are quoted to your needs — plus dedicated support and SLAs. Talk to sales about your timeline.</p></div>
           </div>
           <div class="faq-item">
             <button type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9"><span>What languages does Qefro support?</span><span class="faq-chevron"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
@@ -361,27 +358,26 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a class="brand" href="/" aria-label="Qefro home">
-            <img class="logo-light" src="/assets/images/qefro-logo.png?v=57" alt="Qefro logo" width="40" height="40" decoding="async" />
-            <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=57" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
+            <img class="logo-light" src="/assets/images/qefro-logo.png?v=59" alt="Qefro logo" width="40" height="40" decoding="async" />
+            <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=59" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
           </a>
-          <p class="footer-tagline">AI business software, built for your industry</p>
+          <p class="footer-tagline">AI Business Platform</p>
         </div>
         <nav class="footer-col" aria-label="Applications">
-          <h3>Applications</h3>
+          <h3>Apps</h3>
+          <a href="/business-apps">Marketplace</a>
           <a href="/business-apps">Real Estate Pro</a>
           <a href="/business-apps">Restaurant Pro</a>
           <a href="/business-apps">Clinic Pro</a>
-          <a href="/business-apps">E-commerce</a>
-          <a href="/business-apps">Custom Apps</a>
           <a href="/sdk">SDK</a>
         </nav>
         <nav class="footer-col" aria-label="Platform">
           <h3>Platform</h3>
-          <a href="/#ai-automation">AI Conversations</a>
-          <a href="/#ai-automation">Automation</a>
-          <a href="/features">CRM</a>
+          <a href="/#outcomes">Outcomes</a>
+          <a href="/#act">AI that acts</a>
+          <a href="/#channels">Channels</a>
           <a href="/whatsapp">WhatsApp</a>
-          <a href="/features">Channels</a>
+          <a href="/#control">Control</a>
         </nav>
         <nav class="footer-col" aria-label="Resources">
           <h3>Resources</h3>
@@ -402,7 +398,7 @@
       </div>
       <div class="footer-bottom">
         <p>&copy; <span data-year></span> Qefro. All rights reserved.</p>
-        <p>AI business software built for your industry.</p>
+        <p>AI Business Platform — conversations become completed work.</p>
       </div>
     </div>
   </footer>
@@ -417,8 +413,8 @@
     data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
-  <script src="/assets/js/main.js?v=57" defer></script>
-  <script src="/assets/js/qefro-ref.js?v=57" defer></script>
-  <script type="module" src="/assets/js/qefro-motion.js?v=57"></script>
+  <script src="/assets/js/main.js?v=59" defer></script>
+  <script src="/assets/js/qefro-ref.js?v=59" defer></script>
+  <script type="module" src="/assets/js/qefro-motion.js?v=59"></script>
 </body>
 </html>

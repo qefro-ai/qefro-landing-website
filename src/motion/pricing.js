@@ -1,3 +1,3 @@
 export function initPricingInteractions() {
-  // All pricing hover/press animations removed.
+  // Calculator lives in /assets/js/pricing.js (public catalog + headcount tape).
 }

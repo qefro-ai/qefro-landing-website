@@ -1,43 +1,39 @@
 # Qefro
 
-> Connect your business software to AI-powered customer conversations and automation.
+> Qefro is an AI Business Platform. Turn customer conversations into business outcomes.
 
-Keep your ERP. Keep your business applications. Add Qefro.
+Qefro connects AI with your business data, workflows, automations and apps — so customers get answers and work actually gets done.
 
-Qefro is not another ERP, CRM replacement, or generic chatbot. It is the AI customer interaction and automation layer that connects existing business software to customers.
+Not primarily a chatbot, support bot, generic CRM, LLM wrapper, or automation tool.
 
-## Architecture
+## Outcome
 
-Existing Business Software → Qefro → AI Chat + WhatsApp + CRM + Automation → Your customers
+Conversation → Data → Action → Outcome
 
-## Layers
+AI can answer, find, act, follow up, and complete work. People stay in the loop for permissions, workflows, and approvals.
 
-- **Connect** — SDK, Marketplace apps, external webhooks, and business events
-- **Engage** — Website chat, WhatsApp, voice, multilingual conversations, live business data
-- **Automate** — CRM automation from business events (WhatsApp, email, tags, assignment, follow-ups, tasks)
+## How it starts
 
-## Product surfaces
+1. Create a workspace
+2. Install Marketplace apps
+3. Let Qefro run the work
+4. Optionally connect WhatsApp, website, or mobile — same business, same data, same AI
 
-- Customer 360 (relationship in Qefro; business records stay in connected apps)
-- CRM around people, conversations, tags, notes, status, assignment
-- Business event automation (examples: quotation.created, order.created — configurable, not hardcoded)
-- WhatsApp and website chat with live business data
-- Qefro SDK capabilities vs business events
-- Marketplace connectors for software customers already use
+## Trial
+
+14-day free trial. Choose apps, connect your business, experience the outcome, then pick a paid plan.
+
+Starter ₹699/month (1 user) · Pro ₹1,499/month (5 users) · Growth ₹2,999/month (15 users). Marketplace apps billed separately.
 
 ## Primary links
 
 - Homepage: https://qefro.com/
-- Product: https://qefro.com/how-it-works
-- SDK: https://qefro.com/sdk
-- Docs: https://docs.qefro.com
+- How it works: https://qefro.com/how-it-works
+- Marketplace apps: https://qefro.com/business-apps
 - Pricing: https://qefro.com/pricing
+- Docs: https://docs.qefro.com
 - Contact: https://qefro.com/contact
-- Portal: https://app.qefro.com
-
-## Note
-
-Customer support chat is one channel into the customer layer — not the definition of Qefro.
+- Start trial: https://app.qefro.com/login?mode=signup
 
 
 # Expanded Landing Specifications & Direct Answers
@@ -54,7 +50,7 @@ Key Capabilities:
 - Secure business actions through your APIs
 - Website widget + WhatsApp channels
 - Human handoff and lead capture
-- 14-day free trial — no credit card
+- 14-day free trial, then a paid plan
 FAQs:
   Q: How is Qefro different from a basic AI chatbot?
   A: Qefro combines knowledge retrieval with secure business actions, workspace permissions, and channels for both customers and employees — not chat-only demos.

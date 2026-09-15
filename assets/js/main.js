@@ -227,7 +227,10 @@
       });
     };
     billingToggle.querySelectorAll("[data-billing]").forEach((btn) => {
-      btn.addEventListener("click", () => setPeriod(btn.dataset.billing));
+      btn.addEventListener("click", () => {
+        setPeriod(btn.dataset.billing);
+        document.dispatchEvent(new CustomEvent("qefro:billing-period", { detail: { period: btn.dataset.billing } }));
+      });
     });
     setPeriod("annual");
   }

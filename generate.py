@@ -28,18 +28,22 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "57"
+ASSET_VERSION = "59"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
-    "Qefro is AI business software built for your industry."
+    "Qefro is an AI Business Platform that turns customer conversations into business outcomes."
 )
 POSITIONING = (
-    "AI business software built for your industry."
+    "AI Business Platform — conversations become completed work."
 )
 POSITIONING_ALT = (
-    "Pre-built applications for real estate, restaurants, healthcare, "
-    "e-commerce and more."
+    "Qefro connects AI with your business data, workflows, automations and apps."
 )
+CTA_TRIAL = "Start 14-Day Free Trial"
+CTA_TRIAL_SHORT = "Start Free Trial"
+CTA_SEE_HOW = "See How It Works"
+CTA_MARKETPLACE = "Explore Marketplace"
+CTA_MICRO = "14 days free. Explore Qefro with your business."
 DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = "Hello! How can I help?"
@@ -50,9 +54,9 @@ WIDGET_THEME = "light"
 # Used only for schema.org "keywords" in JSON-LD — the <meta name="keywords"> tag
 # is deliberately not emitted (Google has ignored it since 2009).
 META_KEYWORDS = (
-    "AI business software, industry applications, real estate AI, restaurant AI, "
-    "healthcare AI, e-commerce AI, WhatsApp business automation, "
-    "customer CRM, business event automation, AI chat, Qefro"
+    "AI Business Platform, AI business automation, AI business apps, "
+    "AI agents for business operations, WhatsApp business AI, "
+    "customer conversations, workflows, Qefro"
 )
 
 # Inline SVG icons (lucide-like)
@@ -89,19 +93,16 @@ for _name, _svg in list(ICONS.items()):
     )
 
 NAV = [
-    ("how-it-works", "Product"),
-    ("business-apps", "Business Apps"),
     ("how-it-works", "How It Works"),
+    ("business-apps", "Apps"),
     ("pricing", "Pricing"),
-    ("faq", "Resources"),
 ]
 
 # Canonical indexable URLs for sitemap (extensionless; nginx 301s .html → these).
 # Images listed here are included via the image sitemap extension.
 SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("", [
-        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI business software, built for your industry"),
-        (f"{SITE}/assets/images/qefro_hero.png", "Qefro connects business apps, AI conversations, CRM, live data, and automation"),
+        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI Business Platform that turns conversations into outcomes"),
     ]),
     ("features", []),
     ("how-it-works", []),
@@ -153,12 +154,6 @@ def meta_block(
     # Absolute HTTPS canonicals only — Google prefers absolute URLs for rel=canonical
     canonical = f'  <link rel="canonical" href="{url}" />\n' if include_canonical else ""
     page_og_alt = escape(OG_IMAGE_ALT if path in {"", "index.html"} else f"Qefro — {title}")
-    hero_preload = ""
-    if path in {"", "index.html"}:
-        hero_preload = (
-            f'\n  <link rel="preload" as="image" href="/assets/images/qefro_hero.png?v={ASSET_VERSION}" '
-            'fetchpriority="high" />'
-        )
     return f"""  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{escape(title)}</title>
@@ -211,9 +206,9 @@ def meta_block(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@700;800&family=Outfit:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="preload" href="/assets/css/styles.css?v={ASSET_VERSION}" as="style" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />{hero_preload}"""
+  <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />"""
 
 
 def header(active: str | None = None) -> str:
@@ -251,7 +246,7 @@ def header(active: str | None = None) -> str:
           <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
+        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT} {ICONS["arrow"]}</a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">{ICONS["menu"]}</button>
       </div>
     </div>
@@ -260,6 +255,7 @@ def header(active: str | None = None) -> str:
       <a href="/faq">FAQ</a>
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
+      <a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT} {ICONS["arrow"]}</a>
     </div>
   </header>"""
 
@@ -294,24 +290,23 @@ def footer() -> str:
             <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro logo" width="40" height="40" decoding="async" />
             <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
           </a>
-          <p class="footer-tagline">AI business software, built for your industry</p>
+          <p class="footer-tagline">AI Business Platform</p>
         </div>
         <nav class="footer-col" aria-label="Applications">
-          <h3>Applications</h3>
+          <h3>Apps</h3>
+          <a href="/business-apps">Marketplace</a>
           <a href="/business-apps">Real Estate Pro</a>
           <a href="/business-apps">Restaurant Pro</a>
           <a href="/business-apps">Clinic Pro</a>
-          <a href="/business-apps">E-commerce</a>
-          <a href="/business-apps">Custom Apps</a>
           <a href="/sdk">SDK</a>
         </nav>
         <nav class="footer-col" aria-label="Platform">
           <h3>Platform</h3>
-          <a href="/#ai-automation">AI Conversations</a>
-          <a href="/#ai-automation">Automation</a>
-          <a href="/features">CRM</a>
+          <a href="/#outcomes">Outcomes</a>
+          <a href="/#act">AI that acts</a>
+          <a href="/#channels">Channels</a>
           <a href="/whatsapp">WhatsApp</a>
-          <a href="/features">Channels</a>
+          <a href="/#control">Control</a>
         </nav>
         <nav class="footer-col" aria-label="Resources">
           <h3>Resources</h3>
@@ -533,9 +528,9 @@ ORG_JSON = json.dumps(
         },
         "image": OG_IMAGE,
         "description": (
-            "Qefro connects existing business software to AI-powered customer "
-            "conversations, CRM, and automation — without replacing ERP, CRM, "
-            "or industry systems already in use."
+            "Qefro is an AI Business Platform. Businesses run customer-facing work "
+            "and operations through AI using actual business data, apps, workflows, "
+            "automations, and people."
         ),
         "email": "support@qefro.com",
         "contactPoint": [
@@ -557,13 +552,12 @@ ORG_JSON = json.dumps(
         "sameAs": ["https://github.com/qefro-ai"],
         "foundingDate": "2024",
         "knowsAbout": [
-            "AI customer conversations",
-            "WhatsApp business automation",
-            "Customer 360",
-            "Conversation CRM",
-            "Business event automation",
-            "SDK connectors for ERP and CRM",
-            "Marketplace business app integrations",
+            "AI Business Platform",
+            "AI business automation",
+            "AI business apps",
+            "AI agents for business operations",
+            "WhatsApp business AI",
+            "Customer conversations to completed work",
         ],
     },
     indent=2,
@@ -580,8 +574,8 @@ WEBSITE_JSON = json.dumps(
         "alternateName": ["Qefro AI", "qefro.com"],
         "url": f"{SITE}/",
         "description": (
-            "Qefro connects your business software to AI-powered customer "
-            "conversations, CRM, and automation."
+            "Qefro is an AI Business Platform that turns customer conversations "
+            "into completed work using business data, apps, workflows, and people."
         ),
         "publisher": {"@id": f"{SITE}/#organization"},
         "inLanguage": "en-US",
@@ -605,9 +599,8 @@ SOFTWARE_JSON = json.dumps(
         "image": OG_IMAGE,
         "screenshot": OG_IMAGE,
         "description": (
-            "Qefro connects ERP, CRM, and business applications to AI chat, "
-            "WhatsApp, customer data, and automation — without replacing the "
-            "systems your business already uses."
+            "Qefro is an AI Business Platform that connects AI with business data, "
+            "workflows, automations, and apps so customers get answers and work gets done."
         ),
         "keywords": META_KEYWORDS,
         "author": {"@id": f"{SITE}/#organization"},
@@ -615,19 +608,18 @@ SOFTWARE_JSON = json.dumps(
         "offers": {
             "@type": "Offer",
             "price": 0,
-            "priceCurrency": "USD",
+            "priceCurrency": "INR",
             "availability": "https://schema.org/InStock",
             "url": f"{SITE}/pricing",
-            "description": "14-day free trial available — no credit card required",
+            "description": "14-day free trial, then Starter, Pro, or Growth",
         },
         "featureList": [
-            "Connect existing ERP, CRM, and business applications",
-            "AI customer conversations on chat, WhatsApp, and voice",
-            "Lightweight CRM around people and conversations",
-            "Customer 360 with live business activity from connected apps",
-            "Automation triggered by business events",
-            "Qefro SDK capabilities and Marketplace connectors",
-            "Workspace isolation and capability-based access",
+            "Turn customer conversations into business outcomes",
+            "AI connected to live business data, apps, and workflows",
+            "Marketplace apps for sales, payments, appointments, and operations",
+            "One AI across WhatsApp, website, mobile, and Command Chat",
+            "Answer, find, act, follow up, and complete work",
+            "Permissions, approvals, and people in the loop",
         ],
     },
     indent=2,
@@ -654,8 +646,8 @@ PRICING_OFFERS_JSON = json.dumps(
                 "@type": "Offer",
                 "name": "Trial (14 Days)",
                 "price": 0,
-                "priceCurrency": "USD",
-                "description": "Full access for 14 days. No credit card required.",
+                "priceCurrency": "INR",
+                "description": "Full access for 14 days. Then choose Starter, Pro, or Growth.",
                 "url": f"{SITE}/pricing",
                 "availability": "https://schema.org/InStock",
                 "priceValidUntil": "2027-12-31",
@@ -663,9 +655,9 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Starter",
-                "price": 29,
-                "priceCurrency": "USD",
-                "description": "Billed annually ($39/month if billed monthly)",
+                "price": 699,
+                "priceCurrency": "INR",
+                "description": "1 user, 500 CRM customers. Upgrade to Pro for more users.",
                 "url": f"{SITE}/pricing",
                 "availability": "https://schema.org/InStock",
                 "priceValidUntil": "2027-12-31",
@@ -673,9 +665,9 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Pro",
-                "price": 49,
-                "priceCurrency": "USD",
-                "description": "Billed annually ($59/month if billed monthly)",
+                "price": 1499,
+                "priceCurrency": "INR",
+                "description": "Up to 5 users, 2,500 CRM customers.",
                 "url": f"{SITE}/pricing",
                 "availability": "https://schema.org/InStock",
                 "priceValidUntil": "2027-12-31",
@@ -683,9 +675,9 @@ PRICING_OFFERS_JSON = json.dumps(
             {
                 "@type": "Offer",
                 "name": "Growth",
-                "price": 99,
-                "priceCurrency": "USD",
-                "description": "Billed annually ($119/month if billed monthly)",
+                "price": 2999,
+                "priceCurrency": "INR",
+                "description": "Up to 15 users, 10,000 CRM customers, unlimited integrations.",
                 "url": f"{SITE}/pricing",
                 "availability": "https://schema.org/InStock",
                 "priceValidUntil": "2027-12-31",
@@ -708,14 +700,14 @@ FAQ_ACCURACY_ANSWER_PLAIN = (
 
 PRICE_FAIR_USE_NOTE = (
     '<p class="price-desc price-fair-use">'
-    "Conversation and document allowances are listed above. "
-    'Contact <a href="/contact">Sales</a> for storage and processing volume details on Growth and Enterprise.'
+    "AI usage is included with rate limits for abuse protection. "
+    "Marketplace apps are billed separately."
     "</p>"
 )
 
 ENTERPRISE_FAIR_USE_NOTE = (
     '<p class="price-desc price-fair-use">'
-    "Enterprise is a custom capacity contract — seats, messages, documents, storage, and tools are quoted to your requirements. "
+    "Enterprise is a custom contract — users, CRM customers, documents, storage, SSO, and private deploy. "
     'Contact <a href="/contact">Sales</a> for a quotation.'
     "</p>"
 )
@@ -733,87 +725,82 @@ def price_cards_html(*, interactive: bool = False) -> str:
     clarity = (
         lambda event: f' data-clarity-event="{event}"' if interactive else ""
     )
-    return f"""          <article class="price-card{cta}">
+    return f"""          <article class="price-card{cta}" data-plan-slug="trial">
             <h3>Trial (14 Days)</h3>
             <p class="price-best">Best for evaluating the platform</p>
-            <div class="price-amount">$0</div>
-            <p class="price-desc">14-day free trial — no credit card</p>
+            <div class="price-amount">₹0</div>
+            <p class="price-desc">14 days free. Explore Qefro with your business.</p>
             <ul class="price-feats">
               {price_feat("Full premium access for 14 days")}
-              {price_feat("Applications, channels &amp; workflows")}
+              {price_feat("Users, CRM, WhatsApp &amp; Voice AI")}
               {price_feat("Knowledge base, crawler &amp; uploads")}
-              {price_feat("Team management &amp; analytics")}
-              {price_feat("SDK connections &amp; business tools")}
-              {price_feat("No credit card required")}
+              {price_feat("Marketplace apps billed separately")}
+              {price_feat("Then choose a paid plan")}
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>Start 14-Day Free Trial</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_start_free")}>{CTA_TRIAL}</a>
           </article>
-          <article class="price-card{cta}">
+          <article class="price-card{cta}" data-plan-slug="starter">
             <h3>Starter</h3>
-            <p class="price-best">Best for startups</p>
-            <div class="price-amount" data-price-annual="$29" data-price-monthly="$39">$29 <span>/month</span></div>
-            <p class="price-billed">billed annually · or $39/mo monthly</p>
-            <p class="price-desc">For one team going live</p>
+            <p class="price-best">Best for a first operator</p>
+            <div class="price-amount" data-price-annual="₹582" data-price-monthly="₹699" data-quote-amount>₹699 <span>/month</span></div>
+            <p class="price-billed">billed annually · or ₹699/mo monthly</p>
+            <p class="price-desc">1 user · 500 CRM customers</p>
             <ul class="price-feats">
-              {price_feat("10,000 AI Messages / month")}
-              {price_feat("Knowledge for one team", "50 documents")}
-              {price_feat("Connect up to 5 business systems")}
-              {price_feat("Widget + WhatsApp")}
-              {price_feat("Custom branding")}
-              {price_feat("Email support")}
+              {price_feat("1 user")}
+              {price_feat("500 CRM customers")}
+              {price_feat("50 documents")}
+              {price_feat("5 integrations")}
+              {price_feat("Widget + WhatsApp + CRM")}
+              {price_feat("Marketplace billed separately")}
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>{CTA_TRIAL}</a>
           </article>
-          <article class="price-card is-popular{cta}">
+          <article class="price-card is-popular{cta}" data-plan-slug="pro">
             <div class="price-pop">{ICONS["star"]} Most Popular</div>
             <h3>Pro</h3>
-            <p class="price-best">Best for scaling teams</p>
-            <div class="price-amount" data-price-annual="$49" data-price-monthly="$59">$49 <span>/month</span></div>
-            <p class="price-billed">billed annually · or $59/mo monthly</p>
-            <p class="price-desc">For teams past startup volume</p>
+            <p class="price-best">Best for a working team</p>
+            <div class="price-amount" data-price-annual="₹1,249" data-price-monthly="₹1,499" data-quote-amount>₹1,499 <span>/month</span></div>
+            <p class="price-billed">billed annually · or ₹1,499/mo monthly</p>
+            <p class="price-desc">Up to 5 users · 2,500 CRM customers</p>
             <ul class="price-feats">
-              {price_feat("30,000 AI Messages / month")}
-              {price_feat("Knowledge for growing teams", "200 documents")}
-              {price_feat("10 team members")}
-              {price_feat("Connect up to 25 business systems")}
-              {price_feat("Widget + WhatsApp + voice")}
-              {price_feat("Analytics &amp; agent handoff")}
-              {price_feat("Email support")}
+              {price_feat("Up to 5 users")}
+              {price_feat("2,500 CRM customers")}
+              {price_feat("200 documents")}
+              {price_feat("25 integrations")}
+              {price_feat("Voice AI, analytics &amp; handoff")}
+              {price_feat("API, webhooks &amp; permissions")}
             </ul>
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Pro</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>{CTA_TRIAL}</a>
           </article>
-          <article class="price-card{cta}">
+          <article class="price-card{cta}" data-plan-slug="growth">
             <h3>Growth</h3>
             <p class="price-best">Best for growing companies</p>
-            <div class="price-amount" data-price-annual="$99" data-price-monthly="$119">$99 <span>/month</span></div>
-            <p class="price-billed">billed annually · or $119/mo monthly</p>
-            <p class="price-desc">For teams deploying across channels</p>
+            <div class="price-amount" data-price-annual="₹2,499" data-price-monthly="₹2,999" data-quote-amount>₹2,999 <span>/month</span></div>
+            <p class="price-billed">billed annually · or ₹2,999/mo monthly</p>
+            <p class="price-desc">Up to 15 users · 10,000 CRM customers</p>
             <ul class="price-feats">
-              {price_feat("60,000 AI Messages / month")}
-              {price_feat("Knowledge across teams", "500 documents")}
-              {price_feat("20 team members")}
-              {price_feat("Widget + WhatsApp + voice")}
-              {price_feat("Unlimited business system connections")}
-              {price_feat("Analytics &amp; agent handoff")}
+              {price_feat("Up to 15 users")}
+              {price_feat("10,000 CRM customers")}
+              {price_feat("Customer 360 &amp; reporting")}
+              {price_feat("Unlimited integrations")}
+              {price_feat("Multiple teams")}
               {price_feat("Priority support")}
             </ul>
             {PRICE_FAIR_USE_NOTE}
-            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>Get Started</a>
+            <a class="btn btn-plan" href="{PORTAL_SIGNUP}"{clarity("cta_get_started")}>{CTA_TRIAL}</a>
           </article>
-          <article class="price-card{cta}">
+          <article class="price-card{cta}" data-plan-slug="enterprise">
             <h3>Enterprise</h3>
             <p class="price-best">Best for regulated organizations</p>
             <div class="price-amount">Custom</div>
-            <p class="price-desc">Pay for the capacity you need</p>
+            <p class="price-desc">Users, customers, SSO, private deploy</p>
             <ul class="price-feats">
-              {price_feat("Custom AI Messages")}
-              {price_feat("Custom documents &amp; seats")}
-              {price_feat("Custom Business Tools &amp; storage")}
-              {price_feat("WhatsApp + Voice AI")}
-              {price_feat("Private deployment")}
+              {price_feat("Custom users &amp; CRM customers")}
+              {price_feat("Custom documents &amp; storage")}
+              {price_feat("SSO &amp; private deployment")}
               {price_feat("Dedicated CSM")}
               {price_feat("Custom SLA")}
-              {price_feat("SSO &amp; SAML (roadmap)")}
+              {price_feat("Marketplace billed separately")}
             </ul>
             {ENTERPRISE_FAIR_USE_NOTE}
             <a class="btn btn-plan" href="/contact"{clarity("cta_talk_to_sales")}>Talk to Sales</a>
@@ -860,11 +847,11 @@ def product_screenshots_html() -> str:
 FAQ_ITEMS = [
     (
         "What is Qefro?",
-        "Qefro connects the software your business already uses to AI-powered customer "
-        "conversations, CRM, and automation. It is not another ERP, CRM replacement, or "
-        "generic chatbot. Keep your existing systems — Qefro adds the customer-facing layer.",
+        "Qefro is an AI Business Platform. Businesses run customer-facing work and "
+        "operations through AI using actual business data, apps, workflows, automations, "
+        "and people — so customers get answers and work actually gets done.",
     ),
-    ("How much does Qefro cost?", "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter is $29/month billed annually ($39 monthly, connect up to 5 business systems). Pro is $49/month billed annually ($59 monthly, up to 25 business systems). Growth is $99/month billed annually ($119 monthly, unlimited business system connections). Enterprise is custom capacity priced to your requirements."),
+    ("How much does Qefro cost?", "Every new organization starts with a 14-day free trial. After the trial, choose a paid plan: Starter ₹699/month for 1 user, Pro ₹1,499/month for 5 users, or Growth ₹2,999/month for 15 users. Marketplace apps are billed separately. Enterprise is custom."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
     ("How accurate are the answers?", FAQ_ACCURACY_ANSWER_HTML),
     (
@@ -877,11 +864,9 @@ FAQ_ITEMS = [
     ),
     (
         "Can Qefro take action in my systems?",
-        "Yes — when you expose a capability. Qefro can retrieve live business information "
-        "or invoke authorized actions (such as creating a quotation) through the connected "
-        "application. Separately, your business app can tell Qefro when something important "
-        "happened — for example quotation.created — so automation can react. Capabilities "
-        "are what Qefro can invoke. Business events are what happened.",
+        "Yes. Qefro can look up live business information and take authorized actions — "
+        "book a viewing, start a collection, confirm an appointment — then follow up until the work is complete. "
+        "People stay in the loop for approvals when you want them.",
     ),
     (
         "How long does setup take?",
@@ -893,7 +878,7 @@ FAQ_ITEMS = [
         "Can I use this for employees as well as customers?",
         "Yes. Customer-facing channels (website and WhatsApp) and employee Internal Portal share the same applications, tools, and workspace permissions — Customer Hub keeps context available to your teams.",
     ),
-    ("Do you offer enterprise pricing?", "Yes. Enterprise is a custom capacity contract — seats, messages, documents, storage, crawls, and business tools are quoted to your needs — plus private deployment, dedicated support, and custom SLAs. SSO/SAML is on the roadmap — talk to sales about your timeline."),
+    ("Do you offer enterprise pricing?", "Yes. Enterprise is a custom contract — users, CRM customers, documents, storage, SSO, and private deployment are quoted to your needs — plus dedicated support and SLAs. Talk to sales about your timeline."),
     (
         "What languages does Qefro support?",
         "Qefro supports multilingual document indexing and multilingual retrieval from the languages present "
@@ -1066,32 +1051,42 @@ def illustration(name: str, *, alt: str = "", figure_class: str = "illust") -> s
     return f'<figure class="{figure_class}" role="img"{label}>\n{svg}\n        </figure>'
 
 
-def home_faq_preview(n: int = 8) -> str:
-    return "".join(
-        faq_item_html(q, a, "home-faq", i) for i, (q, a) in enumerate(FAQ_ITEMS[:n])
-    )
-
-
 def hero_visual() -> str:
-    return f"""        <figure class="hero-visual">
-          <img
-            class="hero-visual-img hero-visual-img--light"
-            src="/assets/images/qefro_hero.png?v={ASSET_VERSION}"
-            alt="Qefro connects business apps, AI conversations, CRM, live data, events, and automation around one customer layer."
-            width="1300"
-            height="872"
-            decoding="async"
-            fetchpriority="high"
-          />
-          <img
-            class="hero-visual-img hero-visual-img--dark"
-            src="/assets/images/qefro_hero_dark.png?v={ASSET_VERSION}"
-            alt=""
-            width="1250"
-            height="894"
-            decoding="async"
-            aria-hidden="true"
-          />
+    return f"""        <figure class="hero-mock" data-motion="hero-visual" aria-label="Product view: a conversation looks up live overdue invoices, starts collection for Ahmed, and completes the follow-up.">
+          <div class="hero-mock-chrome">
+            <span class="hero-mock-dots" aria-hidden="true"></span>
+            <span class="hero-mock-title">Qefro · Command Chat</span>
+            <span class="hero-mock-meta">Workspace</span>
+          </div>
+          <ol class="flow-rail" aria-label="Conversation to outcome">
+            <li class="is-done"><span>1</span> Conversation</li>
+            <li class="is-done"><span>2</span> Data</li>
+            <li class="is-active"><span>3</span> Action</li>
+            <li><span>4</span> Outcome</li>
+          </ol>
+          <div class="hero-mock-body">
+            <div class="hero-mock-chat">
+              <p class="mock-who">Customer · WhatsApp</p>
+              <p class="mock-bubble mock-in">Can I view the 2BHK on Saturday?</p>
+              <p class="mock-who">You · Command Chat</p>
+              <p class="mock-bubble mock-in">Who owes us money?</p>
+              <p class="mock-who">Qefro</p>
+              <p class="mock-bubble mock-out">12 overdue · ₹2.4L. Ahmed is 21 days late.</p>
+            </div>
+            <div class="hero-mock-work">
+              <p class="mock-kicker">Live business data</p>
+              <div class="mock-stat">
+                <strong>12 overdue</strong>
+                <span>₹2.4L outstanding</span>
+              </div>
+              <div class="mock-record">
+                <p><strong>Ahmed</strong> · Invoice #1842</p>
+                <p>Goal → follow-up → payment → complete</p>
+              </div>
+              <p class="mock-action">Start collection for Ahmed</p>
+              <p class="mock-done">{ICONS["check"]} Viewing booked · Sat 11:00 · Marina 2BHK</p>
+            </div>
+          </div>
         </figure>"""
 
 
@@ -1133,238 +1128,227 @@ def home_body() -> str:
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
-          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI BUSINESS SOFTWARE</span>
+          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Business Platform</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line hero-accent">AI Business Software,</span>
-            <span class="hero-line hero-line-muted">Built for Your Industry</span>
+            <span class="hero-line">Turn customer conversations</span>
+            <span class="hero-line hero-accent">into business outcomes.</span>
           </h1>
-          <p class="hero-sub" data-motion="hero-sub">Pre-built applications for real estate, restaurants, healthcare, e-commerce and more. Connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups &mdash; all from one platform.</p>
+          <p class="hero-sub" data-motion="hero-sub">Qefro connects AI with your business data, workflows, automations and apps &mdash; so customers get answers and work actually gets done.</p>
+          <ol class="flow-rail flow-rail-hero" aria-label="Conversation to outcome">
+            <li>Conversation</li>
+            <li>Data</li>
+            <li>Action</li>
+            <li>Outcome</li>
+          </ol>
           <div class="hero-actions" data-motion="hero-actions">
-            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
-            <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">Explore Apps</a>
+            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">{CTA_TRIAL} {ICONS["arrow"]}</a>
+            <a class="btn btn-ghost btn-lg" href="#how-it-works" data-clarity-event="cta_see_how">{CTA_SEE_HOW}</a>
           </div>
-          <div class="hero-checks" data-motion="hero-checks">
-            <span>{ICONS["check"]} Industry-specific applications</span>
-            <span>{ICONS["check"]} AI chat + WhatsApp</span>
-            <span>{ICONS["check"]} Live business data</span>
-            <span>{ICONS["check"]} Human control when needed</span>
-          </div>
+          <p class="hero-micro" data-motion="hero-checks">{CTA_MICRO}</p>
         </div>
 {hero_visual()}
       </div>
     </section>
 
-    <section class="section" id="product-story" aria-labelledby="story-heading">
+    <section class="section" id="how-it-works" aria-labelledby="story-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} How customers use Qefro</span>
-          <h2 id="story-heading">From first inquiry to closed deal &mdash; AI handles the journey</h2>
-          <p>See how Qefro turns a customer question into a completed business outcome, step by step.</p>
+          <h2 id="story-heading">From conversations to completed work</h2>
         </div>
-        <div class="steps-grid reveal steps-grid-3">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Customer asks</h3><p>&ldquo;What properties match my budget?&rdquo; AI retrieves live data from your connected real estate app and responds instantly.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Business responds</h3><p>Live property data, viewing scheduling, quotations &mdash; no manual lookup, no delays. The customer gets answers in seconds.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Follow-up happens</h3><p>Automated WhatsApp messages, customer tagging, salesperson assignment &mdash; triggered by business events, not manual effort.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Team stays aligned</h3><p>CRM context, conversation history, and notes keep everyone on the same page. No information silos.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">05</div></div><h3>Deal closes</h3><p>Approval workflows, human handoff when needed, and automated confirmations. The customer experience stays seamless end to end.</p></article>
+        <div class="steps-grid reveal steps-grid-4">
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Conversation</h3><p>A customer or teammate asks in chat.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Data</h3><p>Qefro reads live business records.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Action</h3><p>It books, collects, schedules, or updates.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Outcome</h3><p>The work is done &mdash; not just answered.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="flagship" aria-labelledby="flagship-heading">
+    <section class="section section-alt" id="outcomes" aria-labelledby="outcomes-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["building"]} Flagship App</span>
-          <h2 id="flagship-heading">See Real Estate Pro in action</h2>
-          <p>Customers ask about properties, schedule viewings, and get quotations &mdash; all through AI conversations connected to live business data.</p>
+          <h2 id="outcomes-heading">Work that finishes</h2>
         </div>
-        <div class="convo-grid reveal">
-{convo_example(
-    "What 2-bedroom properties are under $300K?",
-    "Finds 4 matching properties from the connected real estate app, with prices, locations, and photos.",
-)}
-{convo_example(
-    "Can I schedule a viewing for the one on Main Street?",
-    "Checks availability, books the viewing, and sends a confirmation through WhatsApp.",
-)}
-{convo_example(
-    "Send me a quotation for that property.",
-    "Generates a quotation with pricing details and follows the configured approval workflow.",
-)}
-{convo_example(
-    "What&rsquo;s the status of my mortgage pre-approval?",
-    "Retrieves the current status from the connected system and shares next steps.",
-)}
-        </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/business-apps" data-clarity-event="cta_see_all_apps">See all business apps {ICONS["arrow"]}</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="industry-apps" aria-labelledby="apps-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-green">{ICONS["sparkles"]} Industry Applications</span>
-          <h2 id="apps-heading">Pre-built AI apps for your industry</h2>
-          <p>Each application connects to your existing systems and gives customers an intelligent, conversational interface to your business.</p>
-        </div>
-        <div class="outcome-grid reveal">
-          <article class="outcome-card tilt-3d"><h3>{ICONS["building"]} Real Estate Pro</h3><ul><li>Property search and matching</li><li>Viewing scheduling</li><li>Quotation generation</li><li>WhatsApp follow-ups</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>{ICONS["zap"]} Restaurant Pro</h3><ul><li>Reservation management</li><li>Menu queries and orders</li><li>Order tracking</li><li>Automated confirmations</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>{ICONS["shield"]} Clinic Pro</h3><ul><li>Appointment scheduling</li><li>Patient context and history</li><li>Automated reminders</li><li>WhatsApp and chat channels</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>{ICONS["chart"]} E-commerce</h3><ul><li>Order status and tracking</li><li>Product search and recommendations</li><li>Return handling</li><li>Shipping notifications</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>{ICONS["file"]} ERP + Sales</h3><ul><li>Quotation management</li><li>Order processing</li><li>CRM and lead tracking</li><li>Sales automation</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>{ICONS["server"]} Custom Apps</h3><ul><li>Build with Qefro SDK</li><li>Expose your own capabilities</li><li>Define business events</li><li>Full platform access</li></ul></article>
+        <div class="pao-grid reveal">
+          <article class="pao-card">
+            <p class="pao-label">Sales</p>
+            <h3>Leads go cold waiting for a callback.</h3>
+            <p><span>Action</span> AI matches live inventory and books the next step.</p>
+            <p class="pao-out"><span>Outcome</span> Viewing on the calendar.</p>
+          </article>
+          <article class="pao-card">
+            <p class="pao-label">Payments</p>
+            <h3>Overdue invoices sit in a spreadsheet.</h3>
+            <p><span>Action</span> AI finds who owes you and starts collection.</p>
+            <p class="pao-out"><span>Outcome</span> Follow-up sent. Payment tracked.</p>
+          </article>
+          <article class="pao-card">
+            <p class="pao-label">Appointments</p>
+            <h3>Front desk plays phone tag for slots.</h3>
+            <p><span>Action</span> AI books from live availability.</p>
+            <p class="pao-out"><span>Outcome</span> Confirmed time. Reminder sent.</p>
+          </article>
+          <article class="pao-card">
+            <p class="pao-label">Operations</p>
+            <h3>Status questions stall the team.</h3>
+            <p><span>Action</span> AI answers from your apps and data.</p>
+            <p class="pao-out"><span>Outcome</span> Exceptions go to people.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="ai-automation" aria-labelledby="ai-auto-heading">
+    <section class="section" id="apps" aria-labelledby="apps-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["sparkles"]} AI + Automation</span>
-          <h2 id="ai-auto-heading">AI that understands your business. Automation that acts on it.</h2>
-          <p>Qefro understands customer questions, retrieves live business data, executes authorized actions, and escalates to humans when needed.</p>
+          <h2 id="apps-heading">Marketplace apps that finish the job</h2>
         </div>
-        <div class="cap-grid reveal">
-          <article><h3>Understand</h3><p>Customer questions in chat, WhatsApp, or voice &mdash; including multilingual conversations.</p></article>
-          <article><h3>Retrieve</h3><p>Live business information from connected applications &mdash; orders, properties, appointments, inventory.</p></article>
-          <article><h3>Act</h3><p>Execute authorized actions: quotations, bookings, scheduling, lookups &mdash; without manual intervention.</p></article>
-          <article><h3>Escalate</h3><p>Hand the conversation to a person with full CRM context and history intact.</p></article>
-        </div>
-        <div class="section-head reveal" style="margin-top:3rem">
-          <h3>When something happens in your business, Qefro responds automatically</h3>
-        </div>
-        <div class="event-flow reveal" aria-label="Example automation">
-          <span>Business event</span>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <code>quotation.created</code>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <span>Qefro Automation</span>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <span>IF amount &gt; $100,000</span>
-          <div class="qefro-arch-down" aria-hidden="true"></div>
-          <strong>WhatsApp + Tag + Follow-up</strong>
-        </div>
-        <div class="outcome-grid reveal" style="margin-top:2rem">
-          <article class="outcome-card"><h3>quotation.created</h3><p>Send WhatsApp, tag the customer, assign a salesperson.</p></article>
-          <article class="outcome-card"><h3>order.created</h3><p>Send confirmation through the customer&rsquo;s preferred channel.</p></article>
-          <article class="outcome-card"><h3>appointment.created</h3><p>Send a reminder at the configured delay.</p></article>
+        <div class="apps-compact reveal">
+          <a class="app-chip" href="/business-apps"><strong>Real Estate Pro</strong><span>Book viewings from chat</span></a>
+          <a class="app-chip" href="/business-apps"><strong>Restaurant Pro</strong><span>Fill tables without phone tag</span></a>
+          <a class="app-chip" href="/business-apps"><strong>Clinic Pro</strong><span>Confirm appointments automatically</span></a>
+          <a class="app-chip" href="/business-apps"><strong>Collections</strong><span>Get paid on overdue invoices</span></a>
+          <a class="app-chip" href="/business-apps"><strong>E-commerce</strong><span>Track orders and close returns</span></a>
+          <a class="app-chip" href="/business-apps"><strong>Sales</strong><span>Quote, follow up, close</span></a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="security" aria-labelledby="control-heading">
+    <section class="section section-alt" id="channels" aria-labelledby="channels-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["shield"]} Human Control</span>
+          <h2 id="channels-heading">One AI interface</h2>
+          <p>Same business. Same data. Same AI.</p>
+        </div>
+        <div class="channel-row reveal">
+          <article><h3>WhatsApp</h3><p>Customers message you.</p></article>
+          <article><h3>Website</h3><p>Visitors get answers.</p></article>
+          <article><h3>Mobile</h3><p>Work follows the team.</p></article>
+          <article><h3>Command Chat</h3><p>Operators run the business.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="act" aria-labelledby="act-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="act-heading">AI that can act</h2>
+        </div>
+        <ol class="act-chain reveal">
+          <li>Answer</li>
+          <li>Find</li>
+          <li>Act</li>
+          <li>Follow up</li>
+          <li>Complete</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="control" aria-labelledby="control-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
           <h2 id="control-heading">You stay in control</h2>
-          <p>AI handles the routine. Humans handle the complex. Every interaction is transparent, auditable, and overrideable.</p>
         </div>
-        <div class="sec-grid reveal">
-          <article><h3>Human handoff</h3><p>Seamless escalation from AI to your team with full conversation context and customer history.</p></article>
-          <article><h3>Approval gates</h3><p>High-value actions require human approval before execution. You set the thresholds.</p></article>
-          <article><h3>Workspace isolation</h3><p>Apps, teams, and channels stay scoped to the workspace. No cross-tenant data leakage.</p></article>
-          <article><h3>Audit logs</h3><p>Every AI action, every automation, every handoff &mdash; logged and reviewable.</p></article>
-        </div>
+        <ul class="trust-inline reveal">
+          <li>Your data</li>
+          <li>Permissions you set</li>
+          <li>Workflows you define</li>
+          <li>Approvals when needed</li>
+          <li>People in the loop</li>
+        </ul>
       </div>
     </section>
 
-    <section class="section section-alt" id="why-qefro" aria-labelledby="why-heading">
+    <section class="section" id="start" aria-labelledby="start-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-purple">{ICONS["sparkles"]} Why Qefro</span>
-          <h2 id="why-heading">Outcomes, not features</h2>
-          <p>Qefro is not another tool to manage. It&rsquo;s the customer interface your business software has been missing.</p>
-        </div>
-        <div class="outcome-grid reveal">
-          <article class="outcome-card tilt-3d"><h3>Reduce repetitive queries</h3><p>AI handles status checks, FAQs, lookups &mdash; your team focuses on high-value work.</p></article>
-          <article class="outcome-card tilt-3d"><h3>Close deals faster</h3><p>Instant quotations, scheduling, and follow-ups. No more &ldquo;I&rsquo;ll get back to you.&rdquo;</p></article>
-          <article class="outcome-card tilt-3d"><h3>Never miss a customer</h3><p>WhatsApp + chat + automation, 24/7. Customers get responses when they need them.</p></article>
-          <article class="outcome-card tilt-3d"><h3>Keep your existing software</h3><p>Connect, don&rsquo;t replace. Your ERP, CRM, and industry apps stay the source of truth.</p></article>
-          <article class="outcome-card tilt-3d"><h3>Team visibility</h3><p>CRM, conversation history, and assignment in one place. Everyone sees the full picture.</p></article>
-          <article class="outcome-card tilt-3d"><h3>Scale without hiring</h3><p>Automation handles volume. Humans handle complexity. Grow without proportional headcount.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="how-it-works" aria-labelledby="hiw-home-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["zap"]} How it works</span>
-          <h2 id="hiw-home-heading">Connect. Configure. Engage.</h2>
-          <p>Get started in three steps. No migration, no replacement of existing systems.</p>
+          <h2 id="start-heading">How it starts</h2>
         </div>
         <div class="steps-grid reveal steps-grid-3">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Connect</h3><p>Connect your ERP, CRM, or business application through the SDK, Marketplace apps, or webhooks.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Configure</h3><p>Choose customer-facing capabilities, CRM fields, and automation rules. Your business logic stays yours.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Engage</h3><p>Customers interact through AI chat, WhatsApp, and other channels &mdash; with live data from your systems.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Workspace</h3><p>Create a workspace for your business.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Install apps</h3><p>Pick the work you need done.</p></article>
+          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Let Qefro run</h3><p>Ask once. Watch the work complete.</p></article>
         </div>
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/how-it-works">See how it works {ICONS["arrow"]}</a></p>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="pricing" aria-labelledby="pricing-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">{ICONS["chart"]} Pricing</span>
-          <h2 id="pricing-heading">Pay for conversations, connections, and automation &mdash; not another ERP.</h2>
-          <p>Plans scale with connected workspaces, conversations, integrations, automation, and seats.</p>
-        </div>
-{price_cards_html(interactive=True)}
-        <p class="integrations-note reveal" style="text-align:center;margin-top:1.5rem"><a href="/pricing">Compare plans in detail {ICONS["arrow"]}</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="faq" aria-labelledby="faq-heading">
-      <div class="wrap-narrow">
-        <div class="section-head reveal">
-          <h2 id="faq-heading">Frequently asked questions</h2>
-          <p>Everything you need to know before you start.</p>
-        </div>
-        <div class="faq-list reveal">
-{home_faq_preview()}
-        </div>
-        <p style="text-align:center;margin-top:1.5rem"><a class="btn btn-ghost" href="/faq">View all FAQ</a></p>
+        <p class="start-note reveal">Optionally connect WhatsApp, website, or mobile. Same AI either way.</p>
       </div>
     </section>
 
     <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} AI business software, built for your industry</span>
-        <h2 id="cta-heading">Start using AI business software today.</h2>
-        <p>Pre-built applications for your industry. Connect your existing systems. Engage customers through AI chat and WhatsApp.</p>
+        <h2 id="cta-heading">Ready to put AI to work?</h2>
+        <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome &mdash; then pick a paid plan.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">Explore Apps</a>
-          <a class="btn btn-link btn-lg" href="/contact" data-clarity-event="cta_talk_sales">Talk to Sales</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">{CTA_TRIAL} {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">{CTA_MARKETPLACE}</a>
         </div>
+        <p class="hero-micro">{CTA_MICRO}</p>
       </div>
     </section>
 """
 
 
+HOME_HOWTO_JSON = json.dumps(
+    {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": "How to put AI to work with Qefro",
+        "description": (
+            "Start a 14-day free trial, install business apps, and let Qefro run "
+            "customer-facing work and operations from one AI interface."
+        ),
+        "url": f"{SITE}/",
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": "Create a workspace",
+                "text": "Open Qefro and create a workspace for your business.",
+                "url": f"{SITE}/#start",
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": "Install apps",
+                "text": "Choose Marketplace apps that match the work you need done.",
+                "url": f"{SITE}/#apps",
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": "Let Qefro run the work",
+                "text": "Ask in chat, WhatsApp, or Command Chat. Experience the outcome during the 14-day free trial, then choose a paid plan.",
+                "url": f"{SITE}/#act",
+            },
+        ],
+    },
+    indent=2,
+)
+
+
 PAGES["index.html"] = page(
-    title="Qefro — AI Business Software, Built for Your Industry",
+    title="Qefro — AI Business Platform | Turn Conversations into Outcomes",
     description=(
-        "Pre-built AI applications for real estate, restaurants, healthcare, "
-        "e-commerce and more. Connect your systems, engage customers through "
-        "AI chat and WhatsApp, and automate follow-ups — all from one platform."
+        "Qefro is an AI Business Platform that turns customer conversations into "
+        "completed work. Connect AI with your business data, apps, workflows, and "
+        "people. Start a 14-day free trial."
     ),
     path="",
     jsonld=[
         ORG_JSON,
         WEBSITE_JSON,
         SOFTWARE_JSON,
+        HOME_HOWTO_JSON,
         webpage_json(
-            "Qefro — AI Business Software, Built for Your Industry",
-            "Pre-built applications for real estate, restaurants, healthcare, e-commerce and more.",
+            "Qefro — AI Business Platform | Turn Conversations into Outcomes",
+            "Turn customer conversations into business outcomes with an AI Business Platform.",
             "",
         ),
     ],
     body=home_body(),
-    extra_scripts='',
+    extra_scripts="",
 )
+
 
 # Inner pages — detailed content for menu-linked pages
 def features_page_content() -> str:
@@ -1646,30 +1630,65 @@ def security_page_content() -> str:
 
 
 def pricing_page_content() -> str:
-    return f"""        <div class="direct-answer reveal">
-          <p>Every new organization gets a <strong>14-day free trial</strong> with full premium access (no credit card), then <strong>Starter from $29/month billed annually</strong> ($39 monthly), <strong>Pro from $49/month billed annually</strong> ($59 monthly), <strong>Growth from $99/month billed annually</strong> ($119 monthly, unlimited business system connections), and <strong>Enterprise</strong> custom capacity contracts.</p>
-        </div>
-        <div class="billing-toggle reveal" role="group" aria-label="Billing period">
-          <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
-          <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>Save 26%</span></button>
-        </div>
-        <div class="price-grid reveal">
+    return f"""        <div class="pricing-ledger" data-pricing-root data-pricing-api="{API}">
+          <div class="direct-answer reveal">
+            <p>Every new organization starts with a <strong>14-day free trial</strong>. Choose apps, connect your business, and experience the outcome — then pick a paid plan: Starter ₹699/mo (1 user), Pro ₹1,499/mo (5 users), or Growth ₹2,999/mo (15 users). Marketplace apps are billed separately.</p>
+          </div>
+          <div class="headcount-tape reveal" aria-label="Team size by plan">
+            <p class="tape-kicker">Team size</p>
+            <p class="tape-lead">Each plan includes a fixed number of users. Need more people? Upgrade to the next plan.</p>
+            <p class="tape-break">Starter 1 user · Pro up to 5 · Growth up to 15</p>
+            <div class="currency-toggle" role="group" aria-label="Currency">
+              <button type="button" data-currency="INR" class="is-active" aria-pressed="true">INR</button>
+              <button type="button" data-currency="USD" aria-pressed="false">USD</button>
+            </div>
+          </div>
+          <div class="billing-toggle reveal" role="group" aria-label="Billing period">
+            <button type="button" data-billing="monthly" aria-pressed="false">Monthly</button>
+            <button type="button" data-billing="annual" class="is-active" aria-pressed="true">Yearly <span>2 months free</span></button>
+          </div>
+          <div class="price-grid reveal">
 {price_cards_html(interactive=False)}
-        </div>
-        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
-          <h2>Included on every plan</h2>
-          <p>Core platform capabilities — not nickel-and-dimed add-ons.</p>
-        </div>
-        <div class="cap-grid reveal">
-          <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Multilingual RAG &amp; OCR</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["lock"]}</div><span>Widget JWT &amp; identify()</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>PII scrubbing &amp; tenant isolation</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>Source citations</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Business actions &amp; OpenAPI</span></div>
-          <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs</span></div>
-        </div>
-        <div class="prose reveal" style="margin-top:2rem">
-          <p>Billing is prepaid via Razorpay in the portal. Upgrade or top up anytime; owners manage subscriptions and invoices from the billing page. Also see the short answer page: <a href="/qefro-pricing">How much does Qefro cost?</a></p>
+          </div>
+          <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+            <h2>Compare plans</h2>
+            <p>Users, customers, documents, and integrations — not AI message quotas.</p>
+          </div>
+          <div class="compare-wrap reveal">
+            <table class="compare-table pricing-compare">
+              <thead>
+                <tr><th>Capability</th><th>Starter</th><th>Pro</th><th>Growth</th><th>Enterprise</th></tr>
+              </thead>
+              <tbody>
+                <tr><th>Users included</th><td>1</td><td>5</td><td>15</td><td>Custom</td></tr>
+                <tr><th>CRM customers</th><td>500</td><td>2,500</td><td>10,000</td><td>Custom</td></tr>
+                <tr><th>Documents</th><td>50</td><td>200</td><td>500</td><td>Custom</td></tr>
+                <tr><th>Integrations</th><td>5</td><td>25</td><td>Unlimited</td><td>Custom</td></tr>
+                <tr><th>CRM</th><td>✓</td><td>Advanced</td><td>Customer 360</td><td>Custom</td></tr>
+                <tr><th>Automations</th><td>✓</td><td>Advanced</td><td>✓</td><td>Custom</td></tr>
+                <tr><th>WhatsApp</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                <tr><th>Voice</th><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                <tr><th>Analytics</th><td>—</td><td>✓</td><td>Reporting</td><td>Custom</td></tr>
+                <tr><th>API</th><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+                <tr><th>Marketplace</th><td>Separate</td><td>Separate</td><td>Separate</td><td>Separate</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+            <h2>Included on every plan</h2>
+            <p>Core platform capabilities — not nickel-and-dimed add-ons.</p>
+          </div>
+          <div class="cap-grid reveal">
+            <div class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>Multilingual RAG &amp; OCR</span></div>
+            <div class="cap-card"><div class="cap-icon">{ICONS["lock"]}</div><span>Widget JWT &amp; identify()</span></div>
+            <div class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>PII scrubbing &amp; tenant isolation</span></div>
+            <div class="cap-card"><div class="cap-icon">{ICONS["file"]}</div><span>Source citations</span></div>
+            <div class="cap-card"><div class="cap-icon">{ICONS["bot"]}</div><span>Business actions &amp; OpenAPI</span></div>
+            <div class="cap-card"><div class="cap-icon">{ICONS["chart"]}</div><span>Execution logs</span></div>
+          </div>
+          <div class="prose reveal" style="margin-top:2rem">
+            <p>Billing is prepaid via Razorpay in the portal. Upgrade or change plans anytime; owners manage subscriptions and invoices from the billing page. Also see: <a href="/qefro-pricing">How much does Qefro cost?</a></p>
+          </div>
         </div>"""
 
 
@@ -1954,15 +1973,15 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} AI business software</span>
-        <h2>Start using AI business software today.</h2>
-        <p>Pre-built applications for your industry — connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups. Start a 14-day free trial, no credit card required.</p>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Platform</span>
+        <h2>Ready to put AI to work?</h2>
+        <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome — then pick a paid plan.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Start Free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/business-apps">Explore Apps</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">{CTA_TRIAL} {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="/business-apps">{CTA_MARKETPLACE}</a>
           <a class="btn btn-link btn-lg" href="/contact">Talk to Sales</a>
         </div>
-        <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> for Enterprise · <a href="{DOCS}">Documentation</a> · <a href="/security">Security overview</a></p>
+        <p class="integrations-note" style="margin-top:1.25rem"><a href="/pricing">See plans</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
       </div>
     </section>
 """,
@@ -2027,14 +2046,15 @@ PAGES["security.html"] = inner(
 
 PAGES["pricing.html"] = inner(
     "Pricing | Qefro",
-    "Pricing",
-    "Plans for connected workspaces, conversations, integrations, automation, and seats. 14-day free trial. Starter from $29/mo, Pro from $49/mo, Growth from $99/mo.",
+    "Simple pricing that grows with your business",
+    "Fixed-price plans with a maximum team size. 14-day free trial. Starter ₹699/mo (1 user), Pro ₹1,499/mo (5 users), Growth ₹2,999/mo (15 users).",
     "pricing.html",
     "pricing",
-    "<p>Pay for the customer layer — conversations, connections, and automation — not another ERP replacement. Start a 14-day free trial, then scale with Starter, Pro, Growth, or Enterprise.</p>",
+    "<p>Start with one user on Starter. Pro includes up to 5 users, Growth up to 15. Marketplace apps stay on their own bill.</p>",
     pricing_page_content(),
     # No FAQPage here — Google asks to mark up each FAQ only once (on /faq).
     extra_jsonld=[PRICING_OFFERS_JSON],
+    extra_sections=f'    <script type="module" src="/assets/js/pricing.js?v={ASSET_VERSION}"></script>\n',
     badge=f'{ICONS["zap"]} Pricing',
 )
 
@@ -2157,11 +2177,11 @@ PAGES["contact.html"] = inner(
             </label>
           </div>
           <button class="btn btn-primary" type="submit">Request a demo</button>
-          <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">start 14-day free trial</a></p>
+          <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT}</a></p>
         </form>
         <div class="cap-grid" style="margin-top:2rem">
           <a class="cap-card" href="mailto:support@qefro.com"><div class="cap-icon">{ICONS["msg"]}</div><span>support@qefro.com</span></a>
-          <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>Start 14-day free trial</span></a>
+          <a class="cap-card" href="{PORTAL_SIGNUP}"><div class="cap-icon">{ICONS["zap"]}</div><span>{CTA_TRIAL}</span></a>
           <a class="cap-card" href="/pricing"><div class="cap-icon">{ICONS["chart"]}</div><span>View pricing</span></a>
         </div>""",
     extra_jsonld=[
@@ -2255,16 +2275,16 @@ PAGES["404.html"] = page(
 for slug, title, q, a, extra in [
     (
         "what-is-qefro.html",
-        "What is Qefro? | AI Business Software, Built for Your Industry",
+        "What is Qefro? | AI Business Platform",
         "What is Qefro?",
-        "Qefro is AI business software built for your industry. Pre-built applications for real estate, restaurants, healthcare, e-commerce and more — connect your existing systems, engage customers through AI chat and WhatsApp, and automate follow-ups.",
-        "<p>Keep your ERP, CRM, restaurant system, hospital system, or custom app. Qefro connects to them and gives customers an intelligent way to interact through chat, WhatsApp, and automation. Capabilities are what Qefro can invoke. Business events are what happened and can trigger follow-ups.</p>",
+        "Qefro is an AI Business Platform. It turns customer conversations into business outcomes using your data, apps, workflows, automations, and people — not a chatbot bolted onto a form.",
+        "<p>Start a 14-day free trial, install the apps your business needs, and let Qefro run the work across WhatsApp, website, mobile, and Command Chat.</p>",
     ),
     (
         "qefro-pricing.html",
         "How much does Qefro cost? | Pricing overview",
         "How much does Qefro cost?",
-        "Every new organization gets a 14-day free trial with full premium access. No credit card required. Starter from $29/month billed annually (connect up to 5 business systems). Pro from $49/month billed annually (up to 25 business systems). Growth from $99/month billed annually (unlimited business system connections). Enterprise is custom capacity priced to your requirements.",
+        "Every new organization starts with a 14-day free trial. After the trial, Starter is ₹699/month (1 user), Pro is ₹1,499/month (5 users), and Growth is ₹2,999/month (15 users). Marketplace apps billed separately. Enterprise is custom.",
         '<p>See the full comparison on the <a href="/pricing">pricing page</a>.</p>',
     ),
 ]:
@@ -2290,7 +2310,7 @@ for slug, title, q, a, extra in [
           <p>{a}</p>
         </aside>
         <div class="prose" style="margin-top:1.5rem">{extra}
-          <p><a class="btn btn-primary" href="{PORTAL_LOGIN}">Start 14-day free trial</a></p>
+          <p><a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL}</a></p>
         </div>
       </div>
     </section>
@@ -2563,8 +2583,7 @@ def seo_landing_content(landing) -> str:
             You should not rebuild RAG infrastructure, hosting, or channel adapters for every
             project. Qefro gives organizations a multi-tenant AI Business Application Platform: isolated
             knowledge per workspace, RBAC for owners/admins/members, PII scrubbing on model
-            calls, and a 14-day free trial with full premium access so you can prove value
-            before buying.
+            calls, and a 14-day free trial so you can prove value before choosing a paid plan.
           </p>
           <p>
             Compare plans on the <a href="/pricing">pricing page</a>, review
@@ -2741,13 +2760,13 @@ def register_seo_landings() -> None:
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} Keep your ERP. Add Qefro.</span>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Platform</span>
         <h2>Try {escape(landing.h1)} with Qefro.</h2>
-        <p>Customer support is one way to engage. Start a 14-day free trial — no credit card required.</p>
+        <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">Get Started {ICONS["arrow"]}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">{CTA_TRIAL} {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
-          <a class="btn btn-link btn-lg" href="/ai-customer-support-by-industry">Browse industries</a>
+          <a class="btn btn-link btn-lg" href="/business-apps">{CTA_MARKETPLACE}</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
       </div>
