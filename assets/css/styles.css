@@ -152,8 +152,12 @@
   --pink: #ec4899;
   --radius: 0.625rem;
   --radius-xl: 0.75rem;
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: "Syne", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  /* Titles: Source Serif 4 — business-document voice, not a startup display face.
+     Body/chrome/mock: IBM Plex Sans — product UI a team uses every day.
+     Data: IBM Plex Mono. */
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-ui: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   --max: 72rem;
   --max-narrow: 42rem;
@@ -297,9 +301,12 @@ body {
   color: var(--text);
   background: var(--bg);
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 .page-shell {
   width: 100%;
@@ -395,7 +402,10 @@ a:focus-visible {
 .nav-links { display: flex; align-items: center; gap: 0.25rem; }
 .nav-links a {
   padding: 0.5rem 0.875rem; border-radius: 0.5rem;
-  font-size: 0.875rem; color: var(--text-muted);
+  font-family: var(--font-ui);
+  font-size: 0.875rem; font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
@@ -430,7 +440,9 @@ a:focus-visible {
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
   min-height: 2.75rem; min-width: 2.75rem; padding: 0.625rem 1.25rem; border-radius: 0.5rem;
+  font-family: var(--font-ui);
   font-weight: 600; font-size: 0.875rem;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   cursor: pointer;
   position: relative;
@@ -581,12 +593,14 @@ button.badge-btn:focus-visible {
 }
 .eyebrow svg { width: 0.85rem; height: 0.85rem; }
 .hero h1 {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.35rem;
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 5.6vw, 4.25rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  font-optical-sizing: auto;
+  font-size: clamp(1.9rem, 4.6vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
 }
 .hero h1 .hero-line { display: block; color: var(--hero-fg); }
 .hero h1 .hero-accent {
@@ -599,7 +613,10 @@ button.badge-btn:focus-visible {
 }
 .hero-sub {
   margin: 0 auto 1.5rem; max-width: 42rem;
-  font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--hero-sub); line-height: 1.7;
+  font-family: var(--font-sans);
+  font-size: clamp(1.02rem, 1.7vw, 1.15rem);
+  font-weight: 400;
+  color: var(--hero-sub); line-height: 1.65;
 }
 .hero h1,
 .hero-sub,
@@ -740,12 +757,16 @@ a.pipeline-node:focus-visible {
 .section-head h2 {
   margin: 0 0 1rem;
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 4vw, 2.35rem);
-  font-weight: 700; letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+  font-size: clamp(1.65rem, 3.4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.016em;
   text-wrap: balance;
 }
 .section-head p {
-  margin: 0 auto; max-width: 32rem; color: var(--text-sub); font-size: 1.125rem;
+  margin: 0 auto; max-width: 32rem; color: var(--text-sub);
+  font-size: 1.05rem; line-height: 1.65;
 }
 
 .direct-answer,
@@ -894,11 +915,13 @@ a.pipeline-node:focus-visible {
 .step-num-inner {
   width: 100%; height: 100%; border-radius: calc(1rem - 1px);
   background: var(--bg); display: grid; place-items: center;
-  font-family: var(--font-display); font-size: 1.5rem; font-weight: 800;
+  font-family: var(--font-mono); font-size: 1.15rem; font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--step-num-color);
 }
 .step h3 {
-  margin: 0 0 0.5rem; font-family: var(--font-display); font-size: 1.125rem; font-weight: 700;
+  margin: 0 0 0.5rem; font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600;
+  letter-spacing: -0.015em;
 }
 .step p { margin: 0; font-size: 0.875rem; color: var(--text-sub); line-height: 1.65; }
 
@@ -1138,10 +1161,10 @@ a.pipeline-node:focus-visible {
   box-shadow: var(--btn-glow); white-space: nowrap;
 }
 .price-pop svg { width: 0.75rem; height: 0.75rem; }
-.price-card h3 { margin: 0 0 0.25rem; font-family: var(--font-display); font-size: 1.125rem; font-weight: 700; }
+.price-card h3 { margin: 0 0 0.25rem; font-family: var(--font-sans); font-size: 1.05rem; font-weight: 600; letter-spacing: -0.015em; }
 .price-amount {
   display: flex; align-items: baseline; gap: 0.25rem; margin: 0.5rem 0;
-  font-family: var(--font-display); font-size: 2.25rem; font-weight: 800; letter-spacing: -0.02em;
+  font-family: var(--font-sans); font-size: 2.15rem; font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums;
 }
 .price-amount span { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); font-family: var(--font-sans); }
 .price-billed { margin: 0 0 0.75rem; font-size: 0.75rem; color: var(--text-muted); }
@@ -1165,7 +1188,7 @@ a.pipeline-node:focus-visible {
   outline-offset: 2px;
 }
 .billing-toggle button span {
-  margin-left: 0.4rem; font-size: 0.625rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  margin-left: 0.4rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
 }
 .price-desc { margin: 0 0 1.5rem; font-size: 0.875rem; color: var(--text-muted); }
 .price-best {
@@ -1269,7 +1292,12 @@ html[data-motion] .faq-a {
 .page-hero h1 {
   margin: 0 0 1rem;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.03em;
+  font-optical-sizing: auto;
+  font-size: clamp(1.85rem, 4.4vw, 2.85rem);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.016em;
+  text-wrap: balance;
 }
 .breadcrumbs {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem;
@@ -1278,12 +1306,16 @@ html[data-motion] .faq-a {
 .breadcrumbs a:hover { color: var(--link-hover); }
 .prose { max-width: 42rem; margin-inline: auto; text-align: left; color: var(--text-sub); }
 .prose h2 {
-  font-family: var(--font-display); color: var(--text-strong); letter-spacing: -0.02em;
-  margin: 2rem 0 0.75rem; font-size: 1.5rem;
+  font-family: var(--font-display); color: var(--text-strong);
+  font-optical-sizing: auto;
+  letter-spacing: -0.016em;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem; font-size: 1.45rem; line-height: 1.25;
 }
 .prose h3 {
-  font-family: var(--font-display); color: var(--text-strong); letter-spacing: -0.02em;
-  margin: 1.5rem 0 0.5rem; font-size: 1.15rem;
+  font-family: var(--font-sans); color: var(--text-strong); letter-spacing: -0.015em;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem; font-size: 1.08rem;
 }
 .prose p { margin: 0 0 1rem; }
 .prose ul { margin: 0.5rem 0 1rem; padding-left: 1.1rem; list-style: disc; }
@@ -1313,10 +1345,15 @@ html[data-motion] .faq-a {
 .cta-final h2 {
   margin: 0 0 1.25rem;
   font-family: var(--font-display);
-  font-size: clamp(1.85rem, 4vw, 3rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+  font-size: clamp(1.7rem, 3.6vw, 2.55rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.016em;
   color: var(--text-strong);
+  text-wrap: balance;
 }
-.cta-final p { margin: 0 auto 2rem; max-width: 32rem; color: var(--text-sub); font-size: 1.125rem; }
+.cta-final p { margin: 0 auto 2rem; max-width: 32rem; color: var(--text-sub); font-size: 1.05rem; line-height: 1.65; }
 .cta-final .hero-actions { margin-bottom: 0; }
 
 /* Footer */
@@ -1390,7 +1427,7 @@ html[data-motion] .faq-a {
   margin: 0 0 1rem;
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 800; letter-spacing: -0.02em;
+  font-weight: 700; letter-spacing: -0.02em;
 }
 .demo-copy > p {
   margin: 0 0 1.5rem; color: var(--text-sub); line-height: 1.7;
@@ -1846,7 +1883,7 @@ button.widget-demo-card:focus-visible {
 }
 .arch-hub-label {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.15rem;
   letter-spacing: -0.02em;
   color: var(--hero-pipeline-v);
@@ -1987,7 +2024,7 @@ button.widget-demo-card:focus-visible {
   margin: 0 0 1rem;
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text);
 }
@@ -2041,7 +2078,7 @@ button.widget-demo-card:focus-visible {
 .product-mock figcaption strong {
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--text);
 }
 .product-mock figcaption span {
@@ -2661,7 +2698,7 @@ a.pipeline-node:hover {
 }
 .hero-platform .hero-copy { max-width: 38rem; min-width: 0; }
 .hero-platform .hero-copy h1 {
-  font-size: clamp(1.85rem, 4.2vw, 3.35rem);
+  font-size: clamp(1.85rem, 4.1vw, 3.05rem);
   text-wrap: balance;
 }
 .hero-platform .hero-line { display: block; }
@@ -2728,7 +2765,7 @@ a.pipeline-node:hover {
 }
 .pillar-hub {
   text-align: center;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.04em;
   font-size: 0.95rem;
   margin-bottom: 1rem;
@@ -3120,7 +3157,7 @@ a.pipeline-node:hover {
 .qefro-arch-hub strong {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.08em;
   color: var(--hero-pipeline-v, var(--text));
 }
@@ -3219,7 +3256,7 @@ a.pipeline-node:hover {
 }
 .c360-root {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.05rem;
   margin-bottom: 0.75rem;
 }
@@ -3367,16 +3404,16 @@ a.pipeline-node:hover {
 }
 .pricing-ledger .tape-lead {
   margin: 0 0 1rem;
-  font-family: Syne, var(--font-display);
+  font-family: var(--font-display);
   font-size: clamp(1.15rem, 2.4vw, 1.65rem);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--tape-ink);
 }
 .pricing-ledger .tape-lead strong { color: var(--tape-saffron); font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 600; }
 .pricing-ledger .tape-controls {
   display: flex; align-items: center; gap: 0.85rem; margin-bottom: 0.85rem;
-  font-family: Outfit, var(--font-sans);
+  font-family: var(--font-sans);
   color: var(--tape-mute);
 }
 .pricing-ledger .tape-controls input[type="range"] { flex: 1; accent-color: var(--tape-saffron); }
@@ -3401,7 +3438,7 @@ a.pipeline-node:hover {
   font-size: 1.05rem;
   color: var(--tape-ink);
 }
-.pricing-ledger .tape-break { margin: 0.35rem 0 1rem; font-family: Outfit, var(--font-sans); font-size: 0.9rem; color: var(--tape-mute); }
+.pricing-ledger .tape-break { margin: 0.35rem 0 1rem; font-family: var(--font-sans); font-size: 0.9rem; color: var(--tape-mute); }
 .pricing-ledger .currency-toggle { display: inline-flex; gap: 0.35rem; }
 .pricing-ledger .currency-toggle button {
   font-family: "IBM Plex Mono", ui-monospace, monospace;
@@ -3409,11 +3446,11 @@ a.pipeline-node:hover {
   border: 1px solid var(--tape-rule); background: transparent; color: var(--tape-mute); cursor: pointer;
 }
 .pricing-ledger .currency-toggle button.is-active { background: var(--tape-ink); color: var(--tape-paper); border-color: var(--tape-ink); }
-.pricing-ledger .pricing-compare { width: 100%; border-collapse: collapse; font-family: Outfit, var(--font-sans); }
+.pricing-ledger .pricing-compare { width: 100%; border-collapse: collapse; font-family: var(--font-sans); }
 .pricing-ledger .pricing-compare th, .pricing-ledger .pricing-compare td {
   padding: 0.7rem 0.65rem; border-bottom: 1px solid var(--tape-rule); text-align: left;
 }
-.pricing-ledger .pricing-compare thead th { font-family: Syne, var(--font-display); font-size: 0.85rem; }
+.pricing-ledger .pricing-compare thead th { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   .pricing-ledger .headcount-tape { box-shadow: none; }
 }
@@ -3478,6 +3515,7 @@ a.pipeline-node:hover {
   background: var(--bg-elevated);
   box-shadow: var(--shadow-xl);
   overflow: hidden;
+  font-family: var(--font-ui);
 }
 .hero-mock-chrome {
   display: flex;
@@ -3572,9 +3610,10 @@ a.pipeline-node:hover {
   border-bottom: 1px solid var(--border);
 }
 .mock-stat strong {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  letter-spacing: -0.03em;
+  font-family: var(--font-ui);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
 }
 .mock-stat span { color: var(--text-muted); font-size: 0.85rem; }
 .mock-record p { margin: 0 0 0.35rem; font-size: 0.88rem; color: var(--text-sub); }
@@ -3623,7 +3662,10 @@ a.pipeline-node:hover {
 }
 .pao-card h3 {
   margin: 0 0 0.85rem;
+  font-family: var(--font-sans);
   font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.35;
 }
 .pao-card p {
@@ -3692,9 +3734,10 @@ a.pipeline-node:hover {
   border-radius: 999px;
   border: 1px solid var(--border);
   background: var(--card-bg);
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-weight: 600;
   font-size: 0.9rem;
+  letter-spacing: -0.015em;
 }
 .act-chain li + li::before {
   content: "→";
@@ -3741,4 +3784,41 @@ a.pipeline-node:hover {
 @media (prefers-reduced-motion: reduce) {
   .hero-mock { box-shadow: var(--shadow-md); }
 }
+
+/* Type hierarchy: serif only for page titles. Cards, tables, and mock UI stay product sans. */
+.outcome-card h3,
+.uc-card h3,
+.why-item h3,
+.exp-card h3,
+.workspace-card h3,
+.channel-card h3,
+.approach-card h3,
+.deploy-col h3,
+.channel-row h3,
+.compare-table th,
+.arch-hub-label,
+.arch-channel strong,
+.qefro-arch-hub strong,
+.product-mock figcaption strong,
+.c360-root,
+.fact-v {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.eyebrow,
+.badge,
+.app-chip {
+  font-family: var(--font-ui);
+}
+@media (max-width: 480px) {
+  .hero h1,
+  .hero-platform .hero-copy h1,
+  .page-hero h1 {
+    font-size: clamp(1.7rem, 8.2vw, 2.05rem);
+    line-height: 1.2;
+    letter-spacing: -0.014em;
+  }
+}
+
 
