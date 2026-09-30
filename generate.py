@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "65"
+ASSET_VERSION = "66"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
@@ -203,12 +203,11 @@ def meta_block(
   <meta name="twitter:description" content="{escape(description)}" />
   <meta name="twitter:image" content="{OG_IMAGE}" />
   <meta name="twitter:image:alt" content="{page_og_alt}" />
-  <meta name="geo.region" content="IN" />
-  <meta name="geo.placename" content="Global" />
   <!-- Favicons: stable URLs, square, ≥48px PNG for Google Search eligibility
        https://developers.google.com/search/docs/appearance/favicon-in-search#guidelines -->
   <link rel="icon" href="/assets/images/favicon-192.png" type="image/png" sizes="192x192" />
   <link rel="icon" href="/assets/images/favicon.png" type="image/png" sizes="64x64" />
+  <link rel="icon" href="/assets/images/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" sizes="180x180" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -302,9 +301,7 @@ def footer() -> str:
         <nav class="footer-col" aria-label="Applications">
           <h3>Apps</h3>
           <a href="/business-apps">Marketplace</a>
-          <a href="/business-apps">Real Estate Pro</a>
-          <a href="/business-apps">Restaurant Pro</a>
-          <a href="/business-apps">Clinic Pro</a>
+          <a href="/business-apps">All applications</a>
           <a href="/sdk">SDK</a>
         </nav>
         <nav class="footer-col" aria-label="Platform">
@@ -508,7 +505,7 @@ def tech_article_json(title: str, description: str, path: str) -> str:
             "description": description,
             "url": url,
             "inLanguage": "en-US",
-            "datePublished": "2024-01-01",
+            "datePublished": BUILD_DATE,
             "dateModified": BUILD_DATE,
             "author": {"@id": f"{SITE}/#organization"},
             "publisher": {"@id": f"{SITE}/#organization"},
@@ -556,7 +553,10 @@ ORG_JSON = json.dumps(
                 "availableLanguage": ["English"],
             },
         ],
-        "sameAs": ["https://github.com/qefro-ai"],
+        "sameAs": [
+            "https://github.com/qefro-ai",
+            "https://x.com/qefro"
+        ],
         "foundingDate": "2024",
         "knowsAbout": [
             "AI Business Application Platform",
@@ -616,11 +616,11 @@ SOFTWARE_JSON = json.dumps(
         "publisher": {"@id": f"{SITE}/#organization"},
         "offers": {
             "@type": "Offer",
-            "price": 0,
+            "price": 699,
             "priceCurrency": "INR",
             "availability": "https://schema.org/InStock",
             "url": f"{SITE}/pricing",
-            "description": "14-day free trial, then Starter, Pro, or Growth",
+            "description": "14-day free trial, then Starter from ₹699/month",
         },
         "featureList": [
             "AI-native business software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more",
@@ -1593,57 +1593,6 @@ HOME_HOWTO_JSON = json.dumps(
 )
 
 
-HOME_FAQ_JSON = json.dumps(
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What is Qefro?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Qefro is an AI Business Application Platform. It connects your existing business software to AI-powered customer conversations, CRM, automation, and secure business actions — so customers get answers and work actually gets done.",
-                },
-            },
-            {
-                "@type": "Question",
-                "name": "Is Qefro a CRM or ERP?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Qefro is neither a traditional CRM nor an ERP. It is a platform that runs focused business applications — each one purpose-built for its domain, with AI at the core.",
-                },
-            },
-            {
-                "@type": "Question",
-                "name": "Can I use Qefro on WhatsApp?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Customers and team members can interact with Qefro through WhatsApp, Instagram, your website widget, and the internal portal — all connected to the same business data.",
-                },
-            },
-            {
-                "@type": "Question",
-                "name": "Can Qefro actually perform business actions?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Qefro doesn't just answer questions — it books tables, creates invoices, schedules viewings, sends follow-ups, and completes real business operations.",
-                },
-            },
-            {
-                "@type": "Question",
-                "name": "Can I try Qefro for free?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. Every plan starts with a 14-day free trial. No credit card required.",
-                },
-            },
-        ],
-    },
-    indent=2,
-)
-
-
 PAGES["index.html"] = page(
     title="Qefro — AI Business Application Platform",
     description=(
@@ -1657,7 +1606,6 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         HOME_HOWTO_JSON,
-        HOME_FAQ_JSON,
         webpage_json(
             "Qefro — AI Business Application Platform",
             "Qefro connects your business software to AI-powered customer conversations, CRM, automation, and secure business actions.",
