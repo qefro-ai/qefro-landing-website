@@ -1106,7 +1106,7 @@ def home_body() -> str:
           <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Business Application Platform</span>
           <h1 data-motion="hero-title">
             <span class="hero-line">Qefro</span>
-            <span class="hero-line hero-accent">Keep your software. Add AI.</span>
+            <span class="hero-line hero-accent">The AI layer for your business software.</span>
           </h1>
           <p class="hero-sub" data-motion="hero-sub">Connect your business software to AI-powered customer conversations, CRM, automation, and secure business actions.</p>
           <p class="hero-sub-extra">Qefro is the AI layer on top of the systems you already run&mdash;ERP, CRM, POS, booking, commerce. Your customers get intelligent conversations. Your business gets outcomes.</p>
