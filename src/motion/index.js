@@ -4,6 +4,7 @@ import { initCompare } from "./compare.js";
 import { initDemo } from "./demo.js";
 import { initDepth } from "./depth.js";
 import { initFaq } from "./faq.js";
+import { initHeroDemo } from "./heroDemo.js";
 import { initHero } from "./hero.js";
 import { initMicro } from "./micro.js";
 import { initMobileMenu } from "./mobile-menu.js";
@@ -20,6 +21,7 @@ function boot() {
   initNav();
   initMobileMenu();
   initHero();
+  initHeroDemo();
   initPillars();
   initDemo();
   initArchitecture();

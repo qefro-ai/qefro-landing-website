@@ -3932,6 +3932,30 @@ a.pipeline-node:hover {
   color: #fff;
   border-bottom-left-radius: 0.25rem;
 }
+.demo-typing {
+  display: flex;
+  gap: 0.625rem;
+  align-items: flex-start;
+}
+.demo-typing-bubble {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.75rem 1rem;
+}
+.demo-typing-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  animation: demo-typing-bounce 1.2s ease-in-out infinite;
+}
+.demo-typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.demo-typing-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes demo-typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
 .demo-property-card {
   margin-top: 0.75rem;
   background: rgba(255,255,255,0.15);

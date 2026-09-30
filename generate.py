@@ -1067,13 +1067,13 @@ def hero_visual() -> str:
           </div>
           <div class="hero-demo-body">
             <div class="hero-demo-convo">
-              <div class="demo-msg demo-customer">
+              <div class="demo-msg demo-customer" data-hero-msg>
                 <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
                 <div class="demo-bubble demo-bubble-in">
                   <p>Do you have 2BHK apartments in Ramanathapuram under &#x20B9;40L?</p>
                 </div>
               </div>
-              <div class="demo-msg demo-qefro">
+              <div class="demo-msg demo-qefro" data-hero-msg>
                 <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
                 <div class="demo-bubble demo-bubble-out">
                   <p>I found 6 properties matching your criteria.</p>
@@ -1091,13 +1091,13 @@ def hero_visual() -> str:
                   </div>
                 </div>
               </div>
-              <div class="demo-msg demo-customer">
+              <div class="demo-msg demo-customer" data-hero-msg>
                 <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
                 <div class="demo-bubble demo-bubble-in">
                   <p>Book tomorrow at 4 PM.</p>
                 </div>
               </div>
-              <div class="demo-msg demo-qefro">
+              <div class="demo-msg demo-qefro" data-hero-msg>
                 <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
                 <div class="demo-bubble demo-bubble-out">
                   <p>Done. Your viewing is scheduled for tomorrow at 4:00 PM.</p>
