@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "64"
+ASSET_VERSION = "65"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
@@ -1497,7 +1497,7 @@ def home_body() -> str:
         <div class="faq-list reveal">
           <details class="faq-item" open>
             <summary>What is Qefro?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
-            <p>Qefro is AI-native business software. It gives you focused applications for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more&mdash;with AI built into every workflow.</p>
+            <p>Qefro is an AI Business Application Platform. It connects your existing business software to AI-powered customer conversations, CRM, automation, and secure business actions&mdash;so customers get answers and work actually gets done.</p>
           </details>
           <details class="faq-item">
             <summary>Is Qefro a CRM or ERP?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
@@ -1603,7 +1603,7 @@ HOME_FAQ_JSON = json.dumps(
                 "name": "What is Qefro?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Qefro is AI-native business software. It gives you focused applications for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more — with AI built into every workflow.",
+                    "text": "Qefro is an AI Business Application Platform. It connects your existing business software to AI-powered customer conversations, CRM, automation, and secure business actions — so customers get answers and work actually gets done.",
                 },
             },
             {
