@@ -3844,6 +3844,18 @@ a.pipeline-node:hover {
   max-width: 28rem;
   width: 100%;
 }
+.hero-illustration {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+.hero-illustration-img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lg);
+  display: block;
+}
 .hero-demo-chrome {
   display: flex;
   align-items: center;
@@ -4612,8 +4624,12 @@ a.pipeline-node:hover {
   }
 }
 @media (max-width: 768px) {
-  .hero-demo {
+  .hero-demo,
+  .hero-illustration {
     max-width: 100%;
+  }
+  .hero-illustration-img {
+    border-radius: 0.75rem;
   }
   .hero-platform-grid {
     grid-template-columns: 1fr;

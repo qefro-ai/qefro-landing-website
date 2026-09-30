@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "63"
+ASSET_VERSION = "64"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
@@ -1059,55 +1059,8 @@ def illustration(name: str, *, alt: str = "", figure_class: str = "illust") -> s
 
 
 def hero_visual() -> str:
-    return f"""        <figure class="hero-demo" data-motion="hero-visual" aria-label="Product demo: customer searches for a 2BHK apartment, Qefro returns results with a property card, and books a viewing.">
-          <div class="hero-demo-chrome">
-            <span class="hero-demo-dots" aria-hidden="true"></span>
-            <span class="hero-demo-title">Qefro · Real Estate</span>
-            <span class="hero-demo-meta">Live demo</span>
-          </div>
-          <div class="hero-demo-body">
-            <div class="hero-demo-convo">
-              <div class="demo-msg demo-customer" data-hero-msg>
-                <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
-                <div class="demo-bubble demo-bubble-in">
-                  <p>Do you have 2BHK apartments in Ramanathapuram under &#x20B9;40L?</p>
-                </div>
-              </div>
-              <div class="demo-msg demo-qefro" data-hero-msg>
-                <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
-                <div class="demo-bubble demo-bubble-out">
-                  <p>I found 6 properties matching your criteria.</p>
-                  <div class="demo-property-card">
-                    <div class="demo-property-img" aria-hidden="true"></div>
-                    <div class="demo-property-info">
-                      <strong>2BHK Apartment</strong>
-                      <span class="demo-property-price">&#x20B9;36.5L</span>
-                      <span class="demo-property-meta">Ramanathapuram &middot; 1,240 sq.ft</span>
-                    </div>
-                    <div class="demo-property-actions">
-                      <button class="demo-btn demo-btn-ghost" type="button">View property</button>
-                      <button class="demo-btn demo-btn-primary" type="button">Book viewing</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="demo-msg demo-customer" data-hero-msg>
-                <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
-                <div class="demo-bubble demo-bubble-in">
-                  <p>Book tomorrow at 4 PM.</p>
-                </div>
-              </div>
-              <div class="demo-msg demo-qefro" data-hero-msg>
-                <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
-                <div class="demo-bubble demo-bubble-out">
-                  <p>Done. Your viewing is scheduled for tomorrow at 4:00 PM.</p>
-                  <div class="demo-confirmation">
-                    {ICONS["check"]} Viewing confirmed &middot; Tomorrow 4:00 PM
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    return f"""        <figure class="hero-illustration" data-motion="hero-visual" aria-label="Qefro AI Business Application Platform: connects business software (ERP, CRM, POS, Booking, Payments, Custom Apps) to AI-powered customer conversations across WhatsApp, Website, and Voice channels.">
+          <img class="hero-illustration-img" src="/assets/images/bg-image.png?v={ASSET_VERSION}" alt="Qefro platform illustration showing AI robot connecting business functions (Sales, Customer Support, CRM, Finance, Inventory/ERP, Operations) to customer channels (WhatsApp, Website, Voice) with a workflow: Talk to Customers → Understand Your Data → Take Action → Get Real Work Done" width="1200" height="720" loading="eager" fetchpriority="high" />
         </figure>"""
 
 
