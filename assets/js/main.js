@@ -276,4 +276,60 @@
       openLiveDemo();
     });
   });
+
+  const TRY_SCENARIOS = {
+    table: {
+      conversation: [
+        { who: "customer", text: "Book a table for 4 tomorrow at 7 PM." },
+        { who: "qefro", text: "Done. Table for 4 reserved at 7:00 PM tomorrow. Confirmation sent." },
+      ],
+    },
+    invoice: {
+      conversation: [
+        { who: "customer", text: "Create an invoice for \u20B945,000 for client Acme Corp." },
+        { who: "qefro", text: "Invoice #2847 created for Acme Corp \u00B7 \u20B945,000. Due in 30 days. Sent to billing@acme.com." },
+      ],
+    },
+    property: {
+      conversation: [
+        { who: "customer", text: "Find 3BHK apartments in Anna Nagar under \u20B980L." },
+        { who: "qefro", text: "Found 4 properties. Top match: 3BHK, Anna Nagar, \u20B972L, 1,650 sq.ft." },
+      ],
+    },
+    sales: {
+      conversation: [
+        { who: "customer", text: "What were our total sales this week?" },
+        { who: "qefro", text: "\u20B93,28,400 this week. Up 12% from last week. Top product: Product A." },
+      ],
+    },
+    customer: {
+      conversation: [
+        { who: "customer", text: "Find customer Priya Sharma." },
+        { who: "qefro", text: "Priya Sharma \u00B7 Last order: 12 days ago \u00B7 \u20B918,200 total. 2 open invoices." },
+      ],
+    },
+  };
+
+  const tryChips = document.querySelectorAll("[data-try-scenario]");
+  const tryArea = document.getElementById("try-demo-area");
+  if (tryChips.length && tryArea) {
+    tryChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const key = chip.dataset.tryScenario;
+        const scenario = TRY_SCENARIOS[key];
+        if (!scenario) return;
+        tryChips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        const msgs = scenario.conversation
+          .map(
+            (m) =>
+              `<div class="demo-msg demo-${m.who === "customer" ? "customer" : "qefro"}">` +
+              `<span class="demo-avatar demo-avatar-${m.who === "customer" ? "customer" : "qefro"}">${m.who === "customer" ? "Y" : "Q"}</span>` +
+              `<div class="demo-bubble demo-bubble-${m.who === "customer" ? "in" : "out"}"><p>${m.text}</p></div></div>`
+          )
+          .join("");
+        tryArea.innerHTML = `<div class="hero-demo-convo">${msgs}</div>`;
+      });
+    });
+  }
 })();

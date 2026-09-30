@@ -28,22 +28,22 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "60"
+ASSET_VERSION = "61"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
-    "Qefro is an AI Business Platform that turns customer conversations into business outcomes."
+    "Qefro is AI-native business software for CRM, Billing, Restaurant, Real Estate, and more."
 )
 POSITIONING = (
-    "AI Business Platform — conversations become completed work."
+    "Your business, powered by AI."
 )
 POSITIONING_ALT = (
-    "Qefro connects AI with your business data, workflows, automations and apps."
+    "Run your business through conversations, workflows, and automation."
 )
-CTA_TRIAL = "Start 14-Day Free Trial"
-CTA_TRIAL_SHORT = "Start Free Trial"
-CTA_SEE_HOW = "See How It Works"
-CTA_MARKETPLACE = "Explore Marketplace"
-CTA_MICRO = "14 days free. Explore Qefro with your business."
+CTA_TRIAL = "Start free"
+CTA_TRIAL_SHORT = "Start free"
+CTA_SEE_HOW = "Explore products"
+CTA_MARKETPLACE = "Explore products"
+CTA_MICRO = "AI-native business software for real-world operations."
 DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = "Hello! How can I help?"
@@ -83,6 +83,13 @@ ICONS = {
     "x": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>',
     "moon": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>',
     "sun": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>',
+    "utensils": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2c-2.5 0-5 2-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>',
+    "home": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    "heart": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
+    "users": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>',
+    "kanban": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v10"/></svg>',
+    "shopping": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>',
+    "target": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
 }
 
 for _name, _svg in list(ICONS.items()):
@@ -96,6 +103,7 @@ NAV = [
     ("how-it-works", "How It Works"),
     ("business-apps", "Apps"),
     ("pricing", "Pricing"),
+    ("faq", "FAQ"),
 ]
 
 # Canonical indexable URLs for sitemap (extensionless; nginx 301s .html → these).
@@ -237,7 +245,6 @@ def header(active: str | None = None) -> str:
       </a>
       <nav class="nav-links" aria-label="Primary">
 {chr(10).join(links)}
-        <a href="/faq"{' aria-current="page"' if active == "faq" else ""}>FAQ</a>
         <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       </nav>
       <div class="nav-cta">
@@ -252,7 +259,6 @@ def header(active: str | None = None) -> str:
     </div>
     <div class="mobile-panel wrap" id="mobile-nav-panel">
 {mobile}
-      <a href="/faq">FAQ</a>
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
       <a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT} {ICONS["arrow"]}</a>
@@ -290,7 +296,7 @@ def footer() -> str:
             <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro logo" width="40" height="40" decoding="async" />
             <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
           </a>
-          <p class="footer-tagline">AI Business Platform</p>
+          <p class="footer-tagline">Your business, powered by AI.</p>
         </div>
         <nav class="footer-col" aria-label="Applications">
           <h3>Apps</h3>
@@ -528,9 +534,9 @@ ORG_JSON = json.dumps(
         },
         "image": OG_IMAGE,
         "description": (
-            "Qefro is an AI Business Platform. Businesses run customer-facing work "
-            "and operations through AI using actual business data, apps, workflows, "
-            "automations, and people."
+            "Qefro is AI-native business software. Businesses run CRM, Billing, "
+            "Restaurant, Real Estate, Clinic, HR and more through conversations, "
+            "workflows, and automation."
         ),
         "email": "support@qefro.com",
         "contactPoint": [
@@ -574,8 +580,8 @@ WEBSITE_JSON = json.dumps(
         "alternateName": ["Qefro AI", "qefro.com"],
         "url": f"{SITE}/",
         "description": (
-            "Qefro is an AI Business Platform that turns customer conversations "
-            "into completed work using business data, apps, workflows, and people."
+            "Qefro is AI-native business software. Run your business through "
+            "conversations, workflows, and automation."
         ),
         "publisher": {"@id": f"{SITE}/#organization"},
         "inLanguage": "en-US",
@@ -599,8 +605,9 @@ SOFTWARE_JSON = json.dumps(
         "image": OG_IMAGE,
         "screenshot": OG_IMAGE,
         "description": (
-            "Qefro is an AI Business Platform that connects AI with business data, "
-            "workflows, automations, and apps so customers get answers and work gets done."
+            "Qefro is AI-native business software for CRM, Billing, Restaurant, "
+            "Real Estate, Clinic, HR and more. Run your business through conversations, "
+            "workflows, and automation."
         ),
         "keywords": META_KEYWORDS,
         "author": {"@id": f"{SITE}/#organization"},
@@ -614,11 +621,11 @@ SOFTWARE_JSON = json.dumps(
             "description": "14-day free trial, then Starter, Pro, or Growth",
         },
         "featureList": [
-            "Turn customer conversations into business outcomes",
-            "AI connected to live business data, apps, and workflows",
-            "Marketplace apps for sales, payments, appointments, and operations",
-            "One AI across WhatsApp, website, mobile, and Command Chat",
-            "Answer, find, act, follow up, and complete work",
+            "AI-native business software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more",
+            "Run your business through conversations, workflows, and automation",
+            "Business applications with AI built into every workflow",
+            "WhatsApp, Instagram, website, and portal channels",
+            "Automated follow-ups, invoicing, and business events",
             "Permissions, approvals, and people in the loop",
         ],
     },
@@ -1052,39 +1059,53 @@ def illustration(name: str, *, alt: str = "", figure_class: str = "illust") -> s
 
 
 def hero_visual() -> str:
-    return f"""        <figure class="hero-mock" data-motion="hero-visual" aria-label="Product view: a conversation looks up live overdue invoices, starts collection for Ahmed, and completes the follow-up.">
-          <div class="hero-mock-chrome">
-            <span class="hero-mock-dots" aria-hidden="true"></span>
-            <span class="hero-mock-title">Qefro · Command Chat</span>
-            <span class="hero-mock-meta">Workspace</span>
+    return f"""        <figure class="hero-demo" data-motion="hero-visual" aria-label="Product demo: customer searches for a 2BHK apartment, Qefro returns results with a property card, and books a viewing.">
+          <div class="hero-demo-chrome">
+            <span class="hero-demo-dots" aria-hidden="true"></span>
+            <span class="hero-demo-title">Qefro · Real Estate</span>
+            <span class="hero-demo-meta">Live demo</span>
           </div>
-          <ol class="flow-rail" aria-label="Conversation to outcome">
-            <li class="is-done"><span>1</span> Conversation</li>
-            <li class="is-done"><span>2</span> Data</li>
-            <li class="is-active"><span>3</span> Action</li>
-            <li><span>4</span> Outcome</li>
-          </ol>
-          <div class="hero-mock-body">
-            <div class="hero-mock-chat">
-              <p class="mock-who">Customer · WhatsApp</p>
-              <p class="mock-bubble mock-in">Can I view the 2BHK on Saturday?</p>
-              <p class="mock-who">You · Command Chat</p>
-              <p class="mock-bubble mock-in">Who owes us money?</p>
-              <p class="mock-who">Qefro</p>
-              <p class="mock-bubble mock-out">12 overdue · ₹2.4L. Ahmed is 21 days late.</p>
-            </div>
-            <div class="hero-mock-work">
-              <p class="mock-kicker">Live business data</p>
-              <div class="mock-stat">
-                <strong>12 overdue</strong>
-                <span>₹2.4L outstanding</span>
+          <div class="hero-demo-body">
+            <div class="hero-demo-convo">
+              <div class="demo-msg demo-customer">
+                <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                <div class="demo-bubble demo-bubble-in">
+                  <p>Do you have 2BHK apartments in Ramanathapuram under &#x20B9;40L?</p>
+                </div>
               </div>
-              <div class="mock-record">
-                <p><strong>Ahmed</strong> · Invoice #1842</p>
-                <p>Goal → follow-up → payment → complete</p>
+              <div class="demo-msg demo-qefro">
+                <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                <div class="demo-bubble demo-bubble-out">
+                  <p>I found 6 properties matching your criteria.</p>
+                  <div class="demo-property-card">
+                    <div class="demo-property-img" aria-hidden="true"></div>
+                    <div class="demo-property-info">
+                      <strong>2BHK Apartment</strong>
+                      <span class="demo-property-price">&#x20B9;36.5L</span>
+                      <span class="demo-property-meta">Ramanathapuram &middot; 1,240 sq.ft</span>
+                    </div>
+                    <div class="demo-property-actions">
+                      <button class="demo-btn demo-btn-ghost" type="button">View property</button>
+                      <button class="demo-btn demo-btn-primary" type="button">Book viewing</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p class="mock-action">Start collection for Ahmed</p>
-              <p class="mock-done">{ICONS["check"]} Viewing booked · Sat 11:00 · Marina 2BHK</p>
+              <div class="demo-msg demo-customer">
+                <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                <div class="demo-bubble demo-bubble-in">
+                  <p>Book tomorrow at 4 PM.</p>
+                </div>
+              </div>
+              <div class="demo-msg demo-qefro">
+                <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                <div class="demo-bubble demo-bubble-out">
+                  <p>Done. Your viewing is scheduled for tomorrow at 4:00 PM.</p>
+                  <div class="demo-confirmation">
+                    {ICONS["check"]} Viewing confirmed &middot; Tomorrow 4:00 PM
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </figure>"""
@@ -1124,165 +1145,458 @@ def convo_example(customer: str, qefro: str) -> str:
 
 
 def home_body() -> str:
-    return f"""    <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
+    return f"""    <!-- 1. HERO -->
+    <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
-          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Business Platform</span>
+          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI-native business software</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line">Turn customer conversations</span>
-            <span class="hero-line hero-accent">into business outcomes.</span>
+            <span class="hero-line">Your business,</span>
+            <span class="hero-line hero-accent">powered by AI.</span>
           </h1>
-          <p class="hero-sub" data-motion="hero-sub">Qefro connects AI with your business data, workflows, automations and apps &mdash; so customers get answers and work actually gets done.</p>
-          <ol class="flow-rail flow-rail-hero" aria-label="Conversation to outcome">
-            <li>Conversation</li>
-            <li>Data</li>
-            <li>Action</li>
-            <li>Outcome</li>
-          </ol>
+          <p class="hero-sub" data-motion="hero-sub">Run your business through conversations, workflows, and automation.</p>
+          <p class="hero-sub-extra">Qefro gives businesses focused software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more&mdash;with AI built into the work, not bolted onto it.</p>
           <div class="hero-actions" data-motion="hero-actions">
-            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">{CTA_TRIAL} {ICONS["arrow"]}</a>
-            <a class="btn btn-ghost btn-lg" href="#how-it-works" data-clarity-event="cta_see_how">{CTA_SEE_HOW}</a>
+            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
+            <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore products</a>
           </div>
-          <p class="hero-micro" data-motion="hero-checks">{CTA_MICRO}</p>
+          <p class="hero-micro" data-motion="hero-checks">AI-native business software for real-world operations.</p>
         </div>
 {hero_visual()}
       </div>
     </section>
 
-    <section class="section" id="how-it-works" aria-labelledby="story-heading">
+    <!-- 3. NOT ANOTHER CHATBOT -->
+    <section class="section" id="not-chatbot" aria-labelledby="not-chatbot-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="story-heading">From conversations to completed work</h2>
-        </div>
-        <div class="steps-grid reveal steps-grid-4">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Conversation</h3><p>A customer or teammate asks in chat.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Data</h3><p>Qefro reads live business records.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Action</h3><p>It books, collects, schedules, or updates.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">04</div></div><h3>Outcome</h3><p>The work is done &mdash; not just answered.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="outcomes" aria-labelledby="outcomes-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <h2 id="outcomes-heading">Work that finishes</h2>
-        </div>
-        <div class="pao-grid reveal">
-          <article class="pao-card">
-            <p class="pao-label">Sales</p>
-            <h3>Leads go cold waiting for a callback.</h3>
-            <p><span>Action</span> AI matches live inventory and books the next step.</p>
-            <p class="pao-out"><span>Outcome</span> Viewing on the calendar.</p>
-          </article>
-          <article class="pao-card">
-            <p class="pao-label">Payments</p>
-            <h3>Overdue invoices sit in a spreadsheet.</h3>
-            <p><span>Action</span> AI finds who owes you and starts collection.</p>
-            <p class="pao-out"><span>Outcome</span> Follow-up sent. Payment tracked.</p>
-          </article>
-          <article class="pao-card">
-            <p class="pao-label">Appointments</p>
-            <h3>Front desk plays phone tag for slots.</h3>
-            <p><span>Action</span> AI books from live availability.</p>
-            <p class="pao-out"><span>Outcome</span> Confirmed time. Reminder sent.</p>
-          </article>
-          <article class="pao-card">
-            <p class="pao-label">Operations</p>
-            <h3>Status questions stall the team.</h3>
-            <p><span>Action</span> AI answers from your apps and data.</p>
-            <p class="pao-out"><span>Outcome</span> Exceptions go to people.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="apps" aria-labelledby="apps-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <h2 id="apps-heading">Marketplace apps that finish the job</h2>
-        </div>
-        <div class="apps-compact reveal">
-          <a class="app-chip" href="/business-apps"><strong>Real Estate Pro</strong><span>Book viewings from chat</span></a>
-          <a class="app-chip" href="/business-apps"><strong>Restaurant Pro</strong><span>Fill tables without phone tag</span></a>
-          <a class="app-chip" href="/business-apps"><strong>Clinic Pro</strong><span>Confirm appointments automatically</span></a>
-          <a class="app-chip" href="/business-apps"><strong>Collections</strong><span>Get paid on overdue invoices</span></a>
-          <a class="app-chip" href="/business-apps"><strong>E-commerce</strong><span>Track orders and close returns</span></a>
-          <a class="app-chip" href="/business-apps"><strong>Sales</strong><span>Quote, follow up, close</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="channels" aria-labelledby="channels-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <h2 id="channels-heading">One AI interface</h2>
-          <p>Same business. Same data. Same AI.</p>
-        </div>
-        <div class="channel-row reveal">
-          <article><h3>WhatsApp</h3><p>Customers message you.</p></article>
-          <article><h3>Website</h3><p>Visitors get answers.</p></article>
-          <article><h3>Mobile</h3><p>Work follows the team.</p></article>
-          <article><h3>Command Chat</h3><p>Operators run the business.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="act" aria-labelledby="act-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <h2 id="act-heading">AI that can act</h2>
+          <h2 id="not-chatbot-heading">AI that actually gets business done.</h2>
+          <p>Most AI tools answer questions. Qefro can understand a request, use business capabilities, execute the operation, and keep the workflow moving.</p>
         </div>
         <ol class="act-chain reveal">
-          <li>Answer</li>
-          <li>Find</li>
-          <li>Act</li>
-          <li>Follow up</li>
-          <li>Complete</li>
+          <li>Ask</li>
+          <li>Understand</li>
+          <li>Execute</li>
+          <li>Update business</li>
+          <li>Trigger automation</li>
+          <li>Follow through</li>
         </ol>
+        <div class="not-chatbot-examples reveal">
+          <article class="ncc-card">
+            <p class="ncc-label">Restaurant</p>
+            <p class="ncc-ask">&ldquo;Book a table for 4 tomorrow at 7.&rdquo;</p>
+            <p class="ncc-result">{ICONS["check"]} Table reserved. Confirmation sent.</p>
+          </article>
+          <article class="ncc-card">
+            <p class="ncc-label">Billing</p>
+            <p class="ncc-ask">&ldquo;Show me unpaid invoices.&rdquo;</p>
+            <p class="ncc-result">{ICONS["check"]} 14 outstanding &middot; &#x20B9;2.1L. Follow-ups ready.</p>
+          </article>
+          <article class="ncc-card">
+            <p class="ncc-label">Real Estate</p>
+            <p class="ncc-ask">&ldquo;Schedule a viewing for this property tomorrow.&rdquo;</p>
+            <p class="ncc-result">{ICONS["check"]} Viewing scheduled. Owner notified.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section section-alt" id="control" aria-labelledby="control-heading">
+    <!-- 4. ONE PLATFORM. MANY BUSINESSES. -->
+    <section class="section section-alt" id="products" aria-labelledby="products-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="control-heading">You stay in control</h2>
+          <h2 id="products-heading">One platform. Many businesses.</h2>
+          <p>Choose the business software you need. Every Qefro product is built on the same AI-native foundation.</p>
         </div>
-        <ul class="trust-inline reveal">
-          <li>Your data</li>
-          <li>Permissions you set</li>
-          <li>Workflows you define</li>
-          <li>Approvals when needed</li>
-          <li>People in the loop</li>
-        </ul>
+        <div class="products-grid reveal">
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["building"]}</span>
+            <h3>Qefro CRM</h3>
+            <p>Leads, customers, deals and follow-ups.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["file"]}</span>
+            <h3>Qefro Billing</h3>
+            <p>Invoices, payments and automated follow-ups.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["utensils"]}</span>
+            <h3>Qefro Restaurant</h3>
+            <p>Menu, orders, tables and POS.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["home"]}</span>
+            <h3>Qefro Real Estate</h3>
+            <p>Properties, leads, viewings and agents.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["heart"]}</span>
+            <h3>Qefro Clinic</h3>
+            <p>Patients, appointments and prescriptions.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["users"]}</span>
+            <h3>Qefro HR</h3>
+            <p>Employees, attendance, leave and payroll.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["kanban"]}</span>
+            <h3>Qefro Project</h3>
+            <p>Projects, tasks, sprints and time.</p>
+          </a>
+          <a class="product-card" href="/business-apps">
+            <span class="product-card-icon" aria-hidden="true">{ICONS["shopping"]}</span>
+            <h3>Qefro E-commerce</h3>
+            <p>Products, orders and customers.</p>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="start" aria-labelledby="start-heading">
+    <!-- 5. BUSINESS COMMAND CHAT -->
+    <section class="section" id="command-chat" aria-labelledby="command-chat-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="start-heading">How it starts</h2>
+          <h2 id="command-chat-heading">Ask your business anything.</h2>
+          <p>Your business data is only a conversation away.</p>
         </div>
-        <div class="steps-grid reveal steps-grid-3">
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">01</div></div><h3>Workspace</h3><p>Create a workspace for your business.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">02</div></div><h3>Install apps</h3><p>Pick the work you need done.</p></article>
-          <article class="step"><div class="step-num-wrap"><div class="step-num-inner">03</div></div><h3>Let Qefro run</h3><p>Ask once. Watch the work complete.</p></article>
+        <div class="command-chat-demo reveal">
+          <div class="cc-thread">
+            <div class="cc-msg cc-user">
+              <span class="cc-avatar" aria-hidden="true">You</span>
+              <div class="cc-bubble cc-in">What were our sales this month?</div>
+            </div>
+            <div class="cc-msg cc-qefro">
+              <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
+              <div class="cc-bubble cc-out">
+                <div class="cc-stat-card">
+                  <strong class="cc-stat-value">&#x20B9;8,42,600</strong>
+                  <span class="cc-stat-delta">&#x2191; 18.4% vs last month</span>
+                  <div class="cc-stat-list">
+                    <span>Top products:</span>
+                    <ol>
+                      <li>Product A</li>
+                      <li>Product B</li>
+                      <li>Product C</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cc-msg cc-user">
+              <span class="cc-avatar" aria-hidden="true">You</span>
+              <div class="cc-bubble cc-in">Which customers haven&rsquo;t paid?</div>
+            </div>
+            <div class="cc-msg cc-qefro">
+              <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
+              <div class="cc-bubble cc-out">
+                <p>I found 14 outstanding invoices.</p>
+                <div class="cc-actions">
+                  <button class="demo-btn demo-btn-primary" type="button">View invoices</button>
+                  <button class="demo-btn demo-btn-ghost" type="button">Start follow-ups</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <p class="start-note reveal">Optionally connect WhatsApp, website, or mobile. Same AI either way.</p>
       </div>
     </section>
 
+    <!-- 6. AUTOMATION -->
+    <section class="section section-alt" id="automation" aria-labelledby="automation-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="automation-heading">Set it once. Let Qefro follow through.</h2>
+        </div>
+        <div class="automation-flow reveal">
+          <div class="auto-step"><span class="auto-icon">{ICONS["file"]}</span><p>Invoice becomes overdue</p></div>
+          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
+          <div class="auto-step"><span class="auto-icon">{ICONS["sparkles"]}</span><p>Qefro detects it</p></div>
+          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
+          <div class="auto-step"><span class="auto-icon">{ICONS["msg"]}</span><p>Follow-up created</p></div>
+          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
+          <div class="auto-step"><span class="auto-icon">{ICONS["zap"]}</span><p>WhatsApp reminder</p></div>
+          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
+          <div class="auto-step auto-step-done"><span class="auto-icon">{ICONS["check"]}</span><p>Customer pays</p></div>
+          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
+          <div class="auto-step auto-step-done"><span class="auto-icon">{ICONS["check"]}</span><p>Invoice marked paid</p></div>
+        </div>
+        <p class="automation-note reveal">Qefro doesn&rsquo;t stop when the conversation ends. Business events can trigger workflows, automations and follow-up actions automatically.</p>
+      </div>
+    </section>
+
+    <!-- 7. CHANNELS -->
+    <section class="section" id="channels" aria-labelledby="channels-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="channels-heading">Meet customers where they already are.</h2>
+        </div>
+        <div class="channels-visual reveal">
+          <div class="channels-sources">
+            <span class="channel-pill channel-whatsapp">WhatsApp</span>
+            <span class="channel-pill channel-instagram">Instagram</span>
+            <span class="channel-pill channel-web">Website</span>
+            <span class="channel-pill channel-portal">Portal</span>
+          </div>
+          <div class="channels-arrow" aria-hidden="true">{ICONS["chevron"]}</div>
+          <div class="channels-hub">
+            <strong>Qefro</strong>
+            <span>Same business capabilities</span>
+          </div>
+        </div>
+        <p class="channels-note reveal">Customers can start conversations from different channels while your business runs on the same underlying Qefro runtime.</p>
+      </div>
+    </section>
+
+    <!-- 8. FROM A MESSAGE TO A BUSINESS ACTION -->
+    <section class="section section-alt" id="architecture" aria-labelledby="arch-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="arch-heading">From a message to a business action.</h2>
+        </div>
+        <div class="arch-flow reveal">
+          <div class="arch-step"><span class="arch-num">1</span><p>Customer request</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">2</span><p>Qefro AI</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">3</span><p>Business capability</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">4</span><p>FlowRunner</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">5</span><p>Business data</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">6</span><p>Business event</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step"><span class="arch-num">7</span><p>Automation / Goal</p></div>
+          <span class="arch-connector" aria-hidden="true"></span>
+          <div class="arch-step arch-step-outcome"><span class="arch-num">8</span><p>Customer outcome</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. WHY QEFRO -->
+    <section class="section" id="why-qefro" aria-labelledby="why-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="why-heading">Built for real business software.</h2>
+        </div>
+        <div class="why-grid reveal">
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["sparkles"]}</span>
+            <h3>AI-native</h3>
+            <p>AI is built into the business workflow&mdash;not added as a chatbot layer.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["chart"]}</span>
+            <h3>Business data</h3>
+            <p>Customers, orders, invoices, appointments, properties and more.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["zap"]}</span>
+            <h3>Workflows</h3>
+            <p>Turn repeatable business procedures into executable flows.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["msg"]}</span>
+            <h3>Business events</h3>
+            <p>React to what actually happened in your business.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["server"]}</span>
+            <h3>Automation</h3>
+            <p>Keep routine work moving automatically.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["target"]}</span>
+            <h3>Goals</h3>
+            <p>Keep pursuing outcomes after the conversation ends.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["globe"]}</span>
+            <h3>Integrations</h3>
+            <p>Connect external systems through Qefro&rsquo;s integration layer.</p>
+          </article>
+          <article class="why-card">
+            <span class="why-icon" aria-hidden="true">{ICONS["headphones"]}</span>
+            <h3>Multi-channel</h3>
+            <p>Bring conversations from WhatsApp, Instagram, web and more into the same business context.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. TECHNICAL FOUNDATION -->
+    <section class="section section-alt" id="foundation" aria-labelledby="foundation-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="foundation-heading">One foundation. Every business capability.</h2>
+          <p>Qefro provides a reusable business runtime so each product can focus on its domain instead of rebuilding infrastructure from scratch.</p>
+        </div>
+        <div class="foundation-stack reveal">
+          <div class="foundation-layer">Marketplace Apps</div>
+          <div class="foundation-layer">Business Metadata</div>
+          <div class="foundation-layer">Capabilities</div>
+          <div class="foundation-layer">FlowRunner</div>
+          <div class="foundation-layer">Business Entities</div>
+          <div class="foundation-layer">Business Events</div>
+          <div class="foundation-layer">Automation + Goals</div>
+          <div class="foundation-layer foundation-layer-base">AI Agents</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. PRODUCT LANDING LINKS -->
+    <section class="section" id="product-links" aria-labelledby="product-links-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="product-links-heading">Business software, ready to go.</h2>
+          <p>Each product is purpose-built for its domain on the Qefro platform.</p>
+        </div>
+        <div class="product-landing-grid reveal">
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["utensils"]}</div>
+            <h3>Qefro Restaurant</h3>
+            <p>Run restaurant operations with AI.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["file"]}</div>
+            <h3>Qefro Billing</h3>
+            <p>Create invoices. Track payments. Follow up automatically.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["home"]}</div>
+            <h3>Qefro Real Estate</h3>
+            <p>Turn property enquiries into scheduled viewings.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["users"]}</div>
+            <h3>Qefro CRM</h3>
+            <p>Manage customers, deals and follow-ups.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["heart"]}</div>
+            <h3>Qefro Clinic</h3>
+            <p>Manage patients and appointments.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["users"]}</div>
+            <h3>Qefro HR</h3>
+            <p>Manage employees and everyday HR operations.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["kanban"]}</div>
+            <h3>Qefro Project</h3>
+            <p>Keep projects, tasks and teams moving.</p>
+          </a>
+          <a class="pl-card" href="/business-apps">
+            <div class="pl-card-icon">{ICONS["shopping"]}</div>
+            <h3>Qefro E-commerce</h3>
+            <p>Run products, orders and customer operations.</p>
+          </a>
+        </div>
+        <div class="section-cta reveal">
+          <a class="btn btn-ghost" href="/business-apps">Explore all products {ICONS["arrow"]}</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. TRY QEFRO -->
+    <section class="section section-alt" id="try-qefro" aria-labelledby="try-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="try-heading">Try Qefro</h2>
+          <p>See what Qefro can do.</p>
+        </div>
+        <div class="try-choices reveal">
+          <button class="try-chip" type="button" data-try-scenario="table">Book a table</button>
+          <button class="try-chip" type="button" data-try-scenario="invoice">Create an invoice</button>
+          <button class="try-chip" type="button" data-try-scenario="property">Find a property</button>
+          <button class="try-chip" type="button" data-try-scenario="sales">Check sales</button>
+          <button class="try-chip" type="button" data-try-scenario="customer">Find a customer</button>
+        </div>
+        <div class="try-demo-area reveal" id="try-demo-area" aria-live="polite">
+          <p class="try-placeholder">Choose a scenario above to see Qefro in action.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13. PRICING -->
+    <section class="section" id="pricing" aria-labelledby="pricing-heading">
+      <div class="wrap-5xl">
+        <div class="section-head reveal">
+          <h2 id="pricing-heading">Simple pricing.</h2>
+          <p>Start free. Upgrade when you&rsquo;re ready.</p>
+        </div>
+        <div class="price-scroll reveal">
+{price_cards_html(interactive=True)}
+        </div>
+        <p class="pricing-note reveal">All plans include a 14-day free trial. No credit card required.</p>
+      </div>
+    </section>
+
+    <!-- 14. FAQ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-heading">
+      <div class="wrap-narrow">
+        <div class="section-head reveal">
+          <h2 id="faq-heading">Frequently asked questions.</h2>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item" open>
+            <summary>What is Qefro?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Qefro is AI-native business software. It gives you focused applications for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more&mdash;with AI built into every workflow.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is Qefro a CRM or ERP?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Qefro is neither a traditional CRM nor an ERP. It is a platform that runs focused business applications&mdash;each one purpose-built for its domain, with AI at the core.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What business products does Qefro offer?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Qefro CRM, Billing, Restaurant, Real Estate, Clinic, HR, Project and E-commerce. Each product is a standalone business application built on the same AI-native foundation.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use Qefro on WhatsApp?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Customers and team members can interact with Qefro through WhatsApp, Instagram, your website widget, and the internal portal&mdash;all connected to the same business data.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can Qefro actually perform business actions?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Qefro doesn&rsquo;t just answer questions&mdash;it books tables, creates invoices, schedules viewings, sends follow-ups, and completes real business operations.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I automate follow-ups?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Business events like overdue invoices or missed appointments can automatically trigger follow-up workflows through WhatsApp, email, or internal tasks.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I connect my existing business system?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Qefro supports integrations through its SDK and integration layer, so you can connect existing tools and data sources.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does Qefro use AI agents?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Qefro uses AI agents that understand business context, invoke capabilities, and execute workflows&mdash;all within the boundaries you define.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I start with one business application?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Absolutely. Each workspace runs one primary business application. Start with the one you need, and add more as your business grows.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I try Qefro for free?<span class="faq-chevron" aria-hidden="true">{ICONS["chevron"]}</span></summary>
+            <p>Yes. Every plan starts with a 14-day free trial. No credit card required.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 15. FINAL CTA -->
     <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <h2 id="cta-heading">Ready to put AI to work?</h2>
-        <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome &mdash; then pick a paid plan.</p>
+        <h2 id="cta-heading">Ready to run your business with AI?</h2>
+        <p>Start with the business software you need. Let Qefro handle the work behind it.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">{CTA_TRIAL} {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/business-apps" data-clarity-event="cta_explore_apps">{CTA_MARKETPLACE}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore products</a>
         </div>
-        <p class="hero-micro">{CTA_MICRO}</p>
+        <p class="hero-micro">Define the business. Let Qefro execute it.</p>
       </div>
     </section>
 """
@@ -1292,33 +1606,84 @@ HOME_HOWTO_JSON = json.dumps(
     {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": "How to put AI to work with Qefro",
+        "name": "How to run your business with Qefro",
         "description": (
-            "Start a 14-day free trial, install business apps, and let Qefro run "
-            "customer-facing work and operations from one AI interface."
+            "Start free, choose your business application, and let Qefro "
+            "handle conversations, workflows, and automation."
         ),
         "url": f"{SITE}/",
         "step": [
             {
                 "@type": "HowToStep",
                 "position": 1,
-                "name": "Create a workspace",
-                "text": "Open Qefro and create a workspace for your business.",
-                "url": f"{SITE}/#start",
+                "name": "Start free",
+                "text": "Create your workspace with a 14-day free trial.",
+                "url": f"{SITE}/#products",
             },
             {
                 "@type": "HowToStep",
                 "position": 2,
-                "name": "Install apps",
-                "text": "Choose Marketplace apps that match the work you need done.",
-                "url": f"{SITE}/#apps",
+                "name": "Choose your business software",
+                "text": "Pick the Qefro product that matches your business: CRM, Billing, Restaurant, Real Estate, Clinic, HR, Project, or E-commerce.",
+                "url": f"{SITE}/#products",
             },
             {
                 "@type": "HowToStep",
                 "position": 3,
-                "name": "Let Qefro run the work",
-                "text": "Ask in chat, WhatsApp, or Command Chat. Experience the outcome during the 14-day free trial, then choose a paid plan.",
-                "url": f"{SITE}/#act",
+                "name": "Let Qefro run it",
+                "text": "Ask in chat, WhatsApp, or Command Chat. Qefro executes the work automatically.",
+                "url": f"{SITE}/#command-chat",
+            },
+        ],
+    },
+    indent=2,
+)
+
+
+HOME_FAQ_JSON = json.dumps(
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is Qefro?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Qefro is AI-native business software. It gives you focused applications for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more — with AI built into every workflow.",
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Is Qefro a CRM or ERP?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Qefro is neither a traditional CRM nor an ERP. It is a platform that runs focused business applications — each one purpose-built for its domain, with AI at the core.",
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Can I use Qefro on WhatsApp?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Customers and team members can interact with Qefro through WhatsApp, Instagram, your website widget, and the internal portal — all connected to the same business data.",
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Can Qefro actually perform business actions?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Qefro doesn't just answer questions — it books tables, creates invoices, schedules viewings, sends follow-ups, and completes real business operations.",
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Can I try Qefro for free?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Every plan starts with a 14-day free trial. No credit card required.",
+                },
             },
         ],
     },
@@ -1327,11 +1692,11 @@ HOME_HOWTO_JSON = json.dumps(
 
 
 PAGES["index.html"] = page(
-    title="Qefro — AI Business Platform | Turn Conversations into Outcomes",
+    title="Qefro — Your Business, Powered by AI",
     description=(
-        "Qefro is an AI Business Platform that turns customer conversations into "
-        "completed work. Connect AI with your business data, apps, workflows, and "
-        "people. Start a 14-day free trial."
+        "Qefro is AI-native business software for CRM, Billing, Restaurant, "
+        "Real Estate, Clinic, HR and more. Run your business through conversations, "
+        "workflows, and automation. Start free."
     ),
     path="",
     jsonld=[
@@ -1339,9 +1704,10 @@ PAGES["index.html"] = page(
         WEBSITE_JSON,
         SOFTWARE_JSON,
         HOME_HOWTO_JSON,
+        HOME_FAQ_JSON,
         webpage_json(
-            "Qefro — AI Business Platform | Turn Conversations into Outcomes",
-            "Turn customer conversations into business outcomes with an AI Business Platform.",
+            "Qefro — Your Business, Powered by AI",
+            "AI-native business software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more. Start free.",
             "",
         ),
     ],
