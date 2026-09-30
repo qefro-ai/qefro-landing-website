@@ -28,22 +28,22 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "62"
+ASSET_VERSION = "63"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
-    "Qefro is AI-native business software for CRM, Billing, Restaurant, Real Estate, and more."
+    "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
 )
 POSITIONING = (
-    "Your business, powered by AI."
+    "AI Business Application Platform"
 )
 POSITIONING_ALT = (
-    "Run your business through conversations, workflows, and automation."
+    "Connect your business software to AI-powered customer conversations, automation, CRM, and secure business actions."
 )
 CTA_TRIAL = "Start free"
 CTA_TRIAL_SHORT = "Start free"
 CTA_SEE_HOW = "Explore products"
 CTA_MARKETPLACE = "Explore products"
-CTA_MICRO = "AI-native business software for real-world operations."
+CTA_MICRO = "Keep your business software. Add Qefro — the AI layer that makes it conversational."
 DEMO_WIDGET_TOKEN = "wgt_729850c3-43ef-4a53-a604-870c8ded6f15"
 BUILD_DATE = date.today().isoformat()
 WIDGET_WELCOME = "Hello! How can I help?"
@@ -54,9 +54,9 @@ WIDGET_THEME = "light"
 # Used only for schema.org "keywords" in JSON-LD — the <meta name="keywords"> tag
 # is deliberately not emitted (Google has ignored it since 2009).
 META_KEYWORDS = (
-    "AI Business Platform, AI business automation, AI business apps, "
-    "AI agents for business operations, WhatsApp business AI, "
-    "customer conversations, workflows, Qefro"
+    "AI Business Application Platform, AI customer support, AI business automation, "
+    "WhatsApp business AI, CRM, business tools, customer conversations, "
+    "knowledge-grounded AI, marketplace apps, Qefro"
 )
 
 # Inline SVG icons (lucide-like)
@@ -110,7 +110,7 @@ NAV = [
 # Images listed here are included via the image sitemap extension.
 SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("", [
-        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI Business Platform that turns conversations into outcomes"),
+        (f"{SITE}/assets/images/og-cover.png", "Qefro — AI Business Application Platform"),
     ]),
     ("features", []),
     ("how-it-works", []),
@@ -119,6 +119,7 @@ SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("pricing", []),
     ("faq", []),
     ("contact", []),
+    ("about", []),
     ("what-is-qefro", []),
     ("qefro-pricing", []),
     ("benchmark", []),
@@ -296,7 +297,7 @@ def footer() -> str:
             <img class="logo-light" src="/assets/images/qefro-logo.png?v={ASSET_VERSION}" alt="Qefro logo" width="40" height="40" decoding="async" />
             <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v={ASSET_VERSION}" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
           </a>
-          <p class="footer-tagline">Your business, powered by AI.</p>
+          <p class="footer-tagline">AI Business Application Platform.</p>
         </div>
         <nav class="footer-col" aria-label="Applications">
           <h3>Apps</h3>
@@ -534,9 +535,9 @@ ORG_JSON = json.dumps(
         },
         "image": OG_IMAGE,
         "description": (
-            "Qefro is AI-native business software. Businesses run CRM, Billing, "
-            "Restaurant, Real Estate, Clinic, HR and more through conversations, "
-            "workflows, and automation."
+            "Qefro is an AI Business Application Platform that connects existing "
+            "business software to AI-powered customer conversations, CRM, automation, "
+            "and secure business actions."
         ),
         "email": "support@qefro.com",
         "contactPoint": [
@@ -558,12 +559,12 @@ ORG_JSON = json.dumps(
         "sameAs": ["https://github.com/qefro-ai"],
         "foundingDate": "2024",
         "knowsAbout": [
-            "AI Business Platform",
+            "AI Business Application Platform",
+            "AI customer support",
             "AI business automation",
-            "AI business apps",
-            "AI agents for business operations",
             "WhatsApp business AI",
-            "Customer conversations to completed work",
+            "CRM and Customer Hub",
+            "Business tools and marketplace apps",
         ],
     },
     indent=2,
@@ -580,8 +581,9 @@ WEBSITE_JSON = json.dumps(
         "alternateName": ["Qefro AI", "qefro.com"],
         "url": f"{SITE}/",
         "description": (
-            "Qefro is AI-native business software. Run your business through "
-            "conversations, workflows, and automation."
+            "Qefro is an AI Business Application Platform that connects business "
+            "software to AI-powered customer conversations, automation, CRM, and "
+            "secure business actions."
         ),
         "publisher": {"@id": f"{SITE}/#organization"},
         "inLanguage": "en-US",
@@ -605,9 +607,9 @@ SOFTWARE_JSON = json.dumps(
         "image": OG_IMAGE,
         "screenshot": OG_IMAGE,
         "description": (
-            "Qefro is AI-native business software for CRM, Billing, Restaurant, "
-            "Real Estate, Clinic, HR and more. Run your business through conversations, "
-            "workflows, and automation."
+            "Qefro is an AI Business Application Platform that connects existing "
+            "business software to AI-powered customer conversations, CRM, automation, "
+            "and secure business actions across WhatsApp, website chat, voice, and portal."
         ),
         "keywords": META_KEYWORDS,
         "author": {"@id": f"{SITE}/#organization"},
@@ -854,9 +856,7 @@ def product_screenshots_html() -> str:
 FAQ_ITEMS = [
     (
         "What is Qefro?",
-        "Qefro is an AI Business Platform. Businesses run customer-facing work and "
-        "operations through AI using actual business data, apps, workflows, automations, "
-        "and people — so customers get answers and work actually gets done.",
+        "Qefro is an AI Business Application Platform. It connects your existing business software to AI-powered customer conversations, CRM, automation, and secure business actions — so customers get answers and work actually gets done.",
     ),
     ("How much does Qefro cost?", "Every new organization starts with a 14-day free trial. After the trial, choose a paid plan: Starter ₹699/month for 1 user, Pro ₹1,499/month for 5 users, or Growth ₹2,999/month for 15 users. Marketplace apps are billed separately. Enterprise is custom."),
     ("What types of content can I upload?", "PDFs, Word documents, Markdown, plain text — or crawl entire websites automatically. Every workspace has its own isolated knowledge base with source citations when answering."),
@@ -1111,26 +1111,26 @@ def hero_visual() -> str:
         </figure>"""
 
 
-def architecture_visual(*, label: str = "Qefro connects business software to customers") -> str:
+def architecture_visual(*, label: str = "Qefro connects your business software to AI-powered customer conversations and automation") -> str:
     apps = "".join(
         f"<span>{name}</span>"
-        for name in ("ERP", "CRM", "Restaurant", "Hospital", "Custom App")
+        for name in ("ERP", "CRM", "POS", "Booking", "Commerce")
     )
     return f"""        <div class="qefro-arch" role="img" aria-label="{escape(label)}">
           <p class="qefro-arch-kicker">Your business software</p>
           <div class="qefro-arch-apps">{apps}</div>
           <div class="qefro-arch-down" aria-hidden="true"></div>
-          <div class="qefro-arch-hub"><strong>QEFRO</strong><span>AI business software</span></div>
+          <div class="qefro-arch-hub"><strong>Qefro</strong><span>AI Business Application Platform</span></div>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <div class="qefro-arch-layers">
-            <span>AI Chat</span>
-            <span>CRM</span>
+            <span>Customer AI</span>
+            <span>CRM &amp; Hub</span>
             <span>Automation</span>
           </div>
           <div class="qefro-arch-down" aria-hidden="true"></div>
           <div class="qefro-arch-customers">
-            <strong>Your customers</strong>
-            <span>WhatsApp · Chat · Voice</span>
+            <strong>Engage &amp; Act</strong>
+            <span>WhatsApp &middot; Website &middot; Voice &middot; Portal</span>
           </div>
         </div>"""
 
@@ -1150,18 +1150,18 @@ def home_body() -> str:
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
-          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI-native business software</span>
+          <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Business Application Platform</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line">Your business,</span>
-            <span class="hero-line hero-accent">powered by AI.</span>
+            <span class="hero-line">Qefro</span>
+            <span class="hero-line hero-accent">Keep your software. Add AI.</span>
           </h1>
-          <p class="hero-sub" data-motion="hero-sub">Run your business through conversations, workflows, and automation.</p>
-          <p class="hero-sub-extra">Qefro gives businesses focused software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more&mdash;with AI built into the work, not bolted onto it.</p>
+          <p class="hero-sub" data-motion="hero-sub">Connect your business software to AI-powered customer conversations, CRM, automation, and secure business actions.</p>
+          <p class="hero-sub-extra">Qefro is the AI layer on top of the systems you already run&mdash;ERP, CRM, POS, booking, commerce. Your customers get intelligent conversations. Your business gets outcomes.</p>
           <div class="hero-actions" data-motion="hero-actions">
             <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
-            <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore products</a>
+            <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore platform</a>
           </div>
-          <p class="hero-micro" data-motion="hero-checks">AI-native business software for real-world operations.</p>
+          <p class="hero-micro" data-motion="hero-checks">WhatsApp &middot; Website Chat &middot; Voice AI &middot; CRM &middot; Business Tools &middot; Automation</p>
         </div>
 {hero_visual()}
       </div>
@@ -1172,7 +1172,7 @@ def home_body() -> str:
       <div class="wrap-5xl">
         <div class="section-head reveal">
           <h2 id="not-chatbot-heading">AI that actually gets business done.</h2>
-          <p>Most AI tools answer questions. Qefro can understand a request, use business capabilities, execute the operation, and keep the workflow moving.</p>
+          <p>Most AI tools answer questions. Qefro connects to your business software, understands a request, executes the operation using your data and capabilities, and keeps the workflow moving.</p>
         </div>
         <ol class="act-chain reveal">
           <li>Ask</li>
@@ -1206,8 +1206,8 @@ def home_body() -> str:
     <section class="section section-alt" id="products" aria-labelledby="products-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="products-heading">One platform. Many businesses.</h2>
-          <p>Choose the business software you need. Every Qefro product is built on the same AI-native foundation.</p>
+          <h2 id="products-heading">One platform. Every business surface.</h2>
+          <p>Qefro adds the AI layer on top of your existing software. Customer AI, CRM, automation, business tools, and marketplace apps &mdash; all connected to the systems you already run.</p>
         </div>
         <div class="products-grid reveal">
           <a class="product-card" href="/business-apps">
@@ -1590,13 +1590,13 @@ def home_body() -> str:
     <section class="cta-final" aria-labelledby="cta-heading">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <h2 id="cta-heading">Ready to run your business with AI?</h2>
-        <p>Start with the business software you need. Let Qefro handle the work behind it.</p>
+        <h2 id="cta-heading">Keep your software. Add Qefro.</h2>
+        <p>Connect your existing business systems to AI-powered customer conversations, CRM, automation, and secure business actions.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore products</a>
+          <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore platform</a>
         </div>
-        <p class="hero-micro">Define the business. Let Qefro execute it.</p>
+        <p class="hero-micro">Your systems + Qefro AI = business outcomes.</p>
       </div>
     </section>
 """
@@ -1606,10 +1606,10 @@ HOME_HOWTO_JSON = json.dumps(
     {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        "name": "How to run your business with Qefro",
+        "name": "How to connect your business software to Qefro AI",
         "description": (
-            "Start free, choose your business application, and let Qefro "
-            "handle conversations, workflows, and automation."
+            "Start free, connect your existing business systems, and let Qefro "
+            "handle AI-powered customer conversations, CRM, automation, and business actions."
         ),
         "url": f"{SITE}/",
         "step": [
@@ -1623,15 +1623,15 @@ HOME_HOWTO_JSON = json.dumps(
             {
                 "@type": "HowToStep",
                 "position": 2,
-                "name": "Choose your business software",
-                "text": "Pick the Qefro product that matches your business: CRM, Billing, Restaurant, Real Estate, Clinic, HR, Project, or E-commerce.",
+                "name": "Connect your business software",
+                "text": "Connect your existing ERP, CRM, POS, booking, or commerce systems through the Qefro SDK and integrations.",
                 "url": f"{SITE}/#products",
             },
             {
                 "@type": "HowToStep",
                 "position": 3,
                 "name": "Let Qefro run it",
-                "text": "Ask in chat, WhatsApp, or Command Chat. Qefro executes the work automatically.",
+                "text": "Customer AI, CRM, automation, and business actions — all connected to your real business data across WhatsApp, website, voice, and portal.",
                 "url": f"{SITE}/#command-chat",
             },
         ],
@@ -1692,11 +1692,11 @@ HOME_FAQ_JSON = json.dumps(
 
 
 PAGES["index.html"] = page(
-    title="Qefro — Your Business, Powered by AI",
+    title="Qefro — AI Business Application Platform",
     description=(
-        "Qefro is AI-native business software for CRM, Billing, Restaurant, "
-        "Real Estate, Clinic, HR and more. Run your business through conversations, "
-        "workflows, and automation. Start free."
+        "Qefro is an AI Business Application Platform that connects your existing "
+        "business software to AI-powered customer conversations, CRM, automation, "
+        "and secure business actions. Keep your systems — add Qefro."
     ),
     path="",
     jsonld=[
@@ -1706,8 +1706,8 @@ PAGES["index.html"] = page(
         HOME_HOWTO_JSON,
         HOME_FAQ_JSON,
         webpage_json(
-            "Qefro — Your Business, Powered by AI",
-            "AI-native business software for CRM, Billing, Restaurant, Real Estate, Clinic, HR and more. Start free.",
+            "Qefro — AI Business Application Platform",
+            "Qefro connects your business software to AI-powered customer conversations, CRM, automation, and secure business actions.",
             "",
         ),
     ],
@@ -2339,9 +2339,9 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Platform</span>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Application Platform</span>
         <h2>Ready to put AI to work?</h2>
-        <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome — then pick a paid plan.</p>
+        <p>Keep your business software. Add Qefro &mdash; the AI layer that connects your systems to customer conversations, automation, and business actions.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">{CTA_TRIAL} {ICONS["arrow"]}</a>
           <a class="btn btn-ghost btn-lg" href="/business-apps">{CTA_MARKETPLACE}</a>
@@ -2559,6 +2559,32 @@ PAGES["contact.html"] = inner(
     badge=f'{ICONS["msg"]} Contact',
 )
 
+PAGES["about.html"] = inner(
+    "About Qefro | AI Business Application Platform",
+    "About Qefro",
+    "Qefro is an AI Business Application Platform that connects existing business software to AI-powered customer conversations, CRM, automation, and secure business actions.",
+    "about.html",
+    None,
+    "<p>Qefro is an AI Business Application Platform for businesses that already run software &mdash; ERP, CRM, POS, booking, commerce, or custom systems &mdash; and want to make those systems accessible through AI.</p>",
+    f"""        <div class="prose">
+          <p>Most AI tools sit alongside business software. Qefro sits on top of it. The result: your customers get intelligent conversations across WhatsApp, website chat, voice, and your internal portal. Your team gets automation, CRM, and business actions connected to real data.</p>
+          <p>Qefro does not replace your systems. It makes them conversational.</p>
+        </div>
+        <div class="cap-grid" style="margin-top:2rem">
+          <article class="cap-card"><div class="cap-icon">{ICONS["sparkles"]}</div><span>Customer AI &mdash; knowledge-grounded conversations</span></article>
+          <article class="cap-card"><div class="cap-icon">{ICONS["users"]}</div><span>Customer Hub &mdash; unified CRM across channels</span></article>
+          <article class="cap-card"><div class="cap-icon">{ICONS["zap"]}</div><span>Automation &mdash; events, workflows, follow-ups</span></article>
+          <article class="cap-card"><div class="cap-icon">{ICONS["server"]}</div><span>SDK &amp; Marketplace &mdash; connect any system</span></article>
+          <article class="cap-card"><div class="cap-icon">{ICONS["globe"]}</div><span>WhatsApp &middot; Website &middot; Voice &middot; Portal</span></article>
+          <article class="cap-card"><div class="cap-icon">{ICONS["shield"]}</div><span>Workspace isolation &amp; RBAC</span></article>
+        </div>
+        <div class="prose" style="margin-top:2rem">
+          <p>Qefro was founded in 2024. The platform is developed by the Qefro team and is available at <a href="{SITE}/">qefro.com</a>. The admin console is at <a href="{PORTAL}">app.qefro.com</a>.</p>
+          <p>Questions: <a href="mailto:support@qefro.com">support@qefro.com</a></p>
+        </div>""",
+    badge=f'{ICONS["sparkles"]} About',
+)
+
 PAGES["privacy.html"] = page(
     title="Privacy Policy | Qefro",
     description="How Qefro collects, uses, and protects personal data across the Admin Console, Internal Portal, website widget, WhatsApp, and APIs.",
@@ -2641,10 +2667,10 @@ PAGES["404.html"] = page(
 for slug, title, q, a, extra in [
     (
         "what-is-qefro.html",
-        "What is Qefro? | AI Business Platform",
+        "What is Qefro? | AI Business Application Platform",
         "What is Qefro?",
-        "Qefro is an AI Business Platform. It turns customer conversations into business outcomes using your data, apps, workflows, automations, and people — not a chatbot bolted onto a form.",
-        "<p>Start a 14-day free trial, install the apps your business needs, and let Qefro run the work across WhatsApp, website, mobile, and Command Chat.</p>",
+        "Qefro is an AI Business Application Platform. It connects your existing business software to AI-powered customer conversations, CRM, automation, and secure business actions — not a chatbot bolted onto a form.",
+        "<p>Keep your ERP, CRM, POS, and booking systems. Qefro becomes the AI layer on top — engaging customers through WhatsApp, website chat, voice, and your internal portal.</p>",
     ),
     (
         "qefro-pricing.html",
@@ -3126,7 +3152,7 @@ def register_seo_landings() -> None:
     <section class="cta-final">
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
-        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Platform</span>
+        <span class="badge badge-indigo">{ICONS["sparkles"]} AI Business Application Platform</span>
         <h2>Try {escape(landing.h1)} with Qefro.</h2>
         <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome.</p>
         <div class="hero-actions">
