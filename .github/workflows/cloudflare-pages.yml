@@ -47,11 +47,8 @@ jobs:
           npx --yes wrangler@3 pages project list 2>/dev/null | grep -q 'qefro-landing-website' \
             || npx --yes wrangler@3 pages project create qefro-landing-website --production-branch=main
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: qefro-landing-website
-          directory: _site
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@3 pages deploy _site --project-name=qefro-landing-website --branch=main
