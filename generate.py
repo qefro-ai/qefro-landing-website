@@ -121,6 +121,7 @@ SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("contact", []),
     ("about", []),
     ("what-is-qefro", []),
+    ("business-apps", []),
     ("qefro-pricing", []),
     ("benchmark", []),
     ("business-flows", []),
@@ -306,11 +307,12 @@ def footer() -> str:
         </nav>
         <nav class="footer-col" aria-label="Platform">
           <h3>Platform</h3>
-          <a href="/#outcomes">Outcomes</a>
-          <a href="/#act">AI that acts</a>
+          <a href="/what-is-qefro">What is Qefro</a>
+          <a href="/#products">Applications</a>
+          <a href="/#command-chat">Command Chat</a>
+          <a href="/#automation">Automation</a>
           <a href="/#channels">Channels</a>
           <a href="/whatsapp">WhatsApp</a>
-          <a href="/#control">Control</a>
         </nav>
         <nav class="footer-col" aria-label="Resources">
           <h3>Resources</h3>
@@ -323,7 +325,8 @@ def footer() -> str:
         </nav>
         <nav class="footer-col" aria-label="Company">
           <h3>Company</h3>
-          <a href="/contact">About</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/llms.txt">llms.txt</a>
