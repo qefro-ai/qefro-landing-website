@@ -1289,6 +1289,47 @@ a.pipeline-node:focus-visible {
   background: var(--btn-plan-bg); border: 1px solid var(--btn-plan-border); color: var(--btn-plan-color);
 }
 .price-card:not(.is-popular) .btn-plan:hover { background: var(--btn-plan-hover-bg); }
+.price-card.is-popular .btn-plan {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 14px -3px rgba(79, 70, 229, 0.45);
+}
+.price-card.is-popular .btn-plan:hover {
+  background: #4338ca;
+  box-shadow: 0 6px 20px -3px rgba(79, 70, 229, 0.6);
+  transform: translateY(-1px);
+}
+[data-theme="dark"] .price-card.is-popular .btn-plan {
+  background: #6366f1;
+  color: #ffffff;
+  box-shadow: 0 4px 20px -3px rgba(99, 102, 241, 0.5);
+}
+[data-theme="dark"] .price-card.is-popular .btn-plan:hover {
+  background: #4f46e5;
+  box-shadow: 0 6px 24px -3px rgba(99, 102, 241, 0.7);
+}
+
+.tilt-3d {
+  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out), border-color var(--dur-quick) ease;
+}
+.tilt-3d:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+}
+[data-theme="dark"] .glass-card {
+  background: rgba(14, 17, 26, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
 
 /* FAQ */
 .faq-list { display: grid; gap: 0.75rem; max-width: 42rem; margin-inline: auto; }

@@ -2657,8 +2657,8 @@ def inner(title, h1, desc, path, active, answer, content, extra_jsonld=None, ext
         <h2>Ready to put AI to work?</h2>
         <p>Keep your business software. Add Qefro &mdash; the AI layer that connects your systems to customer conversations, automation, and business actions.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">{CTA_TRIAL} {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/business-apps">{CTA_MARKETPLACE}</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}"><span>{CTA_TRIAL}</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
+          <a class="btn btn-ghost btn-lg" href="/business-apps"><span>{CTA_MARKETPLACE}</span></a>
           <a class="btn btn-link btn-lg" href="/contact">Talk to Sales</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/pricing">See plans</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
@@ -2856,7 +2856,7 @@ PAGES["contact.html"] = inner(
               <textarea class="input" name="use_case" rows="4" required placeholder="Where will you deploy AI — customers, employees, or both?"></textarea>
             </label>
           </div>
-          <button class="btn btn-primary" type="submit">Request a demo</button>
+          <button class="btn btn-primary" type="submit"><span>Request a demo</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></button>
           <p class="contact-alt">Prefer email? <a href="mailto:support@qefro.com?subject=Qefro%20demo%20request">support@qefro.com</a> · or <a href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT}</a></p>
         </form>
         <div class="cap-grid" style="margin-top:2rem">
@@ -2970,8 +2970,8 @@ PAGES["404.html"] = page(
         <h1>Page not found</h1>
         <p class="hero-sub">That URL is not on our site. Try the links below or return home.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="/">Go home</a>
-          <a class="btn btn-ghost" href="/faq">Read FAQ</a>
+          <a class="btn btn-primary" href="/"><span>Go home</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
+          <a class="btn btn-ghost" href="/faq"><span>Read FAQ</span></a>
         </div>
       </div>
     </section>
@@ -3016,7 +3016,7 @@ for slug, title, q, a, extra in [
           <p>{a}</p>
         </aside>
         <div class="prose" style="margin-top:1.5rem">{extra}
-          <p><a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL}</a></p>
+          <p><a class="btn btn-primary" href="{PORTAL_SIGNUP}"><span>{CTA_TRIAL}</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a></p>
         </div>
       </div>
     </section>
@@ -3423,7 +3423,7 @@ def register_seo_landings() -> None:
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>By industry</h2>
           <p>See niche pages for clinics, hotels, universities, logistics, retail, and more.</p>
-          <p><a class="btn btn-ghost" href="/ai-customer-support-by-industry">Browse all industries</a></p>
+          <p><a class="btn btn-ghost" href="/ai-customer-support-by-industry"><span>Browse all industries</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a></p>
         </div>
         <div class="workspace-pills reveal" style="justify-content:flex-start;margin-top:1rem" aria-label="Popular verticals">
 {vertical_pills}
@@ -3470,8 +3470,8 @@ def register_seo_landings() -> None:
         <h2>Try {escape(landing.h1)} with Qefro.</h2>
         <p>Start your 14-day free trial. Choose apps, connect your business, and experience the outcome.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}">{CTA_TRIAL} {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="/contact">Talk to Sales</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}"><span>{CTA_TRIAL}</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
+          <a class="btn btn-ghost btn-lg" href="/contact"><span>Talk to Sales</span></a>
           <a class="btn btn-link btn-lg" href="/business-apps">{CTA_MARKETPLACE}</a>
         </div>
         <p class="integrations-note" style="margin-top:1.25rem"><a href="/contact">Talk to Sales</a> · <a href="{DOCS}">Documentation</a> · <a href="/security">Security</a></p>
