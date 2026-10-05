@@ -8,7 +8,8 @@ function sleep(ms) {
 }
 
 function getMessages(root) {
-  return Array.from(root.querySelectorAll("[data-hero-msg]"));
+  const activePanel = root.querySelector(".hero-scenario-panel.is-active") || root;
+  return Array.from(activePanel.querySelectorAll("[data-hero-msg]"));
 }
 
 function showTyping(root) {

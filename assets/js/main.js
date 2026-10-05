@@ -332,4 +332,34 @@
       });
     });
   }
+
+  // Hero interactive scenario tabs
+  const heroTabs = document.querySelectorAll("[data-hero-tab]");
+  const heroPanels = document.querySelectorAll("[data-scenario]");
+  if (heroTabs.length && heroPanels.length) {
+    heroTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const scenario = tab.dataset.heroTab;
+        heroTabs.forEach((t) => {
+          t.classList.remove("is-active");
+          t.setAttribute("aria-selected", "false");
+        });
+        tab.classList.add("is-active");
+        tab.setAttribute("aria-selected", "true");
+        heroPanels.forEach((p) => {
+          if (p.dataset.scenario === scenario) {
+            p.classList.add("is-active");
+            // Ensure messages are immediately visible on tab switch
+            p.querySelectorAll("[data-hero-msg]").forEach((m) => {
+              m.style.opacity = "1";
+              m.style.transform = "none";
+              m.classList.add("demo-msg-visible");
+            });
+          } else {
+            p.classList.remove("is-active");
+          }
+        });
+      });
+    });
+  }
 })();

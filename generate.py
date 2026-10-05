@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "66"
+ASSET_VERSION = "67"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
@@ -214,7 +214,7 @@ def meta_block(
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="preload" href="/assets/css/styles.css?v={ASSET_VERSION}" as="style" />
   <link rel="stylesheet" href="/assets/css/styles.css?v={ASSET_VERSION}" />"""
 
@@ -253,7 +253,7 @@ def header(active: str | None = None) -> str:
           <span class="icon-sun" aria-hidden="true">{ICONS["sun"]}</span>
         </button>
         <a class="btn-link" href="{PORTAL_LOGIN}">Sign In</a>
-        <a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT} {ICONS["arrow"]}</a>
+        <a class="btn btn-primary" href="{PORTAL_SIGNUP}"><span>{CTA_TRIAL_SHORT}</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">{ICONS["menu"]}</button>
       </div>
     </div>
@@ -261,7 +261,7 @@ def header(active: str | None = None) -> str:
 {mobile}
       <a href="{DOCS}" rel="noopener noreferrer">Docs</a>
       <a href="{PORTAL_LOGIN}">Sign In</a>
-      <a class="btn btn-primary" href="{PORTAL_SIGNUP}">{CTA_TRIAL_SHORT} {ICONS["arrow"]}</a>
+      <a class="btn btn-primary" href="{PORTAL_SIGNUP}"><span>{CTA_TRIAL_SHORT}</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
     </div>
   </header>"""
 
@@ -1059,9 +1059,213 @@ def illustration(name: str, *, alt: str = "", figure_class: str = "illust") -> s
 
 
 def hero_visual() -> str:
-    return f"""        <figure class="hero-illustration" data-motion="hero-visual" aria-label="Qefro AI Business Application Platform: connects business software (ERP, CRM, POS, Booking, Payments, Custom Apps) to AI-powered customer conversations across WhatsApp, Website, and Voice channels.">
-          <img class="hero-illustration-img" src="/assets/images/bg-image.png?v={ASSET_VERSION}" alt="Qefro platform illustration showing AI robot connecting business functions (Sales, Customer Support, CRM, Finance, Inventory/ERP, Operations) to customer channels (WhatsApp, Website, Voice) with a workflow: Talk to Customers → Understand Your Data → Take Action → Get Real Work Done" width="1200" height="720" loading="eager" fetchpriority="high" />
-        </figure>"""
+    return f"""        <div class="double-bezel hero-bezel" data-motion="hero-visual" aria-label="Interactive demo of Qefro AI Business Application Platform">
+          <div class="double-bezel-inner hero-demo-inner">
+            <div class="hero-demo-chrome">
+              <div class="hero-demo-dots" aria-hidden="true"></div>
+              <span class="hero-demo-title">Qefro Runtime</span>
+              <span class="hero-demo-status"><span class="status-pulse" aria-hidden="true"></span> Live Connected</span>
+            </div>
+            <div class="hero-demo-tabs" role="tablist" aria-label="Demo domain scenarios">
+              <button class="hero-demo-tab is-active" type="button" role="tab" aria-selected="true" data-hero-tab="realestate">
+                Real Estate
+              </button>
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="false" data-hero-tab="restaurant">
+                Restaurant
+              </button>
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="false" data-hero-tab="billing">
+                Billing
+              </button>
+              <button class="hero-demo-tab" type="button" role="tab" aria-selected="false" data-hero-tab="crm">
+                CRM Hub
+              </button>
+            </div>
+            <div class="hero-demo-body">
+              <!-- Real Estate Scenario (Default Active) -->
+              <div class="hero-scenario-panel is-active" data-scenario="realestate">
+                <div class="hero-demo-convo">
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Do you have 2BHK apartments in Ramanathapuram under &#x20B9;40L?</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>I found 6 properties matching your criteria.</p>
+                      <div class="demo-property-card">
+                        <div class="demo-property-img" aria-hidden="true"></div>
+                        <div class="demo-property-info">
+                          <div class="demo-property-title-row">
+                            <strong>2BHK Lakeview Apartment</strong>
+                            <span class="demo-property-price">&#x20B9;36.5L</span>
+                          </div>
+                          <span class="demo-property-meta">Ramanathapuram &middot; 1,240 sq.ft &middot; Ready to move</span>
+                        </div>
+                        <div class="demo-property-actions">
+                          <button class="demo-btn demo-btn-ghost" type="button">View details</button>
+                          <button class="demo-btn demo-btn-primary" type="button">Book viewing</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Book tomorrow at 4 PM.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Done. Your viewing is scheduled with agent Rahul.</p>
+                      <div class="demo-confirmation">
+                        {ICONS["check"]} <span>Viewing confirmed &middot; Tomorrow 4:00 PM</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Restaurant Scenario -->
+              <div class="hero-scenario-panel" data-scenario="restaurant">
+                <div class="hero-demo-convo">
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Reserve a table for 4 tomorrow at 7:30 PM.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Table 8 is available in the main dining hall.</p>
+                      <div class="demo-property-card">
+                        <div class="demo-property-info">
+                          <div class="demo-property-title-row">
+                            <strong>Table 8 (Indoor Dining)</strong>
+                            <span class="demo-property-price">4 Guests</span>
+                          </div>
+                          <span class="demo-property-meta">Tomorrow &middot; 7:30 PM &middot; POS synced</span>
+                        </div>
+                        <div class="demo-property-actions">
+                          <button class="demo-btn demo-btn-primary" type="button">Confirm reservation</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">C</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Confirm reservation please.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Table reserved. WhatsApp confirmation sent to guest.</p>
+                      <div class="demo-confirmation">
+                        {ICONS["check"]} <span>Table #8 reserved &middot; Confirmation sent</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Billing Scenario -->
+              <div class="hero-scenario-panel" data-scenario="billing">
+                <div class="hero-demo-convo">
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">Op</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Show me overdue invoices past 10 days.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Found 14 overdue accounts totaling &#x20B9;2,10,000.</p>
+                      <div class="demo-property-card">
+                        <div class="demo-property-info">
+                          <div class="demo-property-title-row">
+                            <strong>Acme Corp (Inv #2847)</strong>
+                            <span class="demo-property-price">&#x20B9;45,000</span>
+                          </div>
+                          <span class="demo-property-meta">Due 14 days ago &middot; 2 reminders pending</span>
+                        </div>
+                        <div class="demo-property-actions">
+                          <button class="demo-btn demo-btn-primary" type="button">Send WhatsApp reminder</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">Op</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Send reminder with UPI link.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Reminder dispatched via WhatsApp with payment link.</p>
+                      <div class="demo-confirmation">
+                        {ICONS["check"]} <span>Reminder delivered &middot; UPI link active</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CRM Scenario -->
+              <div class="hero-scenario-panel" data-scenario="crm">
+                <div class="hero-demo-convo">
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">Op</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Show customer history for Priya Sharma.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Unified Customer Profile (WhatsApp + Web):</p>
+                      <div class="demo-property-card">
+                        <div class="demo-property-info">
+                          <div class="demo-property-title-row">
+                            <strong>Priya Sharma</strong>
+                            <span class="demo-property-price">&#x20B9;1,42,000 LTV</span>
+                          </div>
+                          <span class="demo-property-meta">Channels: WhatsApp, Web &middot; Inquired about Spring Catalog</span>
+                        </div>
+                        <div class="demo-property-actions">
+                          <button class="demo-btn demo-btn-primary" type="button">Draft follow-up</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-customer" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-customer" aria-hidden="true">Op</span>
+                    <div class="demo-bubble demo-bubble-in">
+                      <p>Approve and send via WhatsApp.</p>
+                    </div>
+                  </div>
+                  <div class="demo-msg demo-qefro" data-hero-msg>
+                    <span class="demo-avatar demo-avatar-qefro" aria-hidden="true">Q</span>
+                    <div class="demo-bubble demo-bubble-out">
+                      <p>Message delivered. Status updated to 'Engaged'.</p>
+                      <div class="demo-confirmation">
+                        {ICONS["check"]} <span>WhatsApp sent &middot; Timeline updated</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>"""
 
 
 def architecture_visual(*, label: str = "Qefro connects your business software to AI-powered customer conversations and automation") -> str:
@@ -1105,16 +1309,20 @@ def home_body() -> str:
         <div class="hero-copy">
           <span class="eyebrow" data-motion="hero-badge">{ICONS["sparkles"]} AI Business Application Platform</span>
           <h1 data-motion="hero-title">
-            <span class="hero-line">Qefro</span>
-            <span class="hero-line hero-accent">The AI layer for your business software.</span>
+            <span class="hero-line">The AI layer for</span>
+            <span class="hero-line hero-accent">your business software.</span>
           </h1>
-          <p class="hero-sub" data-motion="hero-sub">Connect your business software to AI-powered customer conversations, CRM, automation, and secure business actions.</p>
-          <p class="hero-sub-extra">Qefro is the AI layer on top of the systems you already run&mdash;ERP, CRM, POS, booking, commerce. Your customers get intelligent conversations. Your business gets outcomes.</p>
+          <p class="hero-sub" data-motion="hero-sub">Connect your existing ERP, POS, and CRM to autonomous customer conversations, intelligent automation, and verified business actions.</p>
           <div class="hero-actions" data-motion="hero-actions">
-            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
-            <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore platform</a>
+            <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free"><span>Start free 14-day trial</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
+            <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products"><span>Explore platform</span></a>
           </div>
-          <p class="hero-micro" data-motion="hero-checks">WhatsApp &middot; Website Chat &middot; Voice AI &middot; CRM &middot; Business Tools &middot; Automation</p>
+          <div class="hero-trust-bar" data-motion="hero-checks">
+            <span class="trust-pill">{ICONS["check"]} 14-Day Free Trial</span>
+            <span class="trust-pill">{ICONS["check"]} No Credit Card Required</span>
+            <span class="trust-pill">{ICONS["check"]} 5-Minute Setup</span>
+            <span class="trust-pill">{ICONS["check"]} WhatsApp &amp; Web Ready</span>
+          </div>
         </div>
 {hero_visual()}
       </div>
@@ -1125,7 +1333,7 @@ def home_body() -> str:
       <div class="wrap-5xl">
         <div class="section-head reveal">
           <h2 id="not-chatbot-heading">AI that actually gets business done.</h2>
-          <p>Most AI tools answer questions. Qefro connects to your business software, understands a request, executes the operation using your data and capabilities, and keeps the workflow moving.</p>
+          <p>Most AI tools only answer questions. Qefro connects directly to your operational software, parses natural language intents, executes transactional capabilities, and orchestrates workflows end-to-end.</p>
         </div>
         <ol class="act-chain reveal">
           <li>Ask</li>
@@ -1136,73 +1344,153 @@ def home_body() -> str:
           <li>Follow through</li>
         </ol>
         <div class="not-chatbot-examples reveal">
-          <article class="ncc-card">
-            <p class="ncc-label">Restaurant</p>
-            <p class="ncc-ask">&ldquo;Book a table for 4 tomorrow at 7.&rdquo;</p>
-            <p class="ncc-result">{ICONS["check"]} Table reserved. Confirmation sent.</p>
+          <article class="ncc-card double-bezel">
+            <div class="double-bezel-inner ncc-card-inner">
+              <span class="ncc-badge">HOSPITALITY</span>
+              <p class="ncc-ask">&ldquo;Book a table for 4 tomorrow at 7.&rdquo;</p>
+              <p class="ncc-result">{ICONS["check"]} Table reserved &middot; Synced to POS</p>
+            </div>
           </article>
-          <article class="ncc-card">
-            <p class="ncc-label">Billing</p>
-            <p class="ncc-ask">&ldquo;Show me unpaid invoices.&rdquo;</p>
-            <p class="ncc-result">{ICONS["check"]} 14 outstanding &middot; &#x20B9;2.1L. Follow-ups ready.</p>
+          <article class="ncc-card double-bezel">
+            <div class="double-bezel-inner ncc-card-inner">
+              <span class="ncc-badge">BILLING</span>
+              <p class="ncc-ask">&ldquo;Show me unpaid invoices past 10 days.&rdquo;</p>
+              <p class="ncc-result">{ICONS["check"]} 14 outstanding &middot; &#x20B9;2.1L &middot; WhatsApp loop ready</p>
+            </div>
           </article>
-          <article class="ncc-card">
-            <p class="ncc-label">Real Estate</p>
-            <p class="ncc-ask">&ldquo;Schedule a viewing for this property tomorrow.&rdquo;</p>
-            <p class="ncc-result">{ICONS["check"]} Viewing scheduled. Owner notified.</p>
+          <article class="ncc-card double-bezel">
+            <div class="double-bezel-inner ncc-card-inner">
+              <span class="ncc-badge">REAL ESTATE</span>
+              <p class="ncc-ask">&ldquo;Schedule a viewing for 2BHK Lakeview tomorrow.&rdquo;</p>
+              <p class="ncc-result">{ICONS["check"]} Slot booked &middot; Agent Rahul notified</p>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4. ONE PLATFORM. MANY BUSINESSES. -->
+    <!-- 4. ASYMMETRICAL BENTO GRID -->
     <section class="section section-alt" id="products" aria-labelledby="products-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">APPLICATION SUITE</span>
           <h2 id="products-heading">One platform. Every business surface.</h2>
-          <p>Qefro adds the AI layer on top of your existing software. Customer AI, CRM, automation, business tools, and marketplace apps &mdash; all connected to the systems you already run.</p>
+          <p>Qefro adds the autonomous AI layer on top of your existing software. Purpose-built domain applications running on a unified intelligence runtime.</p>
         </div>
-        <div class="products-grid reveal">
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["building"]}</span>
-            <h3>Qefro CRM</h3>
-            <p>Leads, customers, deals and follow-ups.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["file"]}</span>
-            <h3>Qefro Billing</h3>
-            <p>Invoices, payments and automated follow-ups.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["utensils"]}</span>
-            <h3>Qefro Restaurant</h3>
-            <p>Menu, orders, tables and POS.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["home"]}</span>
-            <h3>Qefro Real Estate</h3>
-            <p>Properties, leads, viewings and agents.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["heart"]}</span>
-            <h3>Qefro Clinic</h3>
-            <p>Patients, appointments and prescriptions.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["users"]}</span>
-            <h3>Qefro HR</h3>
-            <p>Employees, attendance, leave and payroll.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["kanban"]}</span>
-            <h3>Qefro Project</h3>
-            <p>Projects, tasks, sprints and time.</p>
-          </a>
-          <a class="product-card" href="/business-apps">
-            <span class="product-card-icon" aria-hidden="true">{ICONS["shopping"]}</span>
-            <h3>Qefro E-commerce</h3>
-            <p>Products, orders and customers.</p>
-          </a>
+        <div class="bento-grid reveal">
+          <!-- Spotlight Card 1: 7 Cols -->
+          <article class="bento-card bento-card-spotlight double-bezel">
+            <div class="double-bezel-inner bento-card-inner">
+              <div class="bento-header">
+                <span class="bento-badge">{ICONS["sparkles"]} FLAGSHIP OMNICHANNEL</span>
+                <span class="bento-meta">Omnichannel Routing</span>
+              </div>
+              <h3>Qefro CRM &amp; Customer Hub</h3>
+              <p>Unify inbound customer conversations across WhatsApp, Instagram, and Web. Automatically qualify leads, evaluate purchase intent, and sync directly with your sales pipeline.</p>
+              <div class="bento-preview bento-crm-preview">
+                <div class="bento-stream-item">
+                  <div class="stream-source stream-whatsapp">{ICONS["msg"]} WhatsApp</div>
+                  <div class="stream-text"><strong>Priya Sharma:</strong> &ldquo;Can I get wholesale pricing for 500 units by Friday?&rdquo;</div>
+                  <div class="stream-pill stream-pill-intent">Intent Score: 98% (Enterprise)</div>
+                </div>
+                <div class="bento-stream-action">
+                  <span class="bento-action-tag">{ICONS["check"]} Auto-qualified</span>
+                  <span>Assigned to Enterprise Rep &middot; WhatsApp catalog dispatched</span>
+                </div>
+              </div>
+              <div class="bento-footer-row">
+                <a class="bento-link" href="/business-apps">Explore CRM Hub {ICONS["arrow"]}</a>
+                <span class="bento-stat">&lt; 3s Median Response Time</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Metric Spotlight Card 2: 5 Cols -->
+          <article class="bento-card bento-card-metric double-bezel">
+            <div class="double-bezel-inner bento-card-inner">
+              <div class="bento-header">
+                <span class="bento-badge">{ICONS["file"]} AUTONOMOUS REVENUE OPS</span>
+                <span class="bento-meta">Collections Loop</span>
+              </div>
+              <h3>Qefro Billing &amp; Invoicing</h3>
+              <p>Autonomous invoice generation, payment tracking, and intelligent follow-up loops that actually recover revenue.</p>
+              <div class="bento-preview bento-billing-preview">
+                <div class="bento-metric-box">
+                  <span class="bento-metric-val">94.2%</span>
+                  <span class="bento-metric-delta">&#x2191; 28% faster collection</span>
+                </div>
+                <div class="bento-billing-bar">
+                  <div class="bento-progress-label">
+                    <span>&#x20B9;2.1L recovered this week</span>
+                    <span class="bento-progress-pct">14 of 16 paid</span>
+                  </div>
+                  <div class="bento-progress-track">
+                    <div class="bento-progress-fill" style="width: 87.5%;"></div>
+                  </div>
+                </div>
+                <div class="bento-mini-chip">{ICONS["zap"]} Auto-UPI link generated on WhatsApp</div>
+              </div>
+              <div class="bento-footer-row">
+                <a class="bento-link" href="/business-apps">Explore Billing {ICONS["arrow"]}</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: 4 Cols -->
+          <article class="bento-card bento-card-third double-bezel">
+            <div class="double-bezel-inner bento-card-inner">
+              <div class="bento-header">
+                <span class="bento-badge">{ICONS["home"]} PROP-TECH</span>
+              </div>
+              <h3>Qefro Real Estate</h3>
+              <p>Turn property inquiries into scheduled viewings in 30 seconds with automated slot matching.</p>
+              <div class="bento-preview bento-compact-preview">
+                <div class="bento-ticket">
+                  <span class="ticket-title">2BHK Lakeview Apartment</span>
+                  <span class="ticket-status">{ICONS["check"]} Viewing Confirmed</span>
+                  <span class="ticket-meta">Tomorrow 4:00 PM &middot; Agent Rahul</span>
+                </div>
+              </div>
+              <a class="bento-link" href="/business-apps">View Real Estate {ICONS["arrow"]}</a>
+            </div>
+          </article>
+
+          <!-- Card 4: 4 Cols -->
+          <article class="bento-card bento-card-third double-bezel">
+            <div class="double-bezel-inner bento-card-inner">
+              <div class="bento-header">
+                <span class="bento-badge">{ICONS["utensils"]} HOSPITALITY</span>
+              </div>
+              <h3>Qefro Restaurant</h3>
+              <p>Conversational table reservations, digital menu ordering, and kitchen POS synchronization.</p>
+              <div class="bento-preview bento-compact-preview">
+                <div class="bento-ticket">
+                  <span class="ticket-title">Table #8 (Indoor Dining)</span>
+                  <span class="ticket-status">{ICONS["check"]} Reserved for 4</span>
+                  <span class="ticket-meta">Tomorrow 7:30 PM &middot; POS synced</span>
+                </div>
+              </div>
+              <a class="bento-link" href="/business-apps">View Restaurant {ICONS["arrow"]}</a>
+            </div>
+          </article>
+
+          <!-- Card 5: 4 Cols -->
+          <article class="bento-card bento-card-third double-bezel">
+            <div class="double-bezel-inner bento-card-inner">
+              <div class="bento-header">
+                <span class="bento-badge">{ICONS["server"]} EXTENSIBILITY</span>
+              </div>
+              <h3>Custom SDK &amp; Marketplace</h3>
+              <p>Connect Clinic, HR, ERP, or develop bespoke business capabilities in TypeScript &amp; Python.</p>
+              <div class="bento-preview bento-compact-preview bento-code-snippet">
+                <code>import {{ Qefro }} from "@qefro/sdk";<br/>qefro.on("invoice.overdue", act);</code>
+              </div>
+              <a class="bento-link" href="/sdk">Developer SDK {ICONS["arrow"]}</a>
+            </div>
+          </article>
+        </div>
+        <div class="bento-bottom-cta">
+          <a class="btn btn-ghost" href="/business-apps"><span>Explore all 8 domain applications</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
         </div>
       </div>
     </section>
@@ -1211,44 +1499,59 @@ def home_body() -> str:
     <section class="section" id="command-chat" aria-labelledby="command-chat-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">INTELLIGENCE TERMINAL</span>
           <h2 id="command-chat-heading">Ask your business anything.</h2>
-          <p>Your business data is only a conversation away.</p>
+          <p>Your operational data and transaction engines are only a conversation away.</p>
         </div>
-        <div class="command-chat-demo reveal">
-          <div class="cc-thread">
-            <div class="cc-msg cc-user">
-              <span class="cc-avatar" aria-hidden="true">You</span>
-              <div class="cc-bubble cc-in">What were our sales this month?</div>
-            </div>
-            <div class="cc-msg cc-qefro">
-              <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
-              <div class="cc-bubble cc-out">
-                <div class="cc-stat-card">
-                  <strong class="cc-stat-value">&#x20B9;8,42,600</strong>
-                  <span class="cc-stat-delta">&#x2191; 18.4% vs last month</span>
-                  <div class="cc-stat-list">
-                    <span>Top products:</span>
-                    <ol>
-                      <li>Product A</li>
-                      <li>Product B</li>
-                      <li>Product C</li>
-                    </ol>
+        <div class="command-chat-wrapper reveal">
+          <div class="double-bezel cc-console">
+            <div class="double-bezel-inner cc-console-inner">
+              <div class="cc-console-chrome">
+                <div class="hero-demo-dots" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+                <span class="cc-console-title">qefro-terminal // live enterprise runtime</span>
+                <span class="cc-console-status"><span class="status-pulse" aria-hidden="true"></span> Production ERP Connected</span>
+              </div>
+              <div class="cc-thread">
+                <div class="cc-msg cc-user">
+                  <span class="cc-avatar" aria-hidden="true">You</span>
+                  <div class="cc-bubble cc-in">What were our sales this month?</div>
+                </div>
+                <div class="cc-msg cc-qefro">
+                  <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
+                  <div class="cc-bubble cc-out">
+                    <div class="cc-stat-card">
+                      <div class="cc-stat-header">
+                        <strong class="cc-stat-value">&#x20B9;8,42,600</strong>
+                        <span class="cc-stat-delta">&#x2191; 18.4% vs last month</span>
+                      </div>
+                      <div class="cc-stat-breakdown">
+                        <div class="cc-breakdown-row"><span>Enterprise Software</span><strong>&#x20B9;4,20,000</strong></div>
+                        <div class="cc-breakdown-row"><span>Hospitality POS</span><strong>&#x20B9;2,80,000</strong></div>
+                        <div class="cc-breakdown-row"><span>Services &amp; Retainers</span><strong>&#x20B9;1,42,600</strong></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cc-msg cc-user">
+                  <span class="cc-avatar" aria-hidden="true">You</span>
+                  <div class="cc-bubble cc-in">Which customers haven&rsquo;t paid yet?</div>
+                </div>
+                <div class="cc-msg cc-qefro">
+                  <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
+                  <div class="cc-bubble cc-out">
+                    <p>I found 14 outstanding invoices totaling <strong>&#x20B9;2,10,000</strong>. 3 accounts are over 14 days overdue.</p>
+                    <div class="cc-actions">
+                      <button class="demo-btn demo-btn-primary" type="button">⚡ Dispatch WhatsApp reminders</button>
+                      <button class="demo-btn demo-btn-ghost" type="button">📄 Export statement PDF</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="cc-msg cc-user">
-              <span class="cc-avatar" aria-hidden="true">You</span>
-              <div class="cc-bubble cc-in">Which customers haven&rsquo;t paid?</div>
-            </div>
-            <div class="cc-msg cc-qefro">
-              <span class="cc-avatar cc-avatar-q" aria-hidden="true">Q</span>
-              <div class="cc-bubble cc-out">
-                <p>I found 14 outstanding invoices.</p>
-                <div class="cc-actions">
-                  <button class="demo-btn demo-btn-primary" type="button">View invoices</button>
-                  <button class="demo-btn demo-btn-ghost" type="button">Start follow-ups</button>
-                </div>
+              <div class="cc-input-bar">
+                <span class="cc-prompt-text">Ask anything about invoices, inventory, customers, or viewings...</span>
+                <span class="cc-kbd-shortcut"><kbd>&#x2318;K</kbd></span>
               </div>
             </div>
           </div>
@@ -1260,22 +1563,57 @@ def home_body() -> str:
     <section class="section section-alt" id="automation" aria-labelledby="automation-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">KINETIC WORKFLOWS</span>
           <h2 id="automation-heading">Set it once. Let Qefro follow through.</h2>
+          <p>Qefro doesn&rsquo;t stop when a conversation ends. Real-world business events trigger continuous execution pipelines until goals are achieved.</p>
         </div>
-        <div class="automation-flow reveal">
-          <div class="auto-step"><span class="auto-icon">{ICONS["file"]}</span><p>Invoice becomes overdue</p></div>
-          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
-          <div class="auto-step"><span class="auto-icon">{ICONS["sparkles"]}</span><p>Qefro detects it</p></div>
-          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
-          <div class="auto-step"><span class="auto-icon">{ICONS["msg"]}</span><p>Follow-up created</p></div>
-          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
-          <div class="auto-step"><span class="auto-icon">{ICONS["zap"]}</span><p>WhatsApp reminder</p></div>
-          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
-          <div class="auto-step auto-step-done"><span class="auto-icon">{ICONS["check"]}</span><p>Customer pays</p></div>
-          <span class="auto-arrow" aria-hidden="true">{ICONS["chevron"]}</span>
-          <div class="auto-step auto-step-done"><span class="auto-icon">{ICONS["check"]}</span><p>Invoice marked paid</p></div>
+        <div class="automation-pipeline reveal">
+          <div class="pipeline-step double-bezel">
+            <div class="double-bezel-inner pipeline-step-inner">
+              <span class="pipeline-step-badge">1. EVENT</span>
+              <div class="pipeline-step-icon">{ICONS["file"]}</div>
+              <h4>Invoice Overdue</h4>
+              <p>ERP registers invoice #2847 as unpaid past 48h deadline.</p>
+            </div>
+          </div>
+          <div class="pipeline-signal" aria-hidden="true">
+            <span class="signal-dot"></span>
+            {ICONS["arrow"]}
+          </div>
+          <div class="pipeline-step double-bezel">
+            <div class="double-bezel-inner pipeline-step-inner">
+              <span class="pipeline-step-badge">2. DECISION</span>
+              <div class="pipeline-step-icon">{ICONS["sparkles"]}</div>
+              <h4>Context Analysis</h4>
+              <p>AI verifies client preferred channel (WhatsApp) &amp; credit score.</p>
+            </div>
+          </div>
+          <div class="pipeline-signal" aria-hidden="true">
+            <span class="signal-dot"></span>
+            {ICONS["arrow"]}
+          </div>
+          <div class="pipeline-step double-bezel">
+            <div class="double-bezel-inner pipeline-step-inner">
+              <span class="pipeline-step-badge">3. ACTION</span>
+              <div class="pipeline-step-icon">{ICONS["zap"]}</div>
+              <h4>WhatsApp Dispatch</h4>
+              <p>Personalized reminder sent with one-click UPI payment link.</p>
+            </div>
+          </div>
+          <div class="pipeline-signal" aria-hidden="true">
+            <span class="signal-dot"></span>
+            {ICONS["arrow"]}
+          </div>
+          <div class="pipeline-step pipeline-step-done double-bezel">
+            <div class="double-bezel-inner pipeline-step-inner">
+              <span class="pipeline-step-badge pipeline-step-badge-done">4. OUTCOME</span>
+              <div class="pipeline-step-icon pipeline-icon-done">{ICONS["check"]}</div>
+              <h4>Auto Reconciled</h4>
+              <p>Payment webhook captured. Invoice marked PAID in ERP.</p>
+            </div>
+          </div>
         </div>
-        <p class="automation-note reveal">Qefro doesn&rsquo;t stop when the conversation ends. Business events can trigger workflows, automations and follow-up actions automatically.</p>
+        <p class="automation-note reveal">No human micro-management required. Zero lost invoices. Complete audit trail in your system logs.</p>
       </div>
     </section>
 
@@ -1283,22 +1621,49 @@ def home_body() -> str:
     <section class="section" id="channels" aria-labelledby="channels-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">OMNICHANNEL RUNTIME</span>
           <h2 id="channels-heading">Meet customers where they already are.</h2>
+          <p>Deploy the same business intelligence across any communication channel without fragmenting your operational software.</p>
         </div>
-        <div class="channels-visual reveal">
-          <div class="channels-sources">
-            <span class="channel-pill channel-whatsapp">WhatsApp</span>
-            <span class="channel-pill channel-instagram">Instagram</span>
-            <span class="channel-pill channel-web">Website</span>
-            <span class="channel-pill channel-portal">Portal</span>
-          </div>
-          <div class="channels-arrow" aria-hidden="true">{ICONS["chevron"]}</div>
-          <div class="channels-hub">
-            <strong>Qefro</strong>
-            <span>Same business capabilities</span>
+        <div class="channels-matrix-wrapper reveal">
+          <div class="channels-matrix">
+            <div class="channels-matrix-col">
+              <span class="channels-matrix-label">Inbound Channels</span>
+              <div class="channels-matrix-items">
+                <div class="channel-matrix-item channel-whatsapp">{ICONS["msg"]} WhatsApp Business</div>
+                <div class="channel-matrix-item channel-instagram">{ICONS["sparkles"]} Instagram Direct</div>
+                <div class="channel-matrix-item channel-web">{ICONS["globe"]} Website Live Chat</div>
+                <div class="channel-matrix-item channel-voice">{ICONS["headphones"]} Conversational Voice AI</div>
+                <div class="channel-matrix-item channel-portal">{ICONS["server"]} Customer Portal</div>
+              </div>
+            </div>
+            <div class="channels-matrix-connector" aria-hidden="true">
+              <span class="connector-line"></span>
+            </div>
+            <div class="channels-matrix-hub double-bezel">
+              <div class="double-bezel-inner channels-hub-inner">
+                <span class="hub-tag">UNIFIED BRAIN</span>
+                <strong>Qefro Runtime</strong>
+                <p>Intent Evaluation &middot; Capability Router &middot; Entity Guardrails</p>
+                <div class="hub-pulse"></div>
+              </div>
+            </div>
+            <div class="channels-matrix-connector" aria-hidden="true">
+              <span class="connector-line"></span>
+            </div>
+            <div class="channels-matrix-col">
+              <span class="channels-matrix-label">Your Software</span>
+              <div class="channels-matrix-items">
+                <div class="channel-matrix-item">{ICONS["server"]} ERP &amp; Database</div>
+                <div class="channel-matrix-item">{ICONS["building"]} CRM (Salesforce / HubSpot)</div>
+                <div class="channel-matrix-item">{ICONS["file"]} Billing &amp; Stripe</div>
+                <div class="channel-matrix-item">{ICONS["utensils"]} Restaurant POS</div>
+                <div class="channel-matrix-item">{ICONS["users"]} HR &amp; Attendance</div>
+              </div>
+            </div>
           </div>
         </div>
-        <p class="channels-note reveal">Customers can start conversations from different channels while your business runs on the same underlying Qefro runtime.</p>
+        <p class="channels-note reveal">One unified runtime. Connect your software once, and every channel gains full transactional capability.</p>
       </div>
     </section>
 
@@ -1306,7 +1671,9 @@ def home_body() -> str:
     <section class="section section-alt" id="architecture" aria-labelledby="arch-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">TRANSACTION LIFECYCLE</span>
           <h2 id="arch-heading">From a message to a business action.</h2>
+          <p>Every customer request flows through deterministic verification before modifying business state.</p>
         </div>
         <div class="arch-flow reveal">
           <div class="arch-step"><span class="arch-num">1</span><p>Customer request</p></div>
@@ -1332,48 +1699,66 @@ def home_body() -> str:
     <section class="section" id="why-qefro" aria-labelledby="why-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">ARCHITECTURE ADVANTAGE</span>
           <h2 id="why-heading">Built for real business software.</h2>
+          <p>Engineered for enterprise reliability, auditability, and zero hallucination risk.</p>
         </div>
         <div class="why-grid reveal">
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["sparkles"]}</span>
-            <h3>AI-native</h3>
-            <p>AI is built into the business workflow&mdash;not added as a chatbot layer.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["sparkles"]}</span>
+              <h3>AI-native</h3>
+              <p>AI is built into the transaction pipeline&mdash;not bolted on as a superficial chatbot overlay.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["chart"]}</span>
-            <h3>Business data</h3>
-            <p>Customers, orders, invoices, appointments, properties and more.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["chart"]}</span>
+              <h3>Business data</h3>
+              <p>Direct read and write access to customers, orders, invoices, appointments, and properties.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["zap"]}</span>
-            <h3>Workflows</h3>
-            <p>Turn repeatable business procedures into executable flows.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["zap"]}</span>
+              <h3>Workflows</h3>
+              <p>Turn repeatable business procedures into deterministic executable flowgraphs.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["msg"]}</span>
-            <h3>Business events</h3>
-            <p>React to what actually happened in your business.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["msg"]}</span>
+              <h3>Business events</h3>
+              <p>React in real time to what actually happened in your operational systems.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["server"]}</span>
-            <h3>Automation</h3>
-            <p>Keep routine work moving automatically.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["server"]}</span>
+              <h3>Automation</h3>
+              <p>Keep routine operations, reminders, and reconciliations moving automatically.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["target"]}</span>
-            <h3>Goals</h3>
-            <p>Keep pursuing outcomes after the conversation ends.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["target"]}</span>
+              <h3>Goals</h3>
+              <p>Pursue complex multi-step outcomes autonomously until completion is confirmed.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["globe"]}</span>
-            <h3>Integrations</h3>
-            <p>Connect external systems through Qefro&rsquo;s integration layer.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["globe"]}</span>
+              <h3>Integrations</h3>
+              <p>Connect external systems seamlessly through Qefro&rsquo;s modern REST &amp; GraphQL SDK.</p>
+            </div>
           </article>
-          <article class="why-card">
-            <span class="why-icon" aria-hidden="true">{ICONS["headphones"]}</span>
-            <h3>Multi-channel</h3>
-            <p>Bring conversations from WhatsApp, Instagram, web and more into the same business context.</p>
+          <article class="why-card double-bezel">
+            <div class="double-bezel-inner why-card-inner">
+              <span class="why-icon" aria-hidden="true">{ICONS["headphones"]}</span>
+              <h3>Multi-channel</h3>
+              <p>Unify conversations from WhatsApp, Instagram, Web, and Voice into one single context.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -1383,18 +1768,19 @@ def home_body() -> str:
     <section class="section section-alt" id="foundation" aria-labelledby="foundation-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">FOUNDATION</span>
           <h2 id="foundation-heading">One foundation. Every business capability.</h2>
-          <p>Qefro provides a reusable business runtime so each product can focus on its domain instead of rebuilding infrastructure from scratch.</p>
+          <p>Qefro provides a reusable business runtime so each application focuses on its domain rather than reinventing infrastructure.</p>
         </div>
         <div class="foundation-stack reveal">
           <div class="foundation-layer">Marketplace Apps</div>
           <div class="foundation-layer">Business Metadata</div>
-          <div class="foundation-layer">Capabilities</div>
-          <div class="foundation-layer">FlowRunner</div>
-          <div class="foundation-layer">Business Entities</div>
-          <div class="foundation-layer">Business Events</div>
-          <div class="foundation-layer">Automation + Goals</div>
-          <div class="foundation-layer foundation-layer-base">AI Agents</div>
+          <div class="foundation-layer">Capabilities &middot; Tools</div>
+          <div class="foundation-layer">FlowRunner &middot; State Engine</div>
+          <div class="foundation-layer">Business Entities &middot; Guardrails</div>
+          <div class="foundation-layer">Business Events &middot; Webhooks</div>
+          <div class="foundation-layer">Automation + Autonomous Goals</div>
+          <div class="foundation-layer foundation-layer-base">Qefro AI Agent Core</div>
         </div>
       </div>
     </section>
@@ -1403,53 +1789,70 @@ def home_body() -> str:
     <section class="section" id="product-links" aria-labelledby="product-links-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="product-links-heading">Business software, ready to go.</h2>
-          <p>Each product is purpose-built for its domain on the Qefro platform.</p>
+          <span class="badge badge-indigo">DOMAINS</span>
+          <h2 id="product-links-heading">Specialized software, ready to deploy.</h2>
+          <p>Every product is purpose-built for its domain on the shared Qefro intelligence runtime.</p>
         </div>
         <div class="product-landing-grid reveal">
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["utensils"]}</div>
-            <h3>Qefro Restaurant</h3>
-            <p>Run restaurant operations with AI.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["utensils"]}</div>
+              <h3>Qefro Restaurant</h3>
+              <p>Reservations, table matching, digital ordering, and kitchen POS synchronization.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["file"]}</div>
-            <h3>Qefro Billing</h3>
-            <p>Create invoices. Track payments. Follow up automatically.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["file"]}</div>
+              <h3>Qefro Billing</h3>
+              <p>Invoices, automated payment loops, UPI links, and ledger reconciliation.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["home"]}</div>
-            <h3>Qefro Real Estate</h3>
-            <p>Turn property enquiries into scheduled viewings.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["home"]}</div>
+              <h3>Qefro Real Estate</h3>
+              <p>Property matchmaking, lead qualification, and 30-second viewing scheduling.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["users"]}</div>
-            <h3>Qefro CRM</h3>
-            <p>Manage customers, deals and follow-ups.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["users"]}</div>
+              <h3>Qefro CRM</h3>
+              <p>Omnichannel pipeline, customer 360 profiles, and automated deal follow-ups.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["heart"]}</div>
-            <h3>Qefro Clinic</h3>
-            <p>Manage patients and appointments.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["heart"]}</div>
+              <h3>Qefro Clinic</h3>
+              <p>Patient inquiries, doctor appointment booking, and reminder notifications.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["users"]}</div>
-            <h3>Qefro HR</h3>
-            <p>Manage employees and everyday HR operations.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["users"]}</div>
+              <h3>Qefro HR</h3>
+              <p>Employee self-service, leave requests, attendance checks, and payroll FAQ.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["kanban"]}</div>
-            <h3>Qefro Project</h3>
-            <p>Keep projects, tasks and teams moving.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["kanban"]}</div>
+              <h3>Qefro Project</h3>
+              <p>Sprint tasks, issue tracking, status updates, and milestone follow-ups.</p>
+            </div>
           </a>
-          <a class="pl-card" href="/business-apps">
-            <div class="pl-card-icon">{ICONS["shopping"]}</div>
-            <h3>Qefro E-commerce</h3>
-            <p>Run products, orders and customer operations.</p>
+          <a class="pl-card double-bezel" href="/business-apps">
+            <div class="double-bezel-inner pl-card-inner">
+              <div class="pl-card-icon">{ICONS["shopping"]}</div>
+              <h3>Qefro E-commerce</h3>
+              <p>Catalog inquiries, cart recovery, shipment tracking, and order support.</p>
+            </div>
           </a>
         </div>
         <div class="section-cta reveal">
-          <a class="btn btn-ghost" href="/business-apps">Explore all products {ICONS["arrow"]}</a>
+          <a class="btn btn-ghost" href="/business-apps"><span>Explore all applications</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
         </div>
       </div>
     </section>
@@ -1458,8 +1861,9 @@ def home_body() -> str:
     <section class="section section-alt" id="try-qefro" aria-labelledby="try-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="try-heading">Try Qefro</h2>
-          <p>See what Qefro can do.</p>
+          <span class="badge badge-indigo">INTERACTIVE SIMULATOR</span>
+          <h2 id="try-heading">Experience Qefro in Action</h2>
+          <p>Select any scenario below to see how Qefro executes real business operations.</p>
         </div>
         <div class="try-choices reveal">
           <button class="try-chip" type="button" data-try-scenario="table">Book a table</button>
@@ -1469,7 +1873,7 @@ def home_body() -> str:
           <button class="try-chip" type="button" data-try-scenario="customer">Find a customer</button>
         </div>
         <div class="try-demo-area reveal" id="try-demo-area" aria-live="polite">
-          <p class="try-placeholder">Choose a scenario above to see Qefro in action.</p>
+          <p class="try-placeholder">Choose a scenario above to test Qefro live.</p>
         </div>
       </div>
     </section>
@@ -1478,8 +1882,9 @@ def home_body() -> str:
     <section class="section" id="pricing" aria-labelledby="pricing-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <h2 id="pricing-heading">Simple pricing.</h2>
-          <p>Start free. Upgrade when you&rsquo;re ready.</p>
+          <span class="badge badge-indigo">TRANSPARENT PLANS</span>
+          <h2 id="pricing-heading">Simple pricing. Full capabilities.</h2>
+          <p>Start free. Scale seamlessly as your transactions grow.</p>
         </div>
         <div class="price-scroll reveal">
 {price_cards_html(interactive=True)}
@@ -1492,6 +1897,7 @@ def home_body() -> str:
     <section class="section section-alt" id="faq" aria-labelledby="faq-heading">
       <div class="wrap-narrow">
         <div class="section-head reveal">
+          <span class="badge badge-indigo">ANSWERS</span>
           <h2 id="faq-heading">Frequently asked questions.</h2>
         </div>
         <div class="faq-list reveal">
@@ -1544,12 +1950,16 @@ def home_body() -> str:
       <div class="cta-final-glow" aria-hidden="true"></div>
       <div class="wrap-narrow reveal">
         <h2 id="cta-heading">Keep your software. Add Qefro.</h2>
-        <p>Connect your existing business systems to AI-powered customer conversations, CRM, automation, and secure business actions.</p>
+        <p>Connect your existing business systems to AI-powered customer conversations, CRM, automation, and secure business actions in 5 minutes.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free">Start free {ICONS["arrow"]}</a>
-          <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products">Explore platform</a>
+          <a class="btn btn-primary btn-lg" href="{PORTAL_SIGNUP}" data-clarity-event="cta_start_free"><span>Start free 14-day trial</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
+          <a class="btn btn-ghost btn-lg" href="#products" data-clarity-event="cta_explore_products"><span>Explore platform</span></a>
         </div>
-        <p class="hero-micro">Your systems + Qefro AI = business outcomes.</p>
+        <div class="hero-trust-bar">
+          <span class="trust-pill">{ICONS["check"]} No credit card required</span>
+          <span class="trust-pill">{ICONS["check"]} Cancel anytime</span>
+          <span class="trust-pill">{ICONS["check"]} Free onboarding support</span>
+        </div>
       </div>
     </section>
 """
