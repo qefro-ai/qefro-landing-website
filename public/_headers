@@ -18,5 +18,8 @@
 /llms.txt
   Cache-Control: public, max-age=3600
 
+/llms-full.txt
+  Cache-Control: public, max-age=3600
+
 /*.html
   Cache-Control: public, max-age=300, must-revalidate

@@ -393,4 +393,36 @@
 
     outEl.innerHTML = `<span>💡 <strong>Recommendation:</strong> Based on ${rationale}, the <strong>${plan}</strong> fits your operations best.</span> <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup" style="padding:0.45rem 1rem;font-size:0.8125rem"><span>Start Free Trial</span></a>`;
   };
+
+  // WhatsApp QR Code Generator Tool
+  window.generateWhatsAppQR = function() {
+    var ccEl = document.getElementById('qr-cc');
+    var phoneEl = document.getElementById('qr-phone');
+    var msgEl = document.getElementById('qr-message');
+    var linkTextEl = document.getElementById('qr-link-text');
+    var openBtnEl = document.getElementById('qr-open-btn');
+    var imgEl = document.getElementById('qr-image');
+    if (!ccEl || !phoneEl || !msgEl || !linkTextEl || !openBtnEl || !imgEl) return;
+
+    var cc = ccEl.value.replace(/[^0-9]/g, '');
+    var phone = phoneEl.value.replace(/[^0-9]/g, '');
+    var msg = msgEl.value;
+    if (!phone) { phone = '9999999999'; }
+    var fullNumber = cc + phone;
+    var url = 'https://wa.me/' + fullNumber;
+    if (msg.trim()) {
+      url += '?text=' + encodeURIComponent(msg);
+    }
+    linkTextEl.innerText = url;
+    openBtnEl.href = url;
+    imgEl.src = 'https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + encodeURIComponent(url);
+  };
+
+  window.copyWhatsAppLink = function() {
+    var linkTextEl = document.getElementById('qr-link-text');
+    if (!linkTextEl) return;
+    navigator.clipboard.writeText(linkTextEl.innerText).then(function() {
+      alert('WhatsApp link copied to clipboard!');
+    });
+  };
 })();

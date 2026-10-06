@@ -2,4 +2,19 @@
 # Pages already serves /privacy from privacy.html; this 301s the .html form.
 # https://developers.cloudflare.com/pages/configuration/redirects/
 
+# Pruned enterprise/out-of-scope pages 301 to business-apps
+/ai-customer-support-for-airlines /business-apps 301
+/ai-customer-support-for-banks /business-apps 301
+/ai-customer-support-for-facilities /business-apps 301
+/ai-customer-support-for-government /business-apps 301
+/ai-customer-support-for-industrial-supplies /business-apps 301
+/ai-customer-support-for-insurance /business-apps 301
+/ai-customer-support-for-mortgage /business-apps 301
+/ai-customer-support-for-utilities /business-apps 301
+/ai-customer-support-for-auto-dealerships /business-apps 301
+
+# Canonical consolidation for high-intent core verticals
+/ai-for-real-estate /real-estate 301
+/ai-customer-support-for-real-estate /real-estate 301
+
 /*.html /:splat 301

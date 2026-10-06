@@ -25,16 +25,14 @@ gh secret set CLOUDFLARE_API_TOKEN -R qefro-ai/qefro-landing-website
 gh secret set CLOUDFLARE_ACCOUNT_ID -R qefro-ai/qefro-landing-website
 ```
 
-**Point `qefro.com` at Pages** (keep other hosts on the VPS):
+**Point `qefro.com` at Pages**:
 
 1. Deploy once → open `https://qefro-landing-website.pages.dev` and verify `/privacy`, `/terms`, `/pricing`.
 2. In Cloudflare Dashboard → Pages → **qefro-landing-website** → Custom domains → add `qefro.com` (and optionally `www.qefro.com`).
-3. If the zone is not yet on Cloudflare, move DNS for `qefro.com` to Cloudflare first, then:
-   - `qefro.com` / `www` → Pages custom domain
-   - `app`, `api`, `admin`, `cdn`, `org`, `*.qefro.com` → A/AAAA (or CNAME) to the current VPS IP (`35.234.216.132`), proxied or DNS-only as you prefer
-4. After cutover is healthy, you can stop the `landing` container in `qefro-docker` (optional).
+3. Ensure DNS proxy (orange cloud) is enabled in Cloudflare for production web security.
+4. Route app and API services through your hardened edge reverse proxy with origin access controls enabled.
 
-Do **not** point `app` / `api` / `*.qefro.com` at the Pages project — those stay on the origin server.
+Do **not** point API or backend services at the Pages project — those stay on secure backend infrastructure.
 
 ## Local
 

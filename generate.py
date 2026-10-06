@@ -28,7 +28,7 @@ WIDGET_CDN = "https://cdn.qefro.com/widget.js"
 PORTAL_LOGIN = f"{PORTAL}/login"
 PORTAL_SIGNUP = f"{PORTAL}/login?mode=signup"
 DOCS = "https://docs.qefro.com"
-ASSET_VERSION = "67"
+ASSET_VERSION = "68"
 OG_IMAGE = f"{SITE}/assets/images/og-cover.png"
 OG_IMAGE_ALT = (
     "Qefro is an AI Business Application Platform that connects business software to AI-powered customer conversations, automation, and CRM."
@@ -132,6 +132,9 @@ SITEMAP_ENTRIES: list[tuple[str, list[tuple[str, str]]]] = [
     ("enterprise", []),
     ("partners", []),
     ("whatsapp", []),
+    ("billing", []),
+    ("real-estate", []),
+    ("whatsapp-qr-generator", []),
     ("privacy", []),
     ("terms", []),
 ]
@@ -305,17 +308,23 @@ def footer() -> str:
           <a href="/business-apps">All applications</a>
           <a href="/billing">Qefro Billing</a>
           <a href="/real-estate">Qefro Real Estate</a>
+          <a href="/whatsapp">WhatsApp Business</a>
+          <a href="/enterprise">Enterprise</a>
+          <a href="/partners">Partners</a>
           <a href="/sdk">SDK</a>
         </nav>
         <nav class="footer-col" aria-label="Free Tools">
           <h3>Free Tools</h3>
           <a href="/whatsapp-qr-generator">WhatsApp QR Generator</a>
-          <a href="/whatsapp-reminder-templates">WhatsApp Reminders</a>
-          <a href="/gst-invoice-template">GST Invoice Template</a>
+          <a href="/billing">WhatsApp Billing Flow</a>
+          <a href="/real-estate">Real Estate Visits</a>
         </nav>
         <nav class="footer-col" aria-label="Resources">
           <h3>Resources</h3>
+          <a href="/what-is-qefro">What is Qefro?</a>
           <a href="/how-it-works">How It Works</a>
+          <a href="/use-cases">Use Cases</a>
+          <a href="/ai-customer-support-by-industry">Industry Solutions</a>
           <a href="/pricing">Pricing</a>
           <a href="/faq">FAQ</a>
           <a href="/security">Security</a>
@@ -373,7 +382,7 @@ def page(
     gtag('config', 'G-BD3M2H7X1E');
   </script>"""
     return f"""<!DOCTYPE html>
-<html lang="en" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
+<html lang="en-IN" data-api-url="{API}" data-widget-cdn="{WIDGET_CDN}">
 <head>
 {meta_block(title, description, path, robots=robots, include_canonical=include_canonical, og_type=og_type)}
 {schemas}
@@ -429,7 +438,7 @@ def webpage_json(title: str, description: str, path: str) -> str:
             "isPartOf": {"@id": f"{SITE}/#website"},
             "about": {"@id": f"{SITE}/#organization"},
             "dateModified": BUILD_DATE,
-            "inLanguage": "en-US",
+            "inLanguage": "en-IN",
             "primaryImageOfPage": {
                 "@type": "ImageObject",
                 "url": OG_IMAGE,
@@ -507,7 +516,7 @@ def tech_article_json(title: str, description: str, path: str) -> str:
             "headline": title,
             "description": description,
             "url": url,
-            "inLanguage": "en-US",
+            "inLanguage": "en-IN",
             "datePublished": BUILD_DATE,
             "dateModified": BUILD_DATE,
             "author": {"@id": f"{SITE}/#organization"},
@@ -589,7 +598,7 @@ WEBSITE_JSON = json.dumps(
             "secure business actions."
         ),
         "publisher": {"@id": f"{SITE}/#organization"},
-        "inLanguage": "en-US",
+        "inLanguage": "en-IN",
         "copyrightHolder": {"@id": f"{SITE}/#organization"},
     },
     indent=2,
@@ -1005,7 +1014,7 @@ def contact_page_json(title: str, description: str) -> str:
                 "@id": f"{SITE}/#organization",
             },
             "dateModified": BUILD_DATE,
-            "inLanguage": "en-US",
+            "inLanguage": "en-IN",
         },
         indent=2,
     )
@@ -1348,32 +1357,31 @@ def home_body() -> str:
       </div>
     </section>
 
-    <!-- 2. TRUST STRIP -->
-    <section class="trust-strip-v2" aria-label="Proof and metrics">
+    <!-- 2. PLATFORM ASSURANCES -->
+    <section class="trust-strip-v2" aria-label="Platform capabilities">
       <div class="wrap-5xl">
         <div class="trust-metrics-grid reveal">
           <div class="metric-box">
-            <div class="metric-num">[PLACEHOLDER: 42%]</div>
-            <div class="metric-lbl">Faster payment collection vs manual phone follow-ups</div>
+            <div class="metric-num">14 Days</div>
+            <div class="metric-lbl">Full free trial access with no credit card required</div>
           </div>
           <div class="metric-box">
-            <div class="metric-num">[PLACEHOLDER: &lt; 45s]</div>
-            <div class="metric-lbl">Average time to qualify inquiry and confirm booking</div>
+            <div class="metric-num">2-Way Sync</div>
+            <div class="metric-lbl">Direct read and write actions with your backend software</div>
           </div>
           <div class="metric-box">
-            <div class="metric-num">[PLACEHOLDER: 100%]</div>
-            <div class="metric-lbl">Human-approved workflows for sensitive balance adjustments</div>
+            <div class="metric-num">Human-First</div>
+            <div class="metric-lbl">Configurable 1-click approval gates for sensitive operations</div>
           </div>
         </div>
         <div class="trust-logos-wrap reveal">
-          <span class="trust-logos-label">Trusted by growth-focused Indian businesses</span>
+          <span class="trust-logos-label">Engineered for Indian business workflows</span>
           <div class="trust-badges-list">
-            <span class="partner-pill">{ICONS["check"]} [PLACEHOLDER: Meta Tech Provider / BSP Verified]</span>
-            <span class="client-logo-pill">[PLACEHOLDER: Apex Retailers]</span>
-            <span class="client-logo-pill">[PLACEHOLDER: Spice Route Dine]</span>
-            <span class="client-logo-pill">[PLACEHOLDER: UrbanProps Realty]</span>
-            <span class="client-logo-pill">[PLACEHOLDER: CareFirst Clinics]</span>
-            <span class="client-logo-pill">[PLACEHOLDER: Bharat Traders]</span>
+            <span class="partner-pill">{ICONS["check"]} WhatsApp Business Cloud API</span>
+            <span class="client-logo-pill">Tally Prime &amp; Zoho Books Sync</span>
+            <span class="client-logo-pill">Instant Google Sheets Automation</span>
+            <span class="client-logo-pill">Dynamic 1-Click UPI Payment Links</span>
+            <span class="client-logo-pill">Role-Based Workspace Access</span>
           </div>
         </div>
       </div>
@@ -1383,54 +1391,54 @@ def home_body() -> str:
     <section class="section section-alt" id="not-chatbot" aria-labelledby="not-chatbot-heading">
       <div class="wrap-5xl">
         <div class="section-head reveal">
-          <span class="badge badge-indigo">THE FUNDAMENTAL DIFFERENCE</span>
-          <h2 id="not-chatbot-heading">Stop buying chatbots that only generate text.</h2>
-          <p>Traditional bots answer FAQs and dump tickets on your team. Qefro connects directly to your software and finishes the operational task.</p>
+          <span class="badge badge-indigo">THE ACTION DIFFERENCE</span>
+          <h2 id="not-chatbot-heading">Beyond chatbots that only generate text.</h2>
+          <p>Traditional bots answer FAQs and leave data entry to your team. Qefro connects directly to your software to complete operational tasks.</p>
         </div>
         <div class="compare-side-by-side reveal">
           <div class="comp-card comp-card-traditional">
-            <span class="comp-badge comp-badge-muted">Generic AI Chatbots (Wati, Interakt, AiSensy)</span>
+            <span class="comp-badge comp-badge-muted">Standard FAQ Chatbots</span>
             <h3>Answers questions only</h3>
-            <p class="comp-summary">Forces your team to manually copy data, open tabs, and finish the job.</p>
+            <p class="comp-summary">Requires your team to manually copy data, open tabs, and finish the job.</p>
             <ul class="comp-points">
               <li>
                 <svg class="icon-x" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                <span><strong>Replies with static text:</strong> &ldquo;Our timing is 7 PM to 11 PM. Call 080-XXXX to book.&rdquo;</span>
+                <span><strong>Replies with static text:</strong> Sends fixed answers and directs users to phone lines or static links.</span>
               </li>
               <li>
                 <svg class="icon-x" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                <span><strong>No write access to software:</strong> Cannot check live stock, update invoices, or write to Tally.</span>
+                <span><strong>Requires manual follow-up:</strong> Staff must still open tabs, check software records, and key in data manually.</span>
               </li>
               <li>
                 <svg class="icon-x" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                <span><strong>Unchecked AI hallucination risk:</strong> May quote unauthorized discounts or incorrect terms.</span>
+                <span><strong>Disconnected from back-office data:</strong> Does not check live stock, update customer ledgers, or write to your systems.</span>
               </li>
               <li>
                 <svg class="icon-x" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                <span><strong>High manual overhead:</strong> Staff still spends 4+ hours daily copying data into CRM.</span>
+                <span><strong>Unstructured output:</strong> May provide unverified replies if source knowledge is outdated.</span>
               </li>
             </ul>
           </div>
           <div class="comp-card comp-card-qefro">
-            <span class="comp-badge comp-badge-brand">Qefro AI Operations Platform</span>
+            <span class="comp-badge comp-badge-brand">Qefro AI Business Platform</span>
             <h3>Completes the business action</h3>
-            <p class="comp-summary">Understands the intent, validates your system rules, and runs the workflow.</p>
+            <p class="comp-summary">Understands customer intent, validates system rules, and runs the workflow.</p>
             <ul class="comp-points">
               <li>
                 <svg class="icon-chk" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                <span><strong>Executes the transaction:</strong> Checks POS for Table 4, books the slot, and sends instant confirmation.</span>
+                <span><strong>Executes the transaction:</strong> Checks system availability, books slots, and issues immediate confirmations.</span>
               </li>
               <li>
                 <svg class="icon-chk" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                <span><strong>Full 2-way sync:</strong> Reads and writes to Zoho Books, Tally, Razorpay, or Google Sheets with audit trails.</span>
+                <span><strong>Two-way software integration:</strong> Reads and updates records in your ERP, CRM, or Google Sheets with detailed audit logs.</span>
               </li>
               <li>
                 <svg class="icon-chk" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                <span><strong>Deterministic guardrails:</strong> Actions run through predefined workflows. Sensitive actions demand human click-to-approve.</span>
+                <span><strong>Schema-validated workflows:</strong> Actions follow strict business rules with optional human approval for sensitive tasks.</span>
               </li>
               <li>
                 <svg class="icon-chk" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-                <span><strong>True automation:</strong> Invoices get dispatched with dynamic UPI links and auto-reconcile on webhook confirmation.</span>
+                <span><strong>Payment and invoicing follow-through:</strong> Dispatches invoice details with direct payment links and updates records upon settlement.</span>
               </li>
             </ul>
           </div>
@@ -1603,9 +1611,9 @@ def home_body() -> str:
 {price_cards_html(interactive=True)}
         </div>
         <div class="pricing-clarity-card reveal">
-          <p style="margin-bottom:0.75rem"><strong>Plain-English Usage Policy:</strong> Every plan includes generous monthly AI conversational message quotas. If you exceed your quota, additional interactions are billed at [PLACEHOLDER: ₹0.35 per active conversation] with no sudden service shutdowns.</p>
-          <p style="margin-bottom:0.75rem"><strong>WhatsApp Official Fees:</strong> Meta charges standard WhatsApp Business API conversation fees (typically ~₹0.75 - ₹0.85 per utility conversation in India). Qefro does NOT add any markup or hidden fee to Meta's official charges. You pay Meta directly.</p>
-          <p><strong>Marketplace Apps:</strong> All 8 core vertical apps are included with your plan. Optional 3rd-party marketplace extensions (such as specialized SMS gateways or niche inventory tools) have clear separate pricing, typically starting at ₹299 to ₹499/month.</p>
+          <p style="margin-bottom:0.75rem"><strong>Simple, Predictable Structure:</strong> Plans are based on team user seats, CRM customer contacts, and connected knowledge documents&mdash;not per-message token fees or artificial conversation caps.</p>
+          <p style="margin-bottom:0.75rem"><strong>WhatsApp Business API:</strong> Connect your official WhatsApp Business API account directly. Meta conversation charges are billed through your Meta account according to Meta&rsquo;s published regional rates.</p>
+          <p><strong>Marketplace Applications:</strong> Pre-built industry applications are available to install on your workspace. Specialized external add-ons or custom integrations are billed transparently as indicated in the Marketplace.</p>
         </div>
 
         <!-- Plan Finder Quiz UX -->
@@ -1650,58 +1658,6 @@ def home_body() -> str:
           <div class="quiz-output" id="quiz-recommendation">
             <span>💡 <strong>Recommendation:</strong> Based on multi-user collaboration and Tally/Zoho sync, the <strong>Pro Plan (₹1,499/mo)</strong> fits your operations best.</span>
             <a class="btn btn-primary" href="{PORTAL_SIGNUP}" style="padding:0.45rem 1rem;font-size:0.8125rem"><span>Start Pro Trial</span> <span class="btn-arrow-capsule" aria-hidden="true">{ICONS["arrow"]}</span></a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. TESTIMONIALS / CASE STUDIES -->
-    <section class="section section-alt" id="social-proof" aria-labelledby="proof-heading">
-      <div class="wrap-5xl">
-        <div class="section-head reveal">
-          <span class="badge badge-indigo">REAL OUTCOMES</span>
-          <h2 id="proof-heading">How Indian business owners save hours every day.</h2>
-          <p>Real stories of faster collections, booked tables, and zero missed leads.</p>
-        </div>
-        <div class="case-studies-grid reveal">
-          <div class="case-card">
-            <div>
-              <span class="case-stat-badge">[PLACEHOLDER: 42% faster receivables]</span>
-              <blockquote>&ldquo;[PLACEHOLDER: We used to spend the last 5 days of every month manually calling clients for overdue payments. With Qefro connected to Tally, polite WhatsApp reminders go out automatically with UPI QR links. 42% of clients pay on the first reminder without a phone call.]&rdquo;</blockquote>
-            </div>
-            <div class="case-author">
-              <div class="case-avatar">R</div>
-              <div class="case-meta">
-                <strong>[PLACEHOLDER: Rajesh Varma]</strong>
-                <span>[PLACEHOLDER: Managing Director, Varma Industrial Supplies, Pune]</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-card">
-            <div>
-              <span class="case-stat-badge">[PLACEHOLDER: 3x more site visits booked]</span>
-              <blockquote>&ldquo;[PLACEHOLDER: Property buyers browsing late at night on Instagram and WhatsApp used to wait until morning for an agent reply. Qefro now qualifies their budget, shares floor plans, and schedules viewings into our Google Calendar in 30 seconds.]&rdquo;</blockquote>
-            </div>
-            <div class="case-author">
-              <div class="case-avatar">S</div>
-              <div class="case-meta">
-                <strong>[PLACEHOLDER: Sneha Kulkarni]</strong>
-                <span>[PLACEHOLDER: Head of Sales, Skyline Realty, Bengaluru]</span>
-              </div>
-            </div>
-          </div>
-          <div class="case-card">
-            <div>
-              <span class="case-stat-badge">[PLACEHOLDER: Zero weekend reservation chaos]</span>
-              <blockquote>&ldquo;[PLACEHOLDER: During Friday dinner rush, our hostess couldn't pick up the phone. Qefro handles 60+ table booking requests simultaneously on WhatsApp and locks them straight into our POS table chart. It completely eliminated double bookings.]&rdquo;</blockquote>
-            </div>
-            <div class="case-author">
-              <div class="case-avatar">A</div>
-              <div class="case-meta">
-                <strong>[PLACEHOLDER: Amit Mathur]</strong>
-                <span>[PLACEHOLDER: Co-founder, The Olive Bistro, Hyderabad]</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -1846,10 +1802,10 @@ PAGES["index.html"] = page(
 # Inner pages — detailed content for menu-linked pages
 def features_page_content() -> str:
     return f"""        <div class="outcome-grid reveal">
-          <article class="outcome-card tilt-3d"><h3>AI</h3><ul><li>Grounded retrieval with citations</li><li>Multilingual knowledge indexing</li><li>Tool calling against your backends</li><li>Workspace-scoped instructions</li><li>Streaming replies across channels</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>AI</h3><ul><li>Grounded retrieval with citations (<a href="/rag">RAG engine</a>)</li><li>Multilingual knowledge indexing</li><li>Tool calling against your backends</li><li>Workspace-scoped instructions</li><li>Streaming replies across channels</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Applications</h3><ul><li>Managed Marketplace Apps</li><li>Custom SDK applications</li><li>Restaurant Pro &amp; Clinic Pro</li><li>Shared platform services</li><li>Per-workspace install &amp; config</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Customer Hub</h3><ul><li>Unified customer identity</li><li>Conversation and activity context</li><li>Cross-channel continuity</li><li>Team visibility with RBAC</li><li>Handoff-ready history</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>Organization Workflows</h3><ul><li>Events, approvals, and tasks</li><li>Multi-step business processes</li><li>Human-in-the-loop steps</li><li>State until completion</li><li>Cross-team handoffs</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Organization Workflows</h3><ul><li>Events, approvals, and tasks (<a href="/workflow-engine">Workflow engine</a>)</li><li>Multi-step business processes</li><li>Human-in-the-loop steps</li><li>State until completion</li><li>Cross-team handoffs</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Channels</h3><ul><li>Website widget</li><li>WhatsApp Business</li><li>Internal Portal</li><li>API / WebSocket</li><li>Configure once, deploy everywhere</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>SDK &amp; Marketplace</h3><ul><li>External SDK Connections</li><li>Signed /qefro protocol</li><li>REST &amp; OpenAPI tools</li><li>Managed Marketplace installs</li><li>On-prem capable backends</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Storage &amp; Marketing</h3><ul><li>Document &amp; site knowledge stores</li><li>OCR for scans and images</li><li>Lead capture in-channel</li><li>Campaign-ready customer context</li><li>Execution and conversation logs</li></ul></article>
@@ -2028,22 +1984,22 @@ def business_apps_page_content() -> str:
           <p>Pre-built AI apps for the most common business workflows. Each one connects to your existing systems and deploys across chat, WhatsApp, and web.</p>
         </div>
         <div class="outcome-grid reveal">
-          <article class="outcome-card tilt-3d">
+          <article class="outcome-card tilt-3d" id="restaurant">
             <h3>Restaurant Pro</h3>
             <p>Reservations, menu queries, order tracking, and customer follow-up — all handled by AI across WhatsApp and web chat.</p>
             <ul><li>Table reservations</li><li>Menu &amp; specials lookup</li><li>Order status tracking</li><li>Automated follow-ups</li></ul>
           </article>
-          <article class="outcome-card tilt-3d">
+          <article class="outcome-card tilt-3d" id="clinic">
             <h3>Clinic Pro</h3>
             <p>Appointment scheduling, patient context, reminders, and rescheduling — reducing front-desk workload while keeping care personal.</p>
             <ul><li>Appointment management</li><li>Patient history context</li><li>Automated reminders</li><li>Rescheduling &amp; cancellations</li></ul>
           </article>
-          <article class="outcome-card tilt-3d">
+          <article class="outcome-card tilt-3d" id="ecommerce">
             <h3>E-commerce</h3>
             <p>Order status, product search, returns, and proactive shipping updates — the customer service layer on top of your store.</p>
             <ul><li>Order tracking</li><li>Product search &amp; recommendations</li><li>Return initiation</li><li>Shipping notifications</li></ul>
           </article>
-          <article class="outcome-card tilt-3d">
+          <article class="outcome-card tilt-3d" id="crm">
             <h3>ERP + Sales</h3>
             <p>Quotations, order management, and CRM workflows — bring your ERP data into customer conversations without manual lookup.</p>
             <ul><li>Quote generation</li><li>Order management</li><li>Customer assignment</li><li>Approval workflows</li></ul>
@@ -2096,6 +2052,150 @@ def business_apps_page_content() -> str:
         </div>"""
 
 
+def billing_page_content() -> str:
+    return f"""        <div class="section-head reveal" style="text-align:left">
+          <span class="badge badge-indigo">{ICONS["file"]} Finance &amp; Accounts</span>
+          <h2>Automate WhatsApp invoice reminders &amp; collect via UPI</h2>
+          <p>Connect Tally Prime or Zoho Books to WhatsApp. Send polite, automated payment reminders with dynamic 1-click UPI payment links that auto-reconcile in your ledger.</p>
+        </div>
+        <div class="convo-grid reveal">
+          <article class="convo-card">
+            <p class="convo-who">Customer</p>
+            <p class="convo-bubble convo-in">What is my pending balance for invoice #INV-4091?</p>
+            <p class="convo-who">Qefro AI</p>
+            <p class="convo-bubble convo-out">Hello! Invoice #INV-4091 is for ₹14,500 and is due today. Settle instantly via UPI link below.</p>
+          </article>
+          <div style="display:flex;flex-direction:column;gap:1rem;justify-content:center">
+            <div class="check-list">
+              <span>{ICONS["check"]} Automatic invoice sync from Tally &amp; Zoho</span>
+              <span>{ICONS["check"]} Personalized WhatsApp payment reminders</span>
+              <span>{ICONS["check"]} Dynamic UPI links (GPay, PhonePe, Paytm)</span>
+              <span>{ICONS["check"]} Instant webhook verification &amp; receipt delivery</span>
+              <span>{ICONS["check"]} Auto-reconciliation to PAID status in ledger</span>
+              <span>{ICONS["check"]} Staff 1-click approval mode before dispatch</span>
+            </div>
+          </div>
+        </div>
+        <div class="sheets-banner reveal" style="margin-top:2.5rem">
+          <div class="sheets-banner-info">
+            <h4>No ERP? Run billing directly off Google Sheets.</h4>
+            <p>Maintain customer invoices in a Google Sheet. Qefro queries dues, generates UPI links, and marks payments as completed in real time.</p>
+          </div>
+          <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start Free Trial {ICONS["arrow"]}</a>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>Why finance teams choose Qefro Billing</h2>
+          <p>Streamline outstanding payment collection and eliminate repetitive manual follow-up calls.</p>
+        </div>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d">
+            <h3>Frictionless Payment</h3>
+            <p>Send direct 1-click UPI links in WhatsApp messages so clients can pay instantly from their preferred payment app.</p>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>Direct Ledger Sync</h3>
+            <p>Payment webhooks capture transaction references and update records in your software without manual data entry.</p>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>Human Approval Gates</h3>
+            <p>Configure custom rules so high-value invoices or balance adjustments require staff confirmation before dispatch.</p>
+          </article>
+        </div>"""
+
+
+def real_estate_page_content() -> str:
+    return f"""        <div class="section-head reveal" style="text-align:left">
+          <span class="badge badge-indigo">{ICONS["home"]} Real Estate &amp; Builders</span>
+          <h2>Turn WhatsApp inquiries into confirmed site viewings</h2>
+          <p>Capture leads from WhatsApp, social ads, and property portals. Qualify buyer budget and locality, share brochures, and schedule viewings straight into agent calendars.</p>
+        </div>
+        <div class="convo-grid reveal">
+          <article class="convo-card">
+            <p class="convo-who">Buyer</p>
+            <p class="convo-bubble convo-in">Looking for 2BHK in Whitefield under ₹85 Lakhs.</p>
+            <p class="convo-who">Qefro AI</p>
+            <p class="convo-bubble convo-out">Found 2 verified properties matching your budget! Here is the Palm Heights brochure. Would you like to schedule a site viewing tomorrow at 4 PM?</p>
+          </article>
+          <div style="display:flex;flex-direction:column;gap:1rem;justify-content:center">
+            <div class="check-list">
+              <span>{ICONS["check"]} 24/7 lead response and qualification</span>
+              <span>{ICONS["check"]} Floor plan and brochure delivery</span>
+              <span>{ICONS["check"]} Fast viewing slot coordination</span>
+              <span>{ICONS["check"]} Google Calendar &amp; CRM sync</span>
+              <span>{ICONS["check"]} Automated reminder notifications with location details</span>
+              <span>{ICONS["check"]} Live agent handoff for negotiations</span>
+            </div>
+          </div>
+        </div>
+        <div class="section-head reveal" style="text-align:left;margin-top:3.5rem">
+          <h2>Why property developers and sales teams choose Qefro</h2>
+          <p>Engage property buyers around the clock and confirm visit appointments when interest is peak.</p>
+        </div>
+        <div class="outcome-grid reveal">
+          <article class="outcome-card tilt-3d">
+            <h3>Higher Visit Turnout</h3>
+            <p>Lock viewing slots immediately when buyers inquire, sending calendar invites and location pins over WhatsApp.</p>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>Structured Qualification</h3>
+            <p>Collect buyer budget, timeline, and configuration preferences upfront before handing off to sales agents.</p>
+          </article>
+          <article class="outcome-card tilt-3d">
+            <h3>CRM &amp; Calendar Integration</h3>
+            <p>Every verified inquiry and scheduled slot syncs directly to your CRM or Google Calendar.</p>
+          </article>
+        </div>"""
+
+
+def whatsapp_qr_page_content() -> str:
+    return f"""        <div class="section-head reveal" style="text-align:center">
+          <span class="badge badge-indigo">{ICONS["sparkles"]} 100% Free Tool</span>
+          <h2>Free WhatsApp QR Code &amp; Click-to-Chat Generator</h2>
+          <p>Generate a direct WhatsApp link and printable QR code with a custom pre-filled message for your storefront, restaurant tables, product packaging, or invoices.</p>
+        </div>
+        <div class="tool-container reveal">
+          <div class="tool-grid">
+            <div>
+              <div style="margin-bottom:1.25rem">
+                <label style="display:block;font-size:0.875rem;font-weight:700;margin-bottom:0.5rem">Your WhatsApp Phone Number (with Country Code):</label>
+                <div style="display:flex;gap:0.5rem">
+                  <input id="qr-cc" type="text" value="+91" style="width:70px;padding:0.65rem;border:1px solid var(--color-border);border-radius:0.5rem;font-family:inherit;font-size:0.9375rem" />
+                  <input id="qr-phone" type="tel" placeholder="9876543210" style="flex:1;padding:0.65rem;border:1px solid var(--color-border);border-radius:0.5rem;font-family:inherit;font-size:0.9375rem" />
+                </div>
+                <small style="color:var(--color-text-muted);font-size:0.75rem">Do not include dashes or spaces.</small>
+              </div>
+              <div style="margin-bottom:1.25rem">
+                <label style="display:block;font-size:0.875rem;font-weight:700;margin-bottom:0.5rem">Pre-filled Message (Optional):</label>
+                <textarea id="qr-message" rows="3" placeholder="Hi! I want to inquire about..." style="width:100%;padding:0.65rem;border:1px solid var(--color-border);border-radius:0.5rem;font-family:inherit;font-size:0.875rem"></textarea>
+                <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem">
+                  <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.5rem;font-size:0.75rem" onclick="document.getElementById('qr-message').value='Hi, I want to book a table for tonight';generateWhatsAppQR();">Table Booking</button>
+                  <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.5rem;font-size:0.75rem" onclick="document.getElementById('qr-message').value='Hi, I am inquiring about property listings';generateWhatsAppQR();">Property Inquiry</button>
+                  <button type="button" class="btn btn-secondary" style="padding:0.25rem 0.5rem;font-size:0.75rem" onclick="document.getElementById('qr-message').value='Hi, what is my pending invoice balance?';generateWhatsAppQR();">Invoice Check</button>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="generateWhatsAppQR()" style="width:100%">Generate WhatsApp QR &amp; Link</button>
+            </div>
+            <div style="text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--surface);padding:1.5rem;border-radius:0.75rem;border:1px dashed var(--color-border)">
+              <div id="qr-output-box" style="margin-bottom:1rem">
+                <img id="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https%3A%2F%2Fwa.me%2F919999999999" alt="WhatsApp QR Code" width="180" height="180" style="border-radius:0.5rem;border:1px solid var(--color-border)" />
+              </div>
+              <p id="qr-link-text" style="font-size:0.8125rem;font-family:monospace;word-break:break-all;color:var(--color-primary);margin-bottom:1rem">https://wa.me/919999999999</p>
+              <div style="display:flex;gap:0.5rem;width:100%">
+                <button type="button" class="btn btn-secondary" style="flex:1;font-size:0.8125rem" onclick="copyWhatsAppLink()">Copy Link</button>
+                <a id="qr-open-btn" class="btn btn-primary" href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" style="flex:1;font-size:0.8125rem">Test Link</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sheets-banner reveal" style="margin-top:2.5rem">
+          <div class="sheets-banner-info">
+            <h4>Ready to automate what happens when customers scan this QR?</h4>
+            <p>Don't leave customer messages unanswered. Connect Qefro to book tables, dispatch invoices, and answer inquiries automatically.</p>
+          </div>
+          <a class="btn btn-primary" href="{PORTAL_SIGNUP}">Start Free 14-Day Trial {ICONS["arrow"]}</a>
+        </div>"""
+
+
 def security_page_content() -> str:
     return f"""        <div class="trust-grid reveal">
           <article class="trust-card tilt-3d"><div class="trust-icon">{ICONS["building"]}</div><h3>Tenant &amp; workspace isolation</h3><p>Multi-tenant by design at the database and vector store level. Workspaces control which knowledge, apps, and tools each experience can use.</p></article>
@@ -2113,7 +2213,7 @@ def security_page_content() -> str:
           <article class="outcome-card tilt-3d"><h3>Access control</h3><ul><li>Owner / Admin / Member RBAC</li><li>Email OTP — no password storage</li><li>Billing actions restricted to owners</li><li>Workspace-scoped documents &amp; tools</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Data handling</h3><ul><li>PII scrubbing on outbound LLM calls</li><li>Never used to train AI models</li><li>Encrypted at rest &amp; in transit</li><li>Conversation isolation</li></ul></article>
           <article class="outcome-card tilt-3d"><h3>Tool execution</h3><ul><li>OpenAPI schema validation</li><li>SSRF &amp; DNS pinning for webhooks</li><li>Per-tool public-chat allow toggles</li><li>Execution logs for accountability</li></ul></article>
-          <article class="outcome-card tilt-3d"><h3>Enterprise roadmap</h3><ul><li>SSO / SAML (roadmap)</li><li>Platform admin audit trail (roadmap)</li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
+          <article class="outcome-card tilt-3d"><h3>Enterprise roadmap</h3><ul><li><a href="/sso">SSO / SAML</a> (roadmap)</li><li><a href="/audit-logs">Platform admin audit trail</a></li><li>Private deployment available today</li><li>SOC 2 program in progress</li></ul></article>
         </div>
         <div class="prose reveal" style="margin-top:2.5rem">
           <h2>Compliance &amp; deployment</h2>
@@ -2614,6 +2714,10 @@ PAGES["benchmark.html"] = page(
     </section>
     <section class="section">
       <div class="wrap reveal">
+        <aside class="quick-answer-card" style="margin-bottom:2rem;text-align:left" aria-label="Transparency Notice">
+          <span class="quick-answer-badge">Transparency Notice</span>
+          <p style="margin:0.5rem 0 0"><strong>Controlled Baseline Criteria:</strong> Benchmarks and retrieval scores published by Qefro are evaluated on standardized, curated test sets under fixed RAG parameters. They demonstrate reference platform accuracy rather than a blanket guarantee for every unstructured knowledge base. Live accuracy depends on document cleanliness, schema definition, and access permission rules.</p>
+        </aside>
         <div class="section-head" style="text-align:left">
           <h2>Methodology</h2>
           <p>We evaluate Qefro on a fixed set of question&ndash;answer pairs drawn from customer-style knowledge bases (policies, product docs, FAQs). Each query is scored as <strong>correct</strong>, <strong>appropriate refusal</strong> (no relevant source), or <strong>incorrect</strong> (hallucination or wrong citation). Scores are computed per category and release.</p>
@@ -2710,6 +2814,56 @@ PAGES["about.html"] = inner(
           <p>Questions: <a href="mailto:support@qefro.com">support@qefro.com</a></p>
         </div>""",
     badge=f'{ICONS["sparkles"]} About',
+)
+
+PAGES["billing.html"] = inner(
+    "WhatsApp Invoice Reminders & Payment Collection for India | Qefro Billing",
+    "Automate WhatsApp invoice reminders & collect via UPI",
+    "Connect Tally Prime or Zoho Books to WhatsApp. Send polite, automated payment reminders with dynamic 1-click UPI payment links that auto-reconcile in your ledger.",
+    "billing.html",
+    "apps",
+    "<p>Qefro Billing bridges Tally Prime and Zoho Books with WhatsApp. Send automated payment reminders, accept UPI, and reconcile vouchers without manual data entry.</p>",
+    billing_page_content(),
+    badge=f'{ICONS["file"]} Qefro Billing',
+)
+
+PAGES["real-estate.html"] = inner(
+    "AI WhatsApp Lead Qualification & Site Visits for Real Estate | Qefro",
+    "Turn WhatsApp inquiries into confirmed site visits in 30s",
+    "Capture leads from WhatsApp and ads. Qualify buyer budget and locality, share brochure PDFs, and lock site viewings straight into agent calendars.",
+    "real-estate.html",
+    "apps",
+    "<p>Qualify property leads 24/7, share digital brochures, and lock site visits into Google Calendar and CRM pipelines directly through WhatsApp.</p>",
+    real_estate_page_content(),
+    badge=f'{ICONS["home"]} Qefro Real Estate',
+)
+
+PAGES["whatsapp-qr-generator.html"] = page(
+    title="Free WhatsApp QR Code & Link Generator | Qefro",
+    description="Create free WhatsApp click-to-chat links and printable QR codes with custom pre-filled messages for your business.",
+    path="whatsapp-qr-generator.html",
+    active="tools",
+    jsonld=[
+        webpage_json(
+            "Free WhatsApp QR Code & Link Generator | Qefro",
+            "Create free WhatsApp click-to-chat links and printable QR codes with custom pre-filled messages for your business.",
+            "whatsapp-qr-generator",
+        ),
+        breadcrumb_json([("Home", "/"), ("Free Tools", "#"), ("WhatsApp QR Generator", "whatsapp-qr-generator")]),
+    ],
+    body=f"""    <section class="page-hero">
+      <div class="wrap-5xl">
+        {crumbs([("Home", "/"), ("Free Tools", "#"), ("WhatsApp QR Generator", "")])}
+        <h1>Free WhatsApp QR Code Generator</h1>
+        <p class="hero-sub" style="margin-bottom:0">Create custom WhatsApp click-to-chat links and instant QR codes for your business.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap-narrow">
+{whatsapp_qr_page_content()}
+      </div>
+    </section>
+""",
 )
 
 PAGES["privacy.html"] = page(
@@ -3315,20 +3469,83 @@ def ensure_logo() -> None:
 
 def write_robots_txt() -> None:
     # https://developers.google.com/search/docs/crawling-indexing/robots/intro
-    # Allow full crawl of HTML + CSS/JS/images so Google can render pages correctly.
+    # Allow full crawl of HTML + CSS/JS/images for search engines and GEO/AEO agents.
     # Do not use robots.txt to hide pages — use noindex (see 404.html) instead.
     content = f"""# Qefro marketing site — https://qefro.com
 # App hosts (app.qefro.com, api.qefro.com) are separate and not governed here.
 
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Bingbot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+# AI Search & Retrieval Bots (GEO / AEO)
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+# Default for all other crawlers
 User-agent: *
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-
-# Explicitly allow rendering resources (Google recommends not blocking these).
 Allow: /assets/
-
-# Custom 404 is not for indexing (also noindex in HTML + true HTTP 404 from nginx).
 Disallow: /404
 Disallow: /404.html
 

@@ -1,15 +1,78 @@
 # Qefro marketing site — https://qefro.com
 # App hosts (app.qefro.com, api.qefro.com) are separate and not governed here.
 
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Bingbot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+# AI Search & Retrieval Bots (GEO / AEO)
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: GPTBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Claude-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Google-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+# Default for all other crawlers
 User-agent: *
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
-
-# Explicitly allow rendering resources (Google recommends not blocking these).
 Allow: /assets/
-
-# Custom 404 is not for indexing (also noindex in HTML + true HTTP 404 from nginx).
 Disallow: /404
 Disallow: /404.html
 
