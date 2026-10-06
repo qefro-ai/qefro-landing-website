@@ -1126,6 +1126,10 @@ def hero_visual() -> str:
                       <div class="demo-confirmation">
                         {ICONS["check"]} <span>Viewing confirmed &middot; Tomorrow 4:00 PM</span>
                       </div>
+                      <div class="demo-scenario-outcome" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:0.375rem;font-size:0.75rem;display:flex;justify-content:space-between;color:var(--color-primary)">
+                        <span><strong>Before:</strong> 18h wait for rep callback</span>
+                        <span><strong>After:</strong> Brochure + site visit booked in 30s</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1170,6 +1174,10 @@ def hero_visual() -> str:
                       <p>Table reserved. WhatsApp confirmation sent to guest.</p>
                       <div class="demo-confirmation">
                         {ICONS["check"]} <span>Table #8 reserved &middot; Confirmation sent</span>
+                      </div>
+                      <div class="demo-scenario-outcome" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:0.375rem;font-size:0.75rem;display:flex;justify-content:space-between;color:var(--color-primary)">
+                        <span><strong>Before:</strong> Hostess missed calls during busy rush</span>
+                        <span><strong>After:</strong> 100% automated bookings synced to POS</span>
                       </div>
                     </div>
                   </div>
@@ -1216,6 +1224,10 @@ def hero_visual() -> str:
                       <div class="demo-confirmation">
                         {ICONS["check"]} <span>Reminder delivered &middot; UPI link active</span>
                       </div>
+                      <div class="demo-scenario-outcome" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:0.375rem;font-size:0.75rem;display:flex;justify-content:space-between;color:var(--color-primary)">
+                        <span><strong>Before:</strong> 3-day delay chasing late checks manually</span>
+                        <span><strong>After:</strong> 1-click UPI settled &amp; reconciled in 60s</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1261,10 +1273,15 @@ def hero_visual() -> str:
                       <div class="demo-confirmation">
                         {ICONS["check"]} <span>WhatsApp sent &middot; Timeline updated</span>
                       </div>
+                      <div class="demo-scenario-outcome" style="margin-top:0.75rem;padding:0.5rem 0.75rem;background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.2);border-radius:0.375rem;font-size:0.75rem;display:flex;justify-content:space-between;color:var(--color-primary)">
+                        <span><strong>Before:</strong> Inquiries buried in cluttered WhatsApp</span>
+                        <span><strong>After:</strong> Intent scored &amp; instant rep handoff</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
 
             </div>
           </div>
