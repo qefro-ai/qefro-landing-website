@@ -362,4 +362,35 @@
       });
     });
   }
+
+  // Plan Finder Quiz
+  window.runPlanQuiz = function() {
+    const teamEl = document.getElementById('quiz-team');
+    const volEl = document.getElementById('quiz-volume');
+    const softEl = document.getElementById('quiz-software');
+    const appEl = document.getElementById('quiz-approvals');
+    const outEl = document.getElementById('quiz-recommendation');
+    if (!teamEl || !volEl || !softEl || !appEl || !outEl) return;
+
+    const team = parseInt(teamEl.value, 10);
+    const volume = parseInt(volEl.value, 10);
+    const software = softEl.value;
+    const approvals = appEl.value;
+
+    let plan = "Starter Plan (₹699/mo)";
+    let rationale = "single-operator setup and lightweight message volume";
+
+    if (team > 15 || volume > 10000 || software === 'custom') {
+      plan = "Enterprise Plan (Custom)";
+      rationale = "high volume and custom ERP integration requirements";
+    } else if (team > 5 || volume > 2500) {
+      plan = "Growth Plan (₹2,999/mo)";
+      rationale = "your larger team size and higher monthly conversation traffic";
+    } else if (team > 1 || software === 'zoho' || approvals === 'yes') {
+      plan = "Pro Plan (₹1,499/mo)";
+      rationale = "multi-user collaboration, Tally/Zoho connectivity, and approval workflows";
+    }
+
+    outEl.innerHTML = `<span>💡 <strong>Recommendation:</strong> Based on ${rationale}, the <strong>${plan}</strong> fits your operations best.</span> <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup" style="padding:0.45rem 1rem;font-size:0.8125rem"><span>Start Free Trial</span></a>`;
+  };
 })();
