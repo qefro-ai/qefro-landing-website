@@ -3,10 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "lint": "node --check server.js",
     "build:motion": "esbuild src/motion/index.js --bundle --format=esm --minify --target=es2018 --outfile=assets/js/qefro-motion.js",
-    "build": "npm run build:motion && python3 generate.py"
+    "build": "npm run build:motion"
   },
   "dependencies": {
+    "express": "^5.3.0",
     "motion": "^12.23.12"
   },
   "devDependencies": {

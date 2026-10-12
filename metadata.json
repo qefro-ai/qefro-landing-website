@@ -1,0 +1,7 @@
+{
+  "name": "Qefro — Connect Business Software to WhatsApp AI & Actions",
+  "description": "Turn your WhatsApp into an automated operations desk. Connect Tally, Zoho, POS or Google Sheets to take bookings, collect UPI payments, and reconcile ledgers.",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
