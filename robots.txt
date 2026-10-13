@@ -67,6 +67,22 @@ Allow: /assets/
 Disallow: /404
 Disallow: /404.html
 
+User-agent: Applebot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /assets/
+Disallow: /404
+Disallow: /404.html
+
 # Default for all other crawlers
 User-agent: *
 Allow: /
