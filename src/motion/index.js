@@ -13,6 +13,7 @@ import { initPillars } from "./pillars.js";
 import { initPricingInteractions } from "./pricing.js";
 import { initReveal } from "./reveal.js";
 import { initStats } from "./stats.js";
+import { initThreeExperience } from "./threeScene.js";
 
 function boot() {
   document.documentElement.classList.add("js");
@@ -33,6 +34,7 @@ function boot() {
   initMicro();
   initStats();
   initDepth();
+  initThreeExperience();
 
   document.dispatchEvent(new CustomEvent("qefro:motion-ready"));
 }

@@ -54,8 +54,8 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="preload" href="/assets/css/styles.css?v=69" as="style" />
-  <link rel="stylesheet" href="/assets/css/styles.css?v=69" />
+  <link rel="preload" href="/assets/css/styles.css?v=70" as="style" />
+  <link rel="stylesheet" href="/assets/css/styles.css?v=70" />
   <meta name="geo.region" content="IN" />
   <meta name="geo.placename" content="India" />
   <meta property="og:locale:alternate" content="en_IN" />
@@ -420,15 +420,16 @@
   <header class="site-header">
     <div class="wrap nav" data-nav>
       <a class="brand" href="/" aria-label="Qefro home">
-        <img class="logo-light" src="/assets/images/qefro-logo.png?v=68" alt="Qefro logo" width="40" height="40" decoding="async" fetchpriority="high" />
-        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=68" alt="" width="40" height="40" aria-hidden="true" decoding="async" />
+        <img class="logo-light" src="/assets/images/qefro-logo.png?v=68" alt="Qefro logo" width="36" height="36" decoding="async" fetchpriority="high" />
+        <img class="logo-dark" src="/assets/images/qefro-logo-dark.png?v=68" alt="" width="36" height="36" aria-hidden="true" decoding="async" />
+        <span class="brand-wordmark">Qefro</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
+        <a href="#spatial-architecture">3D Architecture</a>
         <a href="/how-it-works">How It Works</a>
         <a href="/business-apps">Apps</a>
         <a href="/pricing">Pricing</a>
         <a href="/faq">FAQ</a>
-        <a href="https://docs.qefro.com" rel="noopener noreferrer">Docs</a>
       </nav>
       <div class="nav-cta">
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
@@ -441,11 +442,11 @@
       </div>
     </div>
     <div class="mobile-panel wrap" id="mobile-nav-panel">
+      <a href="#spatial-architecture">3D Architecture</a>
       <a href="/how-it-works">How It Works</a>
       <a href="/business-apps">Apps</a>
       <a href="/pricing">Pricing</a>
       <a href="/faq">FAQ</a>
-      <a href="https://docs.qefro.com" rel="noopener noreferrer">Docs</a>
       <a href="https://app.qefro.com/login">Sign In</a>
       <a class="btn btn-primary" href="https://app.qefro.com/login?mode=signup"><span>Start free</span> <span class="btn-arrow-capsule" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
     </div>
@@ -454,9 +455,10 @@
     <!-- 1. HERO -->
     <section class="hero hero-platform" aria-label="Hero" data-motion="hero">
       <div class="hero-grid" aria-hidden="true"></div>
+      <div id="hero-three-mount" class="hero-three-mount" aria-hidden="true"></div>
       <div class="wrap-hero hero-platform-grid">
         <div class="hero-copy">
-          <span class="eyebrow" data-motion="hero-badge"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"/></svg> AI Business Application Platform</span>
+          <span class="eyebrow" data-motion="hero-badge">AI Business Application Platform &middot; Official WhatsApp Cloud API</span>
           <h1 data-motion="hero-title">
             <span class="hero-line">Your WhatsApp now takes</span>
             <span class="hero-line hero-accent">bookings, invoices and payments.</span>
@@ -464,7 +466,7 @@
           <p class="hero-sub" data-motion="hero-sub">Built for Indian restaurants, clinics, real estate firms, and billing teams. Connect your software to AI customer conversations on WhatsApp, Instagram, and web chat that complete real business actions.</p>
           <div class="hero-actions" data-motion="hero-actions">
             <a class="btn btn-primary btn-lg" href="https://app.qefro.com/login?mode=signup" data-clarity-event="cta_start_free"><span>Start free trial</span> <span class="btn-arrow-capsule" aria-hidden="true"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span></a>
-            <a class="btn btn-ghost btn-lg" href="#not-chatbot" data-clarity-event="cta_watch_demo"><span>Watch 60-sec demo</span></a>
+            <a class="btn btn-ghost btn-lg" href="#spatial-architecture" data-clarity-event="cta_explore_3d"><span>Explore 3D Architecture</span></a>
           </div>
           <div class="hero-trust-bar" data-motion="hero-checks">
             <span class="trust-pill"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 14-Day Free Trial</span>
@@ -480,7 +482,7 @@
                 <span></span><span></span><span></span>
               </div>
               <span class="hero-demo-title">Qefro Operations Desk &middot; WhatsApp API</span>
-              <span class="hero-demo-status"><span class="status-pulse" aria-hidden="true"></span> Live Connected</span>
+              <span class="hero-demo-status">Live Connected</span>
             </div>
             <div class="hero-demo-tabs" role="tablist" aria-label="Demo domain scenarios">
               <button class="hero-demo-tab is-active" type="button" role="tab" aria-selected="true" data-hero-tab="realestate">
@@ -782,6 +784,89 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- 1B. INTERACTIVE THREE.JS 3D SYSTEM TOPOLOGY -->
+    <section class="section qefro-3d-section" id="spatial-architecture" aria-labelledby="spatial-arch-heading">
+      <div class="wrap-hero">
+        <div class="section-head reveal">
+          <span class="badge badge-indigo">01. Interactive 3D System Topology</span>
+          <h2 id="spatial-arch-heading">Inspect how Qefro bridges WhatsApp and your back-office software.</h2>
+          <p>Rotate the 3D operations core, switch live industry execution flows, or expand the internal validation layers to see how deterministic rules and human approvals protect every transaction.</p>
+        </div>
+
+        <div class="double-bezel qefro-3d-bezel reveal" id="qefro-3d-stage" aria-label="Interactive 3D Qefro System Architecture Viewport">
+          <div class="double-bezel-inner qefro-3d-inner">
+            <!-- Top-Left Minimal Spec HUD (Unobstructed Center Viewport) -->
+            <div class="qefro-3d-hud-top">
+              <div class="qefro-3d-hud-card">
+                <span class="qefro-3d-kicker">Active 3D Operations Route</span>
+                <strong id="qefro-3d-hud-title" class="qefro-3d-title">Full Omnichannel Topology</strong>
+                <p id="qefro-3d-hud-sub" class="qefro-3d-sub">WhatsApp Cloud API &harr; Qefro Deterministic Core &harr; Tally, Zoho, POS &amp; UPI</p>
+                <span id="qefro-3d-hud-metric" class="qefro-3d-metric">4 Active Connectors &middot; &lt; 280ms Execution</span>
+              </div>
+              <div class="qefro-3d-hint" aria-hidden="true">
+                Drag to orbit 360&deg; &middot; Scroll to zoom &middot; Click any 3D assembly to inspect
+              </div>
+            </div>
+
+            <!-- Dedicated Empty WebGL Canvas Mount -->
+            <div id="qefro-3d-canvas-mount" class="qefro-3d-canvas-mount"></div>
+
+            <!-- Unified Collapsible Bottom Control Dock -->
+            <div class="qefro-3d-dock-wrap" id="qefro-3d-dock-wrap">
+              <button type="button" class="qefro-3d-dock-toggle" id="qefro-3d-dock-toggle" aria-expanded="true">
+                &#9662; Hide Controls
+              </button>
+              <div class="qefro-3d-dock" role="toolbar" aria-label="3D Architecture Controls">
+                <div class="qefro-3d-dock-group" role="group" aria-label="Workflow Camera Presets">
+                  <button type="button" class="qefro-3d-btn is-active" data-3d-preset="all" aria-pressed="true">All Channels</button>
+                  <button type="button" class="qefro-3d-btn" data-3d-preset="realestate" aria-pressed="false">Real Estate</button>
+                  <button type="button" class="qefro-3d-btn" data-3d-preset="restaurant" aria-pressed="false">Restaurant POS</button>
+                  <button type="button" class="qefro-3d-btn" data-3d-preset="billing" aria-pressed="false">Billing &amp; UPI</button>
+                  <button type="button" class="qefro-3d-btn" data-3d-preset="crm" aria-pressed="false">Approval Gate</button>
+                </div>
+                <div class="qefro-3d-dock-divider" aria-hidden="true"></div>
+                <div class="qefro-3d-slider-group">
+                  <label for="qefro-3d-explode-slider">Explode Layers <span id="qefro-3d-explode-val" class="tabular-nums">0%</span></label>
+                  <input type="range" id="qefro-3d-explode-slider" min="0" max="100" value="0" step="1" />
+                </div>
+                <div class="qefro-3d-dock-divider" aria-hidden="true"></div>
+                <div class="qefro-3d-dock-actions">
+                  <button type="button" class="qefro-3d-btn is-active" id="qefro-3d-orbit-btn" aria-pressed="true">Auto-Orbit: On</button>
+                  <button type="button" class="qefro-3d-btn" id="qefro-3d-reset-btn">Reset View</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4-Column Full-Width Architectural Node Strip -->
+          <div class="qefro-3d-node-strip">
+            <button type="button" class="qefro-node-card" data-3d-preset="realestate">
+              <span class="qefro-node-idx">01 &middot; Meta Cloud Gateway</span>
+              <strong>WhatsApp Business API</strong>
+              <span>Processes Hindi, Tamil, Hinglish &amp; English chats with verified templates.</span>
+            </button>
+            <button type="button" class="qefro-node-card" data-3d-preset="billing">
+              <span class="qefro-node-idx">02 &middot; Accounting Sync</span>
+              <strong>Tally Prime &amp; Zoho Books</strong>
+              <span>Queries live SKU rates, generates GST invoices &amp; posts voucher entries.</span>
+            </button>
+            <button type="button" class="qefro-node-card" data-3d-preset="billing">
+              <span class="qefro-node-idx">03 &middot; Instant Collections</span>
+              <strong>Dynamic UPI &amp; Razorpay</strong>
+              <span>Creates 1-click payment links in chat and reconciles settled ledgers.</span>
+            </button>
+            <button type="button" class="qefro-node-card" data-3d-preset="restaurant">
+              <span class="qefro-node-idx">04 &middot; Operations Matrix</span>
+              <strong>POS &amp; Google Sheets</strong>
+              <span>Locks restaurant tables, clinic slots &amp; real estate site visits in real time.</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- AEO / GEO DIRECT ANSWER GROUNDING BLOCK -->
     <section class="aeo-summary-strip" aria-label="Quick platform overview and direct answer">
       <div class="wrap-5xl">
@@ -818,25 +903,29 @@
       <div class="wrap-5xl">
         <div class="trust-metrics-grid reveal">
           <div class="metric-box">
-            <div class="metric-num">14 Days</div>
+            <div class="metric-num tabular-nums">14 Days</div>
             <div class="metric-lbl">Full free trial access with no credit card required</div>
           </div>
           <div class="metric-box">
-            <div class="metric-num">2-Way Sync</div>
+            <div class="metric-num tabular-nums">2-Way Sync</div>
             <div class="metric-lbl">Direct read and write actions with your backend software</div>
           </div>
           <div class="metric-box">
-            <div class="metric-num">Human-First</div>
+            <div class="metric-num tabular-nums">100% Audit</div>
             <div class="metric-lbl">Configurable 1-click approval gates for sensitive operations</div>
           </div>
         </div>
         <div class="trust-logos-wrap reveal">
           <span class="trust-logos-label">Engineered for Indian business workflows</span>
           <div class="trust-badges-list">
-            <span class="partner-pill"><svg class="icon" width="20" height="20" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> WhatsApp Business Cloud API</span>
+            <span class="partner-pill">WhatsApp Business Cloud API</span>
+            <span aria-hidden="true">&middot;</span>
             <span class="client-logo-pill">Tally Prime &amp; Zoho Books Sync</span>
+            <span aria-hidden="true">&middot;</span>
             <span class="client-logo-pill">Instant Google Sheets Automation</span>
+            <span aria-hidden="true">&middot;</span>
             <span class="client-logo-pill">Dynamic 1-Click UPI Payment Links</span>
+            <span aria-hidden="true">&middot;</span>
             <span class="client-logo-pill">Role-Based Workspace Access</span>
           </div>
         </div>
@@ -1335,8 +1424,8 @@
     data-primary-color="#7c3aed"
     data-welcome-message="Hello! How can I help?"
     data-workspace-id="ef7afd02-2db8-4453-a894-1ed44f3f42cd"></script>
-  <script src="/assets/js/main.js?v=68" defer></script>
-  <script src="/assets/js/qefro-ref.js?v=68" defer></script>
-  <script type="module" src="/assets/js/qefro-motion.js?v=68"></script>
+  <script src="/assets/js/main.js?v=70" defer></script>
+  <script src="/assets/js/qefro-ref.js?v=70" defer></script>
+  <script type="module" src="/assets/js/qefro-motion.js?v=70"></script>
 </body>
 </html>
